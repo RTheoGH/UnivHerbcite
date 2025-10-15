@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		$Camera3D/Crosshair.texture = load("res://ressources/crosshair.png")
 	
-	if(Input.is_action_just_pressed("ui_accept")):
+	if Input.is_action_just_pressed("grab") and !Global.isPaused:
 		try_grab()
 	
 	# Add the gravity.
