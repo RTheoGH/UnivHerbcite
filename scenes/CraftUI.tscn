@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsa6hsivums7s"]
+[gd_scene load_steps=4 format=3 uid="uid://b7e61ij3wfkph"]
 
 [ext_resource type="Texture2D" uid="uid://cj7os2qpphhr3" path="res://ressources/ui/craft.png" id="1_c4iyr"]
+[ext_resource type="PackedScene" uid="uid://v38pdox3p3n0" path="res://scenes/Inv_UI_draggable.tscn" id="2_qo0wa"]
+[ext_resource type="PackedScene" uid="uid://b6okyqwhjjjp1" path="res://scenes/Droppable.tscn" id="3_nqwv1"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -39,10 +42,10 @@ anchor_left = 0.615
 anchor_top = 0.080000006
 anchor_right = 0.87700003
 anchor_bottom = 0.80600005
-offset_left = -0.47998047
+offset_left = -10.47998
 offset_top = 0.15999603
 offset_right = -0.3040161
-offset_bottom = -0.2880249
+offset_bottom = -156.28802
 color = Color(0, 0, 0, 0.27058825)
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -63,42 +66,54 @@ texture = ExtResource("1_c4iyr")
 [node name="ingredients" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.629
-anchor_top = 0.105000004
-anchor_right = 0.86300004
-anchor_bottom = 0.30400002
-offset_left = 0.39196777
-offset_top = -0.040000916
-offset_right = -0.17602539
-offset_bottom = 0.007980347
+anchor_left = 0.6223958
+anchor_top = 0.10339506
+anchor_right = 0.8602431
+anchor_bottom = 0.23765433
+grow_horizontal = 2
+grow_vertical = 2
 text = "- test
 - test
 - test"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="result" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.63000005
-anchor_top = 0.32700002
-anchor_right = 0.864
-anchor_bottom = 0.526
-offset_left = 0.2399292
-offset_top = 0.10398865
-offset_right = -0.32800293
-offset_bottom = 0.15197754
+anchor_left = 0.6215278
+anchor_top = 0.2654321
+anchor_right = 0.859375
+anchor_bottom = 0.3657407
 text = "- resultat"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Confirm" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.67800003
-anchor_top = 0.63600004
-anchor_right = 0.813
-anchor_bottom = 0.75900006
-offset_left = -0.056030273
-offset_top = -0.12802124
-offset_right = 0.4239502
-offset_bottom = 0.16796875
+anchor_left = 0.6736111
+anchor_top = 0.39660493
+anchor_right = 0.8090278
+anchor_bottom = 0.52006173
 text = "Confirmer"
+metadata/_edit_use_anchors_ = true
+
+[node name="InvUi" parent="." instance=ExtResource("2_qo0wa")]
+layout_mode = 1
+offset_left = 699.0
+offset_top = 379.0
+offset_right = -144.0
+offset_bottom = -133.0
+
+[node name="StaticBody2D" parent="." instance=ExtResource("3_nqwv1")]
+position = Vector2(224, 143)
+scale = Vector2(5.085, 5.085)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("3_nqwv1")]
+position = Vector2(368, 143)
+scale = Vector2(5.085, 5.085)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("3_nqwv1")]
+position = Vector2(508, 143)
+scale = Vector2(5.085, 5.085)

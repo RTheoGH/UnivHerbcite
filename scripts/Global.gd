@@ -5,6 +5,7 @@ var is_inventory_open: bool
 var cam_speed = 0.3
 var music_volume = 100
 var ui_volume = 100
+var is_dragging = false
 
 var minimap_activated: bool = false
 var carre_minimap: bool = false
