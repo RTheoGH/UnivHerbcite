@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=14 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://scripts/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://scenes/Perso.tscn" id="2_20oit"]
@@ -76,12 +76,12 @@ autoplay = true
 
 [node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_5kwoq")]
 anchors_preset = -1
-anchor_left = -0.119
-anchor_top = 0.574
-anchor_right = 0.33900002
-anchor_bottom = 1.0320001
-offset_left = 0.08799744
-offset_top = 0.04800415
-offset_right = 0.47198486
-offset_bottom = 0.26397705
+anchor_left = -0.22000001
+anchor_top = 0.49500003
+anchor_right = 0.455
+anchor_bottom = 1.1700001
+offset_left = 0.4400177
+offset_top = 0.23999023
+offset_right = -0.27111816
+offset_bottom = -0.16003418
 player = NodePath("../Perso")

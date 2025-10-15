@@ -156,6 +156,71 @@ stream = ExtResource("16_qp1ud")
 [node name="close" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_7iv8e")
 
-[connection signal="pressed" from="retour" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="suivant" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="pred" to="." method="_on_button_3_pressed"]
+[node name="gauche" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="gauche_texture" type="TextureRect" parent="gauche"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.900001
+anchor_top = 2.4750001
+anchor_right = 11.275001
+anchor_bottom = 4.7000003
+offset_left = -3.0517578e-05
+offset_right = -3.0517578e-05
+offset_bottom = -1.5258789e-05
+
+[node name="gauche_texte" type="RichTextLabel" parent="gauche"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.55
+anchor_top = 6.5000005
+anchor_right = 13.3
+anchor_bottom = 9.400001
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+
+[node name="droite" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.559
+anchor_top = 0.14
+anchor_right = 0.791
+anchor_bottom = 0.591
+offset_left = 0.031982422
+offset_top = 0.27999878
+offset_right = -0.23199463
+offset_bottom = 0.031982422
+
+[node name="droite_texture" type="TextureRect" parent="droite"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24200001
+anchor_right = 0.634
+anchor_bottom = 0.33600003
+offset_left = 0.053901672
+offset_right = -0.027999878
+offset_bottom = -0.11200714
+grow_horizontal = 2
+
+[node name="droite_texte" type="RichTextLabel" parent="droite"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.127
+anchor_top = 0.497
+anchor_right = 0.859
+anchor_bottom = 0.89000005
+offset_left = 0.0909996
+offset_top = -0.12400818
+offset_right = 0.00630188
+offset_bottom = 0.11999512
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="pressed" from="retour" to="." method="_on_retour_pressed"]
+[connection signal="pressed" from="suivant" to="." method="_on_suivant_pressed"]
+[connection signal="pressed" from="pred" to="." method="_on_precedent_pressed"]

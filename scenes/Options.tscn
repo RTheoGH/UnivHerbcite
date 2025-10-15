@@ -231,7 +231,7 @@ offset_right = -0.11303711
 offset_bottom = 0.01834488
 max_value = 1.0
 step = 0.01
-value = 1.0
+value = 0.5
 
 [node name="menu_val" type="RichTextLabel" parent="menu"]
 layout_mode = 1

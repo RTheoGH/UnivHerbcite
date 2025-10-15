@@ -9,7 +9,7 @@ class_name Inventory
 func add_item(item : InventoryItem):
 	if items.has(item):
 		# Make a stack system oops
-		if item.quantity + 1 < stackSize:
+		if item.quantity < stackSize:
 			item.quantity += 1
 		else :
 			print( "You're carrying as many " + item.name + " as you can ! ")
@@ -19,3 +19,5 @@ func add_item(item : InventoryItem):
 		# Discard an item ? 
 	else : 
 		items.push_back(item)
+		if(!Global.herbier.has(item)):
+			Global.herbier.push_back(item)

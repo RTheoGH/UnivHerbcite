@@ -9,6 +9,8 @@ var ui_volume = 100
 var minimap_activated: bool = false
 var carre_minimap: bool = false
 
+var herbier : Array = []
+
 @onready var player_inventory : Inventory = preload("res://inventory/player_inventory.tres")
 
 func _ready() -> void:
