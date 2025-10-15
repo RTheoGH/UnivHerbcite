@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://dek63gbyfg4ei"]
+[gd_scene load_steps=28 format=3 uid="uid://dek63gbyfg4ei"]
 
 [ext_resource type="Script" uid="uid://clm87qo21c7lo" path="res://scripts/menu.gd" id="1_jmdev"]
 [ext_resource type="Texture2D" uid="uid://b6vk82jruug7b" path="res://ressources/background/bg2.png" id="1_o0tnf"]
 [ext_resource type="Texture2D" uid="uid://l6w45g7s23c7" path="res://ressources/ui/menu_plante.png" id="1_xdvgc"]
+[ext_resource type="PackedScene" uid="uid://dxgsoqdgjn02y" path="res://scenes/propos.tscn" id="2_760fv"]
 [ext_resource type="Shader" uid="uid://bb3hmi3y83sxq" path="res://shaders/test spirale.gdshader" id="2_i7htd"]
 [ext_resource type="Texture2D" uid="uid://d0oprfhnjqfj8" path="res://ressources/background/bg1.png" id="2_thu7x"]
 [ext_resource type="Texture2D" uid="uid://dd8id13ahln15" path="res://ressources/ui/title_univH.png" id="2_upctu"]
@@ -164,7 +165,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.18039216)
+color = Color(0, 0, 0, 0.5254902)
+metadata/_edit_use_anchors_ = true
 
 [node name="jouer" type="TextureButton" parent="sous_menu"]
 texture_filter = 1
@@ -309,6 +311,10 @@ layout_mode = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("24_760fv")
+
+[node name="Propos" parent="." instance=ExtResource("2_760fv")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="propos" to="." method="_on_propos_pressed"]
 [connection signal="pressed" from="sous_menu/jouer" to="." method="_on_jouer_pressed"]

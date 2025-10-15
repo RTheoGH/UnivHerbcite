@@ -12,6 +12,7 @@ func _ready() -> void:
 		#$fond.texture = load("res://ressources/background/"+backgrounds[current_frame+1])
 	#else:
 		#$fond.texture = load("res://ressources/background/"+backgrounds[0])
+	$Propos.visible = false
 	$AudioStreamPlayer2D.volume_db = Global.ui_volume
 	$Options.hide()
 	$Chargement.hide()
@@ -90,7 +91,7 @@ func _on_timer_timeout() -> void:
 
 func _on_propos_pressed() -> void:
 	$AudioStreamPlayer2D.play()
-	get_tree().change_scene_to_file("res://scenes/propos.tscn")
+	$Propos.visible = true
 
 
 func _on_options_pressed() -> void:
