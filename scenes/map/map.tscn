@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqq7lyosyug6m"]
+[gd_scene load_steps=14 format=3 uid="uid://cqq7lyosyug6m"]
 
 [ext_resource type="PackedScene" uid="uid://ck1g3yvkhx7bh" path="res://ressources/map/map.blend" id="1_sxf4j"]
 [ext_resource type="Texture2D" uid="uid://b486ihtle73ob" path="res://ressources/Textures/sky/Skyboxes/processed_skybox.png" id="2_tqkkf"]
+[ext_resource type="Shader" uid="uid://c3q0jvnwdlylr" path="res://ressources/map/map.gdshader" id="3_a2pkv"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -15,19 +16,18 @@ uniform sampler2D uv_offset : filter_linear, repeat_enable;
 uniform float exposure : hint_range(0, 128) = 1.0;
 
 void sky() {
-	
-	vec2 noise = (texture(uv_offset, SKY_COORDS + (TIME / 400.0)).rg) / 10.0;
-	
+
+	vec2 noise = (texture(uv_offset, SKY_COORDS + (TIME / 800.0)).rg - 0.5) / 7.0;
+
 	vec2 new_uv = SKY_COORDS + noise;
-	
+
 	COLOR = texture(source_panorama, new_uv).rgb * exposure;
 	//COLOR.xy = noise * 10.0;
 }
 "
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tqkkf"]
-noise_type = 0
-frequency = 0.0074
+frequency = 0.0199
 fractal_octaves = 6
 fractal_lacunarity = 1.315
 domain_warp_enabled = true
@@ -43,7 +43,7 @@ generate_mipmaps = false
 noise = SubResource("FastNoiseLite_tqkkf")
 seamless = true
 normalize = false
-seamless_blend_skirt = 0.591
+seamless_blend_skirt = 0.219
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a2pkv"]
 shader = SubResource("Shader_tqkkf")
@@ -58,9 +58,49 @@ sky_material = SubResource("ShaderMaterial_a2pkv")
 background_mode = 2
 sky = SubResource("Sky_ph54e")
 
+[sub_resource type="SphereMesh" id="SphereMesh_ph54e"]
+radius = 500.0
+height = 1000.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_a2pkv"]
+noise_type = 3
+frequency = 0.0215
+fractal_type = 2
+fractal_octaves = 6
+fractal_lacunarity = 1.315
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 10.62
+domain_warp_frequency = 0.11
+domain_warp_fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ph54e"]
+width = 1024
+height = 1024
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_a2pkv")
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.219
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcby6"]
+render_priority = 0
+shader = ExtResource("3_a2pkv")
+shader_parameter/source_panorama = SubResource("NoiseTexture2D_ph54e")
+
 [node name="Map" type="Node3D"]
 
 [node name="map" parent="." instance=ExtResource("1_sxf4j")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fcby6")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.9462521, 0.14721659, 0.28798333, -0.255126, 0.8870195, 0.384847, -0.19879097, -0.43763432, 0.8769027, 0, 11.856014, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.0918, 3228.834, -39.000763)
+mesh = SubResource("SphereMesh_ph54e")
+surface_material_override/0 = SubResource("ShaderMaterial_fcby6")
+
+[editable path="map"]
