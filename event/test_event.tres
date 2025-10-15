@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://b0bpmqqf0kb8p"]
+
+[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://event/event.gd" id="1_mmn7g"]
+
+[resource]
+script = ExtResource("1_mmn7g")
+name = "Yessir"
+initial_position = Vector3(5.118602, 3.9208803, 0)
+metadata/_custom_type_script = "uid://v8f3vw767scl"
