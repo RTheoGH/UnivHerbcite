@@ -20,3 +20,12 @@ func _process(delta: float) -> void:
 		$Pause.visible = false
 		$Map.visible = Global.minimap_activated
 		$Musique.stream_paused = false
+	
+	if Input.is_action_just_pressed("ouvrir_livre"):
+		if !Global.isPaused:
+			$Pause.visible = true
+			$Pause.get_node("Book").visible = true
+		else:
+			$Pause.visible = false
+			$Pause.get_node("Book").visible = false
+		Global.isPaused = !Global.isPausedz	

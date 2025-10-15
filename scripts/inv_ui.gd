@@ -16,6 +16,7 @@ func _process(delta):
 			close()
 		else:
 			open()
+	
 	change_current_slot()
 
 	if Input.is_action_just_pressed("pause"):
