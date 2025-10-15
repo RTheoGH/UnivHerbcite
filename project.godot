@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Projet_MRVZ"
+config/name="Univ'herbcité"
 run/main_scene="uid://dek63gbyfg4ei"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://ressources/icon.svg"
