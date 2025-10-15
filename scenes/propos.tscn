@@ -131,20 +131,24 @@ Killian"
 metadata/_edit_use_anchors_ = true
 
 [node name="Andrew" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(716.00006, 394)
 scale = Vector2(0.84110785, 0.8411079)
 texture = ExtResource("2_t863x")
 
 [node name="Tom" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(945, 359)
 texture = ExtResource("3_6mr1c")
 
 [node name="Theo" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(479, 426)
 scale = Vector2(0.6137026, 0.61370265)
 texture = ExtResource("4_5b07h")
 
 [node name="Killian" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(138.00002, 356)
 scale = Vector2(0.8061224, 0.8061225)
 texture = ExtResource("5_2jd2n")
