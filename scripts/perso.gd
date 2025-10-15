@@ -20,12 +20,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if Global.isPaused:
+	if Global.is_inventory_open || Global.isPaused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		return
-	
+		if Global.isPaused : return
+	else: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		
 	var cam_diff = get_viewport().get_mouse_position() - previous_mouse_pos
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 	
 	var obj := ray.get_collider()
 	if(is_instance_of(obj, Interactable)):
@@ -36,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		$Camera3D/Crosshair.texture = load("res://ressources/crosshair.png")
 	
-	if(Input.is_action_just_pressed("ui_accept")):
+	if Input.is_action_just_pressed("grab") and !Global.isPaused:
 		try_grab()
 	
 	# Add the gravity.
@@ -59,19 +60,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
-	if(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) < -80):
-		cam_fps.global_rotation.x = deg_to_rad(-79.9)
-	elif(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) > 80):
-		cam_fps.global_rotation.x = deg_to_rad(80)
-	else:
-		cam_fps.global_rotation.x -= cam_diff.y * delta * Global.cam_speed
+		
+	if !Global.is_inventory_open:
+		if(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) < -80):
+			cam_fps.global_rotation.x = deg_to_rad(-79.9)
+		elif(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) > 80):
+			cam_fps.global_rotation.x = deg_to_rad(80)
+		else:
+			cam_fps.global_rotation.x -= cam_diff.y * delta * Global.cam_speed
 
+		
+		cam_fps.global_rotation.y -= cam_diff.x * delta * Global.cam_speed
 	
-	cam_fps.global_rotation.y -= cam_diff.x * delta * Global.cam_speed
-	
-	if get_viewport().get_window().has_focus():
-		Input.warp_mouse(DisplayServer.window_get_size()/2)
+		if get_viewport().get_window().has_focus():
+			Input.warp_mouse(DisplayServer.window_get_size()/2)
 	
 	previous_mouse_pos = get_viewport().get_mouse_position()
 

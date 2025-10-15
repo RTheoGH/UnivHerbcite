@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsa6hsivums7s"]
+
+[ext_resource type="Texture2D" uid="uid://cj7os2qpphhr3" path="res://ressources/ui/craft.png" id="1_c4iyr"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.080000006
+anchor_right = 0.527
+anchor_bottom = 0.80600005
+offset_left = -0.41600037
+offset_top = 0.15999603
+offset_right = -0.104003906
+offset_bottom = -0.2880249
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.615
+anchor_top = 0.080000006
+anchor_right = 0.87700003
+anchor_bottom = 0.80600005
+offset_left = -0.47998047
+offset_top = 0.15999603
+offset_right = -0.3040161
+offset_bottom = -0.2880249
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14500001
+anchor_top = 0.128
+anchor_right = 0.492
+anchor_bottom = 0.74500006
+offset_left = -0.040008545
+offset_top = 0.055999756
+offset_right = 0.21600342
+offset_bottom = 0.23995972
+grow_vertical = 2
+texture = ExtResource("1_c4iyr")
+
+[node name="ingredients" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.629
+anchor_top = 0.105000004
+anchor_right = 0.86300004
+anchor_bottom = 0.30400002
+offset_left = 0.39196777
+offset_top = -0.040000916
+offset_right = -0.17602539
+offset_bottom = 0.007980347
+text = "- test
+- test
+- test"
+vertical_alignment = 1
+
+[node name="result" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.63000005
+anchor_top = 0.32700002
+anchor_right = 0.864
+anchor_bottom = 0.526
+offset_left = 0.2399292
+offset_top = 0.10398865
+offset_right = -0.32800293
+offset_bottom = 0.15197754
+text = "- resultat"
+vertical_alignment = 1
+
+[node name="Confirm" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.67800003
+anchor_top = 0.63600004
+anchor_right = 0.813
+anchor_bottom = 0.75900006
+offset_left = -0.056030273
+offset_top = -0.12802124
+offset_right = 0.4239502
+offset_bottom = 0.16796875
+text = "Confirmer"

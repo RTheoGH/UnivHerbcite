@@ -1,29 +1,39 @@
 extends Control
 
-var time_before_transition := 3
-var transition_time := 2
+var transition_time := 1.9
+@onready var backgrounds := Array(DirAccess.get_files_at("res://ressources/background")).filter(func(elem: String): return !elem.contains(".import"))
+var current_frame := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(backgrounds)
+	$fond.texture = load("res://ressources/background/"+backgrounds[current_frame])
+	#if current_frame != backgrounds.size()-1 : 
+		#$fond.texture = load("res://ressources/background/"+backgrounds[current_frame+1])
+	#else:
+		#$fond.texture = load("res://ressources/background/"+backgrounds[0])
+	$AudioStreamPlayer2D.volume_db = Global.ui_volume
 	$Options.hide()
 	$Chargement.hide()
 	$chargement_block.hide()
 	$Backgrounds.play("default")
-	$spirale.material.set_shader_parameter("progression",0)
-	$Backgrounds.frame_changed.connect(
+	$fond.material.set_shader_parameter("progression",0)
+	$BackgroundTimer.timeout.connect(
 		func ():
+			print("salut ça va")
 			transition()
 	)
 	$Backgrounds.frame += 1
 	pass # Replace with function body.
 
 func transition() -> void:
-	await get_tree().create_timer(time_before_transition).timeout
+	$fond2.texture = load("res://ressources/background/"+backgrounds[(current_frame+1) % backgrounds.size()])
+	
 	var tween = get_tree().create_tween()
 	
 	tween.tween_method(
 		(func (val: float):
-			$spirale.material.set_shader_parameter("progression",val)
+			$fond.material.set_shader_parameter("progression",val)
 			)
 		,
 		0.0,
@@ -31,14 +41,18 @@ func transition() -> void:
 		transition_time
 	)
 	await tween.finished
-	$spirale.material.set_shader_parameter("progression",0)
+	
+	current_frame += 1
+	$fond.texture = load("res://ressources/background/"+backgrounds[current_frame % backgrounds.size()])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$AudioStreamPlayer2D.volume_db = Global.ui_volume
 	$Chargement.play("default")
 	pass
 
 func _on_quitter_pressed() -> void:
+	$AudioStreamPlayer2D.play()
 	get_tree().quit()
 
 var cpt = 0
@@ -55,6 +69,7 @@ func launch_hide() -> void:
 	$propos.hide()
 
 func _on_jouer_pressed() -> void:
+	$AudioStreamPlayer2D.play()
 	$Chargement.show()
 	$chargement_block.show()
 	launch_hide()
@@ -74,8 +89,10 @@ func _on_timer_timeout() -> void:
 
 
 func _on_propos_pressed() -> void:
+	$AudioStreamPlayer2D.play()
 	get_tree().change_scene_to_file("res://scenes/propos.tscn")
 
 
 func _on_options_pressed() -> void:
+	$AudioStreamPlayer2D.play()
 	$Options.show()

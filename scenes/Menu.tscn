@@ -1,11 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dek63gbyfg4ei"]
+[gd_scene load_steps=26 format=3 uid="uid://dek63gbyfg4ei"]
 
 [ext_resource type="Script" uid="uid://clm87qo21c7lo" path="res://scripts/menu.gd" id="1_jmdev"]
 [ext_resource type="Texture2D" uid="uid://b6vk82jruug7b" path="res://ressources/background/bg2.png" id="1_o0tnf"]
-[ext_resource type="Texture2D" uid="uid://l6w45g7s23c7" path="res://ressources/menu_plante.png" id="1_xdvgc"]
+[ext_resource type="Texture2D" uid="uid://l6w45g7s23c7" path="res://ressources/ui/menu_plante.png" id="1_xdvgc"]
 [ext_resource type="Shader" uid="uid://bb3hmi3y83sxq" path="res://shaders/test spirale.gdshader" id="2_i7htd"]
 [ext_resource type="Texture2D" uid="uid://d0oprfhnjqfj8" path="res://ressources/background/bg1.png" id="2_thu7x"]
-[ext_resource type="Texture2D" uid="uid://dd8id13ahln15" path="res://ressources/title_univH.png" id="2_upctu"]
+[ext_resource type="Texture2D" uid="uid://dd8id13ahln15" path="res://ressources/ui/title_univH.png" id="2_upctu"]
 [ext_resource type="Texture2D" uid="uid://cc2hqqecxur1r" path="res://ressources/gradient_spirale.png" id="3_dek3k"]
 [ext_resource type="Texture2D" uid="uid://m620nkrctdpa" path="res://ressources/background/bg3.png" id="4_2af52"]
 [ext_resource type="PackedScene" uid="uid://c1kassqq1adyl" path="res://scenes/Chargement.tscn" id="4_o0tnf"]
@@ -15,13 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://85ommguhepqw" path="res://ressources/background/bg7.png" id="8_5p0sf"]
 [ext_resource type="Texture2D" uid="uid://2vd5khcckfv" path="res://ressources/background/bg8.png" id="9_7t7qg"]
 [ext_resource type="Texture2D" uid="uid://dtbaujoh73six" path="res://ressources/background/bg9.png" id="10_l3wcu"]
-[ext_resource type="Texture2D" uid="uid://yxqi1nmf40yb" path="res://ressources/jouer1.png" id="11_7t7qg"]
-[ext_resource type="Texture2D" uid="uid://d13xc44jipiv3" path="res://ressources/jouer2.png" id="12_l3wcu"]
-[ext_resource type="Texture2D" uid="uid://gusn1w8bfp3w" path="res://ressources/options1.png" id="13_i7htd"]
-[ext_resource type="Texture2D" uid="uid://c0r7g1ktwgxnr" path="res://ressources/options2.png" id="14_dek3k"]
-[ext_resource type="Texture2D" uid="uid://dav1cct0ut0i1" path="res://ressources/menu_quit1.png" id="15_8fhjo"]
-[ext_resource type="Texture2D" uid="uid://bp52dwh2erbvm" path="res://ressources/menu_quit2.png" id="16_760fv"]
+[ext_resource type="Texture2D" uid="uid://yxqi1nmf40yb" path="res://ressources/ui/jouer1.png" id="11_7t7qg"]
+[ext_resource type="Texture2D" uid="uid://d13xc44jipiv3" path="res://ressources/ui/jouer2.png" id="12_l3wcu"]
+[ext_resource type="Texture2D" uid="uid://gusn1w8bfp3w" path="res://ressources/ui/options1.png" id="13_i7htd"]
+[ext_resource type="Texture2D" uid="uid://c0r7g1ktwgxnr" path="res://ressources/ui/options2.png" id="14_dek3k"]
+[ext_resource type="Texture2D" uid="uid://dav1cct0ut0i1" path="res://ressources/ui/menu_quit1.png" id="15_8fhjo"]
+[ext_resource type="Texture2D" uid="uid://bp52dwh2erbvm" path="res://ressources/ui/menu_quit2.png" id="16_760fv"]
 [ext_resource type="PackedScene" uid="uid://c6tftscbtspu3" path="res://scenes/Options.tscn" id="22_dek3k"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://ressources/sounds/Bouton.wav" id="24_760fv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i7htd"]
 animations = [{
@@ -58,6 +59,12 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dek3k"]
+shader = ExtResource("2_i7htd")
+shader_parameter/rect_tex = ExtResource("1_o0tnf")
+shader_parameter/progression = -0.001
+shader_parameter/gradient_order = ExtResource("3_dek3k")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i7htd"]
 shader = ExtResource("2_i7htd")
 shader_parameter/progression = 0.0
@@ -72,15 +79,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jmdev")
+metadata/_edit_use_anchors_ = true
 
 [node name="Backgrounds" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(576.00006, 324.00003)
 scale = Vector2(2.2500002, 2.6666667)
 sprite_frames = SubResource("SpriteFrames_i7htd")
 
+[node name="BackgroundTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="fond2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_2af52")
+
 [node name="fond" type="TextureRect" parent="."]
-visible = false
 texture_filter = 1
+material = SubResource("ShaderMaterial_dek3k")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,6 +122,7 @@ grow_vertical = 2
 color = Color(1, 1, 0.67058825, 0.9019608)
 
 [node name="spirale" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_i7htd")
 layout_mode = 1
 anchors_preset = 15
@@ -146,48 +169,52 @@ color = Color(0, 0, 0, 0.18039216)
 [node name="jouer" type="TextureButton" parent="sous_menu"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -128.0
-offset_right = 128.0
-offset_bottom = 64.0
+anchors_preset = -1
+anchor_left = 0.075
+anchor_right = 0.9250001
+anchor_bottom = 0.314
+offset_left = -0.07500076
+offset_right = 0.07498169
+offset_bottom = -0.055999756
 grow_horizontal = 2
 texture_normal = ExtResource("11_7t7qg")
 texture_hover = ExtResource("12_l3wcu")
+stretch_mode = 0
 
 [node name="options" type="TextureButton" parent="sous_menu"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -32.0
-offset_right = 128.0
-offset_bottom = 32.0
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.34300002
+anchor_right = 0.9250001
+anchor_bottom = 0.657
+offset_left = -0.07500076
+offset_top = 0.027992249
+offset_right = 0.07498169
+offset_bottom = -0.027999878
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = ExtResource("13_i7htd")
 texture_hover = ExtResource("14_dek3k")
+stretch_mode = 0
 
 [node name="quitter" type="TextureButton" parent="sous_menu"]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = -1
+anchor_left = 0.075
+anchor_top = 0.68600005
+anchor_right = 0.9250001
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -64.0
-offset_right = 128.0
+offset_left = -0.07500076
+offset_top = 0.055984497
+offset_right = 0.07498169
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = ExtResource("15_8fhjo")
 texture_hover = ExtResource("16_760fv")
+stretch_mode = 0
 
 [node name="plante" type="TextureRect" parent="."]
 texture_filter = 1
@@ -223,13 +250,14 @@ z_index = 1
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23600002
-anchor_right = 0.76400006
-anchor_bottom = 0.23500001
-offset_left = 265.128
-offset_top = 7.000001
-offset_right = 264.87195
-offset_bottom = 6.719986
+anchor_left = 0.432
+anchor_top = 0.085
+anchor_right = 0.9760001
+anchor_bottom = 0.35200003
+offset_left = 39.336
+offset_top = -48.08
+offset_right = 20.64795
+offset_bottom = -69.09602
 grow_horizontal = 2
 rotation = 0.2617994
 texture = ExtResource("2_upctu")
@@ -275,7 +303,12 @@ grow_vertical = 2
 bbcode_enabled = true
 
 [node name="Options" parent="." instance=ExtResource("22_dek3k")]
+visible = false
+z_index = 5
 layout_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_760fv")
 
 [connection signal="pressed" from="propos" to="." method="_on_propos_pressed"]
 [connection signal="pressed" from="sous_menu/jouer" to="." method="_on_jouer_pressed"]

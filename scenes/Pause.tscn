@@ -1,15 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccneeglf3rtgq"]
+[gd_scene load_steps=13 format=3 uid="uid://ccneeglf3rtgq"]
 
 [ext_resource type="Script" uid="uid://bs1ch0ypr6sq7" path="res://scripts/pause.gd" id="1_qp6fb"]
-[ext_resource type="Texture2D" uid="uid://cgft3pmietdr2" path="res://ressources/continuer1.png" id="1_uc2tp"]
-[ext_resource type="Texture2D" uid="uid://dp318w3baxk8l" path="res://ressources/continuer2.png" id="2_qp6fb"]
-[ext_resource type="Texture2D" uid="uid://ps6osqaurddg" path="res://ressources/livre.png" id="3_7akkw"]
-[ext_resource type="Texture2D" uid="uid://df74qshy37m5" path="res://ressources/quitter1.png" id="4_w5f6b"]
-[ext_resource type="Texture2D" uid="uid://3hd8bjy6uixw" path="res://ressources/quitter2.png" id="5_87awh"]
-[ext_resource type="Texture2D" uid="uid://gusn1w8bfp3w" path="res://ressources/options1.png" id="5_x85fr"]
-[ext_resource type="Texture2D" uid="uid://c0r7g1ktwgxnr" path="res://ressources/options2.png" id="6_a08a3"]
+[ext_resource type="Texture2D" uid="uid://cgft3pmietdr2" path="res://ressources/ui/continuer1.png" id="1_uc2tp"]
+[ext_resource type="Texture2D" uid="uid://dp318w3baxk8l" path="res://ressources/ui/continuer2.png" id="2_qp6fb"]
+[ext_resource type="Texture2D" uid="uid://ps6osqaurddg" path="res://ressources/ui/livre.png" id="3_7akkw"]
+[ext_resource type="Texture2D" uid="uid://df74qshy37m5" path="res://ressources/ui/quitter1.png" id="4_w5f6b"]
+[ext_resource type="Texture2D" uid="uid://3hd8bjy6uixw" path="res://ressources/ui/quitter2.png" id="5_87awh"]
+[ext_resource type="Texture2D" uid="uid://gusn1w8bfp3w" path="res://ressources/ui/options1.png" id="5_x85fr"]
+[ext_resource type="Texture2D" uid="uid://c0r7g1ktwgxnr" path="res://ressources/ui/options2.png" id="6_a08a3"]
 [ext_resource type="PackedScene" uid="uid://bjgtvtynklld5" path="res://scenes/Book.tscn" id="7_7akkw"]
 [ext_resource type="PackedScene" uid="uid://c6tftscbtspu3" path="res://scenes/Options.tscn" id="10_x85fr"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://ressources/sounds/Bouton.wav" id="11_a08a3"]
+[ext_resource type="AudioStream" uid="uid://jmmoatu4l0b" path="res://ressources/sounds/open_book.mp3" id="12_5nbhg"]
 
 [node name="Pause" type="Control"]
 process_mode = 3
@@ -109,6 +111,12 @@ layout_mode = 1
 [node name="Options" parent="." instance=ExtResource("10_x85fr")]
 visible = false
 layout_mode = 1
+
+[node name="select" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_a08a3")
+
+[node name="open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_5nbhg")
 
 [connection signal="pressed" from="continuer" to="." method="_on_continuer_pressed"]
 [connection signal="pressed" from="progress" to="." method="_on_progress_pressed"]

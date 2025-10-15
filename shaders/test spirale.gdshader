@@ -1,6 +1,7 @@
 shader_type canvas_item;
 
 uniform sampler2D screen_tex : hint_screen_texture;
+uniform sampler2D rect_tex : source_color;
 uniform float progression = -0.001;
 uniform sampler2D gradient_order : filter_nearest;
 
@@ -10,11 +11,12 @@ void vertex() {
 }
 
 void fragment() {
-	COLOR = texture(screen_tex, SCREEN_UV);
+	//COLOR = texture(screen_tex, SCREEN_UV);
+	COLOR = texture(TEXTURE, UV);
 	float grad = texture(gradient_order, UV).r;
 
 	if(progression > grad){
-		COLOR = vec4(0, 0, 0, 1);
+		COLOR = texture(screen_tex, SCREEN_UV);
 	}
 
 
