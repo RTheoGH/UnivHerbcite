@@ -57,6 +57,10 @@ func get_movements_keys() -> void:
 	$Button3.text = eng_to_fr(InputMap.action_get_events("left")[0].as_text())
 	$Button4.text = eng_to_fr(InputMap.action_get_events("right")[0].as_text())
 	$Button5.text = eng_to_fr(InputMap.action_get_events("jump")[0].as_text())
+	$Button6.text = eng_to_fr(InputMap.action_get_events("grab")[0].as_text())
+	$Button7.text = eng_to_fr(InputMap.action_get_events("ouvrir_livre")[0].as_text())
+	$Button8.text = eng_to_fr(InputMap.action_get_events("slot_left")[0].as_text())
+	$Button9.text = eng_to_fr(InputMap.action_get_events("slot_right")[0].as_text())
 	
 func eng_to_fr(s):
 	match s:
@@ -70,20 +74,48 @@ func eng_to_fr(s):
 			s = 'D'
 		'Space', 'Space (Physical)':
 			s = 'Espace'
+		'Tab (Physical)':
+			s = 'Tab'
+		'Right (Physical)':
+			s = 'Droite'
+		'Left (Physical)':
+			s = 'Gauche'
+		'Left Mouse Button':
+			s = 'Clic gauche'
 		_:
 			s = '???'
 	return s
-	
+
+func mouse_index_to_text(s):
+	match s:
+		1:
+			s = 'Clic gauche'
+		2:
+			s = 'Clic droit'
+		3:
+			s = 'Clic molette'
+		4:
+			s = 'Défil haut'
+		5:
+			s = 'Défil bas'
+			
+	return s
+
 func _input(event):
-	if modif != "" and event is InputEventKey and event.pressed:
-		print(event,"\n",current_button)
-		if event.keycode != KEY_ESCAPE:
+	if modif != "" and event is not InputEventMouseMotion:
+		#print(event,"\n",current_button)
+		if event is InputEventKey and event.pressed:
+			if event.keycode != KEY_ESCAPE:
+					InputMap.action_erase_events(modif)
+					InputMap.action_add_event(modif,event)
+					if event.keycode != KEY_SPACE:
+						current_button.text = event.as_text()
+					else:
+						current_button.text = eng_to_fr(event.as_text())
+		if event is InputEventMouseButton:
 			InputMap.action_erase_events(modif)
 			InputMap.action_add_event(modif,event)
-			if event.keycode != KEY_SPACE:
-				current_button.text = event.as_text()
-			else:
-				current_button.text = eng_to_fr(event.as_text())
+			current_button.text = mouse_index_to_text(event.button_index)
 		$modifier.hide()
 		modif = ""
 
@@ -124,3 +156,27 @@ func _on_minimap_pressed() -> void:
 func _on_form_minimap_pressed() -> void:
 	Global.carre_minimap = !Global.carre_minimap
 	print(Global.carre_minimap)
+
+func _on_button_6_pressed() -> void:
+	$AudioStreamPlayer2D.play()
+	modif = "grab"
+	current_button = $Button6
+	$modifier.show()
+
+func _on_button_7_pressed() -> void:
+	$AudioStreamPlayer2D.play()
+	modif = "ouvrir_livre"
+	current_button = $Button7
+	$modifier.show()
+
+func _on_button_8_pressed() -> void:
+	$AudioStreamPlayer2D.play()
+	modif = "slot_left"
+	current_button = $Button8
+	$modifier.show()
+
+func _on_button_9_pressed() -> void:
+	$AudioStreamPlayer2D.play()
+	modif = "slot_right"
+	current_button = $Button9
+	$modifier.show()
