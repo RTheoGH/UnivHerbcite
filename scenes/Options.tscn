@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://qmp7vkc3d7au" path="res://scripts/options.gd" id="1_nmn1p"]
 [ext_resource type="Texture2D" uid="uid://dacg73wq786q5" path="res://ressources/ui/retour1.png" id="2_pxqj8"]
 [ext_resource type="Texture2D" uid="uid://bdp6hre2uk2w" path="res://ressources/ui/retour2.png" id="3_w238l"]
-[ext_resource type="Texture2D" uid="uid://bor3b4ypy8nee" path="res://ressources/ui/options_1-1.png.png" id="4_pxqj8"]
+[ext_resource type="Texture2D" uid="uid://dsy34jt1siym3" path="res://ressources/ui/options512.png" id="4_w238l"]
 [ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://ressources/sounds/Bouton.wav" id="5_w238l"]
 
 [node name="Options" type="Control"]
@@ -40,96 +40,107 @@ grow_vertical = 0
 texture_normal = ExtResource("2_pxqj8")
 texture_hover = ExtResource("3_w238l")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-texture_filter = 1
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.051000003
-anchor_top = 0.040000003
-anchor_right = 0.41000003
-anchor_bottom = 0.89000005
-offset_left = 0.24799728
-offset_top = 0.07999802
-offset_right = -0.32003784
-offset_bottom = -0.053344727
-texture = ExtResource("4_pxqj8")
+anchor_left = 0.033854168
+anchor_top = 0.046296295
+anchor_right = 0.41086805
+anchor_bottom = 0.93511814
+offset_right = -0.32000732
+offset_bottom = -0.17602539
+texture = ExtResource("4_w238l")
+region_rect = Rect2(44, 60, 294, 396)
+patch_margin_left = 28
+patch_margin_top = 28
+patch_margin_right = 28
+patch_margin_bottom = 28
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect2" type="TextureRect" parent="."]
-texture_filter = 1
+[node name="NinePatchRect2" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.36200002
-anchor_top = 0.048
-anchor_right = 0.96300006
-anchor_bottom = 0.601
-offset_left = -0.023986816
-offset_top = 358.3506
-offset_right = -333.9215
-offset_bottom = 692.89307
-rotation = -1.5707964
-texture = ExtResource("4_pxqj8")
+anchor_left = 0.42708334
+anchor_top = 0.08024691
+anchor_right = 0.9369098
+anchor_bottom = 0.5141605
+offset_right = -0.32000732
+offset_bottom = -0.17602539
+texture = ExtResource("4_w238l")
+region_rect = Rect2(44, 60, 294, 396)
+patch_margin_left = 28
+patch_margin_top = 28
+patch_margin_right = 28
+patch_margin_bottom = 28
+metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect3" type="TextureRect" parent="."]
-texture_filter = 1
+[node name="NinePatchRect3" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.36200002
-anchor_top = 0.51500005
-anchor_right = 0.966
-anchor_bottom = 0.84000003
-offset_left = -0.024017334
-offset_top = 206.27997
-offset_right = -485.2984
-offset_bottom = 690.9749
-rotation = -1.5707964
-texture = ExtResource("4_pxqj8")
+anchor_left = 0.4279514
+anchor_top = 0.52781487
+anchor_right = 0.9342916
+anchor_bottom = 0.8276474
+offset_top = -0.02400589
+offset_right = -0.3040161
+offset_bottom = -0.31549072
+texture = ExtResource("4_w238l")
+region_rect = Rect2(44, 60, 294, 396)
+patch_margin_left = 28
+patch_margin_top = 28
+patch_margin_right = 28
+patch_margin_bottom = 28
+metadata/_edit_use_anchors_ = true
 
 [node name="sensi" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.44700003
-anchor_top = 0.16600001
-anchor_right = 0.887
-anchor_bottom = 0.26900002
+anchor_left = 0.44960418
+anchor_top = 0.12208861
+anchor_right = 0.91304165
+anchor_bottom = 0.24052072
 offset_left = 0.05596924
 offset_top = -0.11341858
 offset_right = 0.17596436
 offset_bottom = 0.14257813
+metadata/_edit_use_anchors_ = true
 
 [node name="sensi_texte" type="RichTextLabel" parent="sensi"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.025
-anchor_top = 0.15300001
-anchor_right = 0.22500001
-anchor_bottom = 0.85
+anchor_left = 0.06217235
+anchor_top = 0.01292979
+anchor_right = 0.3367042
+anchor_bottom = 0.49386486
 offset_left = -0.20001507
-offset_top = -0.016003609
+offset_top = 0.0044062138
 offset_right = 0.19998169
-offset_bottom = -0.008003235
+offset_bottom = -0.02759552
 text = "Sensibilité souris"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="sensi_slider" type="HSlider" parent="sensi"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23500001
-anchor_top = 0.37500003
-anchor_right = 0.94500005
-anchor_bottom = 0.597
+anchor_left = 0.0020225325
+anchor_top = 0.48051947
+anchor_right = 0.99992514
+anchor_bottom = 0.7025195
 offset_left = -0.08000946
 offset_right = 0.039978027
 offset_bottom = 0.01599884
 min_value = 1.0
 value = 30.0
+metadata/_edit_use_anchors_ = true
 
 [node name="sensi_val" type="RichTextLabel" parent="sensi"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.523
-anchor_top = -0.0072625144
-anchor_right = 0.61
-anchor_bottom = 0.403
+anchor_left = 0.43847194
+anchor_top = 0.0775065
+anchor_right = 0.5525843
+anchor_bottom = 0.48776904
 offset_left = -0.14401245
 offset_top = 0.031999588
 offset_right = -0.08001709
@@ -140,41 +151,43 @@ metadata/_edit_use_anchors_ = true
 
 [node name="musique" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.446
-anchor_top = 0.282
-anchor_right = 0.887
-anchor_bottom = 0.38700002
-offset_left = 0.20800781
-offset_top = -0.28141785
-offset_right = 0.17596436
-offset_bottom = -0.3214264
+anchor_left = 0.45000002
+anchor_top = 0.25800002
+anchor_right = 0.91443753
+anchor_bottom = 0.363
+offset_left = -0.4000244
+offset_top = -0.18400574
+offset_right = -0.43200684
+offset_bottom = -0.22399902
+metadata/_edit_use_anchors_ = true
 
 [node name="musique_texte" type="RichTextLabel" parent="musique"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.040000003
-anchor_top = 0.027
-anchor_right = 0.21200001
-anchor_bottom = 0.71300006
+anchor_left = 0.06175699
+anchor_top = -0.35331476
+anchor_right = 0.3329181
+anchor_bottom = 0.14750879
 offset_left = -0.040000916
-offset_top = 0.028999925
+offset_top = 0.025404453
 offset_right = -0.111206055
-offset_bottom = -0.0021514893
+offset_bottom = -0.030597687
 text = "Volume musique"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="musique_slider" type="HSlider" parent="musique"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.238
+anchor_left = 0.002
 anchor_top = 0.24700001
-anchor_right = 0.947
+anchor_right = 0.99600005
 anchor_bottom = 0.46600002
-offset_left = -0.18800354
+offset_left = -0.069969535
 offset_top = -0.031000137
-offset_right = -0.12200928
-offset_bottom = -0.018001556
+offset_right = 0.13995361
+offset_bottom = 1.0769978
 max_value = 1.0
 step = 0.01
 value = 1.0
@@ -183,10 +196,10 @@ value = 1.0
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.551
-anchor_top = -0.22686173
-anchor_right = 0.61600006
-anchor_bottom = 0.22100003
+anchor_left = 0.43705785
+anchor_top = -0.2790001
+anchor_right = 0.5559252
+anchor_bottom = 0.16886164
 offset_left = 0.17401123
 offset_top = -0.027999878
 offset_right = -0.08004761
@@ -197,35 +210,38 @@ metadata/_edit_use_anchors_ = true
 
 [node name="menu" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.448
-anchor_top = 0.38200003
-anchor_right = 0.88600004
-anchor_bottom = 0.48800004
+anchor_left = 0.44973612
+anchor_top = 0.3473479
+anchor_right = 0.9129098
+anchor_bottom = 0.4533479
 offset_left = -0.0960083
 offset_top = -0.08143616
 offset_right = 0.3279419
 offset_bottom = -0.07644653
+metadata/_edit_use_anchors_ = true
 
 [node name="menu_texte" type="RichTextLabel" parent="menu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.053000003
-anchor_right = 0.194
-anchor_bottom = 0.768
+anchor_left = 0.068848334
+anchor_top = -0.27659297
+anchor_right = 0.3014476
+anchor_bottom = 0.2915292
 offset_left = -0.7649956
 offset_top = 0.9999957
 offset_right = 0.027000427
-offset_bottom = -0.030708313
+offset_bottom = -0.026016235
 text = "Volume menu"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="menu_slider" type="HSlider" parent="menu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.24200001
+anchor_left = 0.0041385894
 anchor_top = 0.291
-anchor_right = 0.94900006
+anchor_right = 0.99646634
 anchor_bottom = 0.527
 offset_left = -0.21000671
 offset_top = 0.010334015
@@ -234,34 +250,36 @@ offset_bottom = 0.01834488
 max_value = 1.0
 step = 0.01
 value = 0.5
+metadata/_edit_use_anchors_ = true
 
 [node name="menu_val" type="RichTextLabel" parent="menu"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.53900003
-anchor_top = -0.17500001
-anchor_right = 0.60400003
-anchor_bottom = 0.25300002
+anchor_left = 0.4385675
+anchor_top = -0.18955754
+anchor_right = 0.5521424
+anchor_bottom = 0.29145148
 offset_left = -0.19503784
 offset_top = 0.021268845
 offset_right = 0.15597534
 offset_bottom = -0.020681381
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.202
-anchor_top = 0.194
-anchor_right = 0.263
-anchor_bottom = 0.23900001
+anchor_left = 0.14297223
+anchor_top = 0.10603704
+anchor_right = 0.21091668
+anchor_bottom = 0.1556667
 offset_left = 0.29599
 offset_top = 0.28799438
 offset_right = 0.023986816
 offset_bottom = 0.12799072
 bbcode_enabled = true
-text = "Avancer "
+text = "Avancer"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -269,23 +287,25 @@ metadata/_edit_use_anchors_ = true
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.19839583
-anchor_top = 0.24500002
-anchor_right = 0.26560417
-anchor_bottom = 0.30400002
+anchor_left = 0.14370833
+anchor_top = 0.15549384
+anchor_right = 0.21091668
+anchor_bottom = 0.21449386
 offset_left = -0.55200195
 offset_top = 0.23999023
 offset_right = 0.023986816
 offset_bottom = 0.007980347
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.19700001
-anchor_top = 0.37482715
-anchor_right = 0.266
-anchor_bottom = 0.4368272
+anchor_left = 0.14318055
+anchor_top = 0.2729753
+anchor_right = 0.21044445
+anchor_bottom = 0.31954324
 offset_left = 0.055984497
 offset_top = 0.11199951
 offset_right = 0.56799316
@@ -298,28 +318,30 @@ metadata/_edit_use_anchors_ = true
 [node name="Button2" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.19613196
-anchor_top = 0.321
-anchor_right = 0.26534027
-anchor_bottom = 0.38000003
+anchor_left = 0.14144446
+anchor_top = 0.21760495
+anchor_right = 0.21065277
+anchor_bottom = 0.27660498
 offset_left = 2.0559845
 offset_top = -0.008010864
 offset_right = 0.32800293
 offset_bottom = -0.24002075
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.12813194
-anchor_top = 0.261
-anchor_right = 0.18513195
-anchor_bottom = 0.323
+anchor_left = 0.07257639
+anchor_top = 0.17766668
+anchor_right = 0.14172918
+anchor_bottom = 0.22886422
 offset_left = 0.3919983
 offset_top = -0.12800598
 offset_right = -0.27200317
 offset_bottom = -0.3040161
-text = "Gauche "
+text = "Gauche"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -327,23 +349,25 @@ metadata/_edit_use_anchors_ = true
 [node name="Button3" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.122999996
-anchor_top = 0.32145682
-anchor_right = 0.1930764
-anchor_bottom = 0.3794568
+anchor_left = 0.07091667
+anchor_top = 0.21806176
+anchor_right = 0.14099306
+anchor_bottom = 0.27606174
 offset_left = 2.3040009
 offset_top = -0.3040161
 offset_right = 0.57598877
 offset_bottom = 0.11199951
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel4" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.27660418
-anchor_top = 0.26900002
-anchor_right = 0.32660416
-anchor_bottom = 0.316
+anchor_left = 0.21236807
+anchor_top = 0.17795064
+anchor_right = 0.2805972
+anchor_bottom = 0.22495063
 offset_left = 0.35198975
 offset_top = -0.31201172
 offset_right = -0.24798584
@@ -356,23 +380,25 @@ metadata/_edit_use_anchors_ = true
 [node name="Button4" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2692639
-anchor_top = 0.32054323
-anchor_right = 0.33647218
-anchor_bottom = 0.37954324
+anchor_left = 0.21284029
+anchor_top = 0.21714815
+anchor_right = 0.28004858
+anchor_bottom = 0.2761482
 offset_left = -0.1920166
 offset_top = 0.28799438
 offset_right = 0.3840027
 offset_bottom = 0.055984497
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel7" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.15199307
-anchor_top = 0.49201235
-anchor_right = 0.20699307
-anchor_bottom = 0.53501236
+anchor_left = 0.29869446
+anchor_top = 0.1710247
+anchor_right = 0.36931947
+anchor_bottom = 0.22019751
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -385,83 +411,89 @@ metadata/_edit_use_anchors_ = true
 [node name="Button5" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.14378473
-anchor_top = 0.54001236
-anchor_right = 0.2145972
-anchor_bottom = 0.5990124
+anchor_left = 0.29829863
+anchor_top = 0.21593828
+anchor_right = 0.36911106
+anchor_bottom = 0.2749383
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
 offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_w238l")
+bus = &"Music"
 
 [node name="minimap" type="CheckButton" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.55
-anchor_top = 0.61
+anchor_top = 0.60763323
 anchor_right = 0.58900005
-anchor_bottom = 0.647
+anchor_bottom = 0.64463323
 offset_left = 1.3999634
 offset_top = 0.2536621
 offset_right = 0.47192383
 offset_bottom = 0.27764893
+metadata/_edit_use_anchors_ = true
 
 [node name="minimap_text" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.48200002
-anchor_top = 0.60300004
+anchor_left = 0.47000003
+anchor_top = 0.6
 anchor_right = 0.549
 anchor_bottom = 0.647
-offset_left = 0.7359619
-offset_top = 0.25598145
+offset_left = 0.5599365
+offset_top = 0.19998169
 offset_right = -0.44799805
 offset_bottom = 0.27764893
 text = "Minimap"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="form_minimap" type="CheckButton" parent="."]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.55
-anchor_top = 0.67800003
-anchor_right = 0.58900005
-anchor_bottom = 0.71500003
+anchor_left = 0.721007
+anchor_top = 0.60773206
+anchor_right = 0.760007
+anchor_bottom = 0.644732
 offset_left = 1.3999634
 offset_top = 0.18963623
 offset_right = 0.47192383
 offset_bottom = 0.21365356
+metadata/_edit_use_anchors_ = true
 
 [node name="form_minimap_text" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.48400003
-anchor_top = 0.65800005
-anchor_right = 0.549
-anchor_bottom = 0.734
+anchor_left = 0.592507
+anchor_top = 0.5784728
+anchor_right = 0.72174305
+anchor_bottom = 0.6721677
 offset_left = -0.5680542
 offset_top = 0.14962769
 offset_right = 0.55200195
 offset_bottom = -0.098358154
-text = "Forme
-Minimap"
+text = "Forme Minimap"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel8" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23619445
-anchor_top = 0.49201235
-anchor_right = 0.3120278
-anchor_bottom = 0.5350122
+anchor_left = 0.29175
+anchor_top = 0.4055926
+anchor_right = 0.37973613
+anchor_bottom = 0.4593948
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -474,23 +506,25 @@ metadata/_edit_use_anchors_ = true
 [node name="Button6" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.23753473
-anchor_top = 0.54001224
-anchor_right = 0.3100833
-anchor_bottom = 0.5990124
+anchor_left = 0.2974306
+anchor_top = 0.45976543
+anchor_right = 0.3708472
+anchor_bottom = 0.5187656
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
 offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel9" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7969583
-anchor_top = 0.6123827
-anchor_right = 0.8519584
-anchor_bottom = 0.65538263
+anchor_left = 0.3056389
+anchor_top = 0.5275062
+anchor_right = 0.36411113
+anchor_bottom = 0.57513577
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -503,23 +537,25 @@ metadata/_edit_use_anchors_ = true
 [node name="Button7" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7896181
-anchor_top = 0.6619259
-anchor_right = 0.85956246
-anchor_bottom = 0.72092605
+anchor_left = 0.29829863
+anchor_top = 0.57241976
+anchor_right = 0.3708472
+anchor_bottom = 0.6314199
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
 offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel10" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.619875
-anchor_top = 0.61392593
-anchor_right = 0.6957084
-anchor_bottom = 0.65692574
+anchor_left = 0.061715286
+anchor_top = 0.35158026
+anchor_right = 0.15490974
+anchor_bottom = 0.4053825
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -532,23 +568,25 @@ metadata/_edit_use_anchors_ = true
 [node name="Button8" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.6212153
-anchor_top = 0.6619259
-anchor_right = 0.69289577
-anchor_bottom = 0.720926
+anchor_left = 0.07260418
+anchor_top = 0.4026667
+anchor_right = 0.1442847
+anchor_bottom = 0.4616669
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
 offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel11" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7023403
-anchor_top = 0.61392593
-anchor_right = 0.77817357
-anchor_bottom = 0.6569258
+anchor_left = 0.16067362
+anchor_top = 0.35158026
+anchor_right = 0.25473613
+anchor_bottom = 0.4022962
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -561,14 +599,16 @@ metadata/_edit_use_anchors_ = true
 [node name="Button9" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7054167
-anchor_top = 0.6619259
-anchor_right = 0.77709717
-anchor_bottom = 0.7209259
+anchor_left = 0.1698264
+anchor_top = 0.4026667
+anchor_right = 0.24150692
+anchor_bottom = 0.46166667
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
 offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="modifier" type="ColorRect" parent="."]

@@ -36,6 +36,10 @@ folder_colors={
 
 droppable=""
 
+[gui]
+
+theme/custom="uid://hgacqogh11xv"
+
 [input]
 
 ui_accept={
