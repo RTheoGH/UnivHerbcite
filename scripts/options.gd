@@ -39,12 +39,12 @@ func set_camera_speed():
 func set_music_volume():
 	var volume_m_slider = $musique/musique_slider.value
 	Global.music_volume = linear_to_db(volume_m_slider)
-	$musique/musique_val.text = str(volume_m_slider*100)
+	$musique/musique_val.text = str(int(volume_m_slider*100))
 	
 func set_ui_volume():
 	var volume_ui_slider = $menu/menu_slider.value
 	Global.ui_volume = linear_to_db(volume_ui_slider)
-	$menu/menu_val.text = str(volume_ui_slider*100)
+	$menu/menu_val.text = str(int(volume_ui_slider*100))
 
 func _on_retour_pressed() -> void:
 	$AudioStreamPlayer2D.play()
@@ -116,6 +116,7 @@ func _input(event):
 			InputMap.action_erase_events(modif)
 			InputMap.action_add_event(modif,event)
 			current_button.text = mouse_index_to_text(event.button_index)
+		current_button.tooltip_text = current_button.text 
 		$modifier.hide()
 		modif = ""
 

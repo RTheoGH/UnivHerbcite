@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dek63gbyfg4ei"]
+[gd_scene load_steps=35 format=3 uid="uid://dek63gbyfg4ei"]
 
 [ext_resource type="Script" uid="uid://clm87qo21c7lo" path="res://scripts/menu.gd" id="1_jmdev"]
 [ext_resource type="Texture2D" uid="uid://b6vk82jruug7b" path="res://ressources/background/bg2.png" id="1_o0tnf"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://yxqi1nmf40yb" path="res://ressources/ui/jouer1.png" id="11_7t7qg"]
 [ext_resource type="Texture2D" uid="uid://d13xc44jipiv3" path="res://ressources/ui/jouer2.png" id="12_l3wcu"]
 [ext_resource type="Texture2D" uid="uid://gusn1w8bfp3w" path="res://ressources/ui/options1.png" id="13_i7htd"]
+[ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://shaders/shadow.gdshader" id="13_rehui"]
 [ext_resource type="Texture2D" uid="uid://c0r7g1ktwgxnr" path="res://ressources/ui/options2.png" id="14_dek3k"]
 [ext_resource type="Texture2D" uid="uid://dav1cct0ut0i1" path="res://ressources/ui/menu_quit1.png" id="15_8fhjo"]
 [ext_resource type="Texture2D" uid="uid://bp52dwh2erbvm" path="res://ressources/ui/menu_quit2.png" id="16_760fv"]
@@ -70,6 +71,38 @@ shader_parameter/gradient_order = ExtResource("3_dek3k")
 shader = ExtResource("2_i7htd")
 shader_parameter/progression = 0.0
 shader_parameter/gradient_order = ExtResource("3_dek3k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yvxia"]
+shader = ExtResource("13_rehui")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxcfj"]
+shader = ExtResource("13_rehui")
+shader_parameter/offset_ = Vector2(-0.01, -0.005)
+shader_parameter/time_effect = 0.2500000037253
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uwbky"]
+shader = ExtResource("13_rehui")
+shader_parameter/offset_ = Vector2(-0.01, -0.005)
+shader_parameter/time_effect = 0.2500000037253
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rehui"]
+shader = ExtResource("13_rehui")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="Gradient" id="Gradient_rehui"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.45833334, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.5647059)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yvxia"]
+gradient = SubResource("Gradient_rehui")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Menu" type="Control"]
 process_mode = 3
@@ -159,6 +192,7 @@ offset_right = 0.16796875
 offset_bottom = -0.048034668
 
 [node name="ColorRect" type="ColorRect" parent="sous_menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -170,6 +204,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="jouer" type="TextureButton" parent="sous_menu"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_yvxia")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.075
@@ -185,6 +220,7 @@ stretch_mode = 0
 
 [node name="options" type="TextureButton" parent="sous_menu"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_yvxia")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.075
@@ -203,6 +239,7 @@ stretch_mode = 0
 
 [node name="quitter" type="TextureButton" parent="sous_menu"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_yvxia")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.075
@@ -220,6 +257,7 @@ stretch_mode = 0
 
 [node name="plante" type="TextureRect" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_nxcfj")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35500002
@@ -235,6 +273,7 @@ flip_h = true
 
 [node name="plante2" type="TextureRect" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_uwbky")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.053000003
@@ -250,6 +289,7 @@ texture = ExtResource("1_xdvgc")
 [node name="titre" type="TextureRect" parent="."]
 z_index = 1
 texture_filter = 1
+material = SubResource("ShaderMaterial_rehui")
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.432
@@ -263,16 +303,6 @@ offset_bottom = -69.09602
 grow_horizontal = 2
 rotation = 0.2617994
 texture = ExtResource("2_upctu")
-
-[node name="ColorRect" type="ColorRect" parent="titre"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.5254902)
 
 [node name="Chargement" parent="." instance=ExtResource("4_o0tnf")]
 position = Vector2(1061.25, 568.25)
@@ -315,6 +345,18 @@ stream = ExtResource("24_760fv")
 [node name="Propos" parent="." instance=ExtResource("2_760fv")]
 visible = false
 layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 145
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_yvxia")
+expand_mode = 1
 
 [connection signal="pressed" from="propos" to="." method="_on_propos_pressed"]
 [connection signal="pressed" from="sous_menu/jouer" to="." method="_on_jouer_pressed"]

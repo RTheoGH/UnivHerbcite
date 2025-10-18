@@ -28,4 +28,4 @@ func _process(delta: float) -> void:
 		else:
 			$Pause.visible = false
 			$Pause.get_node("Book").visible = false
-		Global.isPaused = !Global.isPausedz	
+		Global.isPaused = !Global.isPaused
