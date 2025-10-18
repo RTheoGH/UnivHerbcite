@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://ckhjf2dpre2qa"]
+
+[ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://inventory/inventory_item.gd" id="1_b30y4"]
+[ext_resource type="Texture2D" uid="uid://borv623ieqw3y" path="res://ressources/items/olivier.png" id="2_npxvq"]
+
+[resource]
+script = ExtResource("1_b30y4")
+type = 4
+texture = ExtResource("2_npxvq")
+description = "Arbre de l'olive, il est le symbole de la méditéranée."
+metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

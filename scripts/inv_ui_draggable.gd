@@ -13,12 +13,10 @@ var precedent_place : Vector2 = Vector2(0, 0)
 func _ready() -> void:
 	
 	# TODO : À changer pour le vrai inventaire
-	var new_item = InventoryItem.new()
-	new_item.texture = load("res://ressources/um.png")
-	var new_item2 = InventoryItem.new()
-	inventory.items.append(new_item)
-	new_item2.texture = load("res://ressources/um.png")
-	inventory.items.append(new_item2)
+	#var new_item = load("res://inventory/items/Olivier.tres")
+	#var new_item2 = load("res://inventory/items/Figue.tres")
+	#inventory.items.append(new_item)
+	#inventory.items.append(new_item2)
 	objects_slots.resize(3)
 	
 	for i in range(inventory.items.size()):
