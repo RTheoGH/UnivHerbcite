@@ -4,14 +4,12 @@ extends Node3D
 func _ready() -> void:
 	$Map.visible = Global.minimap_activated
 	$Pause.visible = false
-	$Musique.volume_db = Global.music_volume
 	$Musique.play()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$Musique.volume_db = Global.music_volume
 	if Global.isPaused:
 		$Pause.visible = true
 		$Map.visible = false

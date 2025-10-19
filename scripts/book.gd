@@ -4,8 +4,6 @@ var current_page : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$turn.volume_db = Global.ui_volume
-	$close.volume_db = Global.ui_volume
 	$AnimatedSprite2D.play("default")
 	
 	pass # Replace with function body.
@@ -13,8 +11,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$turn.volume_db = Global.ui_volume
-	$close.volume_db = Global.ui_volume
 	if current_page == 0:
 		$pred.disabled = true
 	else:

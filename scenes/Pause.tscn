@@ -114,9 +114,11 @@ layout_mode = 1
 
 [node name="select" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_a08a3")
+bus = &"SFX"
 
 [node name="open" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_5nbhg")
+bus = &"SFX"
 
 [connection signal="pressed" from="continuer" to="." method="_on_continuer_pressed"]
 [connection signal="pressed" from="progress" to="." method="_on_progress_pressed"]

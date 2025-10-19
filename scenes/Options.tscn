@@ -132,7 +132,6 @@ offset_right = 0.039978027
 offset_bottom = 0.01599884
 min_value = 1.0
 value = 30.0
-metadata/_edit_use_anchors_ = true
 
 [node name="sensi_val" type="RichTextLabel" parent="sensi"]
 layout_mode = 1
@@ -149,12 +148,71 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="global" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.45007643
+anchor_top = 0.2464568
+anchor_right = 0.9150765
+anchor_bottom = 0.3514568
+offset_left = 0.5119629
+offset_top = 0.29599
+offset_right = -0.16809082
+offset_bottom = 0.25598145
+metadata/_edit_use_anchors_ = true
+
+[node name="global_texte" type="RichTextLabel" parent="global"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06175699
+anchor_top = -0.35331476
+anchor_right = 0.3329181
+anchor_bottom = 0.14750879
+offset_left = -0.040000916
+offset_top = 0.025404453
+offset_right = -0.111206055
+offset_bottom = -0.030597687
+text = "Volume global"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="global_slider" type="HSlider" parent="global"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.002
+anchor_top = 0.24700001
+anchor_right = 0.99600005
+anchor_bottom = 0.46600002
+offset_left = -0.069969535
+offset_top = -0.031000137
+offset_right = 0.13995361
+offset_bottom = 1.0769978
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="global_val" type="RichTextLabel" parent="global"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.43705785
+anchor_top = -0.2790001
+anchor_right = 0.5559252
+anchor_bottom = 0.16886164
+offset_left = 0.17401123
+offset_top = -0.027999878
+offset_right = -0.08004761
+offset_bottom = -0.032995224
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="musique" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.45000002
-anchor_top = 0.25800002
-anchor_right = 0.91443753
-anchor_bottom = 0.363
+anchor_left = 0.45173612
+anchor_top = 0.32898766
+anchor_right = 0.91617364
+anchor_bottom = 0.43398765
 offset_left = -0.4000244
 offset_top = -0.18400574
 offset_right = -0.43200684
@@ -210,10 +268,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="menu" type="Control" parent="."]
 layout_mode = 1
-anchor_left = 0.44973612
-anchor_top = 0.3473479
-anchor_right = 0.9129098
-anchor_bottom = 0.4533479
+anchor_left = 0.45060417
+anchor_top = 0.39981702
+anchor_right = 0.9137779
+anchor_bottom = 0.50581706
 offset_left = -0.0960083
 offset_top = -0.08143616
 offset_right = 0.3279419
@@ -249,7 +307,7 @@ offset_right = -0.11303711
 offset_bottom = 0.01834488
 max_value = 1.0
 step = 0.01
-value = 0.5
+value = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="menu_val" type="RichTextLabel" parent="menu"]
@@ -422,10 +480,6 @@ offset_bottom = -0.16000366
 text_overrun_behavior = 3
 clip_text = true
 metadata/_edit_use_anchors_ = true
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_w238l")
-bus = &"Music"
 
 [node name="minimap" type="CheckButton" parent="."]
 texture_filter = 1
@@ -633,7 +687,15 @@ text = "APPUIE SUR LA NOUVELLE TOUCHE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_w238l")
+bus = &"SFX"
+
 [connection signal="pressed" from="retour" to="." method="_on_retour_pressed"]
+[connection signal="drag_started" from="sensi/sensi_slider" to="." method="_on_sensi_slider_drag_started"]
+[connection signal="drag_started" from="global/global_slider" to="." method="_on_global_slider_drag_started"]
+[connection signal="drag_started" from="musique/musique_slider" to="." method="_on_musique_slider_drag_started"]
+[connection signal="drag_started" from="menu/menu_slider" to="." method="_on_menu_slider_drag_started"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
