@@ -62,15 +62,15 @@ func _on_retour_pressed() -> void:
 	self.hide()
 
 func get_movements_keys() -> void:
-	$Button.text = eng_to_fr(InputMap.action_get_events("forward")[0].as_text())
-	$Button2.text = eng_to_fr(InputMap.action_get_events("backward")[0].as_text())
-	$Button3.text = eng_to_fr(InputMap.action_get_events("left")[0].as_text())
-	$Button4.text = eng_to_fr(InputMap.action_get_events("right")[0].as_text())
-	$Button5.text = eng_to_fr(InputMap.action_get_events("jump")[0].as_text())
-	$Button6.text = eng_to_fr(InputMap.action_get_events("grab")[0].as_text())
-	$Button7.text = eng_to_fr(InputMap.action_get_events("ouvrir_livre")[0].as_text())
-	$Button8.text = eng_to_fr(InputMap.action_get_events("slot_left")[0].as_text())
-	$Button9.text = eng_to_fr(InputMap.action_get_events("slot_right")[0].as_text())
+	$Avancer_B.text = eng_to_fr(InputMap.action_get_events("forward")[0].as_text())
+	$Reculer_B.text = eng_to_fr(InputMap.action_get_events("backward")[0].as_text())
+	$Gauche_B.text = eng_to_fr(InputMap.action_get_events("left")[0].as_text())
+	$Droite_B.text = eng_to_fr(InputMap.action_get_events("right")[0].as_text())
+	$Sauter_B.text = eng_to_fr(InputMap.action_get_events("jump")[0].as_text())
+	$Grab_B.text = eng_to_fr(InputMap.action_get_events("grab")[0].as_text())
+	$Livre_B.text = eng_to_fr(InputMap.action_get_events("ouvrir_livre")[0].as_text())
+	$SlotG_B.text = eng_to_fr(InputMap.action_get_events("slot_left")[0].as_text())
+	$SlotD_B.text = eng_to_fr(InputMap.action_get_events("slot_right")[0].as_text())
 
 func eng_to_fr(s):
 	match s:
@@ -130,67 +130,69 @@ func _input(event):
 		$modifier.hide()
 		modif = ""
 
-func _on_button_pressed() -> void:
+func _on_avancer_pressed() -> void:
 	$sfx.play()
 	modif = "forward"
-	current_button = $Button
+	current_button = $Avancer_B
 	$modifier.show()
 
-func _on_button_2_pressed() -> void:
+func _on_reculer_pressed() -> void:
 	$sfx.play()
 	modif = "backward"
-	current_button = $Button2
+	current_button = $Reculer_B
 	$modifier.show()
 
-func _on_button_3_pressed() -> void:
+func _on_gauche_pressed() -> void:
 	$sfx.play()
 	modif = "left"
-	current_button = $Button3
+	current_button = $Gauche_B
 	$modifier.show()
 
-func _on_button_4_pressed() -> void:
+func _on_droite_pressed() -> void:
 	$sfx.play()
 	modif = "right"
-	current_button = $Button4
+	current_button = $Droite_B
 	$modifier.show()
 	
-func _on_button_5_pressed() -> void:
+func _on_sauter_pressed() -> void:
 	$sfx.play()
 	modif = "jump"
-	current_button = $Button5
+	current_button = $Sauter_B
+	$modifier.show()
+
+func _on_grab_pressed() -> void:
+	$sfx.play()
+	modif = "grab"
+	current_button = $Grab_B
+	$modifier.show()
+
+func _on_livre_pressed() -> void:
+	$sfx.play()
+	modif = "ouvrir_livre"
+	current_button = $Livre_B
+	$modifier.show()
+
+func _on_slotG_pressed() -> void:
+	$sfx.play()
+	modif = "slot_left"
+	current_button = $SlotG_B
+	$modifier.show()
+
+func _on_slotD_pressed() -> void:
+	$sfx.play()
+	modif = "slot_right"
+	current_button = $SlotD_B
 	$modifier.show()
 
 func _on_minimap_pressed() -> void:
+	$sfx.play()
 	Global.minimap_activated = !Global.minimap_activated
 	print(Global.minimap_activated)
 
 func _on_form_minimap_pressed() -> void:
+	$sfx.play()
 	Global.carre_minimap = !Global.carre_minimap
 	print(Global.carre_minimap)
-
-func _on_button_6_pressed() -> void:
-	$sfx.play()
-	modif = "grab"
-	current_button = $Button6
-	$modifier.show()
-
-func _on_button_7_pressed() -> void:
-	$sfx.play()
-	modif = "ouvrir_livre"
-	current_button = $Button7
-	$modifier.show()
-
-func _on_button_8_pressed() -> void:
-	$sfx.play()
-	modif = "slot_left"
-	current_button = $Button8
-	$modifier.show()
-
-func _on_button_9_pressed() -> void:
-	$sfx.play()
-	modif = "slot_right"
-	current_button = $Button9
-	$modifier.show()
 
 func _on_sensi_slider_drag_started() -> void:
 	$sfx.play()
