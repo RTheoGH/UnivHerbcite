@@ -13,6 +13,8 @@ func _ready() -> void:
 	maxwell()
 	$maxwell/song.play()
 	
+	$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
+	
 	pass # Replace with function body.
 
 
