@@ -1,0 +1,178 @@
+[gd_scene load_steps=20 format=3 uid="uid://ccneeglf3rtgq"]
+
+[ext_resource type="Script" uid="uid://bs1ch0ypr6sq7" path="res://src/scenes/ui/pause/pause.gd" id="1_qp6fb"]
+[ext_resource type="Texture2D" uid="uid://cgft3pmietdr2" path="res://assets/graphical/ui/continuer1.png" id="1_uc2tp"]
+[ext_resource type="Texture2D" uid="uid://dp318w3baxk8l" path="res://assets/graphical/ui/continuer2.png" id="2_qp6fb"]
+[ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="2_wukie"]
+[ext_resource type="Texture2D" uid="uid://ps6osqaurddg" path="res://assets/graphical/ui/livre.png" id="3_7akkw"]
+[ext_resource type="Texture2D" uid="uid://df74qshy37m5" path="res://assets/graphical/ui/quitter1.png" id="4_w5f6b"]
+[ext_resource type="Texture2D" uid="uid://3hd8bjy6uixw" path="res://assets/graphical/ui/quitter2.png" id="5_87awh"]
+[ext_resource type="Texture2D" uid="uid://gusn1w8bfp3w" path="res://assets/graphical/ui/options1.png" id="5_x85fr"]
+[ext_resource type="Texture2D" uid="uid://dd8id13ahln15" path="res://assets/graphical/ui/title_univH.png" id="5_y6622"]
+[ext_resource type="Texture2D" uid="uid://c0r7g1ktwgxnr" path="res://assets/graphical/ui/options2.png" id="6_a08a3"]
+[ext_resource type="PackedScene" uid="uid://bjgtvtynklld5" path="res://src/scenes/ui/book/Book.tscn" id="7_7akkw"]
+[ext_resource type="PackedScene" uid="uid://c6tftscbtspu3" path="res://src/scenes/ui/settings/Options.tscn" id="10_x85fr"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/graphical/sounds/Bouton.wav" id="11_a08a3"]
+[ext_resource type="AudioStream" uid="uid://jmmoatu4l0b" path="res://assets/graphical/sounds/open_book.mp3" id="12_5nbhg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1w3pp"]
+shader = ExtResource("2_wukie")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdlhl"]
+shader = ExtResource("2_wukie")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ifdo"]
+shader = ExtResource("2_wukie")
+shader_parameter/offset_ = Vector2(-0.005, -0.005)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c021c"]
+shader = ExtResource("2_wukie")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hw5nl"]
+shader = ExtResource("2_wukie")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[node name="Pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qp6fb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19607843, 0.19607843, 0.19607843, 0.27450982)
+
+[node name="continuer" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_1w3pp")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08665973
+anchor_top = 0.39479014
+anchor_right = 0.30865973
+anchor_bottom = 0.54979014
+offset_left = 0.16799164
+offset_top = 0.17597961
+offset_right = 0.4239807
+offset_bottom = -0.26400757
+texture_normal = ExtResource("1_uc2tp")
+texture_hover = ExtResource("2_qp6fb")
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_tdlhl")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24143058
+anchor_top = 0.061728396
+anchor_right = 0.7794306
+anchor_bottom = 0.3007284
+offset_left = -0.12802124
+offset_right = 0.095947266
+offset_bottom = 0.12799072
+grow_horizontal = 2
+texture = ExtResource("5_y6622")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_2ifdo")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2923264
+anchor_top = 0.19407408
+anchor_right = 0.65832645
+anchor_bottom = 0.84407413
+offset_left = 0.23999023
+offset_top = 0.23999786
+offset_right = -0.39208984
+offset_bottom = 0.039978027
+mouse_filter = 2
+texture = ExtResource("3_7akkw")
+metadata/_edit_use_anchors_ = true
+
+[node name="progress" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3603264
+anchor_top = 0.30507407
+anchor_right = 0.63432646
+anchor_bottom = 0.8090741
+offset_left = -0.0960083
+offset_top = 0.31199646
+offset_right = 0.2559204
+offset_bottom = -0.27999878
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="options" type="TextureButton" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_c021c")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6499375
+anchor_top = 0.4984815
+anchor_right = 0.9659375
+anchor_bottom = 0.6464816
+offset_left = 0.27197266
+offset_top = -0.016021729
+offset_right = 0.2399292
+offset_bottom = 0.079956055
+texture_normal = ExtResource("5_x85fr")
+texture_hover = ExtResource("6_a08a3")
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="quitter" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_hw5nl")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08365973
+anchor_top = 0.5927901
+anchor_right = 0.31165972
+anchor_bottom = 0.7467902
+offset_left = 6.623993
+offset_top = -0.12802124
+offset_right = -0.03201294
+offset_bottom = 0.07998657
+texture_normal = ExtResource("4_w5f6b")
+texture_hover = ExtResource("5_87awh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Book" parent="." instance=ExtResource("7_7akkw")]
+visible = false
+layout_mode = 1
+
+[node name="Options" parent="." instance=ExtResource("10_x85fr")]
+visible = false
+layout_mode = 1
+
+[node name="select" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_a08a3")
+bus = &"SFX"
+
+[node name="open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_5nbhg")
+bus = &"SFX"
+
+[connection signal="pressed" from="continuer" to="." method="_on_continuer_pressed"]
+[connection signal="pressed" from="progress" to="." method="_on_progress_pressed"]
+[connection signal="pressed" from="options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="quitter" to="." method="_on_quitter_pressed"]

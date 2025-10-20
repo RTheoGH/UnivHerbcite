@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://hyxjxaek1eag"]
+
+[ext_resource type="Script" uid="uid://deysa375pgxig" path="res://src/scenes/personnage/personnage.gd" id="1_34im4"]
+[ext_resource type="Texture2D" uid="uid://cy0ohhvb38hg8" path="res://assets/graphical/crosshair.png" id="2_v37cp"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e1nwe"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e1nwe"]
+
+[node name="Perso" type="CharacterBody3D"]
+script = ExtResource("1_34im4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44753653, 0)
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -2)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(0.9930391, 0.36213517, 0.47180992, 1)
+
+[node name="Crosshair" type="TextureRect" parent="Camera3D"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.483
+anchor_top = 0.469
+anchor_right = 0.517
+anchor_bottom = 0.531
+offset_left = -0.41601563
+offset_top = 0.08798218
+offset_right = 0.4159546
+offset_bottom = -0.088012695
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v37cp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_e1nwe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_e1nwe")

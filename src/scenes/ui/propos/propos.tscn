@@ -1,0 +1,185 @@
+[gd_scene load_steps=11 format=3 uid="uid://dxgsoqdgjn02y"]
+
+[ext_resource type="Script" uid="uid://dxv0hrv17kc3" path="res://src/scenes/ui/propos/propos.gd" id="1_ituch"]
+[ext_resource type="Texture2D" uid="uid://cah7lix264rwa" path="res://assets/graphical/autre/andrew.png" id="2_t863x"]
+[ext_resource type="Texture2D" uid="uid://b85u0shjhbodj" path="res://assets/graphical/autre/tom.png" id="3_6mr1c"]
+[ext_resource type="Texture2D" uid="uid://bfilaiui7qa0w" path="res://assets/graphical/autre/theo.png" id="4_5b07h"]
+[ext_resource type="Texture2D" uid="uid://bbg1tp1jpx3pl" path="res://assets/graphical/autre/killian.png" id="5_2jd2n"]
+[ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="6_6mr1c"]
+[ext_resource type="Texture2D" uid="uid://dacg73wq786q5" path="res://assets/graphical/ui/retour1.png" id="6_kjej5"]
+[ext_resource type="Texture2D" uid="uid://bdp6hre2uk2w" path="res://assets/graphical/ui/retour2.png" id="7_s0r50"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/graphical/sounds/Bouton.wav" id="9_5b07h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5b07h"]
+shader = ExtResource("6_6mr1c")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[node name="Propos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ituch")
+
+[node name="ColorRect5" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.6509804)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48190975
+anchor_top = 0.6385555
+anchor_right = 0.5809097
+anchor_bottom = 0.7342468
+offset_left = -0.16003418
+offset_top = 0.21600342
+offset_right = -0.20800781
+offset_bottom = 0.20799255
+color = Color(0, 0, 0, 0.63529414)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.00877193
+anchor_top = -0.021739159
+anchor_right = 0.99122804
+anchor_bottom = 1.0000013
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Plant Lover
+Andrew"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42200002
+anchor_top = 0.53400004
+anchor_right = 0.521
+anchor_bottom = 0.62814814
+offset_left = -0.14401245
+offset_top = -0.03201294
+offset_right = -0.1920166
+offset_bottom = -0.040008545
+color = Color(0, 0, 0, 0.63529414)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Fleuriste
+Théo"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.89400005
+anchor_top = 0.596
+anchor_right = 0.99300003
+anchor_bottom = 0.6901482
+offset_left = 0.11193848
+offset_top = -0.20800781
+offset_right = 0.063964844
+offset_bottom = -0.21603394
+color = Color(0, 0, 0, 0.63529414)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Paysagiste
+Tom"
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18922918
+anchor_top = 0.5511482
+anchor_right = 0.28822917
+anchor_bottom = 0.6437531
+offset_left = 0.0079956055
+offset_top = -0.14401245
+offset_right = -0.040008545
+offset_bottom = -0.15200806
+color = Color(0, 0, 0, 0.63529414)
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[center]Jardinier
+Killian"
+metadata/_edit_use_anchors_ = true
+
+[node name="Andrew" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(716.00006, 394)
+scale = Vector2(0.84110785, 0.8411079)
+texture = ExtResource("2_t863x")
+
+[node name="Tom" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(945, 359)
+texture = ExtResource("3_6mr1c")
+
+[node name="Theo" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(479, 426)
+scale = Vector2(0.6137026, 0.61370265)
+texture = ExtResource("4_5b07h")
+
+[node name="Killian" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(138.00002, 356)
+scale = Vector2(0.8061224, 0.8061225)
+texture = ExtResource("5_2jd2n")
+
+[node name="Button" type="TextureButton" parent="."]
+material = SubResource("ShaderMaterial_5b07h")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6357848
+anchor_top = 0.83671606
+anchor_right = 0.85800004
+anchor_bottom = 0.961
+offset_left = -0.42407227
+offset_top = -0.1920166
+offset_right = -0.41601563
+offset_bottom = 0.27197266
+texture_normal = ExtResource("6_kjej5")
+texture_hover = ExtResource("7_s0r50")
+metadata/_edit_use_anchors_ = true
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_5b07h")
+bus = &"SFX"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

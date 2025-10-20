@@ -1,6 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://hgacqogh11xv"]
-
-[ext_resource type="FontFile" uid="uid://5tkf1gvc8ltm" path="res://ressources/fonts/PlaywriteUSModern-VariableFont_wght.ttf" id="1_xejcj"]
-
-[resource]
-default_font = ExtResource("1_xejcj")
