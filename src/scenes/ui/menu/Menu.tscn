@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://l6w45g7s23c7" path="res://assets/graphical/ui/menu_plante.png" id="22_4ox5w"]
 [ext_resource type="Texture2D" uid="uid://dd8id13ahln15" path="res://assets/graphical/ui/title_univH.png" id="23_u86aa"]
 [ext_resource type="PackedScene" uid="uid://c6tftscbtspu3" path="res://src/scenes/ui/settings/Options.tscn" id="24_2huug"]
-[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/graphical/sounds/Bouton.wav" id="25_2texk"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/sounds/Bouton.wav" id="25_2texk"]
 [ext_resource type="PackedScene" uid="uid://dxgsoqdgjn02y" path="res://src/scenes/ui/propos/propos.tscn" id="26_fjsg1"]
 [ext_resource type="PackedScene" uid="uid://c1kassqq1adyl" path="res://src/scenes/ui/loading/Chargement.tscn" id="27_8xp2a"]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cbogbabmntm40"
-path="res://.godot/imported/chill.wav-0088e6530d47caedb8e9893cf04649d2.sample"
+path="res://.godot/imported/chill.wav-1e76c3f22f2d7944b0e8f8496a2f6e47.sample"
 
 [deps]
 
-source_file="res://assets/graphical/sounds/chill.wav"
-dest_files=["res://.godot/imported/chill.wav-0088e6530d47caedb8e9893cf04649d2.sample"]
+source_file="res://assets/sounds/chill.wav"
+dest_files=["res://.godot/imported/chill.wav-1e76c3f22f2d7944b0e8f8496a2f6e47.sample"]
 
 [params]
 

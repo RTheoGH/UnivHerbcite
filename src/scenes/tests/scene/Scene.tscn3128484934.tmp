@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=16 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -6,11 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://ccneeglf3rtgq" path="res://src/scenes/ui/pause/Pause.tscn" id="3_20oit"]
 [ext_resource type="Script" uid="uid://up24dtse8gef" path="res://src/classes/interactable.gd" id="4_plqpu"]
 [ext_resource type="Resource" uid="uid://doam5larhvq3i" path="res://assets/game_resources/items/TestItem.tres" id="5_5kwoq"]
-[ext_resource type="AudioStream" uid="uid://cbogbabmntm40" path="res://assets/sounds/chill.wav" id="6_d35k2"]
+[ext_resource type="AudioStream" uid="uid://cbogbabmntm40" path="res://assets/graphical/sounds/chill.wav" id="6_d35k2"]
 [ext_resource type="PackedScene" uid="uid://b8181g3xk30pn" path="res://src/scenes/ui/minimap/Minimap.tscn" id="7_5kwoq"]
 [ext_resource type="PackedScene" uid="uid://cqq7lyosyug6m" path="res://src/scenes/map/map.tscn" id="9_dod7h"]
 [ext_resource type="PackedScene" uid="uid://cxn1wyr1oy2xf" path="res://assets/game_resources/models/maxwell/maxwell.fbx" id="10_q3pbt"]
-[ext_resource type="AudioStream" uid="uid://nf6v4eyudbci" path="res://assets/sounds/Maxwell the Cat Theme..mp3" id="11_bho2e"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dvpi0"]
 
@@ -95,8 +94,4 @@ player = NodePath("../Perso")
 transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 445.236, -2.029, 226.302)
 
 [node name="maxwell" parent="." instance=ExtResource("10_q3pbt")]
-transform = Transform3D(-0.91981804, 0.057483062, 0.38811192, 0.038038716, 0.99761474, -0.057605207, -0.39049733, -0.03822303, -0.91981, -11.799378, 0.25042665, 4.431679)
-
-[node name="song" type="AudioStreamPlayer3D" parent="maxwell"]
-stream = ExtResource("11_bho2e")
-bus = &"Music"
+transform = Transform3D(0.97317886, 0.23004973, 0, -0.23004973, 0.97317886, 0, 0, 0, 1, 2.000484, 0.098059155, 6.4121976)

@@ -16,8 +16,8 @@
 [ext_resource type="Texture2D" uid="uid://db0hlw4yugak0" path="res://assets/graphical/ui/suivant2.png" id="14_dgq3t"]
 [ext_resource type="Texture2D" uid="uid://byxqtqn4i2wqk" path="res://assets/graphical/ui/precedent1.png" id="15_5755j"]
 [ext_resource type="Texture2D" uid="uid://bawhx1snecap" path="res://assets/graphical/ui/precedent2.png" id="16_0k5qe"]
-[ext_resource type="AudioStream" uid="uid://coslqk6nfjk64" path="res://assets/graphical/sounds/turn_page.mp3" id="17_j6u72"]
-[ext_resource type="AudioStream" uid="uid://cfffq23lwsdc1" path="res://assets/graphical/sounds/close_book.mp3" id="18_65c64"]
+[ext_resource type="AudioStream" uid="uid://coslqk6nfjk64" path="res://assets/sounds/turn_page.mp3" id="17_j6u72"]
+[ext_resource type="AudioStream" uid="uid://cfffq23lwsdc1" path="res://assets/sounds/close_book.mp3" id="18_65c64"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hp3is"]
 shader = ExtResource("2_fyv12")

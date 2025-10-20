@@ -29,6 +29,7 @@ folder_colors={
 "res://assets/": "red",
 "res://assets/graphical/": "yellow",
 "res://assets/shaders/": "pink",
+"res://assets/sounds/": "green",
 "res://src/": "purple",
 "res://src/autoload/": "green",
 "res://src/scenes/": "teal"
