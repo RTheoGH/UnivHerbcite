@@ -23,7 +23,7 @@ func _on_continuer_pressed() -> void:
 func _on_quitter_pressed() -> void:
 	$select.play()
 	Global.isPaused = false
-	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
+	get_tree().change_scene_to_file("res://src/scenes/ui/menu/Menu.tscn")
 
 
 func _on_progress_pressed() -> void:

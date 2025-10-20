@@ -31,11 +31,11 @@ func _physics_process(delta: float) -> void:
 	var obj := ray.get_collider()
 	if(is_instance_of(obj, Interactable)):
 		if obj.is_collectible:
-			$Camera3D/Crosshair.texture = load("res://ressources/crosshair_pickup.res")
+			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_pickup.res")
 		else:
-			$Camera3D/Crosshair.texture = load("res://ressources/crosshair_interact.res")
+			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
 	else:
-		$Camera3D/Crosshair.texture = load("res://ressources/crosshair.png")
+		$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair.png")
 	
 	if Input.is_action_just_pressed("grab") and !Global.isPaused:
 		try_grab()
