@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://ckhjf2dpre2qa"]
+
+[ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_a1qdw"]
+[ext_resource type="Texture2D" uid="uid://egsgs0prj7vy" path="res://assets/graphical/items/olives.png" id="2_k1kb6"]
+
+[resource]
+script = ExtResource("1_a1qdw")
+type = 4
+texture = ExtResource("2_k1kb6")
+description = "Fruit de l'olivier, un arbre fruitier caractéristique de la région méditerranéenne."
+metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

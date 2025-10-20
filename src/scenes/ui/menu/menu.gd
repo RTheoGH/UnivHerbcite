@@ -16,6 +16,7 @@ func _ready() -> void:
 	$Options.hide()
 	$Chargement.hide()
 	$chargement_block.hide()
+	$Learn.hide()
 	$Backgrounds.play("default")
 	$fond.material.set_shader_parameter("progression",0)
 	$BackgroundTimer.timeout.connect(
@@ -66,9 +67,11 @@ func launch_hide() -> void:
 	$plante2.hide()
 	$sous_menu.hide()
 	$propos.hide()
+	$titre.hide()
 
 func _on_jouer_pressed() -> void:
 	$sfx.play()
+	$Learn.show()
 	$Chargement.show()
 	$chargement_block.show()
 	launch_hide()
