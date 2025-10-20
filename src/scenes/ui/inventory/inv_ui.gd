@@ -54,9 +54,9 @@ func change_current_slot():
 		var texture_rect = slots[i].get_node("TextureRect")
 
 		if i == current_slot:
-			texture_rect.texture = load("res://ressources/ui/active_case.png")
+			texture_rect.texture = load("res://assets/graphical/ui/active_case.png")
 		else:
-			texture_rect.texture = load("res://ressources/ui/base_case.png")
+			texture_rect.texture = load("res://assets/graphical/ui/base_case.png")
 
 func _on_inventory_ui_slot_mouse_entered() -> void:
 	current_slot = 0

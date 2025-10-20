@@ -90,4 +90,4 @@ offset_bottom = -0.16003418
 player = NodePath("../Perso")
 
 [node name="Map2" parent="." instance=ExtResource("9_dod7h")]
-transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 445.23608, -0.054324154, 226.30185)
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 445.236, -2.029, 226.302)

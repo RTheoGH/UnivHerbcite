@@ -1,13 +1,13 @@
 extends Control
 
 var transition_time := 1.9
-@onready var backgrounds := Array(DirAccess.get_files_at("res://ressources/background")).filter(func(elem: String): return !elem.contains(".import"))
+@onready var backgrounds := Array(DirAccess.get_files_at("res://assets/graphical/background")).filter(func(elem: String): return !elem.contains(".import"))
 var current_frame := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print(backgrounds)
-	$fond.texture = load("res://ressources/background/"+backgrounds[current_frame])
+	$fond.texture = load("res://assets/graphical/background/"+backgrounds[current_frame])
 	#if current_frame != backgrounds.size()-1 : 
 		#$fond.texture = load("res://ressources/background/"+backgrounds[current_frame+1])
 	#else:
@@ -27,7 +27,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func transition() -> void:
-	$fond2.texture = load("res://ressources/background/"+backgrounds[(current_frame+1) % backgrounds.size()])
+	$fond2.texture = load("res://assets/graphical/background/"+backgrounds[(current_frame+1) % backgrounds.size()])
 	
 	var tween = get_tree().create_tween()
 	
@@ -43,7 +43,7 @@ func transition() -> void:
 	await tween.finished
 	
 	current_frame += 1
-	$fond.texture = load("res://ressources/background/"+backgrounds[current_frame % backgrounds.size()])
+	$fond.texture = load("res://assets/graphical/background/"+backgrounds[current_frame % backgrounds.size()])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -84,7 +84,7 @@ func _on_timer_timeout() -> void:
 		$Chargement.hide()
 		$chargement_block.hide()
 		$plante.show()
-		get_tree().change_scene_to_file("res://scenes/Scene.tscn")
+		get_tree().change_scene_to_file("res://src/scenes/tests/scene/Scene.tscn")
 
 
 func _on_propos_pressed() -> void:

@@ -15,11 +15,11 @@ func _process(delta: float) -> void:
 		return
 		
 	if(Global.carre_minimap):
-		$contour.texture = load("res://ressources/ui/cadre2.png")
-		$masque.texture = load("res://ressources/ui/cadre.png")
+		$contour.texture = load("res://assets/graphical/ui/cadre2.png")
+		$masque.texture = load("res://assets/graphical/ui/cadre.png")
 	else:
-		$contour.texture = load("res://ressources/ui/cercle2.png")
-		$masque.texture = load("res://ressources/ui/cercle.png")
+		$contour.texture = load("res://assets/graphical/ui/cercle2.png")
+		$masque.texture = load("res://assets/graphical/ui/cercle.png")
 	
 	var la_camera_du_player = player.get_node("Camera3D")
 	container.position = -Vector2(player.global_position.x,player.global_position.y)*100
