@@ -316,6 +316,31 @@ grow_horizontal = 2
 rotation = 0.2617994
 texture = ExtResource("2_upctu")
 
+[node name="Options" parent="." instance=ExtResource("22_dek3k")]
+visible = false
+z_index = 5
+layout_mode = 1
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_760fv")
+bus = &"SFX"
+
+[node name="Propos" parent="." instance=ExtResource("2_760fv")]
+visible = false
+layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 145
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_yvxia")
+expand_mode = 1
+
 [node name="Chargement" parent="." instance=ExtResource("4_o0tnf")]
 position = Vector2(1061.25, 568.25)
 scale = Vector2(0.42882562, 0.42882562)
@@ -345,31 +370,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
-
-[node name="Options" parent="." instance=ExtResource("22_dek3k")]
-visible = false
-z_index = 5
-layout_mode = 1
-
-[node name="sfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("24_760fv")
-bus = &"SFX"
-
-[node name="Propos" parent="." instance=ExtResource("2_760fv")]
-visible = false
-layout_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="."]
-z_index = 145
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_yvxia")
-expand_mode = 1
 
 [connection signal="pressed" from="propos" to="." method="_on_propos_pressed"]
 [connection signal="pressed" from="sous_menu/jouer" to="." method="_on_jouer_pressed"]

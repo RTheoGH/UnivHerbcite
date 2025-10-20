@@ -3,8 +3,6 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$select.volume_db = Global.ui_volume
-	$open.volume_db = Global.ui_volume
 	$Book.hide()
 	$Options.hide()
 	pass # Replace with function body.
@@ -12,8 +10,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	$select.volume_db = Global.ui_volume
-	$open.volume_db = Global.ui_volume
 	if !Global.isPaused:
 		$Options.hide()
 	pass
