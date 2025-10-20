@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=15 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://scripts/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://scenes/Perso.tscn" id="2_20oit"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://doam5larhvq3i" path="res://inventory/items/TestItem.tres" id="5_5kwoq"]
 [ext_resource type="AudioStream" uid="uid://cbogbabmntm40" path="res://ressources/sounds/chill.wav" id="6_d35k2"]
 [ext_resource type="PackedScene" uid="uid://b8181g3xk30pn" path="res://scenes/Minimap.tscn" id="7_5kwoq"]
+[ext_resource type="PackedScene" uid="uid://cqq7lyosyug6m" path="res://scenes/map/map.tscn" id="9_dod7h"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dvpi0"]
 
@@ -29,6 +30,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1964556, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+visible = false
 mesh = SubResource("PlaneMesh_dvpi0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
@@ -86,3 +88,6 @@ offset_top = 0.23999023
 offset_right = -0.27111816
 offset_bottom = -0.16003418
 player = NodePath("../Perso")
+
+[node name="Map2" parent="." instance=ExtResource("9_dod7h")]
+transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 445.23608, -0.054324154, 226.30185)
