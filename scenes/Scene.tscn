@@ -73,6 +73,7 @@ shape = SubResource("CylinderShape3D_plqpu")
 [node name="Musique" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("6_d35k2")
 autoplay = true
+bus = &"Music"
 
 [node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_5kwoq")]
 anchors_preset = -1

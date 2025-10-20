@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dxgsoqdgjn02y"]
+[gd_scene load_steps=11 format=3 uid="uid://dxgsoqdgjn02y"]
 
 [ext_resource type="Script" uid="uid://dxv0hrv17kc3" path="res://scripts/propos.gd" id="1_ituch"]
 [ext_resource type="Texture2D" uid="uid://cah7lix264rwa" path="res://ressources/autre/andrew.png" id="2_t863x"]
@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://shaders/shadow.gdshader" id="6_6mr1c"]
 [ext_resource type="Texture2D" uid="uid://dacg73wq786q5" path="res://ressources/ui/retour1.png" id="6_kjej5"]
 [ext_resource type="Texture2D" uid="uid://bdp6hre2uk2w" path="res://ressources/ui/retour2.png" id="7_s0r50"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://ressources/sounds/Bouton.wav" id="9_5b07h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5b07h"]
 shader = ExtResource("6_6mr1c")
@@ -176,5 +177,9 @@ offset_bottom = 0.27197266
 texture_normal = ExtResource("6_kjej5")
 texture_hover = ExtResource("7_s0r50")
 metadata/_edit_use_anchors_ = true
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_5b07h")
+bus = &"SFX"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
