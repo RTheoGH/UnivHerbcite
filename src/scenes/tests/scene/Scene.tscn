@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=23 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -108,11 +108,8 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.2523017, 0)
 [node name="MeshInstance3D" parent="Map2" index="2"]
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
 
-[editable path="Map2"]
-[editable path="Map2/map"]
-
 [node name="maxwell" parent="." instance=ExtResource("10_q3pbt")]
-transform = Transform3D(-0.06975737, 0.060157273, 0.9957483, 0.03803872, 0.99761474, -0.057605207, -0.9968386, 0.033858597, -0.071879, -11.799378, 12.390211, -47.777927)
+transform = Transform3D(-0.06975737, 0.060157273, 0.9957483, 0.03803872, 0.99761474, -0.057605207, -0.9968386, 0.033858597, -0.071879, -259.17963, 12.454014, -159.00284)
 
 [node name="song" type="AudioStreamPlayer3D" parent="maxwell"]
 stream = ExtResource("11_bho2e")
@@ -120,7 +117,7 @@ max_distance = 50.0
 bus = &"Music"
 
 [node name="Stegosaurus" parent="." instance=ExtResource("12_0f5jq")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.99508, 0.21245779, 20.02364)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -288.51465, 8.7678795, -114.36685)
 
 [node name="Skeleton3D" parent="Stegosaurus/Armature" index="0"]
 bones/1/position = Vector3(0.00030816198, 0.042510204, -0.00034997464)
@@ -251,7 +248,7 @@ bones/60/rotation = Quaternion(6.426451e-07, 0.93770796, -0.3474245, -8.061176e-
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.55625, 0.46217582, 30.979015)
 
 [node name="Cow" parent="." instance=ExtResource("16_wlu1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.216892, 0.76469445, 31.585861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -284.2873, 12.19487, -95.99797)
 
 [node name="Skeleton3D" parent="Cow/AnimalArmature" index="0"]
 bones/1/rotation = Quaternion(0.82831144, -5.785043e-07, -8.575641e-07, 0.560268)
@@ -289,6 +286,8 @@ bones/51/rotation = Quaternion(-1.4496399e-08, 0.9998002, 0.019989476, -1.334745
 bones/53/rotation = Quaternion(-0.82678765, 1.8329055e-07, -2.694016e-07, 0.56251436)
 bones/54/rotation = Quaternion(-2.4318398e-08, 0.9998002, 0.01998875, -5.3322486e-07)
 
+[editable path="Map2"]
+[editable path="Map2/map"]
 [editable path="maxwell"]
 [editable path="Stegosaurus"]
 [editable path="Frog"]
