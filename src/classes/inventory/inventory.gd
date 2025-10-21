@@ -12,7 +12,7 @@ func add_item(item : InventoryItem):
 		if item.quantity < stackSize:
 			item.quantity += 1
 		else :
-			print( "You're carrying as many " + item.name + " as you can ! ")
+			print( "You're carrying as many " + str(InventoryItem.InventoryItemType.find_key(item.type)) + " as you can ! ")
 			
 	elif items.size() > invSize:
 		print(" Your inventory is full ! ")

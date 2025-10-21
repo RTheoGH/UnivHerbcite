@@ -22,25 +22,27 @@ func _process(delta: float) -> void:
 		$suivant.disabled = false
 	pass
 	
-	remplir_le_bouquin(Global.herbier,$gauche/gauche_texture,$gauche/gauche_texte,$droite/droite_texture,$droite/droite_texte,current_page)
+	remplir_le_bouquin(Global.herbier,$gauche/gauche_texture,$gauche/gauche_titre,$gauche/gauche_texte,$droite/droite_texture,$droite/droite_titre,$droite/droite_texte,current_page)
 
 func current_index_not_empty(book:Array,i: int):
 	return i >= 0 and i < book.size() and book[i] != null
 
-func remplir_pages(book:Array,i:int,tex:TextureRect,texte:RichTextLabel):
+func remplir_pages(book:Array,i:int,tex:TextureRect,titre:RichTextLabel,texte:RichTextLabel):
 		if current_index_not_empty(book,i):
 			tex.texture = book[i].texture
+			titre.text = str(InventoryItem.InventoryItemType.find_key(book[i].type))
 			texte.text = book[i].description
 		else:
 			tex.texture = null
+			titre.text = ""
 			texte.text = ""
 
-func remplir_le_bouquin(book: Array,g: TextureRect,gt: RichTextLabel,d: TextureRect,dt: RichTextLabel,page: int):
+func remplir_le_bouquin(book: Array,g: TextureRect, gtitre: RichTextLabel, gt: RichTextLabel,d: TextureRect, dtitre: RichTextLabel, dt: RichTextLabel,page: int):
 	var li = page * 2
 	var ri = page * 2 + 1
 	
-	remplir_pages(book,li,g,gt)
-	remplir_pages(book,ri,d,dt)
+	remplir_pages(book,li,g,gtitre,gt)
+	remplir_pages(book,ri,d,dtitre,dt)
 
 func _on_suivant_pressed() -> void:
 	$turn.play()

@@ -10,11 +10,17 @@ var previous_mouse_pos:Vector2 = DisplayServer.window_get_size()/2
 var static_cam := false
 
 var one_time: bool = false
+var already_discovered: bool = false
 
 func try_grab() -> Node3D:
 	var obj := ray.get_collider()
 	if is_instance_of(obj, Interactable):
 		obj.on_interaction()
+		if !already_discovered:
+			$Informations.nom = str(InventoryItem.InventoryItemType.find_key(obj.item.type))
+			$Informations.image = obj.item.texture
+			$Informations.texte = obj.item.description
+			$Informations.activate()
 	return obj
 	
 func _ready() -> void:
@@ -52,10 +58,21 @@ func _physics_process(delta: float) -> void:
 			if !one_time:
 				one_time = true
 				#$Informations.visible = true
+				print(Global.herbier)
+				for h in Global.herbier:
+					if h.type == obj.item.type:
+						already_discovered = true
+
 				$Informations.fade_in()
-				$Informations.nom = str(InventoryItem.InventoryItemType.find_key(obj.item.type))
-				$Informations.image = obj.item.texture
-				$Informations.texte = obj.item.description
+				
+				if already_discovered:
+					$Informations.nom = str(InventoryItem.InventoryItemType.find_key(obj.item.type))
+					$Informations.image = obj.item.texture
+					$Informations.texte = obj.item.description
+				else:
+					$Informations.nom = "???"
+					$Informations.image = load("res://assets/graphical/ui/hmmmm.png")
+					$Informations.texte = "Vous n'avez pas encore découvert cette plante."
 				$Informations.activate()
 		else:
 			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
@@ -64,6 +81,7 @@ func _physics_process(delta: float) -> void:
 		#$Informations.visible = false
 		$Informations.fade_out()
 		one_time = false
+		already_discovered = false
 		$Informations.clean()
 	
 	if Input.is_action_just_pressed("grab") and !Global.isPaused:

@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		$Map.visible = Global.minimap_activated
 		AudioServer.set_bus_mute(music_bus,false)
 	
-	if Input.is_action_just_pressed("ouvrir_livre"):
+	if Input.is_action_just_pressed("ouvrir_livre") and !Global.is_inventory_open:
 		if !Global.isPaused:
 			$Pause.visible = true
 			$Pause.get_node("Book").visible = true

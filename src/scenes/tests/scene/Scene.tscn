@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=24 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://up24dtse8gef" path="res://src/classes/interactable.gd" id="4_plqpu"]
 [ext_resource type="Resource" uid="uid://cfntbupo27vkt" path="res://assets/game_resources/items/Figues.tres" id="5_3f8bk"]
 [ext_resource type="AudioStream" uid="uid://cbogbabmntm40" path="res://assets/sounds/chill.wav" id="6_d35k2"]
+[ext_resource type="Resource" uid="uid://to3dvlcvl3my" path="res://assets/game_resources/items/Asperges.tres" id="6_umo38"]
 [ext_resource type="PackedScene" uid="uid://b8181g3xk30pn" path="res://src/scenes/ui/minimap/Minimap.tscn" id="7_5kwoq"]
 [ext_resource type="PackedScene" uid="uid://cqq7lyosyug6m" path="res://src/scenes/map/map.tscn" id="9_dod7h"]
 [ext_resource type="PackedScene" uid="uid://cxn1wyr1oy2xf" path="res://assets/game_resources/models/maxwell/maxwell.fbx" id="10_q3pbt"]
@@ -62,7 +63,7 @@ shadow_blur = 1.094
 visible = false
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02981, 0.9519453, -4.330148)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -170.36525, 4.008513, -3.106133)
 mesh = SubResource("CylinderMesh_dvpi0")
 
 [node name="Interactable" type="Area3D" parent="MeshInstance3D2"]
@@ -81,6 +82,29 @@ shape = SubResource("CylinderShape3D_dvpi0")
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("CylinderShape3D_plqpu")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.93747, 3.972879, -2.7388306)
+mesh = SubResource("CylinderMesh_dvpi0")
+skeleton = NodePath("../MeshInstance3D2")
+
+[node name="Interactable" type="Area3D" parent="MeshInstance3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02981, -0.9519453, 4.330148)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+item = ExtResource("6_umo38")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D3/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02981, 0.9519453, -4.330148)
+shape = SubResource("CylinderShape3D_dvpi0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
 shape = SubResource("CylinderShape3D_plqpu")
 
 [node name="InvUi" parent="." instance=ExtResource("2_w7ipn")]
@@ -109,7 +133,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.2523017, 0)
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
 
 [node name="maxwell" parent="." instance=ExtResource("10_q3pbt")]
-transform = Transform3D(-0.06975737, 0.060157273, 0.9957483, 0.03803872, 0.99761474, -0.057605207, -0.9968386, 0.033858597, -0.071879, -259.17963, 12.454014, -159.00284)
+transform = Transform3D(-0.06975737, 0.060157273, 0.9957483, 0.03803872, 0.99761474, -0.057605207, -0.9968386, 0.033858597, -0.071879, -259.17963, 12.454014, -156.3969)
 
 [node name="song" type="AudioStreamPlayer3D" parent="maxwell"]
 stream = ExtResource("11_bho2e")
