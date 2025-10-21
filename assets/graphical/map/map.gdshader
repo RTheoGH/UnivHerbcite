@@ -16,8 +16,10 @@ void fragment()
 
 	vec3 base_color = vec3(0.0, 0.0, 0.1);
 	float basic_fresnel = noise.x * (fresnel(1.5, NORMAL, VIEW));
-	
+	float alpha_fresnel = noise.x * (fresnel(3.1, NORMAL, VIEW));
+
 	EMISSION = base_color + vec3(1.0, 0.0, 0.0) * basic_fresnel;
+	//ALPHA = 1.0-alpha_fresnel;
 	ROUGHNESS = 0.0;
 	ALBEDO = noise.y * base_color;
 }

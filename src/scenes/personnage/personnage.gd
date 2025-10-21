@@ -77,4 +77,5 @@ func _physics_process(delta: float) -> void:
 	
 	previous_mouse_pos = get_viewport().get_mouse_position()
 
+	print(global_position)
 	move_and_slide()

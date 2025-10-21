@@ -12,6 +12,8 @@ shader_type sky;
 
 uniform sampler2D source_panorama : filter_linear, source_color, hint_default_black;
 uniform sampler2D uv_offset : filter_linear, repeat_enable;
+uniform vec3 sky_color = vec3(1.0, 0.0, 0.0);
+uniform float red_deg = 2.0;
 
 uniform float exposure : hint_range(0, 128) = 1.0;
 
@@ -19,9 +21,10 @@ void sky() {
 
 	vec2 noise = (texture(uv_offset, SKY_COORDS + (TIME / 800.0)).rg - 0.5) / 7.0;
 
-	vec2 new_uv = SKY_COORDS + noise;
 
-	COLOR = texture(source_panorama, new_uv).rgb * exposure;
+	vec2 new_uv = SKY_COORDS + noise;
+	float blue_deg = texture(source_panorama, new_uv).b * pow(1.0-new_uv.y, red_deg);
+	COLOR = blue_deg * sky_color + (1.0 - blue_deg) * texture(source_panorama, new_uv).rgb * exposure;
 	//COLOR.xy = noise * 10.0;
 }
 "
@@ -49,6 +52,8 @@ seamless_blend_skirt = 0.219
 shader = SubResource("Shader_tqkkf")
 shader_parameter/source_panorama = ExtResource("2_tqkkf")
 shader_parameter/uv_offset = SubResource("NoiseTexture2D_a2pkv")
+shader_parameter/sky_color = Vector3(1, 0, 0)
+shader_parameter/red_deg = 2.0
 shader_parameter/exposure = 1.0
 
 [sub_resource type="Sky" id="Sky_ph54e"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=16 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -10,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://b8181g3xk30pn" path="res://src/scenes/ui/minimap/Minimap.tscn" id="7_5kwoq"]
 [ext_resource type="PackedScene" uid="uid://cqq7lyosyug6m" path="res://src/scenes/map/map.tscn" id="9_dod7h"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18jua"]
+albedo_color = Color(1, 1, 0.42745098, 1)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_dvpi0"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dvpi0"]
@@ -17,7 +20,7 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_dvpi0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_dvpi0"]
-radius = 0.9394531
+radius = 0.5004883
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_plqpu"]
 radius = 0.51220703
@@ -26,17 +29,20 @@ radius = 0.51220703
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1964556, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -167.48242, 4.1182723, 2.0020342)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(217.62, 0, 0, 0, 217.62, 0, 0, 0, 217.62, 0, 0, 0)
 visible = false
+material_override = SubResource("StandardMaterial3D_18jua")
 mesh = SubResource("PlaneMesh_dvpi0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
 shape = SubResource("WorldBoundaryShape3D_dvpi0")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -90,4 +96,10 @@ offset_bottom = -0.16003418
 player = NodePath("../Perso")
 
 [node name="Map2" parent="." instance=ExtResource("9_dod7h")]
-transform = Transform3D(5.285, 0, 0, 0, 5.285, 0, 0, 0, 5.285, 445.236, -2.029, 226.302)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.2523017, 0)
+
+[node name="MeshInstance3D" parent="Map2" index="2"]
+transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
+
+[editable path="Map2"]
+[editable path="Map2/map"]
