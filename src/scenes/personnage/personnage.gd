@@ -7,6 +7,7 @@ var previous_mouse_pos:Vector2 = DisplayServer.window_get_size()/2
 @onready var cam_fps: Node3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
 #var cam_speed = 0.5
+var static_cam := false
 
 var one_time: bool = false
 
@@ -25,10 +26,16 @@ func _physics_process(delta: float) -> void:
 	
 	if Global.is_inventory_open || Global.isPaused:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		if Global.isPaused : return
+	if Global.isPaused :
+		static_cam = true
+		return
+	
 	else: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	
 		
-	var cam_diff = get_viewport().get_mouse_position() - previous_mouse_pos
+	var cam_diff := Vector2.ZERO
+	if !static_cam:
+		cam_diff = get_viewport().get_mouse_position() - previous_mouse_pos
 	
 	if Input.is_action_just_pressed("scroll_down") and $Informations.visible:
 		var scroll = $Informations/RichTextLabel2.get_v_scroll_bar()
@@ -96,8 +103,11 @@ func _physics_process(delta: float) -> void:
 	
 		if get_viewport().get_window().has_focus():
 			Input.warp_mouse(DisplayServer.window_get_size()/2)
+		else:
+			static_cam = true
+			return
 	
 	previous_mouse_pos = get_viewport().get_mouse_position()
-
-	print(global_position)
+	
+	static_cam = false
 	move_and_slide()
