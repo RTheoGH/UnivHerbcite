@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dyuacubusgehf"]
 
 [ext_resource type="Script" uid="uid://cj17xq3na87tw" path="res://src/scenes/ui/informations/informations.gd" id="1_25gfv"]
-[ext_resource type="Texture2D" uid="uid://cqpmkg7hsvjo3" path="res://assets/graphical/ui/cadre_fleuri.png" id="1_j0v85"]
+[ext_resource type="Texture2D" uid="uid://dlkywtyo6reiu" path="res://assets/graphical/ui/cadre_fleuri2.png" id="2_25gfv"]
 
 [node name="Informations" type="Control"]
 layout_mode = 3
@@ -40,7 +40,7 @@ offset_right = -0.026062012
 offset_bottom = -0.026062012
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_j0v85")
+texture = ExtResource("2_25gfv")
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 1

@@ -201,21 +201,33 @@ offset_bottom = -0.023986816
 [node name="gauche_texture" type="TextureRect" parent="gauche"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.26938787
-anchor_top = -0.081560284
-anchor_right = 0.6857144
-anchor_bottom = 0.30847207
+anchor_left = 0.26530623
+anchor_top = -0.028368793
+anchor_right = 0.68163276
+anchor_bottom = 0.36166355
 offset_left = -3.0517578e-05
 offset_right = -3.0517578e-05
 offset_bottom = -1.5258789e-05
 metadata/_edit_use_anchors_ = true
 
+[node name="gauche_titre" type="RichTextLabel" parent="gauche"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13061224
+anchor_top = 0.36170223
+anchor_right = 0.75918365
+anchor_bottom = 0.5709221
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="gauche_texte" type="RichTextLabel" parent="gauche"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.0040816325
+anchor_left = -0.040816326
 anchor_top = 0.6099292
-anchor_right = 1.0
+anchor_right = 0.9632653
 anchor_bottom = 0.97223604
 offset_top = -3.0517578e-05
 offset_bottom = -3.0517578e-05
@@ -243,6 +255,18 @@ offset_left = 0.053901672
 offset_right = -0.027999878
 offset_bottom = -0.11200714
 grow_horizontal = 2
+
+[node name="droite_titre" type="RichTextLabel" parent="droite"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.13061224
+anchor_top = 0.36170223
+anchor_right = 0.75918365
+anchor_bottom = 0.5709221
+offset_top = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="droite_texte" type="RichTextLabel" parent="droite"]
 layout_mode = 1
