@@ -37,8 +37,7 @@ func _process(delta: float) -> void:
 			$Pause.visible = false
 			$Pause.get_node("Book").visible = false
 		Global.isPaused = !Global.isPaused
-		
-	
+
 func maxwell():
 	if mxw:
 		mxw.kill()

@@ -1,0 +1,93 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyuacubusgehf"]
+
+[ext_resource type="Script" uid="uid://cj17xq3na87tw" path="res://src/scenes/ui/informations/informations.gd" id="1_25gfv"]
+[ext_resource type="Texture2D" uid="uid://cqpmkg7hsvjo3" path="res://assets/graphical/ui/cadre_fleuri.png" id="1_j0v85"]
+
+[node name="Informations" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_25gfv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26500002
+anchor_top = 0.069000006
+anchor_right = 0.73300004
+anchor_bottom = 0.901
+offset_left = -0.2800293
+offset_top = 0.28799438
+offset_right = -0.41601563
+offset_bottom = 0.15197754
+color = Color(0, 0, 0, 0.42352942)
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21200001
+anchor_top = -0.012
+anchor_right = 0.78800005
+anchor_bottom = 1.0120001
+offset_left = 0.025985718
+offset_top = 0.026000023
+offset_right = -0.026062012
+offset_bottom = -0.026062012
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j0v85")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.44400004
+anchor_top = 0.136
+anchor_right = 0.55600005
+anchor_bottom = 0.335
+offset_left = 0.011962891
+offset_top = -0.12800598
+offset_right = -0.012084961
+offset_bottom = -0.08000183
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.28074306
+anchor_top = 0.36406174
+anchor_right = 0.7131806
+anchor_bottom = 0.48624694
+offset_left = -0.41601563
+offset_top = 0.08798218
+offset_right = 0.4159546
+offset_bottom = -0.088012695
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30047852
+anchor_top = 0.52500004
+anchor_right = 0.6925771
+anchor_bottom = 0.80600005
+offset_left = -0.15124512
+offset_top = -0.2000122
+offset_right = 0.15118408
+offset_bottom = -0.2880249
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

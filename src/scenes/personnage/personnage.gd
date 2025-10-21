@@ -8,6 +8,8 @@ var previous_mouse_pos:Vector2 = DisplayServer.window_get_size()/2
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
 #var cam_speed = 0.5
 
+var one_time: bool = false
+
 func try_grab() -> Node3D:
 	var obj := ray.get_collider()
 	if is_instance_of(obj, Interactable):
@@ -17,6 +19,7 @@ func try_grab() -> Node3D:
 func _ready() -> void:
 	$Camera3D/RayCast3D.collide_with_areas = true
 	$Camera3D/RayCast3D.collide_with_bodies = false
+	$Informations.hide()
 
 func _physics_process(delta: float) -> void:
 	
@@ -27,15 +30,34 @@ func _physics_process(delta: float) -> void:
 		
 	var cam_diff = get_viewport().get_mouse_position() - previous_mouse_pos
 	
+	if Input.is_action_just_pressed("scroll_down") and $Informations.visible:
+		var scroll = $Informations/RichTextLabel2.get_v_scroll_bar()
+		scroll.value += 20
+		
+	if Input.is_action_just_pressed("scroll_up") and $Informations.visible:
+		var scroll = $Informations/RichTextLabel2.get_v_scroll_bar()
+		scroll.value -= 20
 	
 	var obj := ray.get_collider()
 	if(is_instance_of(obj, Interactable)):
 		if obj.is_collectible:
 			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_pickup.res")
+			if !one_time:
+				one_time = true
+				#$Informations.visible = true
+				$Informations.fade_in()
+				$Informations.nom = str(InventoryItem.InventoryItemType.find_key(obj.item.type))
+				$Informations.image = obj.item.texture
+				$Informations.texte = obj.item.description
+				$Informations.activate()
 		else:
 			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
 	else:
 		$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair.png")
+		#$Informations.visible = false
+		$Informations.fade_out()
+		one_time = false
+		$Informations.clean()
 	
 	if Input.is_action_just_pressed("grab") and !Global.isPaused:
 		try_grab()
