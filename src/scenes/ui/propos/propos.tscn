@@ -8,7 +8,7 @@
 [ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="6_6mr1c"]
 [ext_resource type="Texture2D" uid="uid://dacg73wq786q5" path="res://assets/graphical/ui/retour1.png" id="6_kjej5"]
 [ext_resource type="Texture2D" uid="uid://bdp6hre2uk2w" path="res://assets/graphical/ui/retour2.png" id="7_s0r50"]
-[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/graphical/sounds/Bouton.wav" id="9_5b07h"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/sounds/Bouton.wav" id="9_5b07h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5b07h"]
 shader = ExtResource("6_6mr1c")

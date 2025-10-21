@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://c0r7g1ktwgxnr" path="res://assets/graphical/ui/options2.png" id="6_a08a3"]
 [ext_resource type="PackedScene" uid="uid://bjgtvtynklld5" path="res://src/scenes/ui/book/Book.tscn" id="7_7akkw"]
 [ext_resource type="PackedScene" uid="uid://c6tftscbtspu3" path="res://src/scenes/ui/settings/Options.tscn" id="10_x85fr"]
-[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/graphical/sounds/Bouton.wav" id="11_a08a3"]
-[ext_resource type="AudioStream" uid="uid://jmmoatu4l0b" path="res://assets/graphical/sounds/open_book.mp3" id="12_5nbhg"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/sounds/Bouton.wav" id="11_a08a3"]
+[ext_resource type="AudioStream" uid="uid://jmmoatu4l0b" path="res://assets/sounds/open_book.mp3" id="12_5nbhg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1w3pp"]
 shader = ExtResource("2_wukie")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://hyxjxaek1eag"]
+[gd_scene load_steps=6 format=3 uid="uid://hyxjxaek1eag"]
 
 [ext_resource type="Script" uid="uid://deysa375pgxig" path="res://src/scenes/personnage/personnage.gd" id="1_34im4"]
 [ext_resource type="Texture2D" uid="uid://cy0ohhvb38hg8" path="res://assets/graphical/crosshair.png" id="2_v37cp"]
+[ext_resource type="PackedScene" uid="uid://dyuacubusgehf" path="res://src/scenes/ui/informations/informations.tscn" id="3_41j16"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e1nwe"]
 
@@ -47,6 +48,16 @@ mesh = SubResource("CapsuleMesh_e1nwe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_e1nwe")
+
+[node name="Informations" parent="." instance=ExtResource("3_41j16")]
+anchors_preset = -1
+anchor_left = -0.11400001
+anchor_right = 0.386
+anchor_bottom = 0.5
+offset_left = 0.32800293
+offset_top = -4.0
+offset_right = 0.32800293
+offset_bottom = -4.0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2665527, -0.067636326, 2.9564775e-09, 0, -1.2020631e-08, -0.275, 0.067636326, 0.2665527, -1.16513865e-08, 0.35105938, -0.8260915, -0.46197093)

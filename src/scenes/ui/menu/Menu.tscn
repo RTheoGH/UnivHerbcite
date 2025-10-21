@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dek63gbyfg4ei"]
+[gd_scene load_steps=39 format=3 uid="uid://dek63gbyfg4ei"]
 
 [ext_resource type="Script" uid="uid://clm87qo21c7lo" path="res://src/scenes/ui/menu/menu.gd" id="1_o2wpn"]
 [ext_resource type="Texture2D" uid="uid://d0oprfhnjqfj8" path="res://assets/graphical/background/bg1.png" id="2_ut8fc"]
@@ -24,9 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://l6w45g7s23c7" path="res://assets/graphical/ui/menu_plante.png" id="22_4ox5w"]
 [ext_resource type="Texture2D" uid="uid://dd8id13ahln15" path="res://assets/graphical/ui/title_univH.png" id="23_u86aa"]
 [ext_resource type="PackedScene" uid="uid://c6tftscbtspu3" path="res://src/scenes/ui/settings/Options.tscn" id="24_2huug"]
-[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/graphical/sounds/Bouton.wav" id="25_2texk"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/sounds/Bouton.wav" id="25_2texk"]
 [ext_resource type="PackedScene" uid="uid://dxgsoqdgjn02y" path="res://src/scenes/ui/propos/propos.tscn" id="26_fjsg1"]
 [ext_resource type="PackedScene" uid="uid://c1kassqq1adyl" path="res://src/scenes/ui/loading/Chargement.tscn" id="27_8xp2a"]
+[ext_resource type="PackedScene" uid="uid://dkhbmqs4vyx06" path="res://src/scenes/ui/loading/Learn.tscn" id="27_ut8fc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i7htd"]
 animations = [{
@@ -341,7 +342,12 @@ mouse_filter = 2
 texture = SubResource("GradientTexture2D_yvxia")
 expand_mode = 1
 
+[node name="Learn" parent="." instance=ExtResource("27_ut8fc")]
+visible = false
+layout_mode = 1
+
 [node name="Chargement" parent="." instance=ExtResource("27_8xp2a")]
+visible = false
 position = Vector2(1061.25, 568.25)
 scale = Vector2(0.42882562, 0.42882562)
 frame_progress = 0.8605602
@@ -349,6 +355,7 @@ frame_progress = 0.8605602
 [node name="Timer" type="Timer" parent="."]
 
 [node name="chargement_block" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.53400004

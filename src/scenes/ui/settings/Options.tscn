@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="2_s26ps"]
 [ext_resource type="Texture2D" uid="uid://bdp6hre2uk2w" path="res://assets/graphical/ui/retour2.png" id="3_w238l"]
 [ext_resource type="Texture2D" uid="uid://dsy34jt1siym3" path="res://assets/graphical/ui/options512.png" id="4_w238l"]
-[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/graphical/sounds/Bouton.wav" id="5_w238l"]
+[ext_resource type="AudioStream" uid="uid://ciexno7kxtsqw" path="res://assets/sounds/Bouton.wav" id="5_w238l"]
 [ext_resource type="Texture2D" uid="uid://gusn1w8bfp3w" path="res://assets/graphical/ui/options1.png" id="7_p1xw0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n5jw5"]

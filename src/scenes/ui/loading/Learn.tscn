@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://dkhbmqs4vyx06"]
+
+[ext_resource type="Texture2D" uid="uid://d3a2e1fw5wnda" path="res://assets/graphical/ui/learn1.png" id="1_oeaie"]
+[ext_resource type="Texture2D" uid="uid://cqe7fisq407sm" path="res://assets/graphical/ui/learn2.png" id="2_lbeyy"]
+[ext_resource type="Texture2D" uid="uid://dd8id13ahln15" path="res://assets/graphical/ui/title_univH.png" id="2_mxrii"]
+[ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="3_mxrii"]
+[ext_resource type="Texture2D" uid="uid://ckc2pdoo1rtn5" path="res://assets/graphical/ui/learn3.png" id="4_22vf3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22vf3"]
+shader = ExtResource("3_mxrii")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvuxd"]
+shader = ExtResource("3_mxrii")
+shader_parameter/offset_ = Vector2(0, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwqch"]
+shader = ExtResource("3_mxrii")
+shader_parameter/offset_ = Vector2(0, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d5tjg"]
+shader = ExtResource("3_mxrii")
+shader_parameter/offset_ = Vector2(0, -0.04)
+shader_parameter/time_effect = 0.0
+
+[node name="Learn" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.60784316)
+
+[node name="title" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_22vf3")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.264
+anchor_right = 0.73600006
+anchor_bottom = 0.21000001
+offset_left = -0.12799072
+offset_right = 0.12792969
+offset_bottom = -0.08000183
+grow_horizontal = 2
+texture = ExtResource("2_mxrii")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_gvuxd")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.015131946
+anchor_top = 0.35530868
+anchor_right = 0.904132
+anchor_bottom = 0.45330867
+offset_left = 0.5679989
+offset_top = -0.24002075
+offset_right = 0.4399414
+offset_bottom = 0.25598145
+texture = ExtResource("1_oeaie")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_hwqch")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01726389
+anchor_top = 0.4535926
+anchor_right = 0.906264
+anchor_bottom = 0.55259264
+offset_left = 0.11199951
+offset_top = 0.07199097
+offset_right = -0.016113281
+offset_bottom = -0.08001709
+texture = ExtResource("2_lbeyy")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_d5tjg")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.013055556
+anchor_top = 0.5522222
+anchor_right = 0.9020556
+anchor_bottom = 0.6512223
+offset_left = -0.040000916
+offset_top = 0.15997314
+offset_right = -0.16809082
+offset_bottom = 0.0079956055
+texture = ExtResource("4_22vf3")
+metadata/_edit_use_anchors_ = true

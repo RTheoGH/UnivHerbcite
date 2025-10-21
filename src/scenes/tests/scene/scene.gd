@@ -1,10 +1,20 @@
 extends Node3D
 
+var mxw : Tween
+
+var music_bus = AudioServer.get_bus_index("Music")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Map.visible = Global.minimap_activated
 	$Pause.visible = false
 	$Musique.play()
+	
+	maxwell()
+	$maxwell/song.play()
+	
+	$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
+	
 	pass # Replace with function body.
 
 
@@ -13,11 +23,11 @@ func _process(delta: float) -> void:
 	if Global.isPaused:
 		$Pause.visible = true
 		$Map.visible = false
-		$Musique.stream_paused = true
+		AudioServer.set_bus_mute(music_bus,true)
 	else:
 		$Pause.visible = false
 		$Map.visible = Global.minimap_activated
-		$Musique.stream_paused = false
+		AudioServer.set_bus_mute(music_bus,false)
 	
 	if Input.is_action_just_pressed("ouvrir_livre"):
 		if !Global.isPaused:
@@ -27,3 +37,14 @@ func _process(delta: float) -> void:
 			$Pause.visible = false
 			$Pause.get_node("Book").visible = false
 		Global.isPaused = !Global.isPaused
+
+func maxwell():
+	if mxw:
+		mxw.kill()
+	
+	mxw = create_tween()
+	mxw.set_loops()
+	mxw.tween_property($maxwell, "rotation_degrees:z", -30, 0.2)
+	mxw.tween_property($maxwell, "rotation_degrees:z", 30, 0.2)
+	mxw.tween_property($maxwell, "rotation_degrees:z", 30, 0.2)
+	mxw.tween_property($maxwell, "rotation_degrees:z", -30, 0.2)
