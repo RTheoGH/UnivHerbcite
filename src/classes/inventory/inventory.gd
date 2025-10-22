@@ -19,3 +19,9 @@ func add_item(item : InventoryItem):
 		# Discard an item ? 
 	else : 
 		items.push_back(item)
+
+func has(itemType : InventoryItem.InventoryItemType) -> bool:
+	for i in items:
+		if i.type == itemType:
+			return true
+	return false

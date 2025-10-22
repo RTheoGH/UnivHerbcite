@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3j7ym6wwt04b"]
+
+[ext_resource type="Shader" uid="uid://clxym6yhna627" path="res://smoke_zone_shader.tres" id="2_ooo1l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jh1yc"]
+
+[sub_resource type="Curve" id="Curve_kvihe"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_resbx"]
+curve = SubResource("Curve_kvihe")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hxmtn"]
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.5, 0.5)
+spread = 180.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -1.0000023
+linear_accel_max = 0.99999774
+linear_accel_curve = SubResource("CurveTexture_resbx")
+radial_accel_min = 0.99999774
+radial_accel_max = 0.99999774
+damping_max = 2.778
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y4j8h"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yo3hx"]
+noise = SubResource("FastNoiseLite_y4j8h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_odrqb"]
+render_priority = 0
+shader = ExtResource("2_ooo1l")
+shader_parameter/Smoke_Color = Color(1, 1, 1, 1)
+shader_parameter/Texture2DParameter = SubResource("NoiseTexture2D_yo3hx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7sgq8"]
+material = SubResource("ShaderMaterial_odrqb")
+
+[node name="Area3D" type="Area3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_jh1yc")
+debug_color = Color(0.8901961, 0.6039216, 0.8901961, 1)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 12
+randomness = 0.48
+trail_lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_hxmtn")
+draw_pass_1 = SubResource("QuadMesh_7sgq8")

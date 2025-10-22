@@ -16,7 +16,7 @@ func try_grab() -> Node3D:
 	var obj := ray.get_collider()
 	if is_instance_of(obj, Interactable):
 		obj.on_interaction()
-		if !already_discovered:
+		if !already_discovered && obj.plante != null:
 			$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
 			$Informations.image = obj.plante.texture
 			$Informations.texte = obj.plante.description
@@ -30,13 +30,15 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if Global.is_inventory_open || Global.isPaused:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if Global.isPaused :
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		static_cam = true
 		return
-	
-	else: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		
+	if Global.is_inventory_open:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else: 
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 		
 	var cam_diff := Vector2.ZERO
