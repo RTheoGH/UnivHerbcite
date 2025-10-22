@@ -59,8 +59,6 @@ func _physics_process(delta: float) -> void:
 			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_pickup.res")
 			if !one_time:
 				one_time = true
-				#$Informations.visible = true
-				print(Global.herbier)
 				for h in Global.herbier:
 					if h.type == obj.plante.type:
 						already_discovered = true
@@ -80,7 +78,6 @@ func _physics_process(delta: float) -> void:
 			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
 	else:
 		$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair.png")
-		#$Informations.visible = false
 		$Informations.fade_out()
 		one_time = false
 		already_discovered = false

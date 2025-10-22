@@ -22,8 +22,9 @@ func _process(delta: float) -> void:
 		$suivant.disabled = false
 	pass
 	
-	remplir_le_bouquin(Global.herbier,$gauche/gauche_texture,$gauche/gauche_titre,$gauche/gauche_texte,$droite/droite_texture,$droite/droite_titre,$droite/droite_texte,current_page)
 
+func show_book():
+	remplir_le_bouquin(Global.herbier,$gauche/gauche_texture,$gauche/gauche_titre,$gauche/gauche_texte,$droite/droite_texture,$droite/droite_titre,$droite/droite_texte,current_page)
 
 func current_index_not_empty(book: Array, i: int) -> bool:
 	return i >= 0 and i < book.size() and book[i] != null
@@ -40,12 +41,9 @@ func remplir_page_plante(book: Array, i: int, tex: TextureRect, titre: RichTextL
 		texte.text = ""
 
 func remplir_page_item(book: Array, i: int, tex: TextureRect, titre: RichTextLabel, texte: RichTextLabel):
-	print("chef?")
 	if current_index_not_empty(book, i):
 		var plante = book[i]
 		var item = plante.item
-		print("allo")
-		print(item)
 		if item != null:
 			tex.texture = item.texture
 			titre.text = str(InventoryItem.InventoryItemType.find_key(item.type))
@@ -75,6 +73,7 @@ func _on_suivant_pressed() -> void:
 	$gauche.hide()
 	$droite.hide()
 	current_page+=1
+	show_book()
 
 func _on_retour_pressed() -> void:
 	$close.play()
@@ -86,6 +85,7 @@ func _on_precedent_pressed() -> void:
 	$gauche.hide()
 	$droite.hide()
 	current_page-=1
+	show_book()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	$gauche.show()
