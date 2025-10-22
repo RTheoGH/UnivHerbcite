@@ -10,5 +10,6 @@ func _ready() -> void:
 func on_interaction():
 	if Global.player_inventory.has(required_item):
 		queue_free()
+		#emit_signal("revele_la_zone",required_item)
 	else:
 		print("Il vous faut un ", str(InventoryItem.InventoryItemType.find_key(required_item)), " pour pouvoir passer !")

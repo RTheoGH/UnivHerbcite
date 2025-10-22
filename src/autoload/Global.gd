@@ -12,6 +12,9 @@ var minimap_activated: bool = false
 var carre_minimap: bool = false
 
 var herbier : Array = []
+var recipes : Array[ItemRecipe] = [
+	load("res://src/classes/inventory/recipes/potion_rouge.tres") # Ajouter les autres
+]
 
 @onready var player_inventory : Inventory = preload("res://assets/game_resources/player_inventory.tres")
 

@@ -130,3 +130,7 @@ func _physics_process(delta: float) -> void:
 	
 	static_cam = false
 	move_and_slide()
+
+func _je_revele_la_zone(pot):
+	print(pot.description)
+	pass

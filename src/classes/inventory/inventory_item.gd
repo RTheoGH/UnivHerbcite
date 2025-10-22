@@ -11,7 +11,13 @@ enum InventoryItemType{
 	FIGUES,
 	LAVANDES,
 	LIERRES,
-	ACANTHES
+	ACANTHES,
+	
+	POTION_ROUGE,
+	POTION_BLEUE,
+	POTION_VERTE,
+	POTION_VIOLETTE,
+	POTION_JAUNE
 }
 
 @export var type : InventoryItemType

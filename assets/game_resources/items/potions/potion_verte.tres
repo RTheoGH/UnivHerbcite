@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://52wvwysi07fg"]
+
+[ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_vu8yj"]
+[ext_resource type="Texture2D" uid="uid://cqjjisknro5mg" path="res://assets/graphical/potions/pot3.png" id="2_0y6wb"]
+
+[resource]
+script = ExtResource("1_vu8yj")
+type = 11
+texture = ExtResource("2_0y6wb")
+description = "Une potion verte qui sent bon l'herbe."
+metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

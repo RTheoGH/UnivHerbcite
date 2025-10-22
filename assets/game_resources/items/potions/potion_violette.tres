@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dtkap0tpndbpl"]
+
+[ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_3u4ne"]
+[ext_resource type="Texture2D" uid="uid://dmlf6f6sdhpbi" path="res://assets/graphical/potions/pot4.png" id="2_jbojw"]
+
+[resource]
+script = ExtResource("1_3u4ne")
+type = 12
+texture = ExtResource("2_jbojw")
+description = "Une potion qui a l'air dangeureuse en apparence."
+metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

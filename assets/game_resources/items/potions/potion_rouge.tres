@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://ch6i8h812nwm0"]
+
+[ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_qbryy"]
+[ext_resource type="Texture2D" uid="uid://ttr5a84gr4kh" path="res://assets/graphical/potions/pot2.png" id="2_4hph2"]
+
+[resource]
+script = ExtResource("1_qbryy")
+type = 9
+texture = ExtResource("2_4hph2")
+description = "Une potion d'un rouge écarlate."
+metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

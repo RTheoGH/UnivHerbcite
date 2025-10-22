@@ -11,7 +11,9 @@ enum PlanteType{
 	FIGUIER,
 	LAVANDES,
 	LIERRES,
-	ACANTHES
+	ACANTHES,
+	
+	DEBUG
 }
 
 @export var type : PlanteType

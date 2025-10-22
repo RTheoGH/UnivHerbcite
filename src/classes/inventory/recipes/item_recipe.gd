@@ -2,9 +2,9 @@ extends Resource
 
 class_name ItemRecipe
 
-@export var ingredient1 : InventoryItem # Broyé
-@export var ingredient2 : InventoryItem # Infusé
-@export var ingredient3 : InventoryItem # ???
+@export var ingredient1 : InventoryItem
+@export var ingredient2 : InventoryItem
+@export var ingredient3 : InventoryItem
 @export var result : InventoryItem # Peut-être changer le type (on peut ne plus avoir de place en craftant)
 
 func can_craft(ing : Array[InventoryItem]) -> bool:

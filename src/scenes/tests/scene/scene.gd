@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	else:
 		$CraftUI.visible = false
 	
-	if Input.is_action_just_pressed("ouvrir_livre") and !Global.is_inventory_open:
+	if Input.is_action_just_pressed("ouvrir_livre") and !Global.is_inventory_open and !Global.is_craft_ui_open:
 		if !Global.isPaused:
 			$Pause.visible = true
 			$Pause.get_node("Book").visible = true

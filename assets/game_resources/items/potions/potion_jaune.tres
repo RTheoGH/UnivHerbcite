@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://c3r758gmfuldx"]
+
+[ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_oj0k0"]
+[ext_resource type="Texture2D" uid="uid://dbwhu7pips2g" path="res://assets/graphical/potions/pot5.png" id="2_si6ef"]
+
+[resource]
+script = ExtResource("1_oj0k0")
+type = 13
+texture = ExtResource("2_si6ef")
+description = "Une potion de couleur jaune"
+metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

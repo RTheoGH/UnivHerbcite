@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://byxlmrfu0vb6u"]
+
+[ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_xih0d"]
+[ext_resource type="Texture2D" uid="uid://df0tg2vrtpgml" path="res://assets/graphical/potions/pot1.png" id="2_2lxqm"]
+
+[resource]
+script = ExtResource("1_xih0d")
+type = 10
+texture = ExtResource("2_2lxqm")
+description = "Une potion d'un bleu azur."
+metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

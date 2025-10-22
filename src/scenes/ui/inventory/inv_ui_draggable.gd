@@ -28,8 +28,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
-	
 	if hoverred_object != -1 and Input.is_action_just_pressed("left_click"):
 		precedent_place = objects_slots[hoverred_object]
 		print("precedent :", precedent_place)
@@ -53,7 +51,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_released("left_click"):
 		grabbed_object = -1
 	
-	
+	#for i in Global.recipes:
+		#i.can_craft([$Place4,$Place5,$Place6])
+
 func can_place() -> bool :
 	
 	print(objects_slots)

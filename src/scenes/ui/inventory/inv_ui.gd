@@ -15,7 +15,8 @@ func _process(delta):
 		if is_open:
 			close()
 		else:
-			open()
+			if !Global.is_craft_ui_open:
+				open()
 	
 	change_current_slot()
 

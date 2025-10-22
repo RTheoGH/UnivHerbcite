@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=57 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://xa7grds41a3s" path="res://assets/game_resources/plantes/Figuier.tres" id="7_j0txf"]
 [ext_resource type="PackedScene" uid="uid://cqq7lyosyug6m" path="res://src/scenes/map/map.tscn" id="9_dod7h"]
 [ext_resource type="PackedScene" uid="uid://b7e61ij3wfkph" path="res://src/scenes/ui/crafting/CraftUI.tscn" id="9_mqiyw"]
+[ext_resource type="Resource" uid="uid://0t4b1wx4lvym" path="res://assets/game_resources/plantes/debug_tree.tres" id="9_yp1p4"]
 [ext_resource type="PackedScene" uid="uid://cxn1wyr1oy2xf" path="res://assets/game_resources/models/maxwell/maxwell.fbx" id="10_q3pbt"]
 [ext_resource type="AudioStream" uid="uid://nf6v4eyudbci" path="res://assets/sounds/Maxwell the Cat Theme..mp3" id="11_bho2e"]
 [ext_resource type="PackedScene" uid="uid://p61x7d77l7dy" path="res://assets/game_resources/models/Stegosaurus/Stegosaurus.fbx" id="12_0f5jq"]
@@ -284,6 +285,29 @@ shape = SubResource("CylinderShape3D_dvpi0")
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D"]
+shape = SubResource("CylinderShape3D_plqpu")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -159.2767, 3.9715624, 4.2596436)
+mesh = SubResource("CylinderMesh_dvpi0")
+skeleton = NodePath("../MeshInstance3D4")
+
+[node name="Interactable" type="Area3D" parent="MeshInstance3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0298157, -0.42582226, 4.3301487)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("9_yp1p4")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="MeshInstance3D5/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02981, 0.9519453, -4.330148)
+shape = SubResource("CylinderShape3D_dvpi0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D5/StaticBody3D"]
 shape = SubResource("CylinderShape3D_plqpu")
 
 [node name="InvUi" parent="." instance=ExtResource("2_w7ipn")]
