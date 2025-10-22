@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		static_cam = true
 		return
 		
-	if Global.is_inventory_open:
+	if Global.is_inventory_open || Global.is_craft_ui_open:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else: 
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -110,7 +110,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-	if !Global.is_inventory_open:
+	if !(Global.is_inventory_open || Global.is_craft_ui_open):
 		if(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) < -80):
 			cam_fps.global_rotation.x = deg_to_rad(-79.9)
 		elif(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) > 80):

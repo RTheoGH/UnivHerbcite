@@ -19,9 +19,9 @@ func _ready() -> void:
 	#inventory.items.append(new_item2)
 	objects_slots.resize(3)
 	
-	for i in range(inventory.items.size()):
+	for i in range(Global.player_inventory.items.size()):
 		
-		inventory_objects[i].get_node("Sprite2D").texture = inventory.items[i].texture
+		inventory_objects[i].get_node("TextureRect").texture = inventory.items[i].texture
 		inventory_objects[i].visible = true
 		objects_slots[i] = inventory_slots_positions[i]
 
@@ -71,6 +71,13 @@ func can_place() -> bool :
 			return false
 			
 	return true
+	
+func refresh() -> void:
+	for i in range(Global.player_inventory.items.size()):
+		print("azy")
+		inventory_objects[i].get_node("TextureRect").texture = Global.player_inventory.items[i].texture
+		inventory_objects[i].visible = true
+		objects_slots[i] = inventory_slots_positions[i]
 
 func _on_area_2d_mouse_entered() -> void:
 	if grabbed_object == -1:
@@ -94,3 +101,12 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if grabbed_object != -1:
 		objects_slots[grabbed_object] = body.global_position
+
+
+func _on_confirm_2_button_up() -> void:
+	Global.is_craft_ui_open = false
+
+
+func _on_visibility_changed() -> void:
+	if visible:
+		refresh()

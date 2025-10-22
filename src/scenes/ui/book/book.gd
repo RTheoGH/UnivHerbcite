@@ -40,12 +40,12 @@ func remplir_page_plante(book: Array, i: int, tex: TextureRect, titre: RichTextL
 		texte.text = ""
 
 func remplir_page_item(book: Array, i: int, tex: TextureRect, titre: RichTextLabel, texte: RichTextLabel):
-	print("chef?")
+	#print("chef?")
 	if current_index_not_empty(book, i):
 		var plante = book[i]
 		var item = plante.item
-		print("allo")
-		print(item)
+		#print("allo")
+		#print(item)
 		if item != null:
 			tex.texture = item.texture
 			titre.text = str(InventoryItem.InventoryItemType.find_key(item.type))

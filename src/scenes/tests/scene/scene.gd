@@ -14,6 +14,7 @@ func _ready() -> void:
 	$maxwell/song.play()
 	
 	$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
+	Global.is_craft_ui_open = false
 	
 	pass # Replace with function body.
 
@@ -28,6 +29,11 @@ func _process(delta: float) -> void:
 		$Pause.visible = false
 		$Map.visible = Global.minimap_activated
 		AudioServer.set_bus_mute(music_bus,false)
+	
+	if Global.is_craft_ui_open:
+		$CraftUI.visible = true
+	else:
+		$CraftUI.visible = false
 	
 	if Input.is_action_just_pressed("ouvrir_livre") and !Global.is_inventory_open:
 		if !Global.isPaused:
