@@ -3,15 +3,15 @@ extends Resource
 class_name InventoryItem
 
 enum InventoryItemType{
-	JUJUBIER,
-	ARBOUSIER, 
-	ASPERGE,
-	PRUNIER,
-	OLIVIER,
-	FIGUE,
-	LAVANDE,
-	LIERRE,
-	ACANTHE
+	JUJUBES,
+	ARBOUSES, 
+	ASPERGES,
+	MYROBOLANS,
+	OLIVES,
+	FIGUES,
+	LAVANDES,
+	LIERRES,
+	ACANTHES
 }
 
 @export var type : InventoryItemType

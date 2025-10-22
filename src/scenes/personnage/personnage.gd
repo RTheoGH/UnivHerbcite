@@ -17,9 +17,9 @@ func try_grab() -> Node3D:
 	if is_instance_of(obj, Interactable):
 		obj.on_interaction()
 		if !already_discovered:
-			$Informations.nom = str(InventoryItem.InventoryItemType.find_key(obj.item.type))
-			$Informations.image = obj.item.texture
-			$Informations.texte = obj.item.description
+			$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
+			$Informations.image = obj.plante.texture
+			$Informations.texte = obj.plante.description
 			$Informations.activate()
 	return obj
 	
@@ -60,15 +60,15 @@ func _physics_process(delta: float) -> void:
 				#$Informations.visible = true
 				print(Global.herbier)
 				for h in Global.herbier:
-					if h.type == obj.item.type:
+					if h.type == obj.plante.type:
 						already_discovered = true
 
 				$Informations.fade_in()
 				
 				if already_discovered:
-					$Informations.nom = str(InventoryItem.InventoryItemType.find_key(obj.item.type))
-					$Informations.image = obj.item.texture
-					$Informations.texte = obj.item.description
+					$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
+					$Informations.image = obj.plante.texture
+					$Informations.texte = obj.plante.description
 				else:
 					$Informations.nom = "???"
 					$Informations.image = load("res://assets/graphical/ui/hmmmm.png")

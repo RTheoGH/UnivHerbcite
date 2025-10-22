@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Plante" load_steps=3 format=3 uid="uid://cnhhrmbd4cdyi"]
+
+[ext_resource type="Resource" uid="uid://ckhjf2dpre2qa" path="res://assets/game_resources/items/Olives.tres" id="1_3sf6d"]
+[ext_resource type="Script" uid="uid://j5dnokgf8rjf" path="res://src/classes/plantes.gd" id="1_lvqio"]
+
+[resource]
+script = ExtResource("1_lvqio")
+type = 4
+item = ExtResource("1_3sf6d")
+metadata/_custom_type_script = "uid://j5dnokgf8rjf"

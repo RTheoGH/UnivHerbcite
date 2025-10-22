@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 		texture = sprites[index]
 		offset = offsets[index]
 		
-		print(index)
+		#print(index)
 		
 	else:
 		texture = sprites[texture_index_override]

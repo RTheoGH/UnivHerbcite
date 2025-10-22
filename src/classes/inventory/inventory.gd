@@ -19,5 +19,3 @@ func add_item(item : InventoryItem):
 		# Discard an item ? 
 	else : 
 		items.push_back(item)
-		if(!Global.herbier.has(item)):
-			Global.herbier.push_back(item)

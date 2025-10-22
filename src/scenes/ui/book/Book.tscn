@@ -208,6 +208,7 @@ anchor_bottom = 0.36166355
 offset_left = -3.0517578e-05
 offset_right = -3.0517578e-05
 offset_bottom = -1.5258789e-05
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="gauche_titre" type="RichTextLabel" parent="gauche"]
@@ -255,6 +256,7 @@ offset_left = 0.053901672
 offset_right = -0.027999878
 offset_bottom = -0.11200714
 grow_horizontal = 2
+expand_mode = 1
 
 [node name="droite_titre" type="RichTextLabel" parent="droite"]
 layout_mode = 1
