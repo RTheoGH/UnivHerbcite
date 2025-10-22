@@ -21,3 +21,9 @@ func add_item(item : InventoryItem):
 		items.push_back(item)
 		if(!Global.herbier.has(item)):
 			Global.herbier.push_back(item)
+
+func has(itemType : InventoryItem.InventoryItemType) -> bool:
+	for i in items:
+		if i.type == itemType:
+			return true
+	return false
