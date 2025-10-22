@@ -1,15 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://cba4t0t6a3gdq"]
+[gd_scene load_steps=6 format=3 uid="uid://cba4t0t6a3gdq"]
 
+[ext_resource type="Texture2D" uid="uid://s2n3bsbvtliw" path="res://assets/graphical/Textures/craft_table_texture.png" id="1_lbvtx"]
 [ext_resource type="Script" uid="uid://baak2k6sntn4u" path="res://src/scenes/tests/crafting_table.gd" id="1_tultk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_376vj"]
-albedo_color = Color(0.8392157, 0.67058825, 0.5411765, 1)
+albedo_texture = ExtResource("1_lbvtx")
+uv1_scale = Vector3(3, 2, 3.17)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tultk"]
-size = Vector3(2, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_376vj"]
-size = Vector3(2.0002441, 1, 1)
+size = Vector3(1.0064087, 1, 1)
 
 [node name="CraftingTable" type="MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_376vj")
@@ -18,7 +19,7 @@ mesh = SubResource("BoxMesh_tultk")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207031, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00015258789, 0, 0)
 shape = SubResource("BoxShape3D_376vj")
 
 [node name="Interactable" type="Area3D" parent="."]

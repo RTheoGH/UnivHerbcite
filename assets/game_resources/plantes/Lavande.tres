@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Plante" load_steps=4 format=3 uid="uid://byesbrpgol73j"]
+
+[ext_resource type="Resource" uid="uid://copf3qsajvk11" path="res://assets/game_resources/items/lavandes.tres" id="1_7mfag"]
+[ext_resource type="Script" uid="uid://j5dnokgf8rjf" path="res://src/classes/plantes.gd" id="1_kslq8"]
+[ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="2_0pd2j"]
+
+[resource]
+script = ExtResource("1_kslq8")
+type = 6
+texture = ExtResource("2_0pd2j")
+description = "c'est violet hihi"
+item = ExtResource("1_7mfag")
+metadata/_custom_type_script = "uid://j5dnokgf8rjf"

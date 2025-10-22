@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj7os2qpphhr3"
-path.s3tc="res://.godot/imported/craft.png-1257ac9df47efd0fe4e355e190d41502.s3tc.ctex"
+uid="uid://d2xe0exd7f5if"
+path.s3tc="res://.godot/imported/figuier.png-91cb6cdad6345afcfcb38a5a1e1a6c5e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/graphical/ui/craft.png"
-dest_files=["res://.godot/imported/craft.png-1257ac9df47efd0fe4e355e190d41502.s3tc.ctex"]
+source_file="res://assets/graphical/plantes/figuier.png"
+dest_files=["res://.godot/imported/figuier.png-91cb6cdad6345afcfcb38a5a1e1a6c5e.s3tc.ctex"]
 
 [params]
 

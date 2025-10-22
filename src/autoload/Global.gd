@@ -20,8 +20,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if(Input.is_action_just_pressed("pause")):
+	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open):
 		isPaused = !isPaused
+
+	if Global.is_craft_ui_open and Input.is_action_just_pressed("pause"):
+		is_craft_ui_open = !is_craft_ui_open
 
 	if(Input.is_action_just_pressed("fullscreen")):
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:

@@ -82,6 +82,8 @@ func _physics_process(delta: float) -> void:
 		one_time = false
 		already_discovered = false
 		$Informations.clean()
+		
+		Global.is_craft_ui_open = false
 	
 	if Input.is_action_just_pressed("grab") and !Global.isPaused:
 		try_grab()

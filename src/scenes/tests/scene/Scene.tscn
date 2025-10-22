@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=56 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -24,6 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://kxgietma6upl" path="res://src/scenes/tests/smoke_zones/smoke_zone.tscn" id="18_qoxpl"]
 [ext_resource type="Script" uid="uid://byq8iypi45525" path="res://src/classes/AnimatedMultiSprite.gd" id="19_mcf5s"]
 [ext_resource type="Texture2D" uid="uid://de75rn8e1y3s1" path="res://assets/graphical/plantes/arbousier.png" id="20_j0txf"]
+[ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
+[ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="26_5x5f6"]
+[ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
+[ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18jua"]
 albedo_color = Color(1, 1, 0.42745098, 1)
@@ -40,9 +44,13 @@ radius = 0.5004883
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_plqpu"]
 radius = 0.51220703
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rnopa"]
+height = 2.901764
+radius = 1.4863281
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wlu1f"]
-height = 4.161865
-radius = 1.7792969
+height = 4.1701355
+radius = 1.5712891
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_qoxpl"]
 parameter_name = "Texture2DParameter"
@@ -154,6 +162,30 @@ shader_parameter/Texture2DParameter = SubResource("NoiseTexture2D_sbyx2")
 
 [sub_resource type="QuadMesh" id="QuadMesh_hwj20"]
 material = SubResource("ShaderMaterial_5x5f6")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yp1p4"]
+height = 3.7844238
+radius = 2.0253906
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_yayvv"]
+height = 3.7375488
+radius = 2.3076172
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ew3or"]
+height = 4.5585938
+radius = 1.3496094
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gveul"]
+height = 4.936035
+radius = 1.4091797
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5x5f6"]
+height = 1.3632813
+radius = 0.86572266
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hwj20"]
+height = 1.487793
+radius = 0.94433594
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
@@ -460,8 +492,14 @@ bones/51/rotation = Quaternion(-1.4496399e-08, 0.9998002, 0.019989476, -1.334745
 bones/53/rotation = Quaternion(-0.82678765, 1.8329055e-07, -2.694016e-07, 0.56251436)
 bones/54/rotation = Quaternion(-2.4318398e-08, 0.9998002, 0.01998875, -5.3322486e-07)
 
-[node name="Interactable" type="Area3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.21738, 5.1820517, -10.086426)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
+shape = SubResource("CylinderShape3D_rnopa")
+
+[node name="Interactable" type="Area3D" parent="StaticBody3D"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -469,7 +507,7 @@ is_collectible = true
 plante = ExtResource("18_mcf5s")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="StaticBody3D/Interactable"]
 billboard = 2
 shaded = true
 texture = ExtResource("20_j0txf")
@@ -479,7 +517,7 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
@@ -489,6 +527,94 @@ required_item = 5
 
 [node name="GPUParticles3D" parent="SmokeZone/Area3D" index="1"]
 draw_pass_1 = SubResource("QuadMesh_hwj20")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.18727, 4.7443814, -9.932301)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009643555, 0)
+shape = SubResource("CylinderShape3D_yp1p4")
+
+[node name="Interactable" type="Area3D" parent="StaticBody3D2"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("7_j0txf")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="StaticBody3D2/Interactable"]
+billboard = 2
+shaded = true
+texture = ExtResource("25_sbyx2")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("25_sbyx2")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04248047, 0)
+shape = SubResource("CylinderShape3D_yayvv")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.44838, 5.1820517, -14.738766)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0362854, 0)
+shape = SubResource("CylinderShape3D_ew3or")
+
+[node name="Interactable" type="Area3D" parent="StaticBody3D3"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("16_qoxpl")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="StaticBody3D3/Interactable"]
+billboard = 2
+shaded = true
+texture = ExtResource("26_5x5f6")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("26_5x5f6")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098861694, 0)
+shape = SubResource("CylinderShape3D_gveul")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.19719, 5.1820517, -8.221058)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
+shape = SubResource("CylinderShape3D_5x5f6")
+
+[node name="Interactable" type="Area3D" parent="StaticBody3D4"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("27_hwj20")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="StaticBody3D4/Interactable"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
+billboard = 2
+shaded = true
+texture = ExtResource("27_5x5f6")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("27_5x5f6")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
+shape = SubResource("CylinderShape3D_hwj20")
 
 [editable path="Map2"]
 [editable path="Map2/map"]
