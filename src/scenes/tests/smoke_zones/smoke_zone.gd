@@ -9,6 +9,8 @@ func _ready() -> void:
 
 func on_interaction():
 	if Global.player_inventory.has(required_item):
+		get_parent().get_node("Open").play()
+		await get_tree().create_timer(1).timeout
 		queue_free()
 		#emit_signal("revele_la_zone",required_item)
 	else:

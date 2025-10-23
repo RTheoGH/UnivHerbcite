@@ -4,7 +4,6 @@ extends Control
 @onready var slots : Array = $PanelContainer/MarginContainer/HBoxContainer.get_children()
 
 var is_open = false
-var current_slot = 0
 
 func _ready():
 	close()
@@ -41,29 +40,29 @@ func close():
 	
 func change_current_slot():
 	if Input.is_action_just_pressed("slot_left"):
-		if current_slot == 0:
-			current_slot = 2
+		if Global.inv_current_slot == 0:
+			Global.inv_current_slot = 2
 		else:
-			current_slot -= 1
+			Global.inv_current_slot -= 1
 	if Input.is_action_just_pressed("slot_right"):
-		if current_slot == 2:
-			current_slot = 0
+		if Global.inv_current_slot == 2:
+			Global.inv_current_slot = 0
 		else:
-			current_slot += 1
+			Global.inv_current_slot += 1
 	
 	for i in range(slots.size()):
 		var texture_rect = slots[i].get_node("TextureRect")
 
-		if i == current_slot:
+		if i == Global.inv_current_slot:
 			texture_rect.texture = load("res://assets/graphical/ui/active_case.png")
 		else:
 			texture_rect.texture = load("res://assets/graphical/ui/base_case.png")
 
 func _on_inventory_ui_slot_mouse_entered() -> void:
-	current_slot = 0
+	Global.inv_current_slot = 0
 
 func _on_inventory_ui_slot_2_mouse_entered() -> void:
-	current_slot = 1
+	Global.inv_current_slot = 1
 
 func _on_inventory_ui_slot_3_mouse_entered() -> void:
-	current_slot = 2
+	Global.inv_current_slot = 2
