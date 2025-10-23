@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=58 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://nf6v4eyudbci" path="res://assets/sounds/Maxwell the Cat Theme..mp3" id="11_bho2e"]
 [ext_resource type="PackedScene" uid="uid://p61x7d77l7dy" path="res://assets/game_resources/models/Stegosaurus/Stegosaurus.fbx" id="12_0f5jq"]
 [ext_resource type="PackedScene" uid="uid://c2hofkulctjyx" path="res://assets/game_resources/models/Frog/Frog.fbx" id="13_3f8bk"]
+[ext_resource type="AudioStream" uid="uid://b0q0ihic36xcy" path="res://assets/sounds/bottle_break.mp3" id="13_yayvv"]
 [ext_resource type="PackedScene" uid="uid://6s8ly8n3yodt" path="res://assets/game_resources/models/Animaux/ShibaInu.fbx" id="14_umo38"]
 [ext_resource type="PackedScene" uid="uid://dhfq6rdntr7u6" path="res://assets/game_resources/models/Animaux/Stag.fbx" id="15_qoxpl"]
 [ext_resource type="Resource" uid="uid://bvlc8iqr38lqw" path="res://assets/game_resources/plantes/Jujubier.tres" id="16_qoxpl"]
@@ -320,6 +321,11 @@ stream = ExtResource("6_d35k2")
 autoplay = true
 bus = &"Music"
 
+[node name="Open" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_yayvv")
+volume_db = -15.0
+bus = &"SFX"
+
 [node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_5kwoq")]
 anchors_preset = -1
 anchor_left = -0.22000001
@@ -546,7 +552,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="SmokeZone" parent="." instance=ExtResource("18_qoxpl")]
-transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 2.655, -135.70338, 4.5916076, 0.50598264)
+transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -136.38553, 4.5916076, 0.97156)
 required_item = 5
 
 [node name="GPUParticles3D" parent="SmokeZone/Area3D" index="1"]

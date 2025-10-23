@@ -27,6 +27,8 @@ func _ready() -> void:
 	$Camera3D/RayCast3D.collide_with_areas = true
 	$Camera3D/RayCast3D.collide_with_bodies = false
 	$Informations.hide()
+	
+	$Item.texture = null
 
 func _physics_process(delta: float) -> void:
 	
@@ -40,6 +42,14 @@ func _physics_process(delta: float) -> void:
 	else: 
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
+	if Global.player_inventory.items.is_empty():
+		$Item.texture = null
+	else:
+		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
+			var sprite_to_show = Global.player_inventory.items[Global.inv_current_slot]
+			$Item.texture = sprite_to_show.texture
+		else:
+			$Item.texture = null
 		
 	var cam_diff := Vector2.ZERO
 	if !static_cam:

@@ -69,3 +69,17 @@ mesh = SubResource("CapsuleMesh_41j16")
 transform = Transform3D(0.2624319, 0.08218585, -3.5924577e-09, 2.1185856e-17, -1.20206325e-08, -0.27500004, -0.08218585, 0.2624319, -1.1471259e-08, -0.32667148, -0.8260915, -0.46197093)
 material_override = SubResource("StandardMaterial3D_taega")
 mesh = SubResource("CapsuleMesh_41j16")
+
+[node name="Item" type="TextureRect" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.822
+anchor_top = 0.72800004
+anchor_right = 0.943
+anchor_bottom = 0.93500006
+offset_left = 0.05596924
+offset_top = 0.25598145
+offset_right = -0.33605957
+offset_bottom = 0.11993408
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
