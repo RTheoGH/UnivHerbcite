@@ -1,8 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://hyxjxaek1eag"]
+[gd_scene load_steps=22 format=3 uid="uid://hyxjxaek1eag"]
 
 [ext_resource type="Script" uid="uid://deysa375pgxig" path="res://src/scenes/personnage/personnage.gd" id="1_34im4"]
 [ext_resource type="Texture2D" uid="uid://cy0ohhvb38hg8" path="res://assets/graphical/crosshair.png" id="2_v37cp"]
 [ext_resource type="PackedScene" uid="uid://dyuacubusgehf" path="res://src/scenes/ui/informations/informations.tscn" id="3_41j16"]
+[ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="4_edy0f"]
+[ext_resource type="AudioStream" uid="uid://034u1uw3p1td" path="res://assets/sounds/footstep1.mp3" id="5_xa0ke"]
+[ext_resource type="AudioStream" uid="uid://cp468p7jtv44h" path="res://assets/sounds/footstep2.mp3" id="6_hga14"]
+[ext_resource type="AudioStream" uid="uid://cxa8xfxdbjmjn" path="res://assets/sounds/footstep3.mp3" id="7_maodm"]
+[ext_resource type="AudioStream" uid="uid://c5tcfjddi4xfo" path="res://assets/sounds/footstep4.mp3" id="8_2ncbn"]
+[ext_resource type="AudioStream" uid="uid://bf2m64bo8d6sw" path="res://assets/sounds/footstep5.mp3" id="9_rthui"]
+[ext_resource type="AudioStream" uid="uid://d0ostk44b0l6q" path="res://assets/sounds/footstep6.mp3" id="10_epq6u"]
+[ext_resource type="AudioStream" uid="uid://dgkb26t7hvbqp" path="res://assets/sounds/footstep7.mp3" id="11_wsu1q"]
+[ext_resource type="AudioStream" uid="uid://cnx3pkxvoaxn5" path="res://assets/sounds/footstep8.mp3" id="12_8ux3l"]
+[ext_resource type="Script" uid="uid://bphemefgd4hxh" path="res://src/classes/Alert.gd" id="13_hga14"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edy0f"]
+transparency = 1
+shading_mode = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_eidfi"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e1nwe"]
 
@@ -14,9 +30,29 @@ roughness = 0.75
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_41j16"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eidfi"]
+shader = ExtResource("4_edy0f")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_40pqb"]
+shuffle = true
+loop = false
+stream_count = 8
+stream_0 = ExtResource("5_xa0ke")
+stream_1 = ExtResource("6_hga14")
+stream_2 = ExtResource("7_maodm")
+stream_3 = ExtResource("8_2ncbn")
+stream_4 = ExtResource("9_rthui")
+stream_5 = ExtResource("10_epq6u")
+stream_6 = ExtResource("11_wsu1q")
+stream_7 = ExtResource("12_8ux3l")
+
 [node name="Perso" type="CharacterBody3D"]
 collision_layer = 3
 script = ExtResource("1_34im4")
+frame_amount = 0.02
+frame_speed = 7.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44753653, 0)
@@ -44,6 +80,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_v37cp")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.74621886, 0.11165715, -0.2639182, -0.032047596, 0.7640752, 0.23264763, 0.28476855, -0.20660256, 0.7177639, 1.303489, -0.66686034, -1.3990556)
+material_override = SubResource("StandardMaterial3D_edy0f")
+mesh = SubResource("QuadMesh_eidfi")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_e1nwe")
 
@@ -62,24 +103,51 @@ offset_bottom = -4.0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2665527, -0.067636326, 2.9564775e-09, 0, -1.2020631e-08, -0.275, 0.067636326, 0.2665527, -1.16513865e-08, 0.35105938, -0.8260915, -0.46197093)
+visible = false
 material_override = SubResource("StandardMaterial3D_taega")
 mesh = SubResource("CapsuleMesh_41j16")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2624319, 0.08218585, -3.5924577e-09, 2.1185856e-17, -1.20206325e-08, -0.27500004, -0.08218585, 0.2624319, -1.1471259e-08, -0.32667148, -0.8260915, -0.46197093)
+visible = false
 material_override = SubResource("StandardMaterial3D_taega")
 mesh = SubResource("CapsuleMesh_41j16")
 
 [node name="Item" type="TextureRect" parent="."]
 visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_eidfi")
 anchors_preset = -1
-anchor_left = 0.822
-anchor_top = 0.72800004
-anchor_right = 0.943
-anchor_bottom = 0.93500006
-offset_left = 0.05596924
-offset_top = 0.25598145
-offset_right = -0.33605957
-offset_bottom = 0.11993408
+anchor_left = 0.8
+anchor_top = 0.67300004
+anchor_right = 0.98100007
+anchor_bottom = 0.98300004
+offset_left = 0.39996338
+offset_top = -0.104034424
+offset_right = 0.38793945
+offset_bottom = 0.015991211
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Marche" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPlaylist_40pqb")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="TextAlert" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_left = 0.32500002
+anchor_top = 0.606
+anchor_right = 0.67800003
+anchor_bottom = 0.81000006
+offset_left = -0.4000244
+offset_top = 0.3119812
+offset_right = -0.056030273
+offset_bottom = 0.11993408
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13_hga14")
+metadata/_custom_type_script = "uid://bphemefgd4hxh"

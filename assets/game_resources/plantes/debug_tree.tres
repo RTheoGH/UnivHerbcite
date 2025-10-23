@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Plante" load_steps=3 format=3 uid="uid://0t4b1wx4lvym"]
+[gd_resource type="Resource" script_class="Plante" load_steps=4 format=3 uid="uid://0t4b1wx4lvym"]
 
 [ext_resource type="Resource" uid="uid://ch6i8h812nwm0" path="res://assets/game_resources/items/potions/potion_rouge.tres" id="1_0mknp"]
 [ext_resource type="Script" uid="uid://j5dnokgf8rjf" path="res://src/classes/plantes.gd" id="2_8yxaj"]
+[ext_resource type="Texture2D" uid="uid://dam4f6nba3mh3" path="res://assets/graphical/icon.svg" id="3_8yxaj"]
 
 [resource]
 script = ExtResource("2_8yxaj")
 type = 9
+texture = ExtResource("3_8yxaj")
 description = "DEBUGGG"
 item = ExtResource("1_0mknp")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

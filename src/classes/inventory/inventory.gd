@@ -13,12 +13,13 @@ func add_item(item : InventoryItem):
 			item.quantity += 1
 		else :
 			print( "You're carrying as many " + str(InventoryItem.InventoryItemType.find_key(item.type)) + " as you can ! ")
-			
-	elif items.size() > invSize:
-		print(" Your inventory is full ! ")
-		# Discard an item ? 
-	else : 
-		items.push_back(item)
+	else:
+		print(items.size())
+		if items.size()+1 > invSize:
+			print(" Your inventory is full ! ")
+			# Discard an item ? 
+		else : 
+			items.push_back(item)
 		
 func remove_item(item : InventoryItem):
 	if items.has(item):

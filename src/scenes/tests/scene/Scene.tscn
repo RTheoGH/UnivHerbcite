@@ -351,7 +351,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.2523017, 0)
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
 
 [node name="maxwell" parent="." instance=ExtResource("10_q3pbt")]
-transform = Transform3D(-0.06975737, 0.060157273, 0.9957483, 0.03803872, 0.99761474, -0.057605207, -0.9968386, 0.033858597, -0.071879, -259.17963, 12.454014, -156.3969)
+transform = Transform3D(-0.9923292, 0.044497136, 0.115338475, 0.038038716, 0.9976147, -0.057605207, -0.117626406, -0.052775994, -0.9916542, -204.90475, 4.484768, 1.065978)
 
 [node name="song" type="AudioStreamPlayer3D" parent="maxwell"]
 stream = ExtResource("11_bho2e")

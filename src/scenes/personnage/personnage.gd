@@ -6,6 +6,17 @@ const JUMP_VELOCITY = 4.5
 var previous_mouse_pos:Vector2 = DisplayServer.window_get_size()/2
 @onready var cam_fps: Node3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
+
+@onready var item_frame: MeshInstance3D = $Camera3D/MeshInstance3D
+var frame_pos: Vector3
+@export var frame_timer: float = 0.0
+@export var frame_amount: float = 0.05
+@export var frame_speed: float = 10.0
+
+@onready var audio_marche : AudioStreamPlayer2D = $Marche
+var step_timer: float = 0.0
+var step_interval: float = 0.5
+
 #var cam_speed = 0.5
 var static_cam := false
 
@@ -16,11 +27,15 @@ func try_grab() -> Node3D:
 	var obj := ray.get_collider()
 	if is_instance_of(obj, Interactable):
 		obj.on_interaction()
-		if !already_discovered && obj.plante != null:
-			$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
-			$Informations.image = obj.plante.texture
-			$Informations.texte = obj.plante.description
-			$Informations.activate()
+		if !already_discovered:
+			if obj.plante != null:
+				$TextAlert.show_alert("Nouvelle plante découverte !")
+				$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
+				$Informations.image = obj.plante.texture
+				$Informations.texte = obj.plante.description
+				$Informations.activate()
+		else: # A corriger selon si l'inventaire est plein ou pas
+			$TextAlert.show_alert("Ingrédient collecté !")
 	return obj
 	
 func _ready() -> void:
@@ -28,7 +43,9 @@ func _ready() -> void:
 	$Camera3D/RayCast3D.collide_with_bodies = false
 	$Informations.hide()
 	
-	$Item.texture = null
+	item_frame.material_override.albedo_color.a = 0
+	item_frame.material_override.albedo_texture = null 
+	frame_pos = item_frame.position
 
 func _physics_process(delta: float) -> void:
 	
@@ -43,13 +60,16 @@ func _physics_process(delta: float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if Global.player_inventory.items.is_empty():
-		$Item.texture = null
+		item_frame.material_override.albedo_color.a = 0
+		item_frame.material_override.albedo_texture = null
 	else:
 		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
 			var sprite_to_show = Global.player_inventory.items[Global.inv_current_slot]
-			$Item.texture = sprite_to_show.texture
+			item_frame.material_override.albedo_color.a = 1
+			item_frame.material_override.albedo_texture = sprite_to_show.texture
 		else:
-			$Item.texture = null
+			item_frame.material_override.albedo_color.a = 0
+			item_frame.material_override.albedo_texture = null
 		
 	var cam_diff := Vector2.ZERO
 	if !static_cam:
@@ -138,6 +158,26 @@ func _physics_process(delta: float) -> void:
 	
 	previous_mouse_pos = get_viewport().get_mouse_position()
 	
+	var h_speed = Vector2(velocity.x, velocity.z).length()
+	if h_speed > 0.1 and is_on_floor():
+		frame_timer += delta * frame_speed
+		item_frame.position.y = frame_pos.y + sin(frame_timer) * frame_amount
+	else:
+		frame_timer = 0.0
+		item_frame.position.y = lerp(item_frame.position.y, frame_pos.y, delta * 5)
+	
+	var is_moving = input_dir.length() > 0.1 and is_on_floor()
+	if is_moving:
+		step_timer -= delta
+		if step_timer <= 0.0:
+			if not audio_marche.playing:
+				audio_marche.pitch_scale = randf_range(0.9,1.1)
+				audio_marche.play()
+			step_timer = step_interval
+	else:
+		step_timer = 0.0
+		audio_marche.stop()
+		
 	static_cam = false
 	move_and_slide()
 
