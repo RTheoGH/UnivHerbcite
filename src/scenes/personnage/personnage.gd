@@ -7,7 +7,8 @@ var previous_mouse_pos:Vector2 = DisplayServer.window_get_size()/2
 @onready var cam_fps: Node3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
 
-@onready var item_frame: MeshInstance3D = $Camera3D/MeshInstance3D
+#@onready var item_frame: MeshInstance3D = $Camera3D/MeshInstance3D
+@onready var item_frame: Sprite3D = $Camera3D/Sprite3D
 var frame_pos: Vector3
 @export var frame_timer: float = 0.0
 @export var frame_amount: float = 0.05
@@ -43,8 +44,7 @@ func _ready() -> void:
 	$Camera3D/RayCast3D.collide_with_bodies = false
 	$Informations.hide()
 	
-	item_frame.material_override.albedo_color.a = 0
-	item_frame.material_override.albedo_texture = null 
+	item_frame.texture = null 
 	frame_pos = item_frame.position
 
 func _physics_process(delta: float) -> void:
@@ -60,16 +60,13 @@ func _physics_process(delta: float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	if Global.player_inventory.items.is_empty():
-		item_frame.material_override.albedo_color.a = 0
-		item_frame.material_override.albedo_texture = null
+		item_frame.texture = null
 	else:
 		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
 			var sprite_to_show = Global.player_inventory.items[Global.inv_current_slot]
-			item_frame.material_override.albedo_color.a = 1
-			item_frame.material_override.albedo_texture = sprite_to_show.texture
+			item_frame.texture = sprite_to_show.texture
 		else:
-			item_frame.material_override.albedo_color.a = 0
-			item_frame.material_override.albedo_texture = null
+			item_frame.texture = null
 		
 	var cam_diff := Vector2.ZERO
 	if !static_cam:
