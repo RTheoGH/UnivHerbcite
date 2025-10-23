@@ -2,26 +2,21 @@ extends Control
 var grabbed_object: int = -1
 var hoverred_object: int = -1
 var hoverred_slot: Vector2
-@onready var inventory: Inventory = Global.player_inventory
 @onready var inventory_objects := [$Object1, $Object2, $Object3]
 var objects_slots : Array[Vector2]
 @onready var inventory_slots_positions := [$Place1.global_position, $Place2.global_position, $Place3.global_position]
 var precedent_place : Vector2 = Vector2(0, 0)
-
+var crafting_place := [-1, -1, -1]
+var result : InventoryItem = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	# TODO : À changer pour le vrai inventaire
-	#var new_item = load("res://inventory/items/Olivier.tres")
-	#var new_item2 = load("res://inventory/items/Figue.tres")
-	#inventory.items.append(new_item)
-	#inventory.items.append(new_item2)
 	objects_slots.resize(3)
 	
 	for i in range(Global.player_inventory.items.size()):
 		
-		inventory_objects[i].get_node("TextureRect").texture = inventory.items[i].texture
+		inventory_objects[i].get_node("TextureRect").texture = Global.player_inventory.items[i].texture
 		inventory_objects[i].visible = true
 		objects_slots[i] = inventory_slots_positions[i]
 
@@ -43,20 +38,29 @@ func _process(delta: float) -> void:
 			inventory_objects[grabbed_object].global_position = objects_slots[grabbed_object]
 			grabbed_object = -1
 			
+			var ings := get_current_ingredients()
+			for r in Global.recipes:
+				if r.can_craft(ings):
+					result = r.result
+					$TextureRect2.texture = result.texture
+					$RichTextLabel.text = str(InventoryItem.InventoryItemType.find_key(result.type))
+				else:
+					$TextureRect2.texture = null
+					$RichTextLabel.text = ""
+			
 		else:
 			print("Pas le droit de placer ici !")
 			inventory_objects[grabbed_object].global_position = precedent_place
 			objects_slots[grabbed_object] = precedent_place
 			
+		
+		
 	if Input.is_action_just_released("left_click"):
 		grabbed_object = -1
 	
-	#for i in Global.recipes:
-		#i.can_craft([$Place4,$Place5,$Place6])
 
 func can_place() -> bool :
 	
-	print(objects_slots)
 	
 	if grabbed_object == -1:
 		return false
@@ -73,11 +77,38 @@ func can_place() -> bool :
 	return true
 	
 func refresh() -> void:
+	
+	grabbed_object = -1
+	hoverred_object= -1
+	inventory_objects = [$Object1, $Object2, $Object3]
+	precedent_place = Vector2.ZERO
+	crafting_place = [-1, -1, -1]
+	result = null
+	objects_slots.clear()
+	objects_slots.resize(3)
+	
+	for i in range(inventory_objects.size()):
+		inventory_objects[i].global_position = inventory_slots_positions[i]
+		inventory_objects[i].visible = false
+	
 	for i in range(Global.player_inventory.items.size()):
-		print("azy")
 		inventory_objects[i].get_node("TextureRect").texture = Global.player_inventory.items[i].texture
 		inventory_objects[i].visible = true
 		objects_slots[i] = inventory_slots_positions[i]
+	
+	
+		
+	$TextureRect2.texture = null
+	$RichTextLabel.text = ""
+		
+func get_current_ingredients() -> Array[InventoryItem]:
+	var places := [$Place4, $Place5, $Place6]
+	var res : Array[InventoryItem] = [null, null, null]
+	for o in range(len(inventory_objects)):
+		for p in range(len(places)):
+			if inventory_objects[o].get_node("Area2D").get_overlapping_bodies().has(places[p]):
+				res[p] = Global.player_inventory.items[o]
+	return res
 
 func _on_area_2d_mouse_entered() -> void:
 	if grabbed_object == -1:
@@ -102,9 +133,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if grabbed_object != -1:
 		objects_slots[grabbed_object] = body.global_position
 
+func _on_confirm_button_up() -> void:
+	var current_ings := get_current_ingredients()
+	if result != null && Global.player_inventory.can_add_craft(current_ings):
+		Global.player_inventory.consume_items(current_ings)
+		Global.player_inventory.add_item(result)
+		refresh()
 
 func _on_confirm_2_button_up() -> void:
 	Global.is_craft_ui_open = false
+	result = null
 
 
 func _on_visibility_changed() -> void:
