@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=61 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -30,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="26_5x5f6"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
+[ext_resource type="Texture2D" uid="uid://ck0jtcc04q7hw" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18jua"]
 albedo_color = Color(1, 1, 0.42745098, 1)
@@ -188,6 +189,11 @@ radius = 0.86572266
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hwj20"]
 height = 1.487793
 radius = 0.94433594
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gveul"]
+albedo_texture = ExtResource("31_ew3or")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qhmxa"]
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
@@ -553,7 +559,8 @@ shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="SmokeZone" parent="." instance=ExtResource("18_qoxpl")]
 transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -136.38553, 4.5916076, 0.97156)
-required_item = 5
+required_item = 9
+smoke_color = Color(0.8901961, 0.08627451, 0.08627451, 1)
 
 [node name="GPUParticles3D" parent="SmokeZone/Area3D" index="1"]
 draw_pass_1 = SubResource("QuadMesh_hwj20")
@@ -645,6 +652,11 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4/Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, -171.49434, 4.644222, 4.8023977)
+material_override = SubResource("StandardMaterial3D_gveul")
+mesh = SubResource("QuadMesh_qhmxa")
 
 [editable path="Map2"]
 [editable path="Map2/map"]
