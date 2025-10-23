@@ -35,8 +35,9 @@ func try_grab() -> Node3D:
 				$Informations.image = obj.plante.texture
 				$Informations.texte = obj.plante.description
 				$Informations.activate()
-		else: # A corriger selon si l'inventaire est plein ou pas
-			$TextAlert.show_alert("Ingrédient collecté !")
+		else:
+			if Global.player_inventory.items.size() < 3:
+				$TextAlert.show_alert("Ingrédient collecté !")
 	return obj
 	
 func _ready() -> void:
@@ -177,7 +178,3 @@ func _physics_process(delta: float) -> void:
 		
 	static_cam = false
 	move_and_slide()
-
-func _je_revele_la_zone(pot):
-	print(pot.description)
-	pass

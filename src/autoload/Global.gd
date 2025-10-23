@@ -19,8 +19,13 @@ var recipes : Array[ItemRecipe] = [
 @onready var player_inventory : Inventory = preload("res://assets/game_resources/player_inventory.tres")
 var inv_current_slot: int = 0
 
+@onready var text_alert = get_tree().root.get_node("Scene/Perso/TextAlert")
+
 func _ready() -> void:
 	isPaused = false
+	
+	if player_inventory and text_alert:
+		player_inventory.connect("inventory_full", text_alert._on_inventory_full)
 
 func _process(delta: float) -> void:
 	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open):

@@ -6,6 +6,8 @@ class_name Inventory
 @export var invSize : int = 3
 @export var stackSize : int
 
+signal inventory_full
+
 func add_item(item : InventoryItem):
 	if items.has(item):
 		# Make a stack system oops
@@ -14,9 +16,9 @@ func add_item(item : InventoryItem):
 		else :
 			print( "You're carrying as many " + str(InventoryItem.InventoryItemType.find_key(item.type)) + " as you can ! ")
 	else:
-		print(items.size())
 		if items.size()+1 > invSize:
 			print(" Your inventory is full ! ")
+			inventory_full.emit()
 			# Discard an item ? 
 		else : 
 			items.push_back(item)
