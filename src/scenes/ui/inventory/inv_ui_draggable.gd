@@ -22,7 +22,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if hoverred_object != -1 and Input.is_action_just_pressed("left_click"):
 		precedent_place = objects_slots[hoverred_object]
 		print("precedent :", precedent_place)

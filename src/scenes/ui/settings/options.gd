@@ -19,7 +19,7 @@ func _ready() -> void:
 	$musique/musique_val.text = str(AudioServer.get_bus_volume_linear(music))
 	$menu/menu_val.text = str(AudioServer.get_bus_volume_linear(sfx))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_camera_speed()
 	set_global_volume()
 	set_music_volume()
@@ -187,12 +187,10 @@ func _on_slotD_pressed() -> void:
 func _on_minimap_pressed() -> void:
 	$sfx.play()
 	Global.minimap_activated = !Global.minimap_activated
-	print(Global.minimap_activated)
 
 func _on_form_minimap_pressed() -> void:
 	$sfx.play()
 	Global.carre_minimap = !Global.carre_minimap
-	print(Global.carre_minimap)
 
 func _on_sensi_slider_drag_started() -> void:
 	$sfx.play()

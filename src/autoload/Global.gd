@@ -4,8 +4,6 @@ var isPaused: bool
 var is_inventory_open: bool
 var is_craft_ui_open: bool
 var cam_speed = 0.3
-#var music_volume = 100
-#var ui_volume = 100
 var is_dragging = false
 
 var minimap_activated: bool = false
@@ -19,21 +17,12 @@ var recipes : Array[ItemRecipe] = [
 @onready var player_inventory : Inventory = preload("res://assets/game_resources/player_inventory.tres")
 var inv_current_slot: int = 0
 
-@onready var text_alert = get_tree().root.get_node("Scene/Perso/TextAlert")
+var text_alert: TextAlert
 
 func _ready() -> void:
 	isPaused = false
-	
-	if player_inventory and text_alert:
-		player_inventory.connect("inventory_full", text_alert._on_inventory_full)
-		
-	for wall in get_tree().get_nodes_in_group("walls"):
-		print(wall)
-		if wall.has_signal("wall_item_required"):
-			wall.connect("wall_item_required", text_alert._on_wall_item_required)
-		wall.connect("wall_removed", text_alert._on_wall_removed)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open):
 		isPaused = !isPaused
 
@@ -45,3 +34,13 @@ func _process(delta: float) -> void:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 		elif DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+func setup_text_alerts():
+	print("Alerts connected")
+	if player_inventory and text_alert:
+		player_inventory.connect("inventory_full", text_alert._on_inventory_full)
+		
+	for wall in get_tree().get_nodes_in_group("walls"):
+		if wall.has_signal("wall_item_required"):
+			wall.connect("wall_item_required", text_alert._on_wall_item_required)
+		wall.connect("wall_removed", text_alert._on_wall_removed)

@@ -17,12 +17,12 @@ func clean():
 	$RichTextLabel.text = ""
 	$RichTextLabel2.text = ""
 	
-func show_text(name: String, texte: String):
-	await type_text(l1,name)
-	await type_text(l2,texte)
+func show_text(p: String, t: String):
+	await type_text(l1,p)
+	await type_text(l2,t)
 	
-func type_text(label: RichTextLabel, texte: String):
-	label.text = texte
+func type_text(label: RichTextLabel, s: String):
+	label.text = s
 	label.visible_characters = 0
 	for i in range(texte.length()):
 		label.visible_characters = i + 1

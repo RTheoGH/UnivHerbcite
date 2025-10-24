@@ -6,7 +6,7 @@ var current_frame := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(backgrounds)
+	#print(backgrounds)
 	$fond.texture = load("res://assets/graphical/background/"+backgrounds[current_frame])
 	#if current_frame != backgrounds.size()-1 : 
 		#$fond.texture = load("res://ressources/background/"+backgrounds[current_frame+1])
@@ -21,7 +21,6 @@ func _ready() -> void:
 	$fond.material.set_shader_parameter("progression",0)
 	$BackgroundTimer.timeout.connect(
 		func ():
-			print("salut ça va")
 			transition()
 	)
 	$Backgrounds.frame += 1

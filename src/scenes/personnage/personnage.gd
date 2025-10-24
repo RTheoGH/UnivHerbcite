@@ -13,6 +13,7 @@ var frame_pos: Vector3
 @export var frame_timer: float = 0.0
 @export var frame_amount: float = 0.05
 @export var frame_speed: float = 10.0
+var current_slot := -1
 
 @onready var audio_marche : AudioStreamPlayer2D = $Marche
 var step_timer: float = 0.0
@@ -23,6 +24,12 @@ var static_cam := false
 
 var one_time: bool = false
 var already_discovered: bool = false
+
+var crosshair_textures = {
+	"default": preload("res://assets/graphical/crosshair.png"),
+	"pickup": preload("res://assets/graphical/crosshair_pickup.res"),
+	"interact": preload("res://assets/graphical/crosshair_interact.res")
+}
 
 func try_grab() -> Node3D:
 	var obj := ray.get_collider()
@@ -60,15 +67,8 @@ func _physics_process(delta: float) -> void:
 	else: 
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	if Global.player_inventory.items.is_empty():
-		item_frame.texture = null
-	else:
-		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
-			var sprite_to_show = Global.player_inventory.items[Global.inv_current_slot]
-			item_frame.texture = sprite_to_show.texture
-		else:
-			item_frame.texture = null
-		
+	_update_item_frame()
+	
 	var cam_diff := Vector2.ZERO
 	if !static_cam:
 		cam_diff = get_viewport().get_mouse_position() - previous_mouse_pos
@@ -84,7 +84,8 @@ func _physics_process(delta: float) -> void:
 	var obj := ray.get_collider()
 	if(is_instance_of(obj, Interactable)):
 		if obj.is_collectible:
-			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_pickup.res")
+			#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_pickup.res")
+			$Camera3D/Crosshair.texture = crosshair_textures["pickup"]
 			if !one_time:
 				one_time = true
 				for h in Global.herbier:
@@ -103,9 +104,11 @@ func _physics_process(delta: float) -> void:
 					$Informations.texte = "Vous n'avez pas encore découvert cette plante."
 				$Informations.activate()
 		else:
-			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
+			#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
+			$Camera3D/Crosshair.texture = crosshair_textures["interact"]
 	else:
-		$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair.png")
+		#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair.png")
+		$Camera3D/Crosshair.texture = crosshair_textures["default"]
 		$Informations.fade_out()
 		one_time = false
 		already_discovered = false
@@ -178,3 +181,11 @@ func _physics_process(delta: float) -> void:
 		
 	static_cam = false
 	move_and_slide()
+
+func _update_item_frame():
+	if Global.inv_current_slot != current_slot:
+		current_slot = Global.inv_current_slot
+		if current_slot >= 0 and current_slot < Global.player_inventory.items.size():
+			item_frame.texture = Global.player_inventory.items[current_slot].texture
+		else:
+			item_frame.texture = null

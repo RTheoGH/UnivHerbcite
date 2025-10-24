@@ -8,9 +8,8 @@ var is_open = false
 func _ready():
 	close()
 	
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("inventory") and !Global.isPaused:
-		print("hello")
 		if is_open:
 			close()
 		else:
@@ -23,7 +22,7 @@ func _process(delta):
 		close()
 
 func update_slides():
-	print(slots[0])
+	#print(slots[0])
 	for i in range(min(Global.player_inventory.items.size(),slots.size())):
 		slots[i].update_inventory_visual(Global.player_inventory.items[i])
 
