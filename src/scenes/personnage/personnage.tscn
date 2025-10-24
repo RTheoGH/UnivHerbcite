@@ -76,6 +76,7 @@ texture = ExtResource("2_v37cp")
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D"]
 transform = Transform3D(0.74621886, 0.11165715, -0.2639182, -0.032047596, 0.7640752, 0.23264763, 0.28476855, -0.20660256, 0.7177639, 1.303489, -0.66686034, -1.3990556)
+shaded = true
 no_depth_test = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -139,7 +140,7 @@ offset_right = -0.056030273
 offset_bottom = 0.11993408
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("13_hga14")

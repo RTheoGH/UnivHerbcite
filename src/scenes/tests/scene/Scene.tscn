@@ -628,7 +628,7 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="SmokeZone" parent="." instance=ExtResource("18_qoxpl")]
+[node name="SmokeZone" parent="." groups=["walls"] instance=ExtResource("18_qoxpl")]
 transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -136.38553, 4.5916076, 0.97156)
 required_item = 9
 smoke_color = Color(0.8901961, 0.08627451, 0.08627451, 1)

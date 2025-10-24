@@ -38,3 +38,9 @@ func _on_fade_out_finished():
 
 func _on_inventory_full():
 	show_alert("Inventaire plein !")
+
+func _on_wall_item_required(item):
+	show_alert("Requis : "+item)
+
+func _on_wall_removed():
+	show_alert("Zone débloquée !")

@@ -26,6 +26,12 @@ func _ready() -> void:
 	
 	if player_inventory and text_alert:
 		player_inventory.connect("inventory_full", text_alert._on_inventory_full)
+		
+	for wall in get_tree().get_nodes_in_group("walls"):
+		print(wall)
+		if wall.has_signal("wall_item_required"):
+			wall.connect("wall_item_required", text_alert._on_wall_item_required)
+		wall.connect("wall_removed", text_alert._on_wall_removed)
 
 func _process(delta: float) -> void:
 	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open):

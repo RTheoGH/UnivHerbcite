@@ -38,6 +38,7 @@ folder_colors={
 [global_group]
 
 droppable=""
+walls="Les murs qui bloquent"
 
 [gui]
 
