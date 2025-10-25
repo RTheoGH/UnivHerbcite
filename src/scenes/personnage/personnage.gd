@@ -116,7 +116,7 @@ func _physics_process(delta: float) -> void:
 		
 		Global.is_craft_ui_open = false
 	
-	if Input.is_action_just_pressed("grab") and !Global.isPaused:
+	if Input.is_action_just_pressed("grab") and !Global.isPaused and !Global.is_inventory_open and !Global.is_craft_ui_open:
 		try_grab()
 	
 	# Add the gravity.

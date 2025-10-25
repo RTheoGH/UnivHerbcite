@@ -386,6 +386,7 @@ shape = SubResource("CylinderShape3D_dvpi0")
 shape = SubResource("CylinderShape3D_plqpu")
 
 [node name="InvUi" parent="." instance=ExtResource("2_w7ipn")]
+visible = false
 
 [node name="CraftUI" parent="." instance=ExtResource("9_mqiyw")]
 visible = false
@@ -410,6 +411,7 @@ offset_left = 0.4400177
 offset_top = 0.23999023
 offset_right = -0.27111816
 offset_bottom = -0.16003418
+mouse_filter = 1
 player = NodePath("../Perso")
 
 [node name="Map2" parent="." instance=ExtResource("9_dod7h")]

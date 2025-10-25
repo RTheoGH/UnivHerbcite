@@ -25,7 +25,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if hoverred_object != -1 and Input.is_action_just_pressed("left_click"):
 		precedent_place = objects_slots[hoverred_object]
-		print("precedent :", precedent_place)
 		grabbed_object = hoverred_object
 
 	if grabbed_object != -1:
@@ -130,7 +129,7 @@ func _on_area_2d_mouse_exited() -> void:
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if grabbed_object != -1:
+	if grabbed_object != -1 and body not in $"../InvUi".get_children():
 		objects_slots[grabbed_object] = body.global_position
 
 func _on_confirm_button_up() -> void:

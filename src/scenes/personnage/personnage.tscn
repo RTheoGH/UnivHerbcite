@@ -94,6 +94,7 @@ offset_left = 0.32800293
 offset_top = -4.0
 offset_right = 0.32800293
 offset_bottom = -4.0
+mouse_filter = 1
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2665527, -0.067636326, 2.9564775e-09, 0, -1.2020631e-08, -0.275, 0.067636326, 0.2665527, -1.16513865e-08, 0.35105938, -0.8260915, -0.46197093)
@@ -140,6 +141,7 @@ offset_right = -0.056030273
 offset_bottom = 0.11993408
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1

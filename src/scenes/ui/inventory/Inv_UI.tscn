@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkm1i03s7ql1s"]
+[gd_scene load_steps=7 format=3 uid="uid://dkm1i03s7ql1s"]
 
 [ext_resource type="Script" uid="uid://cys43wqmq4edy" path="res://src/scenes/ui/inventory/inv_ui.gd" id="1_o4mch"]
 [ext_resource type="PackedScene" uid="uid://ce2lc7q7loeyr" path="res://src/scenes/ui/inventory/inventory_UI_slot.tscn" id="2_d45fw"]
 [ext_resource type="Texture2D" uid="uid://dh5prxur2dcpn" path="res://assets/graphical/ui/base_case.png" id="3_1nsrg"]
+[ext_resource type="Texture2D" uid="uid://c4dts8cloyk7k" path="res://assets/graphical/ui/supp.png" id="4_apju1"]
+[ext_resource type="PackedScene" uid="uid://vdhsofjvfa2j" path="res://src/scenes/ui/crafting/Draggable.tscn" id="5_q3uso"]
+[ext_resource type="PackedScene" uid="uid://b6okyqwhjjjp1" path="res://src/scenes/ui/crafting/Droppable.tscn" id="5_xgwml"]
 
 [node name="InvUi" type="Control"]
 layout_mode = 3
@@ -11,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_o4mch")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -46,6 +50,7 @@ theme_override_constants/separation = 20
 [node name="InventoryUiSlot" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_d45fw")]
 texture_filter = 1
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot"]
 layout_mode = 1
@@ -62,6 +67,7 @@ expand_mode = 1
 
 [node name="InventoryUiSlot2" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_d45fw")]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2"]
 texture_filter = 1
@@ -79,6 +85,7 @@ expand_mode = 1
 
 [node name="InventoryUiSlot3" parent="PanelContainer/MarginContainer/HBoxContainer" instance=ExtResource("2_d45fw")]
 layout_mode = 2
+mouse_filter = 1
 
 [node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3"]
 texture_filter = 1
@@ -94,6 +101,96 @@ mouse_filter = 2
 texture = ExtResource("3_1nsrg")
 expand_mode = 1
 
+[node name="InventoryUiSlot4" parent="." instance=ExtResource("2_d45fw")]
+texture_filter = 1
+layout_mode = 1
+anchor_left = 0.48697916
+anchor_top = 0.3912037
+anchor_right = 0.48697916
+anchor_bottom = 0.3912037
+offset_left = 491.0
+offset_top = 296.5
+offset_right = 566.0
+offset_bottom = 371.5
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="TextureRect2" type="TextureRect" parent="InventoryUiSlot4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 18.0
+offset_right = -17.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_apju1")
+
+[node name="TextureRect" type="TextureRect" parent="InventoryUiSlot4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.22000001
+anchor_top = -0.23300001
+anchor_right = 1.22
+anchor_bottom = 1.207
+offset_left = 0.5000019
+offset_top = 0.47500038
+offset_right = 0.5
+offset_bottom = 0.47499847
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_1nsrg")
+expand_mode = 1
+
+[node name="StaticBody2D" parent="." instance=ExtResource("5_xgwml")]
+position = Vector2(480.99997, 335)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("5_xgwml")]
+position = Vector2(576, 335)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("5_xgwml")]
+position = Vector2(671, 335)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("5_xgwml")]
+position = Vector2(1090, 588)
+input_pickable = true
+
+[node name="Node2D" parent="." groups=["draggable"] instance=ExtResource("5_q3uso")]
+visible = false
+position = Vector2(481, 335)
+scale = Vector2(3.385, 3.385)
+script = null
+
+[node name="Node2D2" parent="." groups=["draggable"] instance=ExtResource("5_q3uso")]
+visible = false
+position = Vector2(576, 335)
+scale = Vector2(3.385, 3.385)
+script = null
+
+[node name="Node2D3" parent="." groups=["draggable"] instance=ExtResource("5_q3uso")]
+visible = false
+position = Vector2(671, 335)
+scale = Vector2(3.385, 3.385)
+script = null
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_2_mouse_entered"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_3_mouse_entered"]
+[connection signal="mouse_entered" from="InventoryUiSlot4" to="." method="_on_inventory_ui_slot_mouse_entered"]
+[connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Node2D2/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="Node2D2/Area2D" to="." method="_on_area_2d_mouse_entered2"]
+[connection signal="mouse_exited" from="Node2D2/Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="body_entered" from="Node2D3/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="mouse_entered" from="Node2D3/Area2D" to="." method="_on_area_2d_mouse_entered3"]
+[connection signal="mouse_exited" from="Node2D3/Area2D" to="." method="_on_area_2d_mouse_exited"]
+
+[editable path="Node2D"]
+[editable path="Node2D2"]
+[editable path="Node2D3"]

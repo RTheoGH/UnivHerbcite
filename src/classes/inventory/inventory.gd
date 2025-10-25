@@ -28,12 +28,18 @@ func remove_item(item : InventoryItem):
 		item.quantity -= 1
 		if item.quantity <= 0:
 			items.erase(item)
+			
+func remove_item_type(item_type : InventoryItem.InventoryItemType):
+	var index = has(item_type)
+	if index != -1:
+		items.remove_at(index)
+		print(items)
 
-func has(itemType : InventoryItem.InventoryItemType) -> bool:
-	for i in items:
-		if i.type == itemType:
-			return true
-	return false
+func has(item_type : InventoryItem.InventoryItemType) -> int:
+	for i in range(items.size()):
+		if items[i].type == item_type:
+			return i
+	return -1
 
 func can_add_craft(ings : Array[InventoryItem]) -> bool:
 	for ing in range(ings.size()):
