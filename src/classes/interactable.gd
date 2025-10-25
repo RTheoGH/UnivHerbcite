@@ -18,7 +18,6 @@ func pick_up():
 	if(!Global.herbier.has(plante)):
 		Global.herbier.push_back(plante)
 	
-	print(Global.player_inventory.items)
 	#print(plante.type)
 	#print(plante.texture)
 	#print(plante.description)

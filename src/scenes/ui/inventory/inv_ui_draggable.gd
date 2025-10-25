@@ -106,17 +106,9 @@ func get_current_ingredients() -> Array[InventoryItem]:
 				res[p] = Global.player_inventory.items[o]
 	return res
 
-func _on_area_2d_mouse_entered() -> void:
+func _on_area_2d_mouse_entered(obj : int) -> void:
 	if grabbed_object == -1:
-		hoverred_object = 0
-
-func _on_area_2d_mouse_entered_2() -> void:
-	if grabbed_object == -1:
-		hoverred_object = 1
-
-func _on_area_2d_mouse_entered_3() -> void:
-	if grabbed_object == -1:
-		hoverred_object = 2
+		hoverred_object = obj
 
 func _on_area_2d_mouse_exited() -> void:
 	hoverred_object = -1

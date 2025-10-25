@@ -182,14 +182,9 @@ func remove_grabbed(g : int):
 	slots[g].get_node("item_quantity").text = str(Global.player_inventory.items[g].quantity)
 	update_slides()
 
-func _on_area_2d_mouse_entered() -> void:
-	hoverred_object = 0
+func _on_area_2d_mouse_entered(obj : int) -> void:
+	hoverred_object = obj
 
-func _on_area_2d_mouse_entered2() -> void:
-	hoverred_object = 1
-
-func _on_area_2d_mouse_entered3() -> void:
-	hoverred_object = 2
 
 func _on_area_2d_mouse_exited() -> void:
 	hoverred_object = -1

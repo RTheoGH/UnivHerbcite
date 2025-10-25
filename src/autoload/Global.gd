@@ -3,6 +3,7 @@ extends Node
 var isPaused: bool
 var is_inventory_open: bool
 var is_craft_ui_open: bool
+var is_chest_open: bool
 var cam_speed = 0.3
 var is_dragging = false
 

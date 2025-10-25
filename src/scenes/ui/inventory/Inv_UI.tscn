@@ -75,7 +75,7 @@ texture_filter = 1
 layout_mode = 2
 mouse_filter = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot"]
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.22000001
@@ -92,7 +92,7 @@ expand_mode = 1
 layout_mode = 2
 mouse_filter = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2"]
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -110,7 +110,7 @@ expand_mode = 1
 layout_mode = 2
 mouse_filter = 1
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3"]
+[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -152,7 +152,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_apju1")
 
-[node name="TextureRect" type="TextureRect" parent="InventoryUiSlot4"]
+[node name="TextureRect3" type="TextureRect" parent="InventoryUiSlot4"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.22000001
@@ -227,13 +227,13 @@ polygon = PackedVector2Array(63, -32, 39, 1, 87, 1)
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [0]]
 [connection signal="mouse_exited" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="body_entered" from="Node2D2/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="mouse_entered" from="Node2D2/Area2D" to="." method="_on_area_2d_mouse_entered2"]
+[connection signal="mouse_entered" from="Node2D2/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [1]]
 [connection signal="mouse_exited" from="Node2D2/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="body_entered" from="Node2D3/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="mouse_entered" from="Node2D3/Area2D" to="." method="_on_area_2d_mouse_entered3"]
+[connection signal="mouse_entered" from="Node2D3/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [2]]
 [connection signal="mouse_exited" from="Node2D3/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [0]]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [1]]
