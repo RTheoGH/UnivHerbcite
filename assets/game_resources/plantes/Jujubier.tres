@@ -7,6 +7,6 @@
 [resource]
 script = ExtResource("1_d60bf")
 texture = ExtResource("3_7uyuj")
-description = "where ju"
+description = "Petit arbre rustique aux branches épineuses et aux feuilles brillantes."
 item = ExtResource("1_ye13u")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

@@ -8,6 +8,6 @@
 script = ExtResource("1_u618x")
 type = 5
 texture = ExtResource("3_cyhi7")
-description = "figues...."
+description = "Arbre à feuilles larges et lobées, souvent cultivé dans les régions chaudes."
 item = ExtResource("1_qwos5")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

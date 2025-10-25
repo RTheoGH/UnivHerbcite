@@ -9,7 +9,7 @@ enum InventoryItemType{
 	MYROBOLANS,
 	OLIVES,
 	FIGUES,
-	LAVANDES,
+	LAVANDE,
 	LIERRES,
 	ACANTHES,
 	

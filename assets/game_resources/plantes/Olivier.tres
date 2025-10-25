@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_lvqio")
 type = 4
+description = "Arbre méditerranéen au tronc noueux et aux feuilles argentées."
 item = ExtResource("1_3sf6d")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

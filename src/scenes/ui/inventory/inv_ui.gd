@@ -5,12 +5,18 @@ extends Control
 @onready var droppables := get_tree().get_nodes_in_group("droppable")
 @onready var draggables := get_tree().get_nodes_in_group("draggable")
 @onready var inventory := Global.player_inventory
+@onready var info_panels = [$Infos/P1, $Infos/P2, $Infos/P3]
 
 var is_open = false
 var grabbed_object := -1
 var hoverred_object := -1
 var precedent_place := -1 # pour droppables
 var objects_slots : Array[int] = [-1, -1, -1] # map qui associe un draggable à l'indice d'un droppable (0, 1, 2, 3)
+
+var slot_textures = {
+	"base": preload("res://assets/graphical/ui/base_case.png"),
+	"active": preload("res://assets/graphical/ui/active_case.png")
+}
 
 func _ready():
 	#var inv_item := InventoryItem.new()
@@ -22,6 +28,7 @@ func _ready():
 		draggables[i].visible = true
 		objects_slots[i] = i
 	close()
+	$Infos.hide()
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("inventory") and !Global.isPaused:
@@ -30,17 +37,18 @@ func _process(_delta):
 		else:
 			if !Global.is_craft_ui_open:
 				open()
-	
-	change_current_slot()
-	process_drag_drop()
+		process_drag_drop()
 
 	if Input.is_action_just_pressed("pause"):
 		close()
+	
+	change_current_slot()
 
 func update_slides():
 	#print(slots[0])
 	for i in range(min(Global.player_inventory.items.size(),slots.size())):
 		slots[i].update_inventory_visual(Global.player_inventory.items[i])
+
 
 func open():
 	update_slides()
@@ -55,23 +63,31 @@ func close():
 	
 func change_current_slot():
 	if Input.is_action_just_pressed("slot_left"):
-		if Global.inv_current_slot == 0:
-			Global.inv_current_slot = 2
-		else:
-			Global.inv_current_slot -= 1
+		Global.inv_current_slot = (Global.inv_current_slot - 1) % slots.size()
 	if Input.is_action_just_pressed("slot_right"):
-		if Global.inv_current_slot == 2:
-			Global.inv_current_slot = 0
-		else:
-			Global.inv_current_slot += 1
+		Global.inv_current_slot = (Global.inv_current_slot + 1) % slots.size()
 	
-	for i in range(slots.size()):
-		var texture_rect = slots[i].get_node("TextureRect")
+	update_infos()
+	update_slot_textures()
 
-		if i == Global.inv_current_slot:
-			texture_rect.texture = load("res://assets/graphical/ui/active_case.png")
-		else:
-			texture_rect.texture = load("res://assets/graphical/ui/base_case.png")
+func _on_inventory_ui_slot_mouse_entered(slot_index: int) -> void:
+	Global.inv_current_slot = slot_index
+	update_infos()
+
+func update_slot_textures():
+	for i in range(slots.size()):
+		slots[i].get_node("TextureRect").texture = slot_textures["active"] if i == Global.inv_current_slot else slot_textures["base"]
+
+func update_infos():
+	if Global.inv_current_slot < Global.player_inventory.items.size() and Global.player_inventory.items[Global.inv_current_slot] != null:
+		var item = Global.player_inventory.items[Global.inv_current_slot]
+		$Infos/Texte.text = str(InventoryItem.InventoryItemType.find_key(item.type)) + "\n" + item.description
+		$Infos.show()
+		
+		for j in range(info_panels.size()):
+			info_panels[j].visible = (j == Global.inv_current_slot)
+	else:
+		$Infos.hide()
 			
 func process_drag_drop():
 	

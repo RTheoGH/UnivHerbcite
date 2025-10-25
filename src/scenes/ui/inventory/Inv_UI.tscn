@@ -16,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_o4mch")
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -177,9 +178,52 @@ scale = Vector2(3.385, 3.385)
 script = null
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered"]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_2_mouse_entered"]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_3_mouse_entered"]
+[node name="Infos" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 401.0
+offset_top = 424.0
+offset_right = -397.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5372549)
+
+[node name="Texte" type="RichTextLabel" parent="Infos"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "test"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P1" type="Polygon2D" parent="Infos"]
+position = Vector2(14.999999, -0.9999923)
+scale = Vector2(1, 1.1818181)
+color = Color(0, 0, 0, 0.5372549)
+polygon = PackedVector2Array(63, -32, 39, 1, 87, 1)
+
+[node name="P2" type="Polygon2D" parent="Infos"]
+position = Vector2(109.99999, -0.9999923)
+scale = Vector2(1, 1.1818181)
+color = Color(0, 0, 0, 0.5372549)
+polygon = PackedVector2Array(63, -32, 39, 1, 87, 1)
+
+[node name="P3" type="Polygon2D" parent="Infos"]
+position = Vector2(204.99998, -0.9999923)
+scale = Vector2(1, 1.1818181)
+color = Color(0, 0, 0, 0.5372549)
+polygon = PackedVector2Array(63, -32, 39, 1, 87, 1)
+
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [0]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [1]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [2]]
 [connection signal="mouse_entered" from="InventoryUiSlot4" to="." method="_on_inventory_ui_slot_mouse_entered"]
 [connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered"]
