@@ -2,7 +2,7 @@ extends Resource
 
 class_name Inventory
 
-@export var items : Array[InventoryItem]
+@export var items : Array[InventoryItem] = []
 @export var invSize : int = 3
 @export var stackSize : int
 
