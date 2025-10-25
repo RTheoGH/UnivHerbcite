@@ -103,7 +103,7 @@ anchor_bottom = 1.0
 offset_left = 401.0
 offset_top = 424.0
 offset_right = -397.0
-offset_bottom = -132.0
+offset_bottom = -162.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.5372549)
@@ -138,6 +138,6 @@ scale = Vector2(1, 1.1818181)
 color = Color(0, 0, 0, 0.5372549)
 polygon = PackedVector2Array(63, -32, 39, 1, 87, 1)
 
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [0]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [1]]
-[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [2]]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_2_mouse_entered"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_3_mouse_entered"]
