@@ -11,8 +11,10 @@ signal inventory_full
 func add_item(item : InventoryItem):
 	if items.has(item):
 		# Make a stack system oops
+		
 		if item.quantity < stackSize:
 			item.quantity += 1
+			print("Quantity : ", item.quantity)
 		else :
 			print( "You're carrying as many " + str(InventoryItem.InventoryItemType.find_key(item.type)) + " as you can ! ")
 	else:
@@ -21,19 +23,20 @@ func add_item(item : InventoryItem):
 			inventory_full.emit()
 			# Discard an item ? 
 		else : 
+			item.quantity = 1
 			items.push_back(item)
 		
 func remove_item(item : InventoryItem):
 	if items.has(item):
 		item.quantity -= 1
 		if item.quantity <= 0:
+			item.quantity = 0
 			items.erase(item)
 			
 func remove_item_type(item_type : InventoryItem.InventoryItemType):
 	var index = has(item_type)
 	if index != -1:
 		items.remove_at(index)
-		print(items)
 
 func has(item_type : InventoryItem.InventoryItemType) -> int:
 	for i in range(items.size()):

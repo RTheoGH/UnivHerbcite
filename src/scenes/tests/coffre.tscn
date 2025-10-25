@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dovr7qml35vmm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cej0v"]
+albedo_color = Color(0.9634742, 0.66962594, 0.47940713, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cej0v"]
+size = Vector3(2, 1, 1)
+
+[node name="Coffre" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_cej0v")
+mesh = SubResource("BoxMesh_cej0v")
+skeleton = NodePath("../CraftingTable")

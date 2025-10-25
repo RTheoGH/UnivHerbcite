@@ -148,35 +148,39 @@ func refresh():
 	objects_slots = [-1, -1, -1]
 	
 	for drag in draggables:
-		drag.hide()
-		
+		drag.hide()	
+	
 	for s in range(slots.size()):
 		if s > Global.player_inventory.items.size()-1:
 			slots[s].get_node("item_display").texture = null
 			slots[s].get_node("item_quantity").text = ""
 		else:
-			print(Global.player_inventory.items[s].texture)
 			slots[s].get_node("item_display").texture = Global.player_inventory.items[s].texture
 			slots[s].get_node("item_quantity").text = str(Global.player_inventory.items[s].quantity)
 			slots[s].get_node("item_display").show()
 			slots[s].get_node("item_quantity").show()
 	
-	for i in range(Global.player_inventory.items.size()): 
+	for i in range(Global.player_inventory.items.size()):
 		draggables[i].global_position = droppables[i].global_position
 		draggables[i].visible = true
 		objects_slots[i] = i
+	
+	update_slides()
 	
 func add_grabbed(g : int):
 	Global.player_inventory.items[grabbed_object].quantity += 1
 	slots[g].get_node("item_display").show()
 	slots[g].get_node("item_quantity").text = str(Global.player_inventory.items[g].quantity)
+	#update_slides()
 
 func remove_grabbed(g : int):
 	Global.player_inventory.items[g].quantity -= 1
 	if Global.player_inventory.items[g].quantity <= 0:
+		Global.player_inventory.items[g].quantity = 0
 		slots[g].get_node("item_display").hide()
 		slots[g].get_node("item_quantity").hide()
 	slots[g].get_node("item_quantity").text = str(Global.player_inventory.items[g].quantity)
+	update_slides()
 
 func _on_area_2d_mouse_entered() -> void:
 	hoverred_object = 0
@@ -200,5 +204,4 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_visibility_changed() -> void:
 	if visible:
-		print("allo")
 		refresh()
