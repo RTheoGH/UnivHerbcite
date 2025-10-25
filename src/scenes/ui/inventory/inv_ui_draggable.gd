@@ -9,19 +9,20 @@ var precedent_place : Vector2 = Vector2(0, 0)
 var crafting_place := [-1, -1, -1]
 var result : InventoryItem = null
 
-# Called when the node enters the scene tree for the first time.
+var craft_ui_textures = {
+	"base" : preload("res://assets/graphical/ui/craft.png"),
+	"complete" : preload("res://assets/graphical/ui/craft_complete.png")
+}
+
 func _ready() -> void:
 	
 	objects_slots.resize(3)
 	
 	for i in range(Global.player_inventory.items.size()):
-		
 		inventory_objects[i].get_node("TextureRect").texture = Global.player_inventory.items[i].texture
 		inventory_objects[i].visible = true
 		objects_slots[i] = inventory_slots_positions[i]
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if hoverred_object != -1 and Input.is_action_just_pressed("left_click"):
 		precedent_place = objects_slots[hoverred_object]
@@ -43,23 +44,21 @@ func _process(_delta: float) -> void:
 					result = r.result
 					$TextureRect2.texture = result.texture
 					$RichTextLabel.text = str(InventoryItem.InventoryItemType.find_key(result.type))
+					$TextureRect.texture = craft_ui_textures["complete"]
 				else:
 					$TextureRect2.texture = null
 					$RichTextLabel.text = ""
+					$TextureRect.texture = craft_ui_textures["base"]
 			
 		else:
 			print("Pas le droit de placer ici !")
 			inventory_objects[grabbed_object].global_position = precedent_place
 			objects_slots[grabbed_object] = precedent_place
 			
-		
-		
 	if Input.is_action_just_released("left_click"):
 		grabbed_object = -1
-	
 
 func can_place() -> bool :
-	
 	
 	if grabbed_object == -1:
 		return false
@@ -72,9 +71,9 @@ func can_place() -> bool :
 			count += 1
 		if count > 1:
 			return false
-			
-	return true
 	
+	return true
+
 func refresh() -> void:
 	
 	grabbed_object = -1
@@ -94,12 +93,10 @@ func refresh() -> void:
 		inventory_objects[i].get_node("TextureRect").texture = Global.player_inventory.items[i].texture
 		inventory_objects[i].visible = true
 		objects_slots[i] = inventory_slots_positions[i]
-	
-	
-		
+
 	$TextureRect2.texture = null
 	$RichTextLabel.text = ""
-		
+
 func get_current_ingredients() -> Array[InventoryItem]:
 	var places := [$Place4, $Place5, $Place6]
 	var res : Array[InventoryItem] = [null, null, null]
@@ -113,20 +110,16 @@ func _on_area_2d_mouse_entered() -> void:
 	if grabbed_object == -1:
 		hoverred_object = 0
 
-
 func _on_area_2d_mouse_entered_2() -> void:
 	if grabbed_object == -1:
 		hoverred_object = 1
-
 
 func _on_area_2d_mouse_entered_3() -> void:
 	if grabbed_object == -1:
 		hoverred_object = 2
 
-
 func _on_area_2d_mouse_exited() -> void:
 	hoverred_object = -1
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if grabbed_object != -1 and body not in $"../InvUi".get_children():
@@ -137,12 +130,14 @@ func _on_confirm_button_up() -> void:
 	if result != null && Global.player_inventory.can_add_craft(current_ings):
 		Global.player_inventory.consume_items(current_ings)
 		Global.player_inventory.add_item(result)
+		$Complete.play()
+		if $TextureRect.texture == craft_ui_textures["complete"]:
+			$TextureRect.texture = craft_ui_textures["base"]
 		refresh()
 
 func _on_confirm_2_button_up() -> void:
 	Global.is_craft_ui_open = false
 	result = null
-
 
 func _on_visibility_changed() -> void:
 	if visible:

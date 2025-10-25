@@ -36,6 +36,9 @@ func fade_out(duration := 0.2):
 func _on_fade_out_finished():
 	visible = false
 
+func _on_stack_item():
+	show_alert("Ingrédient collecté !")
+
 func _on_inventory_full():
 	show_alert("Inventaire plein !")
 

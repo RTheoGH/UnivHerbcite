@@ -575,9 +575,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.29175
-anchor_top = 0.61546916
+anchor_top = 0.5290494
 anchor_right = 0.37973613
-anchor_bottom = 0.66927135
+anchor_bottom = 0.5828516
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -591,9 +591,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2974306
-anchor_top = 0.669642
+anchor_top = 0.5832222
 anchor_right = 0.3708472
-anchor_bottom = 0.72864217
+anchor_bottom = 0.6422224
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
@@ -605,10 +605,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Livre" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.3056389
-anchor_top = 0.7373827
-anchor_right = 0.36411113
-anchor_bottom = 0.7850123
+anchor_left = 0.30477083
+anchor_top = 0.658679
+anchor_right = 0.36324307
+anchor_bottom = 0.7063086
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -621,10 +621,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Livre_B" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29829863
-anchor_top = 0.7822963
-anchor_right = 0.3708472
-anchor_bottom = 0.84129655
+anchor_left = 0.29743057
+anchor_top = 0.7035926
+anchor_right = 0.36997914
+anchor_bottom = 0.7625928
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
@@ -636,9 +636,9 @@ metadata/_edit_use_anchors_ = true
 [node name="SlotG" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.061715286
+anchor_left = 0.07300001
 anchor_top = 0.5614568
-anchor_right = 0.15490974
+anchor_right = 0.16619447
 anchor_bottom = 0.61525905
 offset_left = -0.0960083
 offset_top = 0.17599487
@@ -652,9 +652,9 @@ metadata/_edit_use_anchors_ = true
 [node name="SlotG_B" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.07260418
+anchor_left = 0.0838889
 anchor_top = 0.6125432
-anchor_right = 0.1442847
+anchor_right = 0.15556942
 anchor_bottom = 0.6715435
 offset_left = 0.35998535
 offset_top = 0.07199097
@@ -667,9 +667,9 @@ metadata/_edit_use_anchors_ = true
 [node name="SlotD" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.16067362
+anchor_left = 0.17195834
 anchor_top = 0.5614568
-anchor_right = 0.25473613
+anchor_right = 0.26602086
 anchor_bottom = 0.6121727
 offset_left = -0.0960083
 offset_top = 0.17599487
@@ -683,9 +683,9 @@ metadata/_edit_use_anchors_ = true
 [node name="SlotD_B" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.1698264
+anchor_left = 0.18111113
 anchor_top = 0.6125432
-anchor_right = 0.24150692
+anchor_right = 0.25279164
 anchor_bottom = 0.67154324
 offset_left = 0.35998535
 offset_top = 0.07199097
@@ -721,6 +721,99 @@ vertical_alignment = 1
 stream = ExtResource("5_w238l")
 bus = &"SFX"
 
+[node name="Slot0" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07300001
+anchor_top = 0.7281235
+anchor_right = 0.14449307
+anchor_bottom = 0.78192574
+offset_left = -0.0960083
+offset_top = 0.17599487
+offset_right = -0.45602417
+offset_bottom = 0.3119812
+text = "Slot 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot0_B" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.07260418
+anchor_top = 0.7838395
+anchor_right = 0.1442847
+anchor_bottom = 0.8428397
+offset_left = 0.35998535
+offset_top = 0.07199097
+offset_right = -0.2159729
+offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot1" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14591667
+anchor_top = 0.7281235
+anchor_right = 0.21740974
+anchor_bottom = 0.78192574
+offset_left = -0.0960083
+offset_top = 0.17599487
+offset_right = -0.45602417
+offset_bottom = 0.3119812
+text = "Slot 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot1_B" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14552085
+anchor_top = 0.7838395
+anchor_right = 0.21720137
+anchor_bottom = 0.8428397
+offset_left = 0.35998535
+offset_top = 0.07199097
+offset_right = -0.2159729
+offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot2" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21883334
+anchor_top = 0.7281235
+anchor_right = 0.29032642
+anchor_bottom = 0.78192574
+offset_left = -0.0960083
+offset_top = 0.17599487
+offset_right = -0.45602417
+offset_bottom = 0.3119812
+text = "Slot 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Slot2_B" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.21843751
+anchor_top = 0.7838395
+anchor_right = 0.29011804
+anchor_bottom = 0.8428397
+offset_left = 0.35998535
+offset_top = 0.07199097
+offset_right = -0.2159729
+offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="retour" to="." method="_on_retour_pressed"]
 [connection signal="drag_started" from="sensi/sensi_slider" to="." method="_on_sensi_slider_drag_started"]
 [connection signal="drag_started" from="global/global_slider" to="." method="_on_global_slider_drag_started"]
@@ -737,3 +830,6 @@ bus = &"SFX"
 [connection signal="pressed" from="Livre_B" to="." method="_on_livre_pressed"]
 [connection signal="pressed" from="SlotG_B" to="." method="_on_slotG_pressed"]
 [connection signal="pressed" from="SlotD_B" to="." method="_on_slotD_pressed"]
+[connection signal="pressed" from="Slot0_B" to="." method="_on_slot_0_pressed"]
+[connection signal="pressed" from="Slot1_B" to="." method="_on_slot_1_pressed"]
+[connection signal="pressed" from="Slot2_B" to="." method="_on_slot_2_pressed"]

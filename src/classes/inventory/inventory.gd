@@ -6,6 +6,7 @@ class_name Inventory
 @export var invSize : int = 3
 @export var stackSize : int
 
+signal stack_item
 signal inventory_full
 
 func add_item(item : InventoryItem):
@@ -13,6 +14,7 @@ func add_item(item : InventoryItem):
 		# Make a stack system oops
 		if item.quantity < stackSize:
 			item.quantity += 1
+			stack_item.emit()
 		else :
 			print( "You're carrying as many " + str(InventoryItem.InventoryItemType.find_key(item.type)) + " as you can ! ")
 	else:
@@ -21,7 +23,14 @@ func add_item(item : InventoryItem):
 			inventory_full.emit()
 			# Discard an item ? 
 		else : 
+			var deja_eu = false
+			for h in Global.herbier:
+				if h.item == item:
+					deja_eu = true
+			if deja_eu:
+				stack_item.emit()
 			items.push_back(item)
+			
 		
 func remove_item(item : InventoryItem):
 	if items.has(item):

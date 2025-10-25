@@ -71,6 +71,9 @@ func get_movements_keys() -> void:
 	$Livre_B.text = eng_to_fr(InputMap.action_get_events("ouvrir_livre")[0].as_text())
 	$SlotG_B.text = eng_to_fr(InputMap.action_get_events("slot_left")[0].as_text())
 	$SlotD_B.text = eng_to_fr(InputMap.action_get_events("slot_right")[0].as_text())
+	$Slot0_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_one")[0].as_text())
+	$Slot1_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_two")[0].as_text())
+	$Slot2_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_three")[0].as_text())
 
 func eng_to_fr(s):
 	match s:
@@ -92,6 +95,12 @@ func eng_to_fr(s):
 			s = 'Gauche'
 		'Left Mouse Button':
 			s = 'Clic gauche'
+		'1 (Physical)':
+			s = '1'
+		'2 (Physical)':
+			s = '2'
+		'3 (Physical)':
+			s = '3'
 		_:
 			s = '???'
 	return s
@@ -203,3 +212,21 @@ func _on_musique_slider_drag_started() -> void:
 
 func _on_menu_slider_drag_started() -> void:
 	$sfx.play()
+
+func _on_slot_0_pressed() -> void:
+	$sfx.play()
+	modif = "inv_slot_one"
+	current_button = $Slot0_B
+	$modifier.show()
+
+func _on_slot_1_pressed() -> void:
+	$sfx.play()
+	modif = "inv_slot_two"
+	current_button = $Slot1_B
+	$modifier.show()
+
+func _on_slot_2_pressed() -> void:
+	$sfx.play()
+	modif = "inv_slot_three"
+	current_button = $Slot2_B
+	$modifier.show()

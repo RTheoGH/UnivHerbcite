@@ -35,16 +35,19 @@ func try_grab() -> Node3D:
 	var obj := ray.get_collider()
 	if is_instance_of(obj, Interactable):
 		obj.on_interaction()
+		if obj.plante:
+			get_parent().get_node("Search").play()
 		if !already_discovered:
 			if obj.plante != null:
 				$TextAlert.show_alert("Nouvelle plante découverte !")
+				already_discovered = true
 				$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
 				$Informations.image = obj.plante.texture
 				$Informations.texte = obj.plante.description
 				$Informations.activate()
-		else:
-			if Global.player_inventory.items.size() < 3:
-				$TextAlert.show_alert("Ingrédient collecté !")
+		#else:
+			#if Global.player_inventory.items.size() <= 3:
+				#$TextAlert.show_alert("Ingrédient collecté !")
 	return obj
 	
 func _ready() -> void:

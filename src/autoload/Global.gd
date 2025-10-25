@@ -38,6 +38,7 @@ func _process(_delta: float) -> void:
 func setup_text_alerts():
 	print("Alerts connected")
 	if player_inventory and text_alert:
+		player_inventory.connect("stack_item", text_alert._on_stack_item)
 		player_inventory.connect("inventory_full", text_alert._on_inventory_full)
 		
 	for wall in get_tree().get_nodes_in_group("walls"):
