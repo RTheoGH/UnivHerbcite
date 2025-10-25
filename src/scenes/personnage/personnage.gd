@@ -81,6 +81,13 @@ func _physics_process(delta: float) -> void:
 		var scroll = $Informations/RichTextLabel2.get_v_scroll_bar()
 		scroll.value -= 20
 	
+	if Input.is_action_just_pressed("inv_slot_one") and !Global.isPaused:
+		Global.inv_current_slot = 0
+	if Input.is_action_just_pressed("inv_slot_two") and !Global.isPaused:
+		Global.inv_current_slot = 1
+	if Input.is_action_just_pressed("inv_slot_three") and !Global.isPaused:
+		Global.inv_current_slot = 2
+	
 	var obj := ray.get_collider()
 	if(is_instance_of(obj, Interactable)):
 		if obj.is_collectible:
@@ -183,9 +190,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _update_item_frame():
-	if Global.inv_current_slot != current_slot:
-		current_slot = Global.inv_current_slot
-		if current_slot >= 0 and current_slot < Global.player_inventory.items.size():
-			item_frame.texture = Global.player_inventory.items[current_slot].texture
-		else:
-			item_frame.texture = null
+	var slot = Global.inv_current_slot
+	
+	if slot < 0 or slot >= Global.player_inventory.items.size():
+		current_slot = slot
+		item_frame.texture = null
+		return
+	
+	var tex = Global.player_inventory.items[slot].texture
+	
+	if slot != current_slot or item_frame.texture != tex:
+		current_slot = slot
+		item_frame.texture = tex

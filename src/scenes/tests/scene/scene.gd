@@ -19,6 +19,8 @@ func _ready() -> void:
 	$Pause.visible = false
 	$Musique.play()
 	
+	print(Global.inv_current_slot)
+	
 	#maxwell()
 	#$maxwell/song.play()
 	
