@@ -93,7 +93,6 @@ func update_infos():
 func process_drag_drop():
 	
 	if hoverred_object != -1 and Input.is_action_just_pressed("left_click"):
-		print("oe")
 		precedent_place = objects_slots[hoverred_object]
 		grabbed_object = hoverred_object
 		draggables[grabbed_object].get_node("TextureRect").texture = Global.player_inventory.items[grabbed_object].texture
@@ -150,9 +149,19 @@ func refresh():
 	
 	for drag in draggables:
 		drag.hide()
+		
+	for s in range(slots.size()):
+		if s > Global.player_inventory.items.size()-1:
+			slots[s].get_node("item_display").texture = null
+			slots[s].get_node("item_quantity").text = ""
+		else:
+			print(Global.player_inventory.items[s].texture)
+			slots[s].get_node("item_display").texture = Global.player_inventory.items[s].texture
+			slots[s].get_node("item_quantity").text = str(Global.player_inventory.items[s].quantity)
+			slots[s].get_node("item_display").show()
+			slots[s].get_node("item_quantity").show()
 	
-	for i in range(inventory.items.size()): 
-	#for i in range(3):
+	for i in range(Global.player_inventory.items.size()): 
 		draggables[i].global_position = droppables[i].global_position
 		draggables[i].visible = true
 		objects_slots[i] = i
@@ -189,6 +198,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				objects_slots[grabbed_object] = drop
 
 
-#func _on_visibility_changed() -> void:
-	#if visible:
-		#refresh()
+func _on_visibility_changed() -> void:
+	if visible:
+		print("allo")
+		refresh()
