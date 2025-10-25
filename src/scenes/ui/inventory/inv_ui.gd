@@ -37,7 +37,8 @@ func _process(_delta):
 		else:
 			if !Global.is_craft_ui_open:
 				open()
-		process_drag_drop()
+				
+	process_drag_drop()
 
 	if Input.is_action_just_pressed("pause"):
 		close()
@@ -92,6 +93,7 @@ func update_infos():
 func process_drag_drop():
 	
 	if hoverred_object != -1 and Input.is_action_just_pressed("left_click"):
+		print("oe")
 		precedent_place = objects_slots[hoverred_object]
 		grabbed_object = hoverred_object
 		draggables[grabbed_object].get_node("TextureRect").texture = Global.player_inventory.items[grabbed_object].texture
@@ -167,18 +169,7 @@ func remove_grabbed(g : int):
 		slots[g].get_node("item_quantity").hide()
 	slots[g].get_node("item_quantity").text = str(Global.player_inventory.items[g].quantity)
 
-func _on_inventory_ui_slot_mouse_entered() -> void:
-	Global.inv_current_slot = 0
-
-func _on_inventory_ui_slot_2_mouse_entered() -> void:
-	Global.inv_current_slot = 1
-
-func _on_inventory_ui_slot_3_mouse_entered() -> void:
-	Global.inv_current_slot = 2
-
-
 func _on_area_2d_mouse_entered() -> void:
-	print("ALLO")
 	hoverred_object = 0
 
 func _on_area_2d_mouse_entered2() -> void:
@@ -198,6 +189,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				objects_slots[grabbed_object] = drop
 
 
-func _on_visibility_changed() -> void:
-	if visible:
-		refresh()
+#func _on_visibility_changed() -> void:
+	#if visible:
+		#refresh()
