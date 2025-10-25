@@ -46,7 +46,7 @@ func transition() -> void:
 	$fond.texture = load("res://assets/graphical/background/"+backgrounds[current_frame % backgrounds.size()])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Chargement.play("default")
 	pass
 

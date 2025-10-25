@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://to3dvlcvl3my"]
 
 [ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_bn2q8"]
-[ext_resource type="Texture2D" uid="uid://bu5hkehwr0xo5" path="res://assets/graphical/items/asperges.png" id="2_14dye"]
+[ext_resource type="Texture2D" uid="uid://di6knj3nsce67" path="res://assets/graphical/items/asperges.png" id="2_14dye"]
 
 [resource]
 script = ExtResource("1_bn2q8")
 type = 2
 texture = ExtResource("2_14dye")
-description = "Plante monocotylédone de la famille des Asparagacées, originaire de l'est du bassin méditerranéen"
+description = "Jeunes pousses tendres et croquantes, parfaites en cuisine."
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

@@ -8,6 +8,6 @@
 script = ExtResource("1_h75v4")
 type = 1
 texture = ExtResource("3_ufs7n")
-description = "ergeg"
+description = "Petit arbre méditerranéen aux feuilles vert foncé et aux fleurs blanches en cloche."
 item = ExtResource("1_3gfxx")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"
