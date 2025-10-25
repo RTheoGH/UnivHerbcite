@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ccneeglf3rtgq" path="res://src/scenes/ui/pause/Pause.tscn" id="3_20oit"]
 [ext_resource type="PackedScene" uid="uid://cba4t0t6a3gdq" path="res://src/scenes/tests/crafting_table.tscn" id="4_j0txf"]
 [ext_resource type="Script" uid="uid://up24dtse8gef" path="res://src/classes/interactable.gd" id="4_plqpu"]
+[ext_resource type="PackedScene" uid="uid://dovr7qml35vmm" path="res://src/scenes/tests/coffre.tscn" id="5_gveul"]
 [ext_resource type="Resource" uid="uid://4o7lwxkxqdp1" path="res://assets/game_resources/plantes/Asperge.tres" id="5_mh6b1"]
 [ext_resource type="AudioStream" uid="uid://cbogbabmntm40" path="res://assets/sounds/chill.wav" id="6_d35k2"]
 [ext_resource type="PackedScene" uid="uid://b8181g3xk30pn" path="res://src/scenes/ui/minimap/Minimap.tscn" id="7_5kwoq"]
@@ -295,6 +296,9 @@ visible = false
 
 [node name="CraftingTable" parent="." instance=ExtResource("4_j0txf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.2616, 3.4564147, 4.0301676)
+
+[node name="Coffre" parent="." instance=ExtResource("5_gveul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.87686, 3.4564147, 4.0301676)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -170.36525, 4.008513, -3.106133)
