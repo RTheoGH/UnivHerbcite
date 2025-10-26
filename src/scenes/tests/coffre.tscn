@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dovr7qml35vmm"]
 
 [ext_resource type="Script" uid="uid://6pe03n22g8sc" path="res://src/scenes/tests/coffre.gd" id="1_8pehm"]
-[ext_resource type="PackedScene" uid="uid://b3lcm388072i0" path="res://src/scenes/ui/inventory/Chest_ui.tscn" id="2_7b1ls"]
+[ext_resource type="PackedScene" uid="uid://dpxned3e4ddv7" path="res://src/scenes/ui/inventory/Chest_ui.tscn" id="2_7b1ls"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cej0v"]
 albedo_color = Color(0.9634742, 0.66962594, 0.47940713, 1)
@@ -33,7 +33,7 @@ shape = SubResource("BoxShape3D_7b1ls")
 
 [node name="ChestUi" parent="." instance=ExtResource("2_7b1ls")]
 visible = false
-mouse_filter = 1
 
 [connection signal="area_exited" from="Interactable" to="ChestUi" method="_on_area_exited"]
 [connection signal="chest_opened" from="Interactable" to="ChestUi" method="_on_interactable_chest_opened"]
+[connection signal="chest_closed" from="ChestUi" to="Interactable" method="_on_chest_ui_chest_closed"]
