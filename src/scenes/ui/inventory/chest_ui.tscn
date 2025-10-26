@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3lcm388072i0"]
 
-[ext_resource type="PackedScene" uid="uid://ce2lc7q7loeyr" path="res://src/scenes/ui/inventory/inventory_UI_slot.tscn" id="1_a2sht"]
-[ext_resource type="Texture2D" uid="uid://dh5prxur2dcpn" path="res://assets/graphical/ui/base_case.png" id="2_23m3v"]
-[ext_resource type="PackedScene" uid="uid://v38pdox3p3n0" path="res://src/scenes/ui/inventory/Inv_UI_draggable.tscn" id="3_23m3v"]
+[ext_resource type="Script" uid="uid://cth07qofp4dny" path="res://src/scenes/ui/inventory/chest_ui.gd" id="1_up7ko"]
+[ext_resource type="PackedScene" uid="uid://ce2lc7q7loeyr" path="res://src/scenes/ui/inventory/inventory_UI_slot.tscn" id="2_uq2jr"]
+[ext_resource type="Texture2D" uid="uid://dh5prxur2dcpn" path="res://assets/graphical/ui/base_case.png" id="3_g4waa"]
 
 [node name="ChestUi" type="Control"]
 layout_mode = 3
@@ -11,6 +11,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_up7ko")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -29,6 +31,7 @@ mouse_filter = 1
 
 [node name="Title" type="RichTextLabel" parent="PanelContainer"]
 layout_mode = 2
+mouse_filter = 1
 bbcode_enabled = true
 text = "[center]Chest"
 
@@ -47,7 +50,7 @@ theme_override_constants/separation = 20
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="InventoryUiSlot" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_uq2jr")]
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 1
@@ -62,10 +65,10 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InventoryUiSlot2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_uq2jr")]
 layout_mode = 2
 mouse_filter = 1
 
@@ -80,10 +83,10 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InventoryUiSlot3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_uq2jr")]
 layout_mode = 2
 mouse_filter = 1
 
@@ -98,10 +101,10 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InventoryUiSlot4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_uq2jr")]
 layout_mode = 2
 mouse_filter = 1
 
@@ -116,10 +119,10 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InventoryUiSlot5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("2_uq2jr")]
 layout_mode = 2
 mouse_filter = 1
 
@@ -134,14 +137,14 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="InventoryUiSlot" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_uq2jr")]
 texture_filter = 1
 layout_mode = 2
 mouse_filter = 1
@@ -156,10 +159,10 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InventoryUiSlot2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_uq2jr")]
 layout_mode = 2
 mouse_filter = 1
 
@@ -174,10 +177,10 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InventoryUiSlot3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_uq2jr")]
 layout_mode = 2
 mouse_filter = 1
 
@@ -192,10 +195,10 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InventoryUiSlot4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_uq2jr")]
 layout_mode = 2
 mouse_filter = 1
 
@@ -210,10 +213,10 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InventoryUiSlot5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_a2sht")]
+[node name="InventoryUiSlot5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_uq2jr")]
 layout_mode = 2
 mouse_filter = 1
 
@@ -228,12 +231,32 @@ anchor_bottom = 1.207
 offset_top = -0.024999619
 offset_bottom = -0.025001526
 mouse_filter = 2
-texture = ExtResource("2_23m3v")
+texture = ExtResource("3_g4waa")
 expand_mode = 1
 
-[node name="InvUi" parent="." instance=ExtResource("3_23m3v")]
-layout_mode = 1
-anchor_left = 0.3706597
-anchor_top = 0.60339504
-anchor_right = 0.6354167
-anchor_bottom = 0.8117284
+[node name="Inventory" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [0]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [1]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [2]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot4" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [3]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot4" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot5" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [4]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/InventoryUiSlot5" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [5]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [6]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [7]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot4" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [8]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot4" to="." method="_on_inventory_ui_slot_mouse_exited"]
+[connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot5" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [9]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/InventoryUiSlot5" to="." method="_on_inventory_ui_slot_mouse_exited"]

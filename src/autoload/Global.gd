@@ -46,3 +46,6 @@ func setup_text_alerts():
 		if wall.has_signal("wall_item_required"):
 			wall.connect("wall_item_required", text_alert._on_wall_item_required)
 		wall.connect("wall_removed", text_alert._on_wall_removed)
+		
+func is_ui_open() -> bool:
+	return is_chest_open or is_craft_ui_open or is_inventory_open

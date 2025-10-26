@@ -114,7 +114,7 @@ func _on_area_2d_mouse_exited() -> void:
 	hoverred_object = -1
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if grabbed_object != -1 and body not in $"../InvUi".get_children():
+	if grabbed_object != -1 and body not in $"InvUi".get_children():
 		objects_slots[grabbed_object] = body.global_position
 
 func _on_confirm_button_up() -> void:
@@ -134,3 +134,14 @@ func _on_confirm_2_button_up() -> void:
 func _on_visibility_changed() -> void:
 	if visible:
 		refresh()
+
+
+func _on_interactable_crafting_opened() -> void:
+	show()
+	Global.is_craft_ui_open = true
+
+
+func _on_interactable_area_exited(area: Area3D) -> void:
+	if is_instance_of(area.get_parent(), RayCast3D):
+		hide()
+		Global.is_craft_ui_open = false
