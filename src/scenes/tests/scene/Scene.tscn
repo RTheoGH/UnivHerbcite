@@ -294,7 +294,6 @@ shadow_blur = 1.094
 visible = false
 
 [node name="InvUi" parent="." instance=ExtResource("2_w7ipn")]
-visible = false
 
 [node name="CraftingTable" parent="." instance=ExtResource("4_j0txf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.2616, 3.4564147, 4.0301676)

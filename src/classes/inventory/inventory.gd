@@ -4,7 +4,7 @@ class_name Inventory
 
 @export var items : Array[InventoryItem] = []
 @export var invSize : int = 3
-@export var stackSize : int
+@export var stackSize : int 
 
 signal stack_item
 signal inventory_full
@@ -12,7 +12,6 @@ signal inventory_full
 func add_item(item : InventoryItem):
 	if items.has(item):
 		# Make a stack system oops
-		
 		if item.quantity < stackSize:
 			item.quantity += 1
 			stack_item.emit()
@@ -33,7 +32,25 @@ func add_item(item : InventoryItem):
 				stack_item.emit()
 			items.push_back(item)
 			
-		
+func add_item_copy(item : InventoryItem) -> bool:
+	var index = has(item.type)
+	if index != -1:
+		if item.quantity < stackSize:
+			items[index].quantity += 1
+			return true
+		else :
+			print( "You're carrying as many " + str(InventoryItem.InventoryItemType.find_key(item.type)) + " as you can ! ")
+			return false
+	else:
+		if items.size()+1 > invSize:
+			print(" Your inventory is full ! ")
+			return false
+		else:
+			var new_item := item.copy()
+			new_item.quantity = 1
+			items.push_back(new_item)
+			return true
+
 func remove_item(item : InventoryItem):
 	if items.has(item):
 		item.quantity -= 1

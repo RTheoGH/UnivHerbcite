@@ -150,7 +150,7 @@ func refresh():
 	objects_slots = [-1, -1, -1]
 	
 	for drag in draggables:
-		drag.hide()	
+		drag.hide()
 	
 	for s in range(slots.size()):
 		if s > Global.player_inventory.items.size()-1:

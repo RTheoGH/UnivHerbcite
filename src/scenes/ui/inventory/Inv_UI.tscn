@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b6okyqwhjjjp1" path="res://src/scenes/ui/crafting/Droppable.tscn" id="5_xgwml"]
 
 [node name="InvUi" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
