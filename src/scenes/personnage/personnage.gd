@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+var SPEED = 5.0
+var JUMP_VELOCITY = 4.5
 var previous_mouse_pos:Vector2 = DisplayServer.window_get_size()/2
 @onready var cam_fps: Node3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D

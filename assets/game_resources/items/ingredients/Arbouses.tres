@@ -8,4 +8,5 @@ script = ExtResource("1_lql2j")
 type = 1
 texture = ExtResource("2_vuld2")
 description = "Petites baies rouges sucrées, délicieuses en confiture ou en infusion."
+effect = 1
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

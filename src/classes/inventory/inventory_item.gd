@@ -20,12 +20,19 @@ enum InventoryItemType{
 	POTION_JAUNE
 }
 
+enum InventoryItemEffect{
+	NONE,
+	SPEED,
+	JUMP,
+	NAUSEA
+}
+
 @export var type : InventoryItemType
 @export var quantity : int = 1
 @export var texture : Texture2D # or texture
 @export var tags : Array[String] #if tags are specific things create a class and replace String with Tags class
 @export var description : String = "" # Optional
-
+@export var effect : InventoryItemEffect = InventoryItemEffect.NONE
 
 func copy() -> InventoryItem:
 	var new_item = InventoryItem.new()
@@ -34,4 +41,5 @@ func copy() -> InventoryItem:
 	new_item.texture = self.texture
 	new_item.tags = self.tags
 	new_item.description = self.description
+	new_item.effect = self.effect
 	return new_item

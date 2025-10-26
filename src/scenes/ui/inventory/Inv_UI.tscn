@@ -226,6 +226,19 @@ scale = Vector2(1, 1.1818181)
 color = Color(0, 0, 0, 0.5372549)
 polygon = PackedVector2Array(63, -32, 39, 1, 87, 1)
 
+[node name="Eat" type="Button" parent="Infos"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.031
+anchor_top = 0.22800002
+anchor_right = 1.2800001
+anchor_bottom = 0.76100004
+offset_left = 0.026000977
+offset_top = 0.02399826
+offset_right = -0.120025635
+offset_bottom = -0.012001038
+text = "Manger"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="mouse_entered" from="Node2D/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [0]]
@@ -239,6 +252,7 @@ polygon = PackedVector2Array(63, -32, 39, 1, 87, 1)
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [0]]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [1]]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [2]]
+[connection signal="pressed" from="Infos/Eat" to="." method="_on_eat_pressed"]
 
 [editable path="Node2D"]
 [editable path="Node2D2"]

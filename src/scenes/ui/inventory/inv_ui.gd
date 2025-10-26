@@ -18,6 +18,9 @@ var slot_textures = {
 	"active": preload("res://assets/graphical/ui/active_case.png")
 }
 
+var speed_timer: Timer = null
+var time_remaining := 0.0
+
 func _ready():
 	#var inv_item := InventoryItem.new()
 	#inv_item.quantity = 3
@@ -30,7 +33,7 @@ func _ready():
 	close()
 	$Infos.hide()
 	
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_just_pressed("inventory") and !Global.isPaused:
 		if is_open:
 			close()
@@ -44,6 +47,9 @@ func _process(_delta):
 		close()
 	
 	change_current_slot()
+	
+	if speed_timer != null and speed_timer.is_stopped() == false:
+		time_remaining -= delta
 
 func update_slides():
 	#print(slots[0])
@@ -84,6 +90,10 @@ func update_infos():
 		var item = Global.player_inventory.items[Global.inv_current_slot]
 		$Infos/Texte.text = str(InventoryItem.InventoryItemType.find_key(item.type)) + "\n" + item.description
 		$Infos.show()
+		if item.effect != InventoryItem.InventoryItemEffect.NONE:
+			$Infos/Eat.show()
+		else:
+			$Infos/Eat.hide()
 		
 		for j in range(info_panels.size()):
 			info_panels[j].visible = (j == Global.inv_current_slot)
@@ -187,10 +197,8 @@ func remove_grabbed(g : int):
 func _on_area_2d_mouse_entered(obj : int) -> void:
 	hoverred_object = obj
 
-
 func _on_area_2d_mouse_exited() -> void:
 	hoverred_object = -1
-
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if grabbed_object != -1:
@@ -202,3 +210,36 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_visibility_changed() -> void:
 	if visible:
 		refresh()
+
+
+func _on_eat_pressed() -> void:
+	print("hmmmm miam")
+	var player = get_parent().get_node("Perso")
+	var slot = Global.inv_current_slot
+	var item = Global.player_inventory.items[slot]
+	
+	match item.effect:
+		InventoryItem.InventoryItemEffect.SPEED:
+			player.SPEED = 10.0
+			
+			if speed_timer == null:
+				speed_timer = Timer.new()
+				speed_timer.wait_time = 5.0
+				speed_timer.one_shot = true
+				add_child(speed_timer)
+				speed_timer.connect("timeout",Callable(self, "_on_speed_timeout").bind(player))
+				speed_timer.start()
+			else:
+				speed_timer.stop()
+				speed_timer.start()
+			
+			time_remaining = speed_timer.wait_time
+		_:
+			return
+
+func _on_speed_timeout(player):
+	player.SPEED = 5.0
+	speed_timer.queue_free()
+	speed_timer = null
+	time_remaining = 0.0
+	print("Boost vitesse fin")
