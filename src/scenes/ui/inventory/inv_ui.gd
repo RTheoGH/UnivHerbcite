@@ -107,11 +107,13 @@ func process_drag_drop():
 			draggables[grabbed_object].global_position = droppables[objects_slots[grabbed_object]].global_position
 			if objects_slots[grabbed_object] == precedent_place:
 				add_grabbed(grabbed_object)
+			update_slides()
 		
 		else:
 			add_grabbed(grabbed_object)
 			draggables[grabbed_object].global_position = droppables[precedent_place].global_position
 			objects_slots[grabbed_object] = precedent_place
+			update_slides()
 	
 	if Input.is_action_just_released("left_click"):
 		draggables[grabbed_object].get_node("TextureRect").texture = null
