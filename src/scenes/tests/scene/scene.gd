@@ -21,6 +21,9 @@ func _ready() -> void:
 	
 	print(Global.inv_current_slot)
 	
+	$Perso.reset_objectives()
+	$Perso.update_objectives_text()
+	
 	#maxwell()
 	#$maxwell/song.play()
 	
@@ -35,7 +38,6 @@ func apply_pause_audio(paused: bool) -> void:
 		tween.tween_property(low_pass, "cutoff_hz", 20000.0, 0.5)
 
 func _process(_delta: float) -> void:
-	
 	if Global.isPaused != was_paused:
 		apply_pause_audio(Global.isPaused)
 		was_paused = Global.isPaused

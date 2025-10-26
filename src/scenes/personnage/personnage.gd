@@ -31,6 +31,11 @@ var crosshair_textures = {
 	"interact": preload("res://assets/graphical/crosshair_interact.res")
 }
 
+# [objectif,completed]
+var current_objectives = [
+	["space_1",false]
+]
+
 func try_grab() -> Node3D:
 	var obj := ray.get_collider()
 	if is_instance_of(obj, Interactable):
@@ -49,17 +54,19 @@ func try_grab() -> Node3D:
 			#if Global.player_inventory.items.size() <= 3:
 				#$TextAlert.show_alert("Ingrédient collecté !")
 	return obj
-	
+
 func _ready() -> void:
 	$Camera3D/RayCast3D.collide_with_areas = true
 	$Camera3D/RayCast3D.collide_with_bodies = false
 	$Informations.hide()
 	
+	reset_objectives()
+	update_objectives_text()
+	
 	item_frame.texture = null 
 	frame_pos = item_frame.position
 
 func _physics_process(delta: float) -> void:
-	
 	if Global.isPaused :
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		static_cam = true
@@ -206,3 +213,93 @@ func _update_item_frame():
 	if slot != current_slot or item_frame.texture != tex:
 		current_slot = slot
 		item_frame.texture = tex
+
+func update_objectives_text():
+	$Objectifs.bbcode_enabled = true
+	$Objectifs.clear()
+	
+	for i in range(current_objectives.size()):
+		var key = current_objectives[i][0]
+		var text = Global.objectives[key]
+		var done = current_objectives[i][1]
+		
+		var line := "• "
+		
+		if done:
+			line += "[color=#888888][s]" + text + "[/s][/color]"
+		else:
+			line += "[b][color=white]" + text + "[/color][/b]"
+		
+		$Objectifs.append_text(line + "\n")
+
+func trim_completed_objectives():
+	if current_objectives.size() > 3 and current_objectives[0][1] == true:
+		current_objectives.pop_front()
+
+#func new_objective(node_name: String, next_objective: String, callback: Callable):
+	#get_parent().get_node(node_name).body_entered.disconnect(callback)
+	#current_objectives[current_objectives.size() - 1][1] = true
+	#current_objectives.append([Global.objectives[next_objective], false])
+	#trim_completed_objectives()
+	#update_objectives_text()
+
+func reset_objectives():
+	current_objectives.clear()
+	current_objectives.append(["space_1", false])
+	update_objectives_text()
+	
+	_reconnect_trigger("Quest_1", _on_quest_1_body_entered)
+	_reconnect_trigger("Quest_2", _on_quest_2_body_entered)
+	_reconnect_trigger("Quest_3", _on_quest_3_body_entered)
+	
+func complete_objective(current_objective_name: String, next_objective_name: String):
+	var current_index = Global.objectives_order[current_objective_name]
+
+	for key in Global.objectives_order.keys():
+		var index = Global.objectives_order[key]
+		if index <= current_index:
+			if not current_objectives_contains(key):
+				current_objectives.append([key, true])
+			else:
+				for obj in current_objectives:
+					if obj[0] == key:
+						obj[1] = true
+						break
+
+	if not current_objectives_contains(next_objective_name):
+		current_objectives.append([next_objective_name, false])
+
+	trim_completed_objectives()
+	update_objectives_text()
+
+func current_objectives_contains(key):
+	for obj in current_objectives:
+		if obj[0] == key:
+			return true
+	return false
+
+func _reconnect_trigger(node_name: String, callback: Callable):
+	if get_parent().has_node(node_name):
+		var trigger = get_parent().get_node(node_name)
+		if trigger.has_signal("body_entered"):
+			if trigger.body_entered.is_connected(callback):
+				trigger.body_entered.disconnect(callback)
+			trigger.body_entered.connect(callback)
+
+func _on_quest_1_body_entered(body: Node3D) -> void:
+	#if body==self and current_objectives[-1][1] == false:
+		#new_objective("Quest_1", "space_2", _on_quest_1_body_entered)
+	if body == self and not current_objectives_contains("space_2"):
+		complete_objective("space_1","space_2")
+
+func _on_quest_2_body_entered(body: Node3D) -> void:
+	#if body==self:
+		#new_objective("Quest_2", "space_3", _on_quest_2_body_entered)
+	if body == self and not current_objectives_contains("space_3"):
+		complete_objective("space_2","space_3")
+
+func _on_quest_3_body_entered(body: Node3D) -> void:
+	#if body==self and current_objectives[-1][1] == false:
+		#new_objective("Quest_3", "fac_1", _on_quest_3_body_entered)
+	if body == self and not current_objectives_contains("fac_1"):
+		complete_objective("space_3","fac_1")

@@ -20,6 +20,20 @@ var inv_current_slot: int = 0
 
 var text_alert: TextAlert
 
+var objectives = {
+	"space_1": "Explorer et trouver un moyen de sortir du Space.",
+	"space_2": "Créer une potion rouge afin d'ouvrir le passage.",
+	"space_3": "Explorer les alentours du Space.",
+	"fac_1": "Debug pour le moment"
+}
+
+var objectives_order = {
+	"space_1": 0,
+	"space_2": 1,
+	"space_3": 2,
+	"fac_1": 3
+}
+
 func _ready() -> void:
 	isPaused = false
 

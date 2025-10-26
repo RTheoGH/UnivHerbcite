@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=71 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -262,6 +262,12 @@ radius = 0.94433594
 albedo_texture = ExtResource("31_ew3or")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qhmxa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gveul"]
+size = Vector3(3.967041, 1.706543, 2.6485596)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qhmxa"]
+size = Vector3(1.2460938, 1.4003906, 1)
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
@@ -736,6 +742,31 @@ shape = SubResource("CylinderShape3D_hwj20")
 transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, -171.49434, 4.644222, 4.8023977)
 material_override = SubResource("StandardMaterial3D_gveul")
 mesh = SubResource("QuadMesh_qhmxa")
+
+[node name="Quest_1" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, -171.49434, 4.644222, 6.071932)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quest_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24157715, -0.35327196, 0.082092285)
+shape = SubResource("BoxShape3D_gveul")
+
+[node name="Quest_2" type="Area3D" parent="."]
+transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -134.66872, 4.5916076, 0.97156)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quest_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000006, -0.35554504, -0.2001952, 0)
+shape = SubResource("BoxShape3D_qhmxa")
+
+[node name="Quest_3" type="Area3D" parent="."]
+transform = Transform3D(7.049025, 0, 0, 0, 7.049025, 0, 0, 0, 14.286215, -114.620476, 5.4752064, 4.643777)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Quest_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000006, -0.35554504, -0.2001952, 0)
+shape = SubResource("BoxShape3D_qhmxa")
+
+[connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
+[connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
+[connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
 
 [editable path="Map2"]
 [editable path="Map2/map"]
