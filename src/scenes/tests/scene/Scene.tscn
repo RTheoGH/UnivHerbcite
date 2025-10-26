@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=69 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b8181g3xk30pn" path="res://src/scenes/ui/minimap/Minimap.tscn" id="7_5kwoq"]
 [ext_resource type="Resource" uid="uid://xa7grds41a3s" path="res://assets/game_resources/plantes/Figuier.tres" id="7_j0txf"]
 [ext_resource type="PackedScene" uid="uid://cqq7lyosyug6m" path="res://src/scenes/map/map.tscn" id="9_dod7h"]
-[ext_resource type="PackedScene" uid="uid://b7e61ij3wfkph" path="res://src/scenes/ui/crafting/CraftUI.tscn" id="9_mqiyw"]
 [ext_resource type="Resource" uid="uid://0t4b1wx4lvym" path="res://assets/game_resources/plantes/debug_tree.tres" id="9_yp1p4"]
 [ext_resource type="PackedScene" uid="uid://cxn1wyr1oy2xf" path="res://assets/game_resources/models/maxwell/maxwell.fbx" id="10_q3pbt"]
 [ext_resource type="AudioStream" uid="uid://nf6v4eyudbci" path="res://assets/sounds/Maxwell the Cat Theme..mp3" id="11_bho2e"]
@@ -294,6 +293,9 @@ shadow_blur = 1.094
 [node name="Pause" parent="." instance=ExtResource("3_20oit")]
 visible = false
 
+[node name="InvUi" parent="." instance=ExtResource("2_w7ipn")]
+visible = false
+
 [node name="CraftingTable" parent="." instance=ExtResource("4_j0txf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.2616, 3.4564147, 4.0301676)
 
@@ -389,12 +391,6 @@ shape = SubResource("CylinderShape3D_dvpi0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D5/StaticBody3D"]
 shape = SubResource("CylinderShape3D_plqpu")
-
-[node name="InvUi" parent="." instance=ExtResource("2_w7ipn")]
-visible = false
-
-[node name="CraftUI" parent="." instance=ExtResource("9_mqiyw")]
-visible = false
 
 [node name="Musique" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_d35k2")

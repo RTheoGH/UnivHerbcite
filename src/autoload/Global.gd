@@ -24,11 +24,14 @@ func _ready() -> void:
 	isPaused = false
 
 func _process(_delta: float) -> void:
-	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open):
+	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open and !is_chest_open):
 		isPaused = !isPaused
 
 	if Global.is_craft_ui_open and Input.is_action_just_pressed("pause"):
 		is_craft_ui_open = !is_craft_ui_open
+
+	if Global.is_chest_open and Input.is_action_just_pressed("pause"):
+		is_chest_open = !is_chest_open
 
 	if(Input.is_action_just_pressed("fullscreen")):
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
@@ -46,3 +49,6 @@ func setup_text_alerts():
 		if wall.has_signal("wall_item_required"):
 			wall.connect("wall_item_required", text_alert._on_wall_item_required)
 		wall.connect("wall_removed", text_alert._on_wall_removed)
+		
+func is_ui_open() -> bool:
+	return is_chest_open or is_craft_ui_open or is_inventory_open

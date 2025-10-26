@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://hyxjxaek1eag"]
+[gd_scene load_steps=21 format=3 uid="uid://hyxjxaek1eag"]
 
 [ext_resource type="Script" uid="uid://deysa375pgxig" path="res://src/scenes/personnage/personnage.gd" id="1_34im4"]
 [ext_resource type="Texture2D" uid="uid://cy0ohhvb38hg8" path="res://assets/graphical/crosshair.png" id="2_v37cp"]
@@ -13,6 +13,9 @@
 [ext_resource type="AudioStream" uid="uid://dgkb26t7hvbqp" path="res://assets/sounds/footstep7.mp3" id="11_wsu1q"]
 [ext_resource type="AudioStream" uid="uid://cnx3pkxvoaxn5" path="res://assets/sounds/footstep8.mp3" id="12_8ux3l"]
 [ext_resource type="Script" uid="uid://bphemefgd4hxh" path="res://src/classes/Alert.gd" id="13_hga14"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_hga14"]
+length = 2.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e1nwe"]
 
@@ -58,6 +61,14 @@ collision_mask = 4
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color(0.9930391, 0.36213517, 0.47180992, 1)
+
+[node name="Area3D" type="Area3D" parent="Camera3D/RayCast3D"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/RayCast3D/Area3D"]
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
+shape = SubResource("SeparationRayShape3D_hga14")
 
 [node name="Crosshair" type="TextureRect" parent="Camera3D"]
 texture_filter = 1
