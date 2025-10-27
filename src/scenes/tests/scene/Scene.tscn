@@ -647,7 +647,6 @@ required_item = 9
 smoke_color = Color(0.8901961, 0.08627451, 0.08627451, 1)
 
 [node name="GPUParticles3D" parent="SmokeZone/Area3D" index="1"]
-visible = false
 draw_pass_1 = SubResource("QuadMesh_hwj20")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]

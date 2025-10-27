@@ -215,4 +215,10 @@ func _on_eat_pressed() -> void:
 		return
 	
 	var item = Global.player_inventory.items[slot]
+	Global.player_inventory.remove_item(item)
+	update_slides()
+	for i in range(slots.size()):
+		if i >= Global.player_inventory.items.size():
+			slots[i].get_node("item_display").texture = null
+			slots[i].get_node("item_quantity").text = ""
 	ItemEffects._apply_effect(player, item.effect)
