@@ -59,6 +59,7 @@ func _ready() -> void:
 	$Camera3D/RayCast3D.collide_with_areas = true
 	$Camera3D/RayCast3D.collide_with_bodies = false
 	$Informations.hide()
+	$Effects.hide()
 	
 	reset_objectives()
 	update_objectives_text()

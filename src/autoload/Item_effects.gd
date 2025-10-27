@@ -17,8 +17,11 @@ var effects := {
 }
 
 var active_timers := {}
+var player: Node = null
 
-func _apply_effect(player, effect_type):
+func _apply_effect(p, effect_type):
+	if player == null:
+		player = p
 	if not effects.has(effect_type):
 		return
 	
@@ -50,7 +53,9 @@ func _apply_effect(player, effect_type):
 	
 	active_timers[effect_type].start()
 	
-func _on_effect_timeout(player, effect_type):
+func _on_effect_timeout(p, effect_type):
+	if player == null:
+		player = p
 	if not effects.has(effect_type):
 		return
 	
@@ -70,5 +75,41 @@ func _on_effect_timeout(player, effect_type):
 			target.set(stat["property"], stat["default"])
 		print("Fin du boost " + stat["property"])
 	
+	if effect_type == InventoryItem.InventoryItemEffect.SPEED:
+		player.get_node("Effects/Speed_icon").hide()
+		player.get_node("Effects/Speed").hide()
+	elif effect_type == InventoryItem.InventoryItemEffect.JUMP:
+		player.get_node("Effects/Jump_icon").hide()
+		player.get_node("Effects/Jump").hide()
+	
 	active_timers[effect_type].queue_free()
 	active_timers.erase(effect_type)
+	
+	if active_timers.size() == 0:
+		player.get_node("Effects").hide()
+
+func _process(_delta: float) -> void:
+	if player == null or active_timers.size() == 0:
+		return
+	
+	var effects_ui = player.get_node("Effects")
+	for child in effects_ui.get_children():
+		child.hide()
+	
+	effects_ui.show()
+	for effect_type in active_timers.keys():
+		var timer: Timer = active_timers[effect_type]
+		var time_left: float = round(timer.time_left)
+		
+		if effect_type == InventoryItem.InventoryItemEffect.SPEED:
+			var icon: TextureRect = player.get_node("Effects/Speed_icon")
+			var label: RichTextLabel = player.get_node("Effects/Speed")
+			icon.show()
+			label.text = str(int(time_left)) + "s"
+			label.show()
+		elif effect_type == InventoryItem.InventoryItemEffect.JUMP:
+			var icon: TextureRect = player.get_node("Effects/Jump_icon")
+			var label: RichTextLabel = player.get_node("Effects/Jump")
+			icon.show()
+			label.text = str(int(time_left)) + "s"
+			label.show()

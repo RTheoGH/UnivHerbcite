@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://hyxjxaek1eag"]
+[gd_scene load_steps=23 format=3 uid="uid://hyxjxaek1eag"]
 
 [ext_resource type="Script" uid="uid://deysa375pgxig" path="res://src/scenes/personnage/personnage.gd" id="1_34im4"]
 [ext_resource type="Texture2D" uid="uid://cy0ohhvb38hg8" path="res://assets/graphical/crosshair.png" id="2_v37cp"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://dgkb26t7hvbqp" path="res://assets/sounds/footstep7.mp3" id="11_wsu1q"]
 [ext_resource type="AudioStream" uid="uid://cnx3pkxvoaxn5" path="res://assets/sounds/footstep8.mp3" id="12_8ux3l"]
 [ext_resource type="Script" uid="uid://bphemefgd4hxh" path="res://src/classes/Alert.gd" id="13_hga14"]
+[ext_resource type="Texture2D" uid="uid://r2ypojox8vhk" path="res://assets/graphical/ui/run2.png" id="14_2ncbn"]
+[ext_resource type="Texture2D" uid="uid://myeta4fsy8gm" path="res://assets/graphical/ui/jump2.png" id="15_rthui"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_hga14"]
 length = 2.0
@@ -100,11 +102,11 @@ shape = SubResource("CapsuleShape3D_e1nwe")
 anchors_preset = -1
 anchor_left = -0.11400001
 anchor_right = 0.386
-anchor_bottom = 0.5
+anchor_bottom = 0.49400002
 offset_left = 0.32800293
 offset_top = -4.0
 offset_right = 0.32800293
-offset_bottom = -4.0
+offset_bottom = -0.11199951
 mouse_filter = 1
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
@@ -188,5 +190,79 @@ offset_bottom = -0.20800781
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 bbcode_enabled = true
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Effects" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.013
+anchor_top = 0.5
+anchor_right = 0.171
+anchor_bottom = 0.70400006
+offset_left = 0.024000168
+offset_top = -3.0
+offset_right = 0.0079956055
+offset_bottom = -0.19204712
+
+[node name="Speed_icon" type="TextureRect" parent="Effects"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.038000003
+anchor_top = 0.067
+anchor_right = 0.264
+anchor_bottom = 0.37
+offset_left = 0.083999634
+offset_top = -0.045000076
+offset_right = -0.048000336
+offset_bottom = 0.049999237
+texture = ExtResource("14_2ncbn")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Speed" type="RichTextLabel" parent="Effects"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.264
+anchor_top = 0.11100001
+anchor_right = 0.65900004
+anchor_bottom = 0.326
+offset_left = -0.048000336
+offset_top = 0.014998436
+offset_right = 0.06199646
+offset_bottom = 0.98999786
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Jump_icon" type="TextureRect" parent="Effects"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043494508
+anchor_top = 0.3701852
+anchor_right = 0.25849453
+anchor_bottom = 0.67418516
+offset_left = -1.9160004
+offset_top = 0.024997711
+offset_right = -0.04600525
+offset_bottom = -0.01499939
+texture = ExtResource("15_rthui")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Jump" type="RichTextLabel" parent="Effects"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25849453
+anchor_top = 0.41518518
+anchor_right = 0.6534945
+anchor_bottom = 0.6371852
+offset_left = -0.04600525
+offset_top = -0.049999237
+offset_right = 0.06400299
+offset_bottom = -0.020004272
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true

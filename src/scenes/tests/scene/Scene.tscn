@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=71 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -32,7 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
 [ext_resource type="Texture2D" uid="uid://ck0jtcc04q7hw" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
-[ext_resource type="ArrayOccluder3D" uid="uid://ckkcim3g5wco6" path="res://src/scenes/tests/scene/Scene.occ" id="33_qhmxa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18jua"]
 albedo_color = Color(1, 1, 0.42745098, 1)
@@ -762,9 +761,6 @@ transform = Transform3D(7.049025, 0, 0, 0, 7.049025, 0, 0, 0, 14.286215, -114.62
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Quest_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000006, -0.35554504, -0.2001952, 0)
 shape = SubResource("BoxShape3D_qhmxa")
-
-[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
-occluder = ExtResource("33_qhmxa")
 
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]

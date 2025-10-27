@@ -15,7 +15,7 @@ func _ready() -> void:
 	refresh()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("inventory") or Input.is_action_just_pressed("pause"):
 		chest_closed.emit(chest_inventory)
