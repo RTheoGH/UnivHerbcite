@@ -8,4 +8,5 @@ script = ExtResource("1_a4by5")
 type = 3
 texture = ExtResource("2_la2vf")
 description = "Petites prunes acidulées, utilisées en confitures ou teintures."
+effect = 1
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

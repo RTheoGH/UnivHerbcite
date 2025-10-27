@@ -18,9 +18,6 @@ var slot_textures = {
 	"active": preload("res://assets/graphical/ui/active_case.png")
 }
 
-var speed_timer: Timer = null
-var time_remaining := 0.0
-
 func _ready():
 	#var inv_item := InventoryItem.new()
 	#inv_item.quantity = 3
@@ -47,9 +44,6 @@ func _process(delta):
 		close()
 	
 	change_current_slot()
-	
-	if speed_timer != null and speed_timer.is_stopped() == false:
-		time_remaining -= delta
 
 func update_slides():
 	#print(slots[0])
@@ -213,33 +207,12 @@ func _on_visibility_changed() -> void:
 
 
 func _on_eat_pressed() -> void:
-	print("hmmmm miam")
 	var player = get_parent().get_node("Perso")
 	var slot = Global.inv_current_slot
-	var item = Global.player_inventory.items[slot]
 	
-	match item.effect:
-		InventoryItem.InventoryItemEffect.SPEED:
-			player.SPEED = 10.0
-			
-			if speed_timer == null:
-				speed_timer = Timer.new()
-				speed_timer.wait_time = 5.0
-				speed_timer.one_shot = true
-				add_child(speed_timer)
-				speed_timer.connect("timeout",Callable(self, "_on_speed_timeout").bind(player))
-				speed_timer.start()
-			else:
-				speed_timer.stop()
-				speed_timer.start()
-			
-			time_remaining = speed_timer.wait_time
-		_:
-			return
-
-func _on_speed_timeout(player):
-	player.SPEED = 5.0
-	speed_timer.queue_free()
-	speed_timer = null
-	time_remaining = 0.0
-	print("Boost vitesse fin")
+	if slot >= Global.player_inventory.items.size():
+		print("invalid slot")
+		return
+	
+	var item = Global.player_inventory.items[slot]
+	ItemEffects._apply_effect(player, item.effect)

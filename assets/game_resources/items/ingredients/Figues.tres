@@ -8,4 +8,5 @@ script = ExtResource("1_13ybc")
 type = 5
 texture = ExtResource("2_qsbge")
 description = "Fruits sucrés et charnus, bons frais ou séchés."
+effect = 2
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"
