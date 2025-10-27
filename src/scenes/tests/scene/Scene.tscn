@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=77 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -36,13 +36,6 @@
 [ext_resource type="PackedScene" uid="uid://cl8q4jg5x7taj" path="res://src/scenes/vegetation/arbre2.tscn" id="34_2gpb1"]
 [ext_resource type="PackedScene" uid="uid://ciuqeeslt237k" path="res://src/scenes/vegetation/herbs.tscn" id="35_2gpb1"]
 [ext_resource type="ArrayMesh" uid="uid://dm3qi4ra24hjy" path="res://assets/game_resources/models/Grass/Mesh/grass.res" id="36_y4obm"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18jua"]
-albedo_color = Color(1, 1, 0.42745098, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_dvpi0"]
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_dvpi0"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dvpi0"]
 
@@ -303,21 +296,7 @@ buffer = PackedFloat32Array(-1.0002078, 0.038550965, -0.009963452, -15.956868, 0
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -167.48242, 4.1182723, 2.0020342)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(217.62, 0, 0, 0, 217.62, 0, 0, 0, 217.62, 0, 0, 0)
-visible = false
-material_override = SubResource("StandardMaterial3D_18jua")
-mesh = SubResource("PlaneMesh_dvpi0")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-visible = false
-shape = SubResource("WorldBoundaryShape3D_dvpi0")
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -129.431, 4.1182723, 2.0020342)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)

@@ -21,7 +21,6 @@ func _process(_delta: float) -> void:
 	else:
 		$suivant.disabled = false
 	pass
-	
 
 func show_book():
 	remplir_le_bouquin(Global.herbier,$gauche/gauche_texture,$gauche/gauche_titre,$gauche/gauche_texte,$droite/droite_texture,$droite/droite_titre,$droite/droite_texte,current_page)

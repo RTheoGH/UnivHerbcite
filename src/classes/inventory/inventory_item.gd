@@ -34,6 +34,8 @@ enum InventoryItemEffect{
 @export var description : String = "" # Optional
 @export var effect : InventoryItemEffect = InventoryItemEffect.NONE
 
+var revele : bool = false
+
 func copy() -> InventoryItem:
 	var new_item = InventoryItem.new()
 	new_item.type = self.type
