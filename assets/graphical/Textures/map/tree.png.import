@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu3ubqpridp7c"
-path.s3tc="res://.godot/imported/barrier.png-19032dc993a2baeaa96bb13b34b67b0a.s3tc.ctex"
+uid="uid://dl68ghesnyrxq"
+path.s3tc="res://.godot/imported/tree.png-6d2ba33906da1dc659fadcbfa425fbb2.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/graphical/Textures/map/barrier.png"
-dest_files=["res://.godot/imported/barrier.png-19032dc993a2baeaa96bb13b34b67b0a.s3tc.ctex"]
+source_file="res://assets/graphical/Textures/map/tree.png"
+dest_files=["res://.godot/imported/tree.png-6d2ba33906da1dc659fadcbfa425fbb2.s3tc.ctex"]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=2
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
