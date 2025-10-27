@@ -10,6 +10,9 @@ var is_dragging = false
 var minimap_activated: bool = false
 var carre_minimap: bool = false
 
+var fps: bool = false
+var guidage: bool = true
+
 var herbier : Array = []
 var recipes : Array[ItemRecipe] = [
 	load("res://src/classes/inventory/recipes/potion_rouge.tres") # Ajouter les autres

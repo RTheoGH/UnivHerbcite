@@ -12,12 +12,16 @@ var master = AudioServer.get_bus_index("Master")
 var music = AudioServer.get_bus_index("Music")
 var sfx = AudioServer.get_bus_index("SFX")
 
+
+
 func _ready() -> void:
 	$modifier.hide()
 	get_movements_keys()
 	$global/global_val.text = str(AudioServer.get_bus_volume_linear(master))
 	$musique/musique_val.text = str(AudioServer.get_bus_volume_linear(music))
 	$menu/menu_val.text = str(AudioServer.get_bus_volume_linear(sfx))
+	$AA_option.selected = 1
+	$Guide_b.button_pressed = true
 
 func _process(_delta: float) -> void:
 	set_camera_speed()
@@ -230,3 +234,17 @@ func _on_slot_2_pressed() -> void:
 	modif = "inv_slot_three"
 	current_button = $Slot2_B
 	$modifier.show()
+
+func _on_option_button_item_selected(index: int) -> void:
+	var vwp := get_viewport()
+	match index:
+		0: vwp.msaa_3d = Viewport.MSAA_DISABLED
+		1: vwp.msaa_3d = Viewport.MSAA_2X
+		2: vwp.msaa_3d = Viewport.MSAA_4X
+		3: vwp.msaa_3d = Viewport.MSAA_8X
+
+func _on_fps_b_pressed() -> void:
+	Global.fps = !Global.fps
+
+func _on_guide_b_pressed() -> void:
+	Global.guidage = !Global.guidage

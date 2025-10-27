@@ -72,7 +72,22 @@ func _physics_process(delta: float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		static_cam = true
 		return
-		
+	
+	if Global.fps:
+		if !$FPS.visible:
+			$FPS.visible = true
+		$FPS.text = "IPS: " + str(int(Engine.get_frames_per_second()))
+	else:
+		if $FPS.visible:
+			$FPS.visible = false
+	
+	if Global.guidage:
+		if !$Objectifs.visible:
+			$Objectifs.visible = true
+	else:
+		if $Objectifs.visible:
+			$Objectifs.visible = false
+	
 	if Global.is_ui_open():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else: 
