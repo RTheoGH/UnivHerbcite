@@ -3,7 +3,7 @@ extends Node
 var effects := {
 	InventoryItem.InventoryItemEffect.SPEED: {
 		"stats": [
-			{"target": "player", "property": "SPEED", "boost": 10.0, "default": 5.0},
+			{"target": "player", "property": "SPEED", "boost": 15.0, "default": 7.5},
 			{"target": "camera", "property": "fov", "boost": 90.0, "default": 75.0, "transition": 0.2}
 		],
 		"duration": 10.0
