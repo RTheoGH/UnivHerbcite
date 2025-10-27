@@ -25,12 +25,14 @@ func _process(_delta: float) -> void:
 	if hoverred_slot != -1:
 		if Input.is_action_just_pressed("left_click"):
 			if hoverred_slot < 10 and hoverred_slot < chest_inventory.items.size():
-				var possible := Global.player_inventory.add_item_copy(chest_inventory.items[hoverred_slot])
+				var possible := Global.player_inventory.add_item_copy(chest_inventory.items[hoverred_slot], false)
 				if possible:
 					chest_inventory.remove_item(chest_inventory.items[hoverred_slot])
 			elif hoverred_slot >= 10 and hoverred_slot-10 < Global.player_inventory.items.size():
-				var possible := chest_inventory.add_item_copy(Global.player_inventory.items[hoverred_slot-10])
+				print(Global.player_inventory.items[hoverred_slot-10].quantity)
+				var possible := chest_inventory.add_item_copy(Global.player_inventory.items[hoverred_slot-10], true)
 				if possible:
+					print(Global.player_inventory.items[hoverred_slot-10].quantity)
 					Global.player_inventory.remove_item(Global.player_inventory.items[hoverred_slot-10])
 				
 			refresh()
@@ -39,7 +41,7 @@ func _process(_delta: float) -> void:
 			if hoverred_slot < 10 and hoverred_slot < chest_inventory.items.size():
 				var possible := true
 				while possible and chest_inventory.items[hoverred_slot].quantity > 0:
-					possible = Global.player_inventory.add_item_copy(chest_inventory.items[hoverred_slot])
+					possible = Global.player_inventory.add_item_copy(chest_inventory.items[hoverred_slot], false)
 					if possible:
 						if chest_inventory.items[hoverred_slot].quantity == 1:
 							possible = false
@@ -47,7 +49,7 @@ func _process(_delta: float) -> void:
 			elif hoverred_slot >= 10 and hoverred_slot-10 < Global.player_inventory.items.size():
 				var possible := true
 				while possible and Global.player_inventory.items[hoverred_slot-10].quantity > 0:
-					possible = chest_inventory.add_item_copy(Global.player_inventory.items[hoverred_slot-10])
+					possible = chest_inventory.add_item_copy(Global.player_inventory.items[hoverred_slot-10], true)
 					if possible:
 						if Global.player_inventory.items[hoverred_slot-10].quantity == 1:
 							possible = false
@@ -57,12 +59,10 @@ func _process(_delta: float) -> void:
 
 
 func refresh():
+	print(Global.player_inventory.items.size())
 	for i in range(ui_inventory.size()):
 		#ui_inventory[i].get_node()
 		if i < Global.player_inventory.items.size():
-			#ui_inventory[i].update_inventory_visual(Global.player_inventory.items[i])
-			#ui_inventory[i].get_node("item_display").texture = Global.player_inventory.items[i].texture
-			#ui_inventory[i].get_node("item_quantity").text = str(Global.player_inventory.items[i].quantity)
 			ui_inventory[i].update_inventory_visual(Global.player_inventory.items[i])
 		else:
 			ui_inventory[i].get_node("item_display").texture = null

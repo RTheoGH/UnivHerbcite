@@ -144,6 +144,7 @@ func _on_visibility_changed() -> void:
 func _on_interactable_crafting_opened() -> void:
 	show()
 	Global.is_craft_ui_open = true
+	print(Global.player_inventory.items)
 
 
 func _on_interactable_area_exited(area: Area3D) -> void:

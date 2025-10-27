@@ -31,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="26_5x5f6"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
-[ext_resource type="Texture2D" uid="uid://ck0jtcc04q7hw" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
+[ext_resource type="Texture2D" uid="uid://d2cqixwjotg87" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18jua"]
 albedo_color = Color(1, 1, 0.42745098, 1)
@@ -308,10 +308,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.87686, 3.4564147, 4.0301
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -170.36525, 4.008513, -3.106133)
+visible = false
 mesh = SubResource("CylinderMesh_dvpi0")
 
 [node name="Interactable" type="Area3D" parent="MeshInstance3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02981, -0.9519453, 4.330148)
+visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -330,11 +332,13 @@ shape = SubResource("CylinderShape3D_plqpu")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -173.93747, 3.972879, -2.7388306)
+visible = false
 mesh = SubResource("CylinderMesh_dvpi0")
 skeleton = NodePath("../MeshInstance3D2")
 
 [node name="Interactable" type="Area3D" parent="MeshInstance3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02981, -0.9519453, 4.330148)
+visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -353,10 +357,12 @@ shape = SubResource("CylinderShape3D_plqpu")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -165.11143, 4.008513, -3.106133)
+visible = false
 mesh = SubResource("CylinderMesh_dvpi0")
 
 [node name="Interactable" type="Area3D" parent="MeshInstance3D4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02981, -0.9519453, 4.330148)
+visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -375,11 +381,13 @@ shape = SubResource("CylinderShape3D_plqpu")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -167.46623, 3.9715624, 4.2596436)
+visible = false
 mesh = SubResource("CylinderMesh_dvpi0")
 skeleton = NodePath("../MeshInstance3D4")
 
 [node name="Interactable" type="Area3D" parent="MeshInstance3D5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0298157, -0.42582226, 4.3301487)
+visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -612,7 +620,7 @@ bones/53/rotation = Quaternion(-0.82678765, 1.8329055e-07, -2.694016e-07, 0.5625
 bones/54/rotation = Quaternion(-2.4318398e-08, 0.9998002, 0.01998875, -5.3322486e-07)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -148.21738, 5.1820517, -10.086426)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.29616, 5.1820517, 1.036704)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
@@ -649,7 +657,7 @@ smoke_color = Color(0.8901961, 0.08627451, 0.08627451, 1)
 draw_pass_1 = SubResource("QuadMesh_hwj20")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -158.18727, 4.7443814, -9.932301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -171.18932, 4.7443814, -23.413605)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009643555, 0)
@@ -679,12 +687,15 @@ shape = SubResource("CylinderShape3D_yayvv")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.44838, 5.1820517, -14.738766)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0362854, 0)
+visible = false
 shape = SubResource("CylinderShape3D_ew3or")
 
 [node name="Interactable" type="Area3D" parent="StaticBody3D3"]
+visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -693,6 +704,7 @@ plante = ExtResource("16_qoxpl")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="StaticBody3D3/Interactable"]
+visible = false
 billboard = 2
 shaded = true
 texture = ExtResource("26_5x5f6")
@@ -704,10 +716,11 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3/Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098861694, 0)
+visible = false
 shape = SubResource("CylinderShape3D_gveul")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.19719, 5.1820517, -8.221058)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.09558, 5.1820517, 17.678246)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
