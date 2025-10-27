@@ -10,13 +10,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if current_page == 0:
 		$pred.disabled = true
 	else:
 		$pred.disabled = false
 		
-	if current_page == 4:
+	if current_page == 10:
 		$suivant.disabled = true
 	else:
 		$suivant.disabled = false
@@ -88,5 +88,13 @@ func _on_precedent_pressed() -> void:
 	show_book()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	$gauche.show()
-	$droite.show()
+	fade_in($gauche)
+	fade_in($droite)
+
+func fade_in(c: Control):
+	c.modulate.a = 0.0
+	c.show()
+	var tween := create_tween()
+	tween.tween_property(c, "modulate:a", 1.0, 0.5) \
+		.set_trans(Tween.TRANS_SINE) \
+		.set_ease(Tween.EASE_OUT)

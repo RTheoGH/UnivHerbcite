@@ -8,6 +8,9 @@ var texte : String
 @onready var l1 : RichTextLabel = $RichTextLabel
 @onready var l2 : RichTextLabel = $RichTextLabel2
 
+var _done_count := 0
+signal text_finished
+
 func activate():
 	$TextureRect2.texture = image
 	show_text(nom,texte)
@@ -16,17 +19,32 @@ func clean():
 	$TextureRect2.texture = null
 	$RichTextLabel.text = ""
 	$RichTextLabel2.text = ""
+
+func show_text(p: String, t: String):
+	_done_count = 0
+	if not text_finished.is_connected(_on_text_done):
+		text_finished.connect(_on_text_done)
 	
-func show_text(name: String, texte: String):
-	await type_text(l1,name)
-	await type_text(l2,texte)
+	type_text(l1, p)
+	type_text(l2, t)
 	
-func type_text(label: RichTextLabel, texte: String):
-	label.text = texte
+	while _done_count < 2:
+		await get_tree().process_frame
+	
+	if text_finished.is_connected(_on_text_done):
+		text_finished.disconnect(_on_text_done)
+
+func _on_text_done():
+	_done_count += 1
+
+func type_text(label: RichTextLabel, s: String):
+	label.text = s
 	label.visible_characters = 0
-	for i in range(texte.length()):
+	for i in range(s.length()):
 		label.visible_characters = i + 1
 		await get_tree().create_timer(speed).timeout
+	
+	emit_signal("text_finished")
 
 @onready var tween:= get_tree().create_tween()
 

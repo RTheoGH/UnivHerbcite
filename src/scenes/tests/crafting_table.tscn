@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cba4t0t6a3gdq"]
+[gd_scene load_steps=7 format=3 uid="uid://cba4t0t6a3gdq"]
 
 [ext_resource type="Texture2D" uid="uid://s2n3bsbvtliw" path="res://assets/graphical/Textures/craft_table_texture.png" id="1_lbvtx"]
 [ext_resource type="Script" uid="uid://baak2k6sntn4u" path="res://src/scenes/tests/crafting_table.gd" id="1_tultk"]
+[ext_resource type="PackedScene" uid="uid://b7e61ij3wfkph" path="res://src/scenes/ui/crafting/CraftUI.tscn" id="3_mm57b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_376vj"]
 albedo_texture = ExtResource("1_lbvtx")
@@ -31,3 +32,9 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207031, 0, 0)
 shape = SubResource("BoxShape3D_376vj")
+
+[node name="Control" parent="." instance=ExtResource("3_mm57b")]
+visible = false
+
+[connection signal="area_exited" from="Interactable" to="Control" method="_on_interactable_area_exited"]
+[connection signal="crafting_opened" from="Interactable" to="Control" method="_on_interactable_crafting_opened"]

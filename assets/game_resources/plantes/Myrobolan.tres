@@ -6,6 +6,6 @@
 [resource]
 script = ExtResource("1_2frn8")
 type = 3
-description = "rien"
+description = "Petit arbre fruitier à feuilles simples, rustique, souvent cultivé pour ses fruits."
 item = ExtResource("1_luku1")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

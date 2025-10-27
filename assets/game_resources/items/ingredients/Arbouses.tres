@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://rqwg00la26pa"]
 
 [ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_lql2j"]
-[ext_resource type="Texture2D" uid="uid://b5335j2k0g143" path="res://assets/graphical/items/arbouses.png" id="2_vuld2"]
+[ext_resource type="Texture2D" uid="uid://cv1dr1rca5bxe" path="res://assets/graphical/items/arbouses.png" id="2_vuld2"]
 
 [resource]
 script = ExtResource("1_lql2j")
 type = 1
 texture = ExtResource("2_vuld2")
-description = "Fruit rouge et aigrelet, en forme de fraise, de l'arbousier."
+description = "Petites baies rouges sucrées, délicieuses en confiture ou en infusion."
+effect = 1
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

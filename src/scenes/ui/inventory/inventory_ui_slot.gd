@@ -4,7 +4,7 @@ extends Panel
 @onready var item_quantity_text : RichTextLabel = $item_quantity
 
 func update_inventory_visual(item : InventoryItem):
-	if(!item):
+	if(!item) or item.quantity < 1:
 		item_display.visible = false
 		item_quantity_text.visible = false
 	else:
@@ -13,4 +13,5 @@ func update_inventory_visual(item : InventoryItem):
 		if(item.quantity > 1):
 			item_quantity_text.visible = true
 			item_quantity_text.text = str(item.quantity)
-		
+		else:
+			item_quantity_text.visible = false

@@ -8,6 +8,6 @@
 script = ExtResource("1_30qde")
 type = 2
 texture = ExtResource("3_irvht")
-description = "eee"
+description = "Plante vivace à tiges vertes fines qui poussent en touffes au printemps."
 item = ExtResource("1_ew3lu")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

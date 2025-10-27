@@ -12,7 +12,7 @@ float fresnel(float amount, vec3 normal, vec3 view)
 
 void fragment()
 {
-
+	FOG = -FOG;
 	vec2 noise = (texture(source_panorama, UV + (TIME / 50.0)).rg - 0.5) * 10.0;
 
 	vec3 base_color = vec3(0.0, 0.0, 0.1);

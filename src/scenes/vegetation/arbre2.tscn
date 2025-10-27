@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://cl8q4jg5x7taj"]
+
+[ext_resource type="Texture2D" uid="uid://dl68ghesnyrxq" path="res://assets/graphical/Textures/map/tree.png" id="1_5kuci"]
+[ext_resource type="Texture2D" uid="uid://cqhm550ryn2y4" path="res://assets/graphical/Textures/map/feuilles.jpg" id="2_375cq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x87f3"]
+albedo_texture = ExtResource("1_5kuci")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mv45f"]
+top_radius = 0.3
+bottom_radius = 0.25
+
+[sub_resource type="Skin" id="Skin_8i0mt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mv45f"]
+albedo_texture = ExtResource("2_375cq")
+uv1_scale = Vector3(4, 4, 4)
+grow_amount = -0.611
+proximity_fade_distance = 183.62
+
+[sub_resource type="SphereMesh" id="SphereMesh_2lupe"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5kuci"]
+radius = 0.32373047
+
+[node name="Arbre" type="StaticBody3D"]
+
+[node name="Tronc" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_x87f3")
+mesh = SubResource("CylinderMesh_mv45f")
+skin = SubResource("Skin_8i0mt")
+
+[node name="Feuillage" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.9693522, 0, 0, 0, 1.9693522, 0, 0, 0, 1.9693522, 0, 1.7161157, 0)
+material_override = SubResource("StandardMaterial3D_mv45f")
+mesh = SubResource("SphereMesh_2lupe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_5kuci")

@@ -2,36 +2,77 @@ extends Resource
 
 class_name Inventory
 
-@export var items : Array[InventoryItem]
+@export var items : Array[InventoryItem] = []
 @export var invSize : int = 3
-@export var stackSize : int
+@export var stackSize : int 
+
+signal stack_item
+signal inventory_full
 
 func add_item(item : InventoryItem):
 	if items.has(item):
 		# Make a stack system oops
 		if item.quantity < stackSize:
 			item.quantity += 1
+			stack_item.emit()
 		else :
 			print( "You're carrying as many " + str(InventoryItem.InventoryItemType.find_key(item.type)) + " as you can ! ")
 	else:
-		print(items.size())
 		if items.size()+1 > invSize:
 			print(" Your inventory is full ! ")
+			inventory_full.emit()
 			# Discard an item ? 
 		else : 
+			item.quantity = 1
+			var deja_eu = false
+			for h in Global.herbier:
+				if h.item == item:
+					deja_eu = true
+			if deja_eu:
+				stack_item.emit()
 			items.push_back(item)
-		
+			
+func add_item_copy(item : InventoryItem, copy: bool) -> bool:
+	print("dans add_item_copy : ", item.quantity)
+	var index = has(item.type)
+	print(item.quantity)
+	if index != -1:
+		if item.quantity < stackSize:
+			items[index].quantity += 1
+			return true
+		else :
+			print( "You're carrying as many " + str(InventoryItem.InventoryItemType.find_key(item.type)) + " as you can ! ")
+			return false
+	else:
+		if items.size()+1 > invSize:
+			print(" Your inventory is full ! ")
+			return false
+		else:
+			var new_item := load(Global.all_ingredient_items[item.type]) if !copy else item.copy()
+			new_item.quantity = 1
+			
+			items.push_back(new_item)
+			return true
+
 func remove_item(item : InventoryItem):
 	if items.has(item):
 		item.quantity -= 1
+		print("normal")
 		if item.quantity <= 0:
+			print("pas normal")
+			item.quantity = 0
 			items.erase(item)
+			
+func remove_item_type(item_type : InventoryItem.InventoryItemType):
+	var index = has(item_type)
+	if index != -1:
+		items.remove_at(index)
 
-func has(itemType : InventoryItem.InventoryItemType) -> bool:
-	for i in items:
-		if i.type == itemType:
-			return true
-	return false
+func has(item_type : InventoryItem.InventoryItemType) -> int:
+	for i in range(items.size()):
+		if items[i].type == item_type:
+			return i
+	return -1
 
 func can_add_craft(ings : Array[InventoryItem]) -> bool:
 	for ing in range(ings.size()):
