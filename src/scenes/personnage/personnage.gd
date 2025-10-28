@@ -31,6 +31,8 @@ var crosshair_textures = {
 	"interact": preload("res://assets/graphical/crosshair_interact.res")
 }
 
+var hmm = preload("res://assets/graphical/ui/hmmmm.png")
+
 # [objectif,completed]
 var current_objectives = [
 	["space_1",false]
@@ -45,6 +47,8 @@ func try_grab() -> Node3D:
 		if !already_discovered:
 			if obj.plante != null:
 				$TextAlert.show_alert("Nouvelle plante découverte !")
+				if !obj.plante.decouvert:
+					obj.plante.decouvert = true
 				already_discovered = true
 				$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
 				$Informations.image = obj.plante.texture
@@ -121,7 +125,7 @@ func _physics_process(delta: float) -> void:
 			$Camera3D/Crosshair.texture = crosshair_textures["pickup"]
 			if !one_time:
 				one_time = true
-				for h in Global.herbier:
+				for h in Global.discoveries:
 					if h.type == obj.plante.type:
 						already_discovered = true
 
@@ -133,7 +137,7 @@ func _physics_process(delta: float) -> void:
 					$Informations.texte = obj.plante.description
 				else:
 					$Informations.nom = "???"
-					$Informations.image = load("res://assets/graphical/ui/hmmmm.png")
+					$Informations.image = hmm
 					$Informations.texte = "Vous n'avez pas encore découvert cette plante."
 				$Informations.activate()
 		else:

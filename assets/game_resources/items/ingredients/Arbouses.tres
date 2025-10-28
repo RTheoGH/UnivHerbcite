@@ -9,4 +9,6 @@ type = 1
 texture = ExtResource("2_vuld2")
 description = "Petites baies rouges sucrées, délicieuses en confiture ou en infusion."
 effect = 1
+answer = Array[int]([1, 0])
+choix = Array[Array]([["bleus", "rouges", "jaunes"], ["confiture", "soupe"]])
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

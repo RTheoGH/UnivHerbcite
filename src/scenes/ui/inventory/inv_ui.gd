@@ -18,6 +18,9 @@ var slot_textures = {
 	"active": preload("res://assets/graphical/ui/active_case.png")
 }
 
+var discovered_jujubes: bool = false
+var discovered_lavandes: bool = false
+
 func _ready():
 	#var inv_item := InventoryItem.new()
 	#inv_item.quantity = 3
@@ -44,6 +47,9 @@ func _process(_delta):
 		close()
 	
 	change_current_slot()
+	
+	discover_jujubes()
+	discover_lavandes()
 
 func update_slides():
 	#print(slots[0])
@@ -215,6 +221,14 @@ func _on_eat_pressed() -> void:
 		return
 	
 	var item = Global.player_inventory.items[slot]
+	print(item)
+	var arbouse = InventoryItem.InventoryItemType.ARBOUSES
+	var asperge = InventoryItem.InventoryItemType.ASPERGES
+	if item.type == arbouse or item.type == asperge:
+		if item.type == arbouse: print("discovered arbouses")
+		if item.type == asperge: print("discovered asperges")
+		item.revele = true
+	
 	Global.player_inventory.remove_item(item)
 	update_slides()
 	for i in range(slots.size()):
@@ -222,3 +236,22 @@ func _on_eat_pressed() -> void:
 			slots[i].get_node("item_display").texture = null
 			slots[i].get_node("item_quantity").text = ""
 	ItemEffects._apply_effect(player, item.effect)
+
+func discover_jujubes():
+	if !discovered_jujubes:
+		for item in Global.player_inventory.items:
+			if item.type == InventoryItem.InventoryItemType.JUJUBES \
+			and item.quantity == 5:
+				print("discovered jujubes")
+				item.revele = true
+				discovered_jujubes = true
+
+func discover_lavandes():
+	if !discovered_lavandes:
+		var slot = Global.inv_current_slot
+		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
+			var item = Global.player_inventory.items[slot]
+			if item.type == InventoryItem.InventoryItemType.LAVANDE:
+				print("discovered lavandes")
+				item.revele = true
+				discovered_lavandes = true

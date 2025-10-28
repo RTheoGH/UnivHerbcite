@@ -33,9 +33,7 @@ func add_item(item : InventoryItem):
 			items.push_back(item)
 			
 func add_item_copy(item : InventoryItem, copy: bool) -> bool:
-	print("dans add_item_copy : ", item.quantity)
 	var index = has(item.type)
-	print(item.quantity)
 	if index != -1:
 		if item.quantity < stackSize:
 			items[index].quantity += 1
@@ -48,7 +46,7 @@ func add_item_copy(item : InventoryItem, copy: bool) -> bool:
 			print(" Your inventory is full ! ")
 			return false
 		else:
-			var new_item := load(Global.all_ingredient_items[item.type]) if !copy else item.copy()
+			var new_item := load(Global.all_ingredient_items[item.type as int]) if !copy else item.copy()
 			new_item.quantity = 1
 			
 			items.push_back(new_item)
@@ -57,9 +55,7 @@ func add_item_copy(item : InventoryItem, copy: bool) -> bool:
 func remove_item(item : InventoryItem):
 	if items.has(item):
 		item.quantity -= 1
-		print("normal")
 		if item.quantity <= 0:
-			print("pas normal")
 			item.quantity = 0
 			items.erase(item)
 			

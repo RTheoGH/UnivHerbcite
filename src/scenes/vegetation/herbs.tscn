@@ -1,11 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://ciuqeeslt237k"]
+[gd_scene load_steps=7 format=3 uid="uid://ciuqeeslt237k"]
 
-[ext_resource type="ArrayMesh" uid="uid://dm3qi4ra24hjy" path="res://assets/game_resources/models/Grass/Mesh/grass.res" id="1_mio1j"]
+[ext_resource type="Shader" uid="uid://5i3467gm2lwg" path="res://assets/shaders/grass.gdshader" id="1_4j66e"]
+[ext_resource type="ArrayMesh" uid="uid://ckwro2fifyppy" path="res://assets/game_resources/models/Grass/Mesh/grass.res" id="1_mio1j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mio1j"]
 albedo_color = Color(0, 0.27058825, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4j66e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjmmi"]
+render_priority = 0
+shader = ExtResource("1_4j66e")
+shader_parameter/color = Color(0, 0.18039216, 0, 1)
+shader_parameter/color2 = Color(0, 0.6392157, 0, 1)
+shader_parameter/noiseScale = 20.0
 
 [sub_resource type="MultiMesh" id="MultiMesh_mio1j"]
 transform_format = 1
@@ -22,5 +30,6 @@ material_override = SubResource("StandardMaterial3D_mio1j")
 mesh = SubResource("PlaneMesh_4j66e")
 
 [node name="Grass" type="MultiMeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_jjmmi")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_mio1j")

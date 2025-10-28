@@ -8,14 +8,16 @@ var chest_inventory : Inventory
 @onready var ui_inventory := get_tree().get_nodes_in_group("player_inventory")
 var hoverred_slot : int = -1
 
+var discovered_olives: bool = false
+
 func _ready() -> void:
 	chest_inventory = Inventory.new()
 	chest_inventory.invSize = 10
 	chest_inventory.stackSize = 16
 	refresh()
 
-
 func _process(_delta: float) -> void:
+	discover_olives()
 	
 	if Input.is_action_just_pressed("inventory") or Input.is_action_just_pressed("pause"):
 		chest_closed.emit(chest_inventory)
@@ -29,10 +31,8 @@ func _process(_delta: float) -> void:
 				if possible:
 					chest_inventory.remove_item(chest_inventory.items[hoverred_slot])
 			elif hoverred_slot >= 10 and hoverred_slot-10 < Global.player_inventory.items.size():
-				print(Global.player_inventory.items[hoverred_slot-10].quantity)
 				var possible := chest_inventory.add_item_copy(Global.player_inventory.items[hoverred_slot-10], true)
 				if possible:
-					print(Global.player_inventory.items[hoverred_slot-10].quantity)
 					Global.player_inventory.remove_item(Global.player_inventory.items[hoverred_slot-10])
 				
 			refresh()
@@ -96,3 +96,11 @@ func _on_inventory_ui_slot_mouse_entered(index : int) -> void:
 
 func _on_inventory_ui_slot_mouse_exited() -> void:
 	hoverred_slot = -1
+
+func discover_olives():
+	if !discovered_olives:
+		for item in chest_inventory.items:
+			if item.type == InventoryItem.InventoryItemType.OLIVES:
+				print("discovered olives")
+				item.revele = true
+				discovered_olives = true
