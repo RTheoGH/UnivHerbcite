@@ -1,7 +1,18 @@
 extends Control
 
 var current_page : int = 0
-var taches : Array[Vector4]
+var taches : Array[Array] = [
+	[Vector4(771.0, 303.0, 0.54, 0.746), Vector4(733.0, 327.0, 0.805, 1.0), Vector4(-1.0, -1.0, -1.0, -1.0)],
+	[Vector4(747.0, 278.938, 0.52, 0.809), Vector4(760.0, 304.0, 0.652, 0.904), Vector4(732.0, 330.0, 0.723, 0.884)],
+	[Vector4(781.0, 278.0, 0.586, 0.809), Vector4(684.0, 303.0, 0.873, 0.904), Vector4(-1.0, -1.0, -1.0, -1.0)],
+	[Vector4(719.0, 277.0, 0.586, 0.809), Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0)],
+	[Vector4(700.0, 315.0, 0.479, 0.755), Vector4(797.0, 316.0, 0.619, 0.898), Vector4(-1.0, -1.0, -1.0, -1.0)],
+	[Vector4(689.0, 315.0, 0.479, 0.755), Vector4(762.0, 316.0, 0.505, 0.898), Vector4(-1.0, -1.0, -1.0, -1.0)],
+	[Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0)]
+	
+]
+
+@onready var taches_ui := get_tree().get_nodes_in_group("taches")
 
 var hmm = preload("res://assets/graphical/ui/hmmmm.png")
 
@@ -79,13 +90,20 @@ func remplir_le_bouquin(
 ):
 	remplir_page_plante(book, page, g, gtitre, gt)
 	remplir_page_item(book, page, d, dtitre, dt)
-
+	for i in range(taches_ui.size()):
+		if taches[page][i] != Vector4(-1.0, -1.0, -1.0, -1.0):
+			taches_ui[i].global_position = Vector2(taches[page][i].x, taches[page][i].y)
+			taches_ui[i].scale = Vector2(taches[page][i].z, taches[page][i].w)
+		else:
+			taches_ui[i].hide()
 
 func _on_suivant_pressed() -> void:
 	$turn.play()
 	$AnimatedSprite2D.play("turn_right")
 	$gauche.hide()
 	$droite.hide()
+	for t in taches_ui:
+		t.hide()
 	current_page+=1
 	show_book()
 
@@ -98,17 +116,23 @@ func _on_precedent_pressed() -> void:
 	$AnimatedSprite2D.play("turn_left")
 	$gauche.hide()
 	$droite.hide()
+	for t in taches_ui:
+		t.hide()
 	current_page-=1
 	show_book()
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	fade_in($gauche)
 	fade_in($droite)
+	for i in range(taches_ui.size()):
+		if taches[current_page][i] != Vector4(-1.0, -1.0, -1.0, -1.0):
+			taches_ui[i].show()
+
 
 func fade_in(c: Control):
 	c.modulate.a = 0.0
 	c.show()
 	var tween := create_tween()
-	tween.tween_property(c, "modulate:a", 1.0, 0.5) \
+	tween.tween_property(c, "modulate:a", 1.0, 0.3) \
 		.set_trans(Tween.TRANS_SINE) \
 		.set_ease(Tween.EASE_OUT)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjgtvtynklld5"]
+[gd_scene load_steps=26 format=3 uid="uid://bjgtvtynklld5"]
 
 [ext_resource type="Script" uid="uid://dqex76kdn8q6e" path="res://src/scenes/ui/book/book.gd" id="1_5jibr"]
 [ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="2_fyv12"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bawhx1snecap" path="res://assets/graphical/ui/precedent2.png" id="16_0k5qe"]
 [ext_resource type="AudioStream" uid="uid://coslqk6nfjk64" path="res://assets/sounds/turn_page.mp3" id="17_j6u72"]
 [ext_resource type="AudioStream" uid="uid://cfffq23lwsdc1" path="res://assets/sounds/close_book.mp3" id="18_65c64"]
+[ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="20_lqpnt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hp3is"]
 shader = ExtResource("2_fyv12")
@@ -121,10 +122,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 28.0
-offset_right = 10.0
-offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.2784314)
@@ -337,13 +334,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
+text = "Fleur odorante utilisée en infusion, cuisine ou en parfum."
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["taches"]]
+position = Vector2(1036, 319.00003)
+scale = Vector2(0.504883, 0.8983689)
+texture = ExtResource("20_lqpnt")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="." groups=["taches"]]
+position = Vector2(1020.00006, 203.99998)
+scale = Vector2(0.47851518, 0.75548303)
+texture = ExtResource("20_lqpnt")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." groups=["taches"]]
+position = Vector2(1027, 274)
+scale = Vector2(0.87255853, 0.9035088)
+texture = ExtResource("20_lqpnt")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="pressed" from="retour" to="." method="_on_retour_pressed"]
