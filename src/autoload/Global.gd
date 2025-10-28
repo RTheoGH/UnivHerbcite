@@ -17,15 +17,25 @@ var herbier : Array = []
 var recipes : Array[ItemRecipe] = [
 	load("res://src/classes/inventory/recipes/potion_rouge.tres") # Ajouter les autres
 ]
-var all_ingredient_items : Dictionary[InventoryItem.InventoryItemType, String] = {
-	InventoryItem.InventoryItemType.JUJUBES : "res://assets/game_resources/items/ingredients/Jujubes.tres",
-	InventoryItem.InventoryItemType.ARBOUSES : "res://assets/game_resources/items/ingredients/Arbouses.tres",
-	InventoryItem.InventoryItemType.ASPERGES : "res://assets/game_resources/items/ingredients/Asperges.tres",
-	InventoryItem.InventoryItemType.MYROBOLANS : "res://assets/game_resources/items/ingredients/Myrobolans.tres",
-	InventoryItem.InventoryItemType.OLIVES : "res://assets/game_resources/items/ingredients/Olives.tres",
-	InventoryItem.InventoryItemType.FIGUES : "res://assets/game_resources/items/ingredients/Figues.tres",
-	InventoryItem.InventoryItemType.LAVANDE : "res://assets/game_resources/items/ingredients/lavandes.tres"
-}
+var all_ingredient_items : Array[String] = [
+	"res://assets/game_resources/items/ingredients/Jujubes.tres",
+	"res://assets/game_resources/items/ingredients/Arbouses.tres",
+	"res://assets/game_resources/items/ingredients/Asperges.tres",
+	"res://assets/game_resources/items/ingredients/Myrobolans.tres",
+	"res://assets/game_resources/items/ingredients/Olives.tres",
+	"res://assets/game_resources/items/ingredients/Figues.tres",
+	"res://assets/game_resources/items/ingredients/lavandes.tres"
+]
+
+var all_plantes : Array[String] = [
+	"res://assets/game_resources/plantes/Jujubier.tres",
+	"res://assets/game_resources/plantes/Arbousier.tres",
+	"res://assets/game_resources/plantes/Asperge.tres",
+	"res://assets/game_resources/plantes/Myrobolan.tres",
+	"res://assets/game_resources/plantes/Olivier.tres",
+	"res://assets/game_resources/plantes/Figuier.tres",
+	"res://assets/game_resources/plantes/Lavande.tres"
+]
 
 @onready var player_inventory : Inventory = preload("res://assets/game_resources/player_inventory.tres")
 var inv_current_slot: int = 0

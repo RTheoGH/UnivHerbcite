@@ -29,10 +29,8 @@ func _process(_delta: float) -> void:
 				if possible:
 					chest_inventory.remove_item(chest_inventory.items[hoverred_slot])
 			elif hoverred_slot >= 10 and hoverred_slot-10 < Global.player_inventory.items.size():
-				print(Global.player_inventory.items[hoverred_slot-10].quantity)
 				var possible := chest_inventory.add_item_copy(Global.player_inventory.items[hoverred_slot-10], true)
 				if possible:
-					print(Global.player_inventory.items[hoverred_slot-10].quantity)
 					Global.player_inventory.remove_item(Global.player_inventory.items[hoverred_slot-10])
 				
 			refresh()

@@ -1,12 +1,16 @@
 extends Control
 
 var current_page : int = 0
+var taches : Array[Vector4]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
 	
-	pass # Replace with function body.
+	for p in range(Global.all_plantes.size()):
+		Global.herbier.append(load(Global.all_plantes[p]))
+		
+	show_book()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +35,10 @@ func current_index_not_empty(book: Array, i: int) -> bool:
 func remplir_page_plante(book: Array, i: int, tex: TextureRect, titre: RichTextLabel, texte: RichTextLabel):
 	if current_index_not_empty(book, i):
 		var plante = book[i]
-		tex.texture = plante.texture
+		if plante.decouvert:
+			tex.texture = plante.texture
+		else:
+			tex.texture = load("res://assets/graphical/ui/hmmmm.png")
 		titre.text = str(Plante.PlanteType.find_key(plante.type))
 		texte.text = plante.description
 	else:
@@ -44,8 +51,14 @@ func remplir_page_item(book: Array, i: int, tex: TextureRect, titre: RichTextLab
 		var plante = book[i]
 		var item = plante.item
 		if item != null:
-			tex.texture = item.texture
-			titre.text = str(InventoryItem.InventoryItemType.find_key(item.type))
+			if plante.decouvert:
+				tex.texture = item.texture
+			else:
+				tex.texture = load("res://assets/graphical/ui/hmmmm.png")
+			if plante.type != Plante.PlanteType.LAVANDES or plante.decouvert:
+				titre.text = str(InventoryItem.InventoryItemType.find_key(item.type))
+			else:
+				titre.text = "???"
 			texte.text = item.description
 		else:
 			tex.texture = null
