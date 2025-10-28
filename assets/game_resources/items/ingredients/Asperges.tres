@@ -8,4 +8,5 @@ script = ExtResource("1_bn2q8")
 type = 2
 texture = ExtResource("2_14dye")
 description = "Jeunes pousses tendres et croquantes, parfaites en cuisine."
+effect = 1
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

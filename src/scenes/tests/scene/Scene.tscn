@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=78 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -28,9 +28,10 @@
 [ext_resource type="Script" uid="uid://byq8iypi45525" path="res://src/classes/AnimatedMultiSprite.gd" id="19_mcf5s"]
 [ext_resource type="Texture2D" uid="uid://de75rn8e1y3s1" path="res://assets/graphical/plantes/arbousier.png" id="20_j0txf"]
 [ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
-[ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="26_5x5f6"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
+[ext_resource type="Resource" uid="uid://cnhhrmbd4cdyi" path="res://assets/game_resources/plantes/Olivier.tres" id="29_y4obm"]
+[ext_resource type="Texture2D" uid="uid://02fplxnd1p8f" path="res://assets/graphical/plantes/olivier.png" id="30_etu4x"]
 [ext_resource type="Texture2D" uid="uid://d2cqixwjotg87" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
 [ext_resource type="PackedScene" uid="uid://cbg1ey8gwx688" path="res://src/scenes/vegetation/arbre.tscn" id="33_31xpo"]
 [ext_resource type="PackedScene" uid="uid://cl8q4jg5x7taj" path="res://src/scenes/vegetation/arbre2.tscn" id="34_2gpb1"]
@@ -296,7 +297,7 @@ buffer = PackedFloat32Array(-1.0002078, 0.038550965, -0.009963452, -15.956868, 0
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -168.16017, 4.1182723, 2.0020342)
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, -119.843254, 4.1182723, 2.0020342)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -700,36 +701,31 @@ shape = SubResource("CylinderShape3D_yayvv")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -153.44838, 5.1820517, -14.738766)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0362854, 0)
-visible = false
 shape = SubResource("CylinderShape3D_ew3or")
 
 [node name="Interactable" type="Area3D" parent="StaticBody3D3"]
-visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
 is_collectible = true
-plante = ExtResource("16_qoxpl")
+plante = ExtResource("29_y4obm")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="StaticBody3D3/Interactable"]
-visible = false
 billboard = 2
 shaded = true
-texture = ExtResource("26_5x5f6")
+texture = ExtResource("30_etu4x")
 script = ExtResource("19_mcf5s")
-sprites = Array[Texture]([ExtResource("26_5x5f6")])
+sprites = Array[Texture]([ExtResource("30_etu4x")])
 offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3/Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.098861694, 0)
-visible = false
 shape = SubResource("CylinderShape3D_gveul")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="."]
@@ -804,40 +800,40 @@ transform = Transform3D(1.3333334, 0, 0, 0, 1.3333334, 0, 0, 0, 1.3333334, -26.4
 transform = Transform3D(1.6666667, 0, 0, 0, 1.6666667, 0, 0, 0, 1.6666667, -20.519922, 0.9914659, 55.579376)
 
 [node name="Arbre5" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.949493, 0.7596811, 1.2514102)
+transform = Transform3D(0.2901247, 0, 0, 0, 0.17877315, 0, 0, 0, 0.2901247, -34.425034, 0.3339278, 1.2514102)
 
 [node name="Arbre6" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.210754, 0.7596811, -6.4832015)
+transform = Transform3D(0.17411721, 0, 0, 0, 0.17411721, 0, 0, 0, 0.17411721, -33.010292, 0.4964599, -5.8304343)
 
 [node name="Arbre7" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -37.178787, 0.7596811, -5.661667)
+transform = Transform3D(0.24992709, 0, 0, 0, 0.16786687, 0, 0, 0, 0.24992709, -37.178787, 0.59874177, -5.661667)
 
 [node name="Arbre8" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -38.906746, 0.7596811, -3.7096183)
+transform = Transform3D(0.2222616, 0, 0, 0, 0.15845555, 0, 0, 0, 0.2222616, -38.906746, 0.6097444, -3.7096183)
 
 [node name="Arbre9" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -39.212547, 0.7596811, -7.753137)
+transform = Transform3D(0.38090512, 0, 0, 0, 0.16549408, 0, 0, 0, 0.38090512, -39.212547, 0.6240711, -7.753137)
 
 [node name="Arbre10" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -27.144125, 0.45175332, 5.5694556)
+transform = Transform3D(0.60200703, 0, 0, 0, 0.37511432, 0, 0, 0, 0.5931601, -27.163998, 0.3829608, 6.727518)
 
 [node name="Arbre11" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.625229, -0.061847847, 8.346648)
+transform = Transform3D(0.37885153, 0, 0, 0, 0.37885153, 0, 0, 0, 0.37885153, -7.625229, -0.60639185, 8.346648)
 
 [node name="Arbre12" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.833645, 0.012927691, 9.92902)
+transform = Transform3D(0.27889156, 0, 0, 0, 0.27889156, 0, 0, 0, 0.27889156, -8.833645, -0.70461005, 9.92902)
 
 [node name="Arbre13" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.625229, 0.02206858, 11.771141)
+transform = Transform3D(0.29600102, 0, 0, 0, 0.29600102, 0, 0, 0, 0.29600102, -7.625229, -0.69306815, 11.771141)
 
 [node name="Arbre14" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(3.0250003, 0, 0, 0, 3.0250003, 0, 0, 0, 3.0250003, -9.126379, -1.2956417, 19.579544)
+transform = Transform3D(1.1857517, 0, 0, 0, 0.5281738, 0, 0, 0, 1.1857517, -7.930683, -0.44368038, 20.620407)
 
 [node name="Arbre15" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -31.85909, 0.45175332, 12.91323)
+transform = Transform3D(0.51709104, 0, 0, 0, 0.4085306, 0, 0, 0, 0.51709104, -31.85909, 0.2568868, 12.91323)
 
 [node name="Arbre16" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(2.335, 0, 0, 0, 2.335, 0, 0, 0, 2.335, -16.659863, -0.22746849, 24.602545)
+transform = Transform3D(1.3405694, 0, 0, 0, 0.63638234, 0, 0, 0, 1.3405694, -15.401918, -0.22746849, 26.134527)
 
 [node name="Arbre17" parent="Vegetation" instance=ExtResource("33_31xpo")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -42.070473, 1.9243116, 14.727134)
@@ -858,7 +854,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -42.019035, 1.2926848, 
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -23.230085, 1.5130838, 22.576756)
 
 [node name="Arbre23" parent="Vegetation" instance=ExtResource("34_2gpb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.471649, -0.4369812, 69.49495)
+transform = Transform3D(0.29213095, 0, 0, 0, 0.201443, 0, 0, 0, 0.2567668, -10.380069, -1.0606635, 69.66829)
 
 [node name="Herbs" parent="Vegetation" instance=ExtResource("35_2gpb1")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -24.46112, 0, 7.001489)

@@ -15,8 +15,8 @@ func pick_up():
 	print("Tu m'as récupéré !")
 	#print(plante)
 	Global.player_inventory.add_item(plante.item)
-	if(!Global.herbier.has(plante)):
-		Global.herbier.push_back(plante)
+	if(!Global.discoveries.has(plante)):
+		Global.discoveries.push_back(plante)
 	
 	#print(plante.type)
 	#print(plante.texture)

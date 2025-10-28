@@ -14,6 +14,7 @@ var fps: bool = false
 var guidage: bool = true
 
 var herbier : Array = []
+var discoveries : Array = []
 var recipes : Array[ItemRecipe] = [
 	load("res://src/classes/inventory/recipes/potion_rouge.tres") # Ajouter les autres
 ]

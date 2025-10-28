@@ -3,6 +3,8 @@ extends Control
 var current_page : int = 0
 var taches : Array[Vector4]
 
+var hmm = preload("res://assets/graphical/ui/hmmmm.png")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
@@ -38,7 +40,7 @@ func remplir_page_plante(book: Array, i: int, tex: TextureRect, titre: RichTextL
 		if plante.decouvert:
 			tex.texture = plante.texture
 		else:
-			tex.texture = load("res://assets/graphical/ui/hmmmm.png")
+			tex.texture = hmm
 		titre.text = str(Plante.PlanteType.find_key(plante.type))
 		texte.text = plante.description
 	else:
@@ -54,7 +56,7 @@ func remplir_page_item(book: Array, i: int, tex: TextureRect, titre: RichTextLab
 			if plante.decouvert:
 				tex.texture = item.texture
 			else:
-				tex.texture = load("res://assets/graphical/ui/hmmmm.png")
+				tex.texture = hmm
 			if plante.type != Plante.PlanteType.LAVANDES or plante.decouvert:
 				titre.text = str(InventoryItem.InventoryItemType.find_key(item.type))
 			else:

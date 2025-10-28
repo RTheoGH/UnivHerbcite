@@ -127,6 +127,14 @@ func _on_confirm_button_up() -> void:
 		Global.player_inventory.consume_items(current_ings)
 		Global.player_inventory.add_item(result)
 		$Complete.play()
+		for ci in current_ings:
+			var figue = InventoryItem.InventoryItemType.FIGUES
+			var myrobolan = InventoryItem.InventoryItemType.MYROBOLANS
+			if ci.type == figue \
+			or ci.type == myrobolan:
+				if ci.type == figue: print("discovered figue")
+				if ci.type == myrobolan: print("discovered myrobolan")
+				ci.revele = true
 		if $TextureRect.texture == craft_ui_textures["complete"]:
 			$TextureRect.texture = craft_ui_textures["base"]
 		refresh()
