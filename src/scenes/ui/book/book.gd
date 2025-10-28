@@ -125,7 +125,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	fade_in($gauche)
 	fade_in($droite)
 	for i in range(taches_ui.size()):
-		if taches[current_page][i] != Vector4(-1.0, -1.0, -1.0, -1.0):
+		if taches[current_page][i] != Vector4(-1.0, -1.0, -1.0, -1.0) and !Global.herbier[current_page].decouvert:
 			taches_ui[i].show()
 
 
