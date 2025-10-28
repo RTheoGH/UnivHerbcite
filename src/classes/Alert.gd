@@ -47,3 +47,7 @@ func _on_wall_item_required(item):
 
 func _on_wall_removed():
 	show_alert("Zone débloquée !")
+	
+func on_cooldonw_left(cooldown):
+	show_alert(str("Temps restant : ", int(cooldown), "s"))
+	
