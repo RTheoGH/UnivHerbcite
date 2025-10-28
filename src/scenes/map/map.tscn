@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqq7lyosyug6m"]
+[gd_scene load_steps=12 format=3 uid="uid://cqq7lyosyug6m"]
 
 [ext_resource type="PackedScene" uid="uid://ck1g3yvkhx7bh" path="res://assets/graphical/map/map.blend" id="1_sxf4j"]
 [ext_resource type="Texture2D" uid="uid://b486ihtle73ob" path="res://assets/graphical/Textures/sky/Skyboxes/processed_skybox.png" id="2_tqkkf"]
@@ -67,31 +67,10 @@ sky = SubResource("Sky_ph54e")
 radius = 500.0
 height = 1000.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_a2pkv"]
-noise_type = 3
-frequency = 0.0215
-fractal_type = 2
-fractal_octaves = 6
-fractal_lacunarity = 1.315
-domain_warp_enabled = true
-domain_warp_type = 1
-domain_warp_amplitude = 10.62
-domain_warp_frequency = 0.11
-domain_warp_fractal_octaves = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ph54e"]
-width = 1024
-height = 1024
-generate_mipmaps = false
-noise = SubResource("FastNoiseLite_a2pkv")
-seamless = true
-normalize = false
-seamless_blend_skirt = 0.219
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fcby6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bh7fh"]
 render_priority = 0
 shader = ExtResource("3_a2pkv")
-shader_parameter/source_panorama = SubResource("NoiseTexture2D_ph54e")
+shader_parameter/source_panorama = ExtResource("2_tqkkf")
 
 [node name="Map" type="Node3D"]
 
@@ -106,6 +85,6 @@ transform = Transform3D(0.9462521, 0.14721659, 0.28798333, -0.255126, 0.8870195,
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.0918, 3228.834, -39.000763)
 mesh = SubResource("SphereMesh_ph54e")
-surface_material_override/0 = SubResource("ShaderMaterial_fcby6")
+surface_material_override/0 = SubResource("ShaderMaterial_bh7fh")
 
 [editable path="map"]
