@@ -102,5 +102,5 @@ func discover_olives():
 		for item in chest_inventory.items:
 			if item.type == InventoryItem.InventoryItemType.OLIVES:
 				print("discovered olives")
-				item.revele = true
+				load(Global.all_ingredient_items[item.type]).revele = true
 				discovered_olives = true
