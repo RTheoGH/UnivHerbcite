@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xgrrr1fqv2g0"
-path.s3tc="res://.godot/imported/myrobolan.png-4e22a9ae1fca1d598661822160a6da36.s3tc.ctex"
+uid="uid://bvwvi71ajo5wh"
+path.s3tc="res://.godot/imported/prunier.png-290961a16b852d40acdd577f6d695766.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/graphical/items/myrobolan.png"
-dest_files=["res://.godot/imported/myrobolan.png-4e22a9ae1fca1d598661822160a6da36.s3tc.ctex"]
+source_file="res://assets/graphical/plantes/prunier.png"
+dest_files=["res://.godot/imported/prunier.png-290961a16b852d40acdd577f6d695766.s3tc.ctex"]
 
 [params]
 
