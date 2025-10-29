@@ -22,6 +22,8 @@ length = 2.0
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_e1nwe"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_e1nwe"]
+radius = 0.44873047
+height = 1.9077148
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_taega"]
 albedo_color = Color(0.20329913, 0.10778419, 0, 1)
@@ -96,6 +98,7 @@ no_depth_test = true
 mesh = SubResource("CapsuleMesh_e1nwe")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.046142578, 0)
 shape = SubResource("CapsuleShape3D_e1nwe")
 
 [node name="Informations" parent="." instance=ExtResource("3_41j16")]
