@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=3 format=3 uid="uid://xua2b0mbneqa"]
+
+[ext_resource type="PackedScene" uid="uid://dp5181ejrpr87" path="res://src/scenes/events/bird_1/birdEvent.tscn" id="1_df4x5"]
+[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="2_w4qmw"]
+
+[resource]
+script = ExtResource("2_w4qmw")
+name = "Bird_1"
+scene = ExtResource("1_df4x5")
+initial_position = Vector3(-83.06056, 0, 0)
+metadata/_custom_type_script = "uid://v8f3vw767scl"

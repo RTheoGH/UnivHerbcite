@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dfegxguk0hh6n"]
+
+[ext_resource type="Script" uid="uid://crvb1x2d3cilp" path="res://src/classes/event/event_trigger.gd" id="1_exncb"]
+[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="2_s724b"]
+[ext_resource type="Resource" uid="uid://b0bpmqqf0kb8p" path="res://src/classes/event/test_event.tres" id="3_3vd2g"]
+[ext_resource type="Script" uid="uid://bl36trcdt67hk" path="res://src/classes/event/event_marker.gd" id="4_3ht1e"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2gpb1"]
+
+[node name="EventTrigger" type="Area3D"]
+script = ExtResource("1_exncb")
+events = Array[ExtResource("2_s724b")]([ExtResource("3_3vd2g")])
+metadata/_custom_type_script = "uid://crvb1x2d3cilp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(9, 0, 0, 0, 9, 0, 0, 0, 9, 0, 0, 0)
+shape = SubResource("SphereShape3D_2gpb1")
+
+[node name="EventMarker_Yessir" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0021257, 0)
+script = ExtResource("4_3ht1e")
+linked_event = ExtResource("3_3vd2g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

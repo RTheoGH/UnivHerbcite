@@ -8,4 +8,4 @@ class_name EventMarker
 # update the event position if the tool is running
 func _process(delta):
 	if Engine.is_editor_hint() and linked_event:
-		linked_event.initial_position = global_transform.origin
+		linked_event.initial_position = global_position

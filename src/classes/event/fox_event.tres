@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=3 format=3 uid="uid://ddyac0gbwyi0w"]
+
+[ext_resource type="PackedScene" uid="uid://c4gw7b0v8vr8w" path="res://src/scenes/events/fox_event/foxEvent.tscn" id="1_8ew1k"]
+[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="2_6wivk"]
+
+[resource]
+script = ExtResource("2_6wivk")
+name = "FoxEvent"
+scene = ExtResource("1_8ew1k")
+initial_position = Vector3(-83.06056, 0, 0)
+metadata/_custom_type_script = "uid://v8f3vw767scl"
