@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cai7pn1s5e0r3"
-path.s3tc="res://.godot/imported/asperges.png-62aa065e5fdf088234a01450beb14892.s3tc.ctex"
+uid="uid://i1r7nfcetwr2"
+path.s3tc="res://.godot/imported/bois.jpg-8f5542e0c6a17652bf7dc0f7c34c63f8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/graphical/plantes/asperges.png"
-dest_files=["res://.godot/imported/asperges.png-62aa065e5fdf088234a01450beb14892.s3tc.ctex"]
+source_file="res://assets/graphical/Textures/map/bois.jpg"
+dest_files=["res://.godot/imported/bois.jpg-8f5542e0c6a17652bf7dc0f7c34c63f8.s3tc.ctex"]
 
 [params]
 
