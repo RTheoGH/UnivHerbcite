@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7e61ij3wfkph"]
+[gd_scene load_steps=7 format=3 uid="uid://b7e61ij3wfkph"]
 
 [ext_resource type="Texture2D" uid="uid://cj7os2qpphhr3" path="res://assets/graphical/ui/craft.png" id="1_c4iyr"]
 [ext_resource type="Script" uid="uid://b1qaf582bdv8x" path="res://src/scenes/ui/inventory/inv_ui_draggable.gd" id="1_qo0wa"]
 [ext_resource type="PackedScene" uid="uid://v38pdox3p3n0" path="res://src/scenes/ui/inventory/Inv_UI_draggable.tscn" id="2_qo0wa"]
 [ext_resource type="PackedScene" uid="uid://b6okyqwhjjjp1" path="res://src/scenes/ui/crafting/Droppable.tscn" id="4_nqwv1"]
 [ext_resource type="PackedScene" uid="uid://vdhsofjvfa2j" path="res://src/scenes/ui/crafting/Draggable.tscn" id="5_j36tp"]
+[ext_resource type="AudioStream" uid="uid://dc48glgcyq0rr" path="res://assets/sounds/bubbles.mp3" id="6_n80fn"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -158,26 +159,34 @@ metadata/_edit_use_anchors_ = true
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.68100005
+anchor_left = 0.66797924
 anchor_top = 0.30900002
-anchor_right = 0.8
+anchor_right = 0.814757
 anchor_bottom = 0.381
 offset_left = -0.51208496
 offset_top = -0.23200989
 offset_right = 0.39996338
 offset_bottom = 0.11199951
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Complete" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_n80fn")
+volume_db = 5.0
+bus = &"SFX"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="button_up" from="Confirm" to="." method="_on_confirm_button_up"]
 [connection signal="button_up" from="Confirm2" to="." method="_on_confirm_2_button_up"]
 [connection signal="body_entered" from="Object1/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="mouse_entered" from="Object1/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_entered" from="Object1/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [0]]
 [connection signal="mouse_exited" from="Object1/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="body_entered" from="Object2/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="mouse_entered" from="Object2/Area2D" to="." method="_on_area_2d_mouse_entered_2"]
+[connection signal="mouse_entered" from="Object2/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [1]]
 [connection signal="mouse_exited" from="Object2/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="body_entered" from="Object3/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="mouse_entered" from="Object3/Area2D" to="." method="_on_area_2d_mouse_entered_3"]
+[connection signal="mouse_entered" from="Object3/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [2]]
 [connection signal="mouse_exited" from="Object3/Area2D" to="." method="_on_area_2d_mouse_exited"]
 
 [editable path="Object1"]

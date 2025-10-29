@@ -1,17 +1,19 @@
 extends CharacterBody3D
 
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+var SPEED = 7.5
+var JUMP_VELOCITY = 4.5
 var previous_mouse_pos:Vector2 = DisplayServer.window_get_size()/2
 @onready var cam_fps: Node3D = $Camera3D
 @onready var ray: RayCast3D = $Camera3D/RayCast3D
 
-@onready var item_frame: MeshInstance3D = $Camera3D/MeshInstance3D
+#@onready var item_frame: MeshInstance3D = $Camera3D/MeshInstance3D
+@onready var item_frame: Sprite3D = $Camera3D/Sprite3D
 var frame_pos: Vector3
 @export var frame_timer: float = 0.0
 @export var frame_amount: float = 0.05
 @export var frame_speed: float = 10.0
+var current_slot := -1
 
 @onready var audio_marche : AudioStreamPlayer2D = $Marche
 var step_timer: float = 0.0
@@ -23,54 +25,80 @@ var static_cam := false
 var one_time: bool = false
 var already_discovered: bool = false
 
+var crosshair_textures = {
+	"default": preload("res://assets/graphical/crosshair.png"),
+	"pickup": preload("res://assets/graphical/crosshair_pickup.res"),
+	"interact": preload("res://assets/graphical/crosshair_interact.res")
+}
+
+var hmm = preload("res://assets/graphical/ui/hmmmm.png")
+
+# [objectif,completed]
+var current_objectives = [
+	["space_1",false]
+]
+
 func try_grab() -> Node3D:
 	var obj := ray.get_collider()
 	if is_instance_of(obj, Interactable):
 		obj.on_interaction()
+		if obj.plante:
+			get_parent().get_node("Search").play()
 		if !already_discovered:
 			if obj.plante != null:
 				$TextAlert.show_alert("Nouvelle plante découverte !")
+				if !obj.plante.decouvert:
+					obj.plante.decouvert = true
+				already_discovered = true
 				$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
 				$Informations.image = obj.plante.texture
 				$Informations.texte = obj.plante.description
 				$Informations.activate()
-		else: # A corriger selon si l'inventaire est plein ou pas
-			$TextAlert.show_alert("Ingrédient collecté !")
+		#else:
+			#if Global.player_inventory.items.size() <= 3:
+				#$TextAlert.show_alert("Ingrédient collecté !")
 	return obj
-	
+
 func _ready() -> void:
 	$Camera3D/RayCast3D.collide_with_areas = true
 	$Camera3D/RayCast3D.collide_with_bodies = false
 	$Informations.hide()
+	$Effects.hide()
 	
-	item_frame.material_override.albedo_color.a = 0
-	item_frame.material_override.albedo_texture = null 
+	reset_objectives()
+	update_objectives_text()
+	
+	item_frame.texture = null 
 	frame_pos = item_frame.position
 
 func _physics_process(delta: float) -> void:
-	
 	if Global.isPaused :
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		static_cam = true
 		return
-		
-	if Global.is_inventory_open || Global.is_craft_ui_open:
+	
+	if Global.fps:
+		if !$FPS.visible:
+			$FPS.visible = true
+		$FPS.text = "IPS: " + str(int(Engine.get_frames_per_second()))
+	else:
+		if $FPS.visible:
+			$FPS.visible = false
+	
+	if Global.guidage:
+		if !$Objectifs.visible:
+			$Objectifs.visible = true
+	else:
+		if $Objectifs.visible:
+			$Objectifs.visible = false
+	
+	if Global.is_ui_open():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else: 
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
-	if Global.player_inventory.items.is_empty():
-		item_frame.material_override.albedo_color.a = 0
-		item_frame.material_override.albedo_texture = null
-	else:
-		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
-			var sprite_to_show = Global.player_inventory.items[Global.inv_current_slot]
-			item_frame.material_override.albedo_color.a = 1
-			item_frame.material_override.albedo_texture = sprite_to_show.texture
-		else:
-			item_frame.material_override.albedo_color.a = 0
-			item_frame.material_override.albedo_texture = null
-		
+	_update_item_frame()
+	
 	var cam_diff := Vector2.ZERO
 	if !static_cam:
 		cam_diff = get_viewport().get_mouse_position() - previous_mouse_pos
@@ -83,13 +111,21 @@ func _physics_process(delta: float) -> void:
 		var scroll = $Informations/RichTextLabel2.get_v_scroll_bar()
 		scroll.value -= 20
 	
+	if Input.is_action_just_pressed("inv_slot_one") and !Global.isPaused:
+		Global.inv_current_slot = 0
+	if Input.is_action_just_pressed("inv_slot_two") and !Global.isPaused:
+		Global.inv_current_slot = 1
+	if Input.is_action_just_pressed("inv_slot_three") and !Global.isPaused:
+		Global.inv_current_slot = 2
+	
 	var obj := ray.get_collider()
 	if(is_instance_of(obj, Interactable)):
 		if obj.is_collectible:
-			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_pickup.res")
+			#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_pickup.res")
+			$Camera3D/Crosshair.texture = crosshair_textures["pickup"]
 			if !one_time:
 				one_time = true
-				for h in Global.herbier:
+				for h in Global.discoveries:
 					if h.type == obj.plante.type:
 						already_discovered = true
 
@@ -101,21 +137,24 @@ func _physics_process(delta: float) -> void:
 					$Informations.texte = obj.plante.description
 				else:
 					$Informations.nom = "???"
-					$Informations.image = load("res://assets/graphical/ui/hmmmm.png")
+					$Informations.image = hmm
 					$Informations.texte = "Vous n'avez pas encore découvert cette plante."
 				$Informations.activate()
 		else:
-			$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
+			#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
+			$Camera3D/Crosshair.texture = crosshair_textures["interact"]
 	else:
-		$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair.png")
+		#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair.png")
+		$Camera3D/Crosshair.texture = crosshair_textures["default"]
 		$Informations.fade_out()
 		one_time = false
 		already_discovered = false
 		$Informations.clean()
 		
 		Global.is_craft_ui_open = false
+		Global.is_chest_open = false
 	
-	if Input.is_action_just_pressed("grab") and !Global.isPaused:
+	if Input.is_action_just_pressed("grab") and !Global.isPaused and !Global.is_ui_open():
 		try_grab()
 	
 	# Add the gravity.
@@ -139,7 +178,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-	if !(Global.is_inventory_open || Global.is_craft_ui_open):
+	if !(Global.is_ui_open()):
 		if(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) < -80):
 			cam_fps.global_rotation.x = deg_to_rad(-79.9)
 		elif(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) > 80):
@@ -181,6 +220,106 @@ func _physics_process(delta: float) -> void:
 	static_cam = false
 	move_and_slide()
 
-func _je_revele_la_zone(pot):
-	print(pot.description)
-	pass
+func _update_item_frame():
+	var slot = Global.inv_current_slot
+	
+	if slot < 0 or slot >= Global.player_inventory.items.size():
+		current_slot = slot
+		item_frame.texture = null
+		return
+	
+	var tex = Global.player_inventory.items[slot].texture
+	
+	if slot != current_slot or item_frame.texture != tex:
+		current_slot = slot
+		item_frame.texture = tex
+
+func update_objectives_text():
+	$Objectifs.bbcode_enabled = true
+	$Objectifs.clear()
+	
+	for i in range(current_objectives.size()):
+		var key = current_objectives[i][0]
+		var text = Global.objectives[key]
+		var done = current_objectives[i][1]
+		
+		var line := "• "
+		
+		if done:
+			line += "[color=#888888][s]" + text + "[/s][/color]"
+		else:
+			line += "[b][color=white]" + text + "[/color][/b]"
+		
+		$Objectifs.append_text(line + "\n")
+
+func trim_completed_objectives():
+	if current_objectives.size() > 3 and current_objectives[0][1] == true:
+		current_objectives.pop_front()
+
+#func new_objective(node_name: String, next_objective: String, callback: Callable):
+	#get_parent().get_node(node_name).body_entered.disconnect(callback)
+	#current_objectives[current_objectives.size() - 1][1] = true
+	#current_objectives.append([Global.objectives[next_objective], false])
+	#trim_completed_objectives()
+	#update_objectives_text()
+
+func reset_objectives():
+	current_objectives.clear()
+	current_objectives.append(["space_1", false])
+	update_objectives_text()
+	
+	_reconnect_trigger("Quest_1", _on_quest_1_body_entered)
+	_reconnect_trigger("Quest_2", _on_quest_2_body_entered)
+	_reconnect_trigger("Quest_3", _on_quest_3_body_entered)
+	
+func complete_objective(current_objective_name: String, next_objective_name: String):
+	var current_index = Global.objectives_order[current_objective_name]
+
+	for key in Global.objectives_order.keys():
+		var index = Global.objectives_order[key]
+		if index <= current_index:
+			if not current_objectives_contains(key):
+				current_objectives.append([key, true])
+			else:
+				for obj in current_objectives:
+					if obj[0] == key:
+						obj[1] = true
+						break
+
+	if not current_objectives_contains(next_objective_name):
+		current_objectives.append([next_objective_name, false])
+
+	trim_completed_objectives()
+	update_objectives_text()
+
+func current_objectives_contains(key):
+	for obj in current_objectives:
+		if obj[0] == key:
+			return true
+	return false
+
+func _reconnect_trigger(node_name: String, callback: Callable):
+	if get_parent().has_node(node_name):
+		var trigger = get_parent().get_node(node_name)
+		if trigger.has_signal("body_entered"):
+			if trigger.body_entered.is_connected(callback):
+				trigger.body_entered.disconnect(callback)
+			trigger.body_entered.connect(callback)
+
+func _on_quest_1_body_entered(body: Node3D) -> void:
+	#if body==self and current_objectives[-1][1] == false:
+		#new_objective("Quest_1", "space_2", _on_quest_1_body_entered)
+	if body == self and not current_objectives_contains("space_2"):
+		complete_objective("space_1","space_2")
+
+func _on_quest_2_body_entered(body: Node3D) -> void:
+	#if body==self:
+		#new_objective("Quest_2", "space_3", _on_quest_2_body_entered)
+	if body == self and not current_objectives_contains("space_3"):
+		complete_objective("space_2","space_3")
+
+func _on_quest_3_body_entered(body: Node3D) -> void:
+	#if body==self and current_objectives[-1][1] == false:
+		#new_objective("Quest_3", "fac_1", _on_quest_3_body_entered)
+	if body == self and not current_objectives_contains("fac_1"):
+		complete_objective("space_3","fac_1")

@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dovr7qml35vmm"]
+
+[ext_resource type="Script" uid="uid://6pe03n22g8sc" path="res://src/scenes/tests/coffre.gd" id="1_8pehm"]
+[ext_resource type="PackedScene" uid="uid://dpxned3e4ddv7" path="res://src/scenes/ui/inventory/chest_ui.tscn" id="2_7b1ls"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cej0v"]
+albedo_color = Color(0.9634742, 0.66962594, 0.47940713, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cej0v"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7b1ls"]
+size = Vector3(2, 1, 1)
+
+[node name="Coffre" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_cej0v")
+mesh = SubResource("BoxMesh_cej0v")
+skeleton = NodePath("../CraftingTable")
+
+[node name="Interactable" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_8pehm")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_7b1ls")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_7b1ls")
+
+[node name="ChestUi" parent="." instance=ExtResource("2_7b1ls")]
+visible = false
+
+[connection signal="area_exited" from="Interactable" to="ChestUi" method="_on_area_exited"]
+[connection signal="chest_opened" from="Interactable" to="ChestUi" method="_on_interactable_chest_opened"]
+[connection signal="chest_closed" from="ChestUi" to="Interactable" method="_on_chest_ui_chest_closed"]

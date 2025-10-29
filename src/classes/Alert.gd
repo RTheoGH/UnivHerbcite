@@ -10,7 +10,7 @@ func show_alert(texte: String):
 	await get_tree().create_timer(2).timeout
 	await fade_out()
 	clean()
-	print("cleaned alert")
+	#print("cleaned alert")
 	
 func clean():
 	text = ""
@@ -35,3 +35,19 @@ func fade_out(duration := 0.2):
 
 func _on_fade_out_finished():
 	visible = false
+
+func _on_stack_item():
+	show_alert("Ingrédient collecté !")
+
+func _on_inventory_full():
+	show_alert("Inventaire plein !")
+
+func _on_wall_item_required(item):
+	show_alert("Requis : "+item)
+
+func _on_wall_removed():
+	show_alert("Zone débloquée !")
+	
+func on_cooldonw_left(cooldown):
+	show_alert(str("Temps restant : ", int(cooldown), "s"))
+	

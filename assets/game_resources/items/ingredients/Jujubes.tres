@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://hm7vmsje8k67"]
 
 [ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_4v6tn"]
-[ext_resource type="Texture2D" uid="uid://c7pa8xliy3pdq" path="res://assets/graphical/items/jujubes.png.png" id="2_tv3qf"]
+[ext_resource type="Texture2D" uid="uid://c5sgoyuebkttg" path="res://assets/graphical/items/jujubes.png" id="2_575bk"]
 
 [resource]
 script = ExtResource("1_4v6tn")
-texture = ExtResource("2_tv3qf")
-description = "Fruit d'un arbuste épineux originaire de Chine et répandu dans les régions méditerranéennes."
+texture = ExtResource("2_575bk")
+description = "Fruits rouges ou bruns, sucrés, souvent séchés pour conserver."
+effect = 2
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

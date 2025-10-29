@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ncbyssmmb7ix"]
+
+[ext_resource type="PackedScene" uid="uid://cqq7lyosyug6m" path="res://src/scenes/map/map.tscn" id="1_hsw67"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Map" parent="." instance=ExtResource("1_hsw67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 0, -52)
+
+[editable path="Map"]
+[editable path="Map/map"]

@@ -12,14 +12,18 @@ var master = AudioServer.get_bus_index("Master")
 var music = AudioServer.get_bus_index("Music")
 var sfx = AudioServer.get_bus_index("SFX")
 
+
+
 func _ready() -> void:
 	$modifier.hide()
 	get_movements_keys()
 	$global/global_val.text = str(AudioServer.get_bus_volume_linear(master))
 	$musique/musique_val.text = str(AudioServer.get_bus_volume_linear(music))
 	$menu/menu_val.text = str(AudioServer.get_bus_volume_linear(sfx))
+	$AA_option.selected = 1
+	$Guide_b.button_pressed = true
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_camera_speed()
 	set_global_volume()
 	set_music_volume()
@@ -71,6 +75,9 @@ func get_movements_keys() -> void:
 	$Livre_B.text = eng_to_fr(InputMap.action_get_events("ouvrir_livre")[0].as_text())
 	$SlotG_B.text = eng_to_fr(InputMap.action_get_events("slot_left")[0].as_text())
 	$SlotD_B.text = eng_to_fr(InputMap.action_get_events("slot_right")[0].as_text())
+	$Slot0_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_one")[0].as_text())
+	$Slot1_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_two")[0].as_text())
+	$Slot2_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_three")[0].as_text())
 
 func eng_to_fr(s):
 	match s:
@@ -92,6 +99,12 @@ func eng_to_fr(s):
 			s = 'Gauche'
 		'Left Mouse Button':
 			s = 'Clic gauche'
+		'1 (Physical)':
+			s = '1'
+		'2 (Physical)':
+			s = '2'
+		'3 (Physical)':
+			s = '3'
 		_:
 			s = '???'
 	return s
@@ -187,12 +200,10 @@ func _on_slotD_pressed() -> void:
 func _on_minimap_pressed() -> void:
 	$sfx.play()
 	Global.minimap_activated = !Global.minimap_activated
-	print(Global.minimap_activated)
 
 func _on_form_minimap_pressed() -> void:
 	$sfx.play()
 	Global.carre_minimap = !Global.carre_minimap
-	print(Global.carre_minimap)
 
 func _on_sensi_slider_drag_started() -> void:
 	$sfx.play()
@@ -205,3 +216,35 @@ func _on_musique_slider_drag_started() -> void:
 
 func _on_menu_slider_drag_started() -> void:
 	$sfx.play()
+
+func _on_slot_0_pressed() -> void:
+	$sfx.play()
+	modif = "inv_slot_one"
+	current_button = $Slot0_B
+	$modifier.show()
+
+func _on_slot_1_pressed() -> void:
+	$sfx.play()
+	modif = "inv_slot_two"
+	current_button = $Slot1_B
+	$modifier.show()
+
+func _on_slot_2_pressed() -> void:
+	$sfx.play()
+	modif = "inv_slot_three"
+	current_button = $Slot2_B
+	$modifier.show()
+
+func _on_option_button_item_selected(index: int) -> void:
+	var vwp := get_viewport()
+	match index:
+		0: vwp.msaa_3d = Viewport.MSAA_DISABLED
+		1: vwp.msaa_3d = Viewport.MSAA_2X
+		2: vwp.msaa_3d = Viewport.MSAA_4X
+		3: vwp.msaa_3d = Viewport.MSAA_8X
+
+func _on_fps_b_pressed() -> void:
+	Global.fps = !Global.fps
+
+func _on_guide_b_pressed() -> void:
+	Global.guidage = !Global.guidage

@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://copf3qsajvk11"]
 
 [ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_1pk8t"]
-[ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="2_nkpbv"]
+[ext_resource type="Texture2D" uid="uid://c30u1gbi6hy2w" path="res://assets/graphical/items/lavande.png" id="2_0dv14"]
 
 [resource]
 script = ExtResource("1_1pk8t")
 type = 6
-texture = ExtResource("2_nkpbv")
-description = "De la lavande lol"
+texture = ExtResource("2_0dv14")
+description = "Fleur odorante utilisée en infusion, cuisine ou en parfum."
+effect = 3
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

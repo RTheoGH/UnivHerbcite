@@ -1,4 +1,5 @@
 shader_type spatial;
+render_mode fog_disabled;
 uniform sampler2D source_panorama : filter_linear, hint_default_black;
 void vertex() {
 	// Called for every vertex the material is visible on.
@@ -11,7 +12,6 @@ float fresnel(float amount, vec3 normal, vec3 view)
 
 void fragment()
 {
-
 	vec2 noise = (texture(source_panorama, UV + (TIME / 50.0)).rg - 0.5) * 10.0;
 
 	vec3 base_color = vec3(0.0, 0.0, 0.1);

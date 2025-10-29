@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Plante" load_steps=3 format=3 uid="uid://ve8dgj8wb3br"]
+[gd_resource type="Resource" script_class="Plante" load_steps=4 format=3 uid="uid://ve8dgj8wb3br"]
 
 [ext_resource type="Script" uid="uid://j5dnokgf8rjf" path="res://src/classes/plantes.gd" id="1_2frn8"]
 [ext_resource type="Resource" uid="uid://c4uxl8fi06dho" path="res://assets/game_resources/items/ingredients/Myrobolans.tres" id="1_luku1"]
+[ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="3_hc6jb"]
 
 [resource]
 script = ExtResource("1_2frn8")
 type = 3
-description = "rien"
+texture = ExtResource("3_hc6jb")
+description = "Petit arbre fruitier à feuilles simples, rustique, souvent cultivé pour ses fruits."
 item = ExtResource("1_luku1")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

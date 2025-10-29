@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjgtvtynklld5"]
+[gd_scene load_steps=26 format=3 uid="uid://bjgtvtynklld5"]
 
 [ext_resource type="Script" uid="uid://dqex76kdn8q6e" path="res://src/scenes/ui/book/book.gd" id="1_5jibr"]
 [ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="2_fyv12"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bawhx1snecap" path="res://assets/graphical/ui/precedent2.png" id="16_0k5qe"]
 [ext_resource type="AudioStream" uid="uid://coslqk6nfjk64" path="res://assets/sounds/turn_page.mp3" id="17_j6u72"]
 [ext_resource type="AudioStream" uid="uid://cfffq23lwsdc1" path="res://assets/sounds/close_book.mp3" id="18_65c64"]
+[ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="20_lqpnt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hp3is"]
 shader = ExtResource("2_fyv12")
@@ -98,6 +99,11 @@ shader_parameter/offset_ = Vector2(-0.01, -0.04)
 shader_parameter/time_effect = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7gthi"]
+shader = ExtResource("2_fyv12")
+shader_parameter/offset_ = Vector2(-0.01, -0.04)
+shader_parameter/time_effect = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jibr"]
 shader = ExtResource("2_fyv12")
 shader_parameter/offset_ = Vector2(-0.01, -0.04)
 shader_parameter/time_effect = 0.0
@@ -198,16 +204,34 @@ offset_top = -0.14400482
 offset_right = -0.22399902
 offset_bottom = -0.023986816
 
-[node name="gauche_texture" type="TextureRect" parent="gauche"]
+[node name="page_title" type="RichTextLabel" parent="gauche"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.26530623
-anchor_top = -0.028368793
-anchor_right = 0.68163276
-anchor_bottom = 0.36166355
+anchor_left = -0.305
+anchor_top = -0.16800001
+anchor_right = 0.26000002
+anchor_bottom = 0.32200003
+offset_left = 4.7249985
+offset_top = 102.376
+offset_right = 1.2999954
+offset_bottom = 8.1959915
+rotation = -0.7853982
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Plante"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="gauche_texture" type="TextureRect" parent="gauche"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_5jibr")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24081644
+anchor_right = 0.6485102
+anchor_bottom = 0.3543688
 offset_left = -3.0517578e-05
-offset_right = -3.0517578e-05
-offset_bottom = -1.5258789e-05
+offset_right = 0.114990234
+offset_bottom = 0.06800079
 expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
@@ -221,18 +245,22 @@ anchor_bottom = 0.5709221
 offset_top = -3.0517578e-05
 offset_bottom = -3.0517578e-05
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="gauche_texte" type="RichTextLabel" parent="gauche"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = -0.040816326
-anchor_top = 0.6099292
+anchor_top = 0.5709221
 anchor_right = 0.9632653
-anchor_bottom = 0.97223604
+anchor_bottom = 0.93322897
 offset_top = -3.0517578e-05
 offset_bottom = -3.0517578e-05
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="droite" type="Control" parent="."]
@@ -246,37 +274,58 @@ offset_top = 0.27999878
 offset_right = -0.23199463
 offset_bottom = 0.031982422
 
-[node name="droite_texture" type="TextureRect" parent="droite"]
+[node name="page_title" type="RichTextLabel" parent="droite"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.24200001
-anchor_right = 0.634
-anchor_bottom = 0.33600003
+anchor_left = -0.38000003
+anchor_top = -0.16000001
+anchor_right = 0.17500001
+anchor_bottom = 0.367
+offset_left = 3.4600067
+offset_top = 115.72
+offset_right = 2.7050056
+offset_bottom = 10.736008
+rotation = -0.7853982
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Ingrédient"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="droite_texture" type="TextureRect" parent="droite"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.123393625
+anchor_right = 0.49800003
+anchor_bottom = 0.34294522
 offset_left = 0.053901672
-offset_right = -0.027999878
-offset_bottom = -0.11200714
+offset_right = 0.033996582
+offset_bottom = -0.14000702
 grow_horizontal = 2
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="droite_titre" type="RichTextLabel" parent="droite"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.13061224
-anchor_top = 0.36170223
-anchor_right = 0.75918365
-anchor_bottom = 0.5709221
+anchor_left = 0.014981245
+anchor_top = 0.32191792
+anchor_right = 0.6435526
+anchor_bottom = 0.53113776
 offset_top = -3.0517578e-05
 offset_bottom = -3.0517578e-05
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="droite_texte" type="RichTextLabel" parent="droite"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.127
-anchor_top = 0.497
-anchor_right = 0.859
-anchor_bottom = 0.89000005
+anchor_left = -0.08648314
+anchor_top = 0.5312466
+anchor_right = 0.7378041
+anchor_bottom = 0.9242466
 offset_left = 0.0909996
 offset_top = -0.12400818
 offset_right = 0.00630188
@@ -284,6 +333,26 @@ offset_bottom = 0.11999512
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Fleur odorante utilisée en infusion, cuisine ou en parfum."
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["taches"]]
+position = Vector2(1036, 319.00003)
+scale = Vector2(0.504883, 0.8983689)
+texture = ExtResource("20_lqpnt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." groups=["taches"]]
+position = Vector2(1020.00006, 203.99998)
+scale = Vector2(0.47851518, 0.75548303)
+texture = ExtResource("20_lqpnt")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." groups=["taches"]]
+position = Vector2(1027, 274)
+scale = Vector2(0.87255853, 0.9035088)
+texture = ExtResource("20_lqpnt")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="pressed" from="retour" to="." method="_on_retour_pressed"]

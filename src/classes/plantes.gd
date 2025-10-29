@@ -20,3 +20,4 @@ enum PlanteType{
 @export var texture : Texture2D
 @export var description : String = ""
 @export var item : InventoryItem
+var decouvert := false

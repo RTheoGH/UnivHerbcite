@@ -1,11 +1,12 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cfntbupo27vkt"]
 
 [ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_13ybc"]
-[ext_resource type="Texture2D" uid="uid://c6l11adnwv6pm" path="res://assets/graphical/items/figues.png" id="2_qsbge"]
+[ext_resource type="Texture2D" uid="uid://fhx07ma8g1gy" path="res://assets/graphical/items/figues.png" id="2_qsbge"]
 
 [resource]
 script = ExtResource("1_13ybc")
 type = 5
 texture = ExtResource("2_qsbge")
-description = "Fruit du figuier commun, emblème du bassin méditerranéen où il est cultivé depuis des millénaires."
+description = "Fruits sucrés et charnus, bons frais ou séchés."
+effect = 2
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

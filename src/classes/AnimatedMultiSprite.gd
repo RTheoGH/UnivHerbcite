@@ -21,7 +21,7 @@ func _ready() -> void:
 	else:
 		billboard = BaseMaterial3D.BILLBOARD_DISABLED
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not Engine.is_editor_hint() or texture_index_override <= 0 or texture_index_override >= sprites.size():
 		var cam_forward: Vector3 = get_viewport().get_camera_3d().global_position - global_position
 		
@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 		var angle: float = cam_forward.signed_angle_to(forwardVector, Vector3.UP)
 		if angle < 0: angle = 2 * PI + angle  #true modulo
 		
-		var index: int = angle / (2 * PI) * sprites.size(); # small factor to not floor too high
+		var index: int = int(angle / (2 * PI) * sprites.size()); # small factor to not floor too high
 		
 		
 		texture = sprites[index]
