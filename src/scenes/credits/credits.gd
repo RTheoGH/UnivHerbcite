@@ -7,7 +7,9 @@ func _ready() -> void:
 	Global.player_inventory.items.append(load("res://assets/game_resources/items/potions/potion_bleue.tres"))
 
 func _process(_delta: float) -> void:
-	pass
+	if (Input.is_action_just_pressed("pause") or Input.is_action_just_pressed("inventory")) and $Control.visible == true:
+		$Control.hide()
+		Global.is_interactable_ui_open = false
 
 func _on_timer_timeout() -> void:
 	if is_activated:
