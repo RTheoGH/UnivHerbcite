@@ -1,6 +1,6 @@
 extends Node3D
 
-var mxw : Tween
+
 
 var music_bus := AudioServer.get_bus_index("Music")
 var low_pass
@@ -23,9 +23,6 @@ func _ready() -> void:
 	
 	$Perso.reset_objectives()
 	$Perso.update_objectives_text()
-	
-	maxwell()
-	$credits/song.play()
 	
 	#$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
 	Global.is_craft_ui_open = false
@@ -68,14 +65,3 @@ func _process(_delta: float) -> void:
 			$Pause.get_node("Book").visible = false
 			$Pause.get_node("Book").show_book()
 		Global.isPaused = !Global.isPaused
-
-func maxwell():
-	if mxw:
-		mxw.kill()
-	
-	mxw = create_tween()
-	mxw.set_loops()
-	mxw.tween_property($credits/maxwell, "rotation_degrees:z", -30, 0.2)
-	mxw.tween_property($credits/maxwell, "rotation_degrees:z", 30, 0.2)
-	mxw.tween_property($credits/maxwell, "rotation_degrees:z", 30, 0.2)
-	mxw.tween_property($credits/maxwell, "rotation_degrees:z", -30, 0.2)
