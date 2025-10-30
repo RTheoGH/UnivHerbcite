@@ -1,7 +1,7 @@
 extends Interactable
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
 		$"../Control".hide()
 		Global.is_interactable_ui_open = false

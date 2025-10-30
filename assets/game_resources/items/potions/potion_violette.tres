@@ -7,5 +7,6 @@
 script = ExtResource("1_3u4ne")
 type = 12
 texture = ExtResource("2_jbojw")
-description = "Une potion qui a l'air dangeureuse en apparence."
+description = "Une potion sucrée pour faire le plein en énergie."
+effect = 2
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"
