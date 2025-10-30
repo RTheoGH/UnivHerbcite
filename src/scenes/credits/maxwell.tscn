@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqgkvcl4u4cv1"]
+
+[ext_resource type="PackedScene" uid="uid://cxn1wyr1oy2xf" path="res://assets/game_resources/models/maxwell/maxwell.fbx" id="1_lp40w"]
+
+[node name="maxwell" instance=ExtResource("1_lp40w")]

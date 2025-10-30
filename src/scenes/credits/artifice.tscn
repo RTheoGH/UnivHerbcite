@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhiokd3gqkc7j"]
+
+[ext_resource type="Script" uid="uid://da5pgut2qewae" path="res://src/scenes/credits/artifice.gd" id="1_516br"]
+[ext_resource type="QuadMesh" uid="uid://cwn1wepr1a8xs" path="res://assets/game_resources/credits/artifice.tres" id="1_if20m"]
+[ext_resource type="Gradient" uid="uid://b0d7uvhdwc8ai" path="res://assets/game_resources/credits/fusee_grad_0.tres" id="3_xetc6"]
+
+[node name="Artifice" type="Node3D"]
+script = ExtResource("1_516br")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 200
+explosiveness = 0.95
+mesh = ExtResource("1_if20m")
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+damping_min = 5.0
+damping_max = 5.0
+color_ramp = ExtResource("3_xetc6")
+hue_variation_min = 0.1
+hue_variation_max = 0.1
