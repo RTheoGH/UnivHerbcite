@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://cfntbupo27vkt"]
 
 [ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_13ybc"]
-[ext_resource type="Texture2D" uid="uid://fhx07ma8g1gy" path="res://assets/graphical/items/figues.png" id="2_qsbge"]
+[ext_resource type="Texture2D" uid="uid://y0wqs16p5a4p" path="res://assets/graphical/items/figue.png" id="2_sssh1"]
 
 [resource]
 script = ExtResource("1_13ybc")
 type = 5
-texture = ExtResource("2_qsbge")
+texture = ExtResource("2_sssh1")
 description = "Fruits sucrés et charnus, bons frais ou séchés."
-effect = 2
+effect = 3
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

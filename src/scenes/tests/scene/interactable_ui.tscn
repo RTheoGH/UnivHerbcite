@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn28wg351wuuv"]
+
+[ext_resource type="Texture2D" uid="uid://b7kvcwqfgsmwk" path="res://assets/graphical/recipes/recipe_sheet.png" id="1_683j7"]
+[ext_resource type="Script" uid="uid://no6igfjqnx1i" path="res://src/scenes/tests/scene/iteractable_ui.gd" id="2_4v00f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfcej"]
+albedo_texture = ExtResource("1_683j7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w0kh0"]
+size = Vector2(0.085, 0.165)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qr7a2"]
+size = Vector3(0.087890625, 0.1665039, 0.001)
+
+[node name="Recette" type="MeshInstance3D"]
+transform = Transform3D(2.6937034, 0, 0, 0, -1.1774552e-07, 2.6937034, 0, -2.6937034, -1.1774552e-07, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_xfcej")
+mesh = SubResource("QuadMesh_w0kh0")
+skeleton = NodePath("../Plantes/Figuiers/StaticBody3D2")
+
+[node name="Interactable" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_4v00f")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.0009803772, -0.0002450943, 0.00032532215)
+shape = SubResource("BoxShape3D_qr7a2")
+
+[connection signal="area_exited" from="Interactable" to="Interactable" method="_on_area_exited"]

@@ -96,6 +96,9 @@ transform = Transform3D(0.9462521, 0.14721659, 0.28798333, -0.255126, 0.8870195,
 light_color = Color(0.9923281, 0.8366091, 0.70316625, 1)
 light_energy = 0.3
 shadow_enabled = true
+directional_shadow_split_1 = 0.5
+directional_shadow_split_2 = 0.5
+directional_shadow_blend_splits = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.0918, 3228.834, -39.000763)

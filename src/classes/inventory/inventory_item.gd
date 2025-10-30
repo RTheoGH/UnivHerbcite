@@ -23,7 +23,9 @@ enum InventoryItemType{
 enum InventoryItemEffect{
 	NONE,
 	SPEED,
+	SPEED_POTION,
 	JUMP,
+	JUMP_POTION,
 	NAUSEA
 }
 

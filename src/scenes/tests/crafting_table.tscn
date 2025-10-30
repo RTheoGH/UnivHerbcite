@@ -34,7 +34,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207031, 0, 0)
 shape = SubResource("BoxShape3D_376vj")
 
 [node name="Control" parent="." instance=ExtResource("3_mm57b")]
-visible = false
 
 [connection signal="area_exited" from="Interactable" to="Control" method="_on_interactable_area_exited"]
 [connection signal="crafting_opened" from="Interactable" to="Control" method="_on_interactable_crafting_opened"]

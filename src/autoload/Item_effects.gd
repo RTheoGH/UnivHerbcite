@@ -13,10 +13,23 @@ var effects := {
 			{"target": "player", "property": "JUMP_VELOCITY", "boost": 7.0, "default": 4.5}
 		],
 		"duration": 10.0
+	},
+	InventoryItem.InventoryItemEffect.JUMP_POTION: {
+		"stats": [
+			{"target": "player", "property": "JUMP_VELOCITY", "boost": 10.0, "default": 4.5}
+		],
+		"duration": 30.0
+	},
+	InventoryItem.InventoryItemEffect.SPEED_POTION: {
+		"stats": [
+			{"target": "player", "property": "SPEED", "boost": 20.0, "default": 7.5},
+			{"target": "camera", "property": "fov", "boost": 90.0, "default": 75.0, "transition": 0.2}
+		],
+		"duration": 30.0
 	}
 }
 
-var active_timers := {}
+var active_timers := {} # pour savoir si effet en cours : active_timers.keys.has(effet_actuel)
 var player: Node = null
 
 func _apply_effect(p, effect_type):
@@ -101,13 +114,13 @@ func _process(_delta: float) -> void:
 		var timer: Timer = active_timers[effect_type]
 		var time_left: float = round(timer.time_left)
 		
-		if effect_type == InventoryItem.InventoryItemEffect.SPEED:
+		if effect_type == InventoryItem.InventoryItemEffect.SPEED or effect_type == InventoryItem.InventoryItemEffect.SPEED_POTION:
 			var icon: TextureRect = player.get_node("Effects/Speed_icon")
 			var label: RichTextLabel = player.get_node("Effects/Speed")
 			icon.show()
 			label.text = str(int(time_left)) + "s"
 			label.show()
-		elif effect_type == InventoryItem.InventoryItemEffect.JUMP:
+		elif effect_type == InventoryItem.InventoryItemEffect.JUMP or effect_type == InventoryItem.InventoryItemEffect.JUMP_POTION:
 			var icon: TextureRect = player.get_node("Effects/Jump_icon")
 			var label: RichTextLabel = player.get_node("Effects/Jump")
 			icon.show()
