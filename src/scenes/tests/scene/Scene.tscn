@@ -29,11 +29,11 @@
 [ext_resource type="Texture2D" uid="uid://b7kvcwqfgsmwk" path="res://assets/graphical/recipes/recipe_sheet.png" id="25_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
 [ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="26_7v1kh"]
-[ext_resource type="Script" uid="uid://no6igfjqnx1i" path="res://src/scenes/tests/scene/recipe_sheet.gd" id="26_feptu"]
+[ext_resource type="Script" path="res://src/scenes/tests/scene/recipe_sheet.gd" id="26_feptu"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
-[ext_resource type="Shader" uid="uid://cqf0b7wayhlxp" path="res://assets/shaders/arbre2.gdshader" id="29_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://cjd4bpstwslrd" path="res://assets/graphical/ui/encre.png" id="29_jxsa7"]
+[ext_resource type="Shader" uid="uid://cqf0b7wayhlxp" path="res://assets/shaders/arbre2.gdshader" id="29_qr7a2"]
 [ext_resource type="Resource" uid="uid://cnhhrmbd4cdyi" path="res://assets/game_resources/plantes/Olivier.tres" id="29_y4obm"]
 [ext_resource type="Texture2D" uid="uid://02fplxnd1p8f" path="res://assets/graphical/plantes/olivier.png" id="30_etu4x"]
 [ext_resource type="Texture2D" uid="uid://d2cqixwjotg87" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
@@ -266,7 +266,7 @@ size = Vector3(1.2460938, 1.4003906, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_twbdd"]
 material = ExtResource("36_kd3wm")
 
-[sub_resource type="MultiMesh" id="MultiMesh_xfcej"]
+[sub_resource type="MultiMesh" id="MultiMesh_sstu0"]
 transform_format = 1
 instance_count = 1000
 mesh = SubResource("PlaneMesh_twbdd")
@@ -1178,7 +1178,7 @@ transform = Transform3D(0.17411721, 0, 0, 0, 0.17411721, 0, 0, 0, 0.17411721, -3
 transform = Transform3D(0.24992709, 0, 0, 0, 0.16786687, 0, 0, 0, 0.24992709, -37.178787, 0.59874177, -5.661667)
 
 [node name="MultiMeshInstance3D" parent="Vegetation/Arbres/Arbre7/TreeHaut" index="0"]
-multimesh = SubResource("MultiMesh_xfcej")
+multimesh = SubResource("MultiMesh_sstu0")
 
 [node name="Arbre8" parent="Vegetation/Arbres" instance=ExtResource("34_2gpb1")]
 transform = Transform3D(0.2222616, 0, 0, 0, 0.15845555, 0, 0, 0, 0.2222616, -38.906746, 0.6097444, -3.7096183)

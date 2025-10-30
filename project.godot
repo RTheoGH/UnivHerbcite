@@ -170,7 +170,7 @@ strength={
 }
 speed={
 "type": "float",
-"value": 3.0
+"value": 2.0
 }
 direction={
 "type": "vec3",

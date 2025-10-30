@@ -85,12 +85,12 @@ func _physics_process(delta: float) -> void:
 		if $FPS.visible:
 			$FPS.visible = false
 	
-	if Global.guidage:
-		if !$Objectifs.visible:
-			$Objectifs.visible = true
-	else:
-		if $Objectifs.visible:
-			$Objectifs.visible = false
+	#if Global.guidage:
+		#if !$Objectifs.visible:
+			#$Objectifs.visible = true
+	#else:
+		#if $Objectifs.visible:
+			#$Objectifs.visible = false
 	
 	if Global.is_ui_open():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)

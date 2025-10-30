@@ -50,9 +50,10 @@ void vertex() {
 	t += rnd * 10.0;
 
 	float wave = sin(dot(world_pos.xz, vec2(0.1,0.13)) + t) * 0.5 + 0.5;
+	wave = pow(wave, 1.5);
 
 	float f = clamp(VERTEX.y / plus_haut,0.0,1.0);
-	f = pow(f, 1.5);
+	f = pow(f, 0.33);
 
 	float wiggle = sin(t * wiggle_speed + rnd * 2.0) * wiggle_strength * f;
 

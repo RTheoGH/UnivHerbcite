@@ -877,6 +877,7 @@ offset_bottom = 0.21365356
 metadata/_edit_use_anchors_ = true
 
 [node name="Guide" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.7998612
@@ -893,6 +894,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Guide_b" type="CheckButton" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
