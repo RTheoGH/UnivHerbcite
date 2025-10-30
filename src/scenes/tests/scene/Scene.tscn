@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=143 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://de75rn8e1y3s1" path="res://assets/graphical/plantes/arbousier.png" id="20_j0txf"]
 [ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
 [ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="26_7v1kh"]
-[ext_resource type="Script" uid="uid://no6igfjqnx1i" path="res://src/scenes/tests/scene/recipe_sheet.gd" id="26_feptu"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
 [ext_resource type="Texture2D" uid="uid://cjd4bpstwslrd" path="res://assets/graphical/ui/encre.png" id="29_jxsa7"]
@@ -657,6 +656,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037384033, 0.054466248, 0
 
 [node name="WorldEnvironment" parent="Map2" index="1"]
 environment = SubResource("Environment_y4obm")
+
+[node name="DirectionalLight3D" parent="Map2/WorldEnvironment" index="0"]
+transform = Transform3D(0.946252, 0.14721659, 0.28798333, -0.25512597, 0.8870195, 0.38484702, -0.19879094, -0.43763432, 0.87690276, 0, 30.401646, 0)
 
 [node name="MeshInstance3D" parent="Map2" index="2"]
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
@@ -1356,7 +1358,7 @@ transform = Transform3D(1, -1.4551915e-11, 0, -4.0017767e-11, 1.0000001, 0, -7.4
 multimesh = SubResource("MultiMesh_0ufl0")
 
 [node name="Herbs9" parent="Vegetation/zone1" instance=ExtResource("35_2gpb1")]
-transform = Transform3D(-0.28139472, 0.01013132, 0.6954674, 0.005333538, 1.003586, -0.0040766587, -0.40708455, 0.0061455546, -0.48079085, -12.646594, -0.91817427, 23.382456)
+transform = Transform3D(-0.34486637, 0.010763417, 0.41552728, 0.005609612, 1.0009849, -0.0026751263, -0.3898426, 0.004881951, -0.36762616, -11.46483, -0.91817427, 23.35629)
 
 [node name="Plane" parent="Vegetation/zone1/Herbs9" index="0"]
 transform = Transform3D(8.608073, 0, -2.3841858e-07, 0, 3.447087, 0, -4.7683716e-07, 0, 4.6794863, 1.5760536, 0, -0.1783638)
@@ -3734,7 +3736,6 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.
 shape = SubResource("CylinderShape3D_yayvv")
 
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
-[connection signal="area_exited" from="Recette/Interactable" to="Recette/Interactable" method="_on_area_exited"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
