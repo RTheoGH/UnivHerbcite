@@ -4,6 +4,7 @@ var isPaused: bool
 var is_inventory_open: bool
 var is_craft_ui_open: bool
 var is_chest_open: bool
+var is_interactable_ui_open: bool
 var cam_speed = 0.3
 var is_dragging = false
 
@@ -16,7 +17,8 @@ var guidage: bool = true
 var herbier : Array = []
 var discoveries : Array = []
 var recipes : Array[ItemRecipe] = [
-	load("res://src/classes/inventory/recipes/potion_rouge.tres") # Ajouter les autres
+	load("res://src/classes/inventory/recipes/potion_rouge.tres"), # Ajouter les autres
+	load("res://src/classes/inventory/recipes/potion_verte.tres")
 ]
 var all_ingredient_items : Array[String] = [
 	"res://assets/game_resources/items/ingredients/Jujubes.tres",
@@ -88,4 +90,4 @@ func setup_text_alerts():
 		wall.connect("wall_removed", text_alert._on_wall_removed)
 		
 func is_ui_open() -> bool:
-	return is_chest_open or is_craft_ui_open or is_inventory_open
+	return is_chest_open or is_craft_ui_open or is_inventory_open or is_interactable_ui_open

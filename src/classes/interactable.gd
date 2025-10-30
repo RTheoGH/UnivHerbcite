@@ -7,11 +7,14 @@ class_name Interactable
 var cooldown
 #@export var item : InventoryItem
 
+signal on_interaction_signal
+
 func _ready() -> void:
 	cooldown = get_tree().create_timer(0)
 
 func on_interaction():
 	print(self, " : Tu as intéragis avec moi !")
+	on_interaction_signal.emit()
 	if is_collectible:
 		pick_up()
 
