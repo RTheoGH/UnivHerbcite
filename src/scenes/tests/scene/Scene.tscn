@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=138 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -26,10 +26,14 @@
 [ext_resource type="PackedScene" uid="uid://kxgietma6upl" path="res://src/scenes/tests/smoke_zones/smoke_zone.tscn" id="18_qoxpl"]
 [ext_resource type="Script" uid="uid://byq8iypi45525" path="res://src/classes/AnimatedMultiSprite.gd" id="19_mcf5s"]
 [ext_resource type="Texture2D" uid="uid://de75rn8e1y3s1" path="res://assets/graphical/plantes/arbousier.png" id="20_j0txf"]
+[ext_resource type="Texture2D" uid="uid://b7kvcwqfgsmwk" path="res://assets/graphical/recipes/recipe_sheet.png" id="25_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
+[ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="26_7v1kh"]
+[ext_resource type="Script" uid="uid://no6igfjqnx1i" path="res://src/scenes/tests/scene/recipe_sheet.gd" id="26_feptu"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
 [ext_resource type="Shader" uid="uid://cqf0b7wayhlxp" path="res://assets/shaders/arbre2.gdshader" id="29_qr7a2"]
+[ext_resource type="Texture2D" uid="uid://cjd4bpstwslrd" path="res://assets/graphical/ui/encre.png" id="29_jxsa7"]
 [ext_resource type="Resource" uid="uid://cnhhrmbd4cdyi" path="res://assets/game_resources/plantes/Olivier.tres" id="29_y4obm"]
 [ext_resource type="Texture2D" uid="uid://02fplxnd1p8f" path="res://assets/graphical/plantes/olivier.png" id="30_etu4x"]
 [ext_resource type="Texture2D" uid="uid://d2cqixwjotg87" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
@@ -237,6 +241,21 @@ radius = 1.4091797
 albedo_texture = ExtResource("31_ew3or")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qhmxa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfcej"]
+albedo_texture = ExtResource("25_qr7a2")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w0kh0"]
+size = Vector2(0.085, 0.165)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qr7a2"]
+size = Vector3(0.087890625, 0.1665039, 0.001)
+
+[sub_resource type="Gradient" id="Gradient_qr7a2"]
+colors = PackedColorArray(0.96337324, 0.79475254, 0.6471327, 1, 0.99999994, 0.89602774, 0.8102998, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xfcej"]
+gradient = SubResource("Gradient_qr7a2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gveul"]
 size = Vector3(3.967041, 1.706543, 2.6485596)
@@ -1030,6 +1049,98 @@ shape = SubResource("CylinderShape3D_gveul")
 transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, -171.49434, 4.644222, 4.8023977)
 material_override = SubResource("StandardMaterial3D_gveul")
 mesh = SubResource("QuadMesh_qhmxa")
+
+[node name="Recette" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.6937034, 0, 0, 0, -1.1774552e-07, 2.6937034, 0, -2.6937034, -1.1774552e-07, -152.39325, 4.1140966, -22.446236)
+material_override = SubResource("StandardMaterial3D_xfcej")
+mesh = SubResource("QuadMesh_w0kh0")
+skeleton = NodePath("../Plantes/Figuiers/StaticBody3D2")
+
+[node name="Interactable" type="Area3D" parent="Recette"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("26_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Recette/Interactable"]
+transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, -0.0009803772, -0.0002450943, 0.00032532215)
+shape = SubResource("BoxShape3D_qr7a2")
+
+[node name="Control" type="Control" parent="Recette"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Recette/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 446.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_xfcej")
+
+[node name="TextEdit" type="RichTextLabel" parent="Recette/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 134.0
+offset_right = 362.0
+offset_bottom = 39.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]  Recette pour une potion verte
+"
+
+[node name="TextEdit2" type="RichTextLabel" parent="Recette/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 137.0
+offset_top = 59.0
+offset_right = 365.0
+offset_bottom = 326.0
+theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "- [b]Broyer[/b] la pousse d'asperge jusqu'à ce que le turion soit légèrement blanchi
+
+- Laisser [b]infuser[/b] la lavande 
+
+-[b] Sécher [/b]du lierre et le couper en morceaux fins
+
+Incorporez le tout et vous obtiendrez une potion d'un vert modérément trouble."
+
+[node name="TextureRect2" type="TextureRect" parent="Recette/Control"]
+layout_mode = 0
+offset_left = 586.0
+offset_top = 210.0
+offset_right = 650.0
+offset_bottom = 243.0
+texture = ExtResource("26_7v1kh")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="Recette/Control"]
+layout_mode = 0
+offset_left = 609.0
+offset_top = 185.0
+offset_right = 673.0
+offset_bottom = 254.0
+texture = ExtResource("29_jxsa7")
+expand_mode = 1
 
 [node name="Quest_1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, -171.49434, 4.644222, 6.071932)
@@ -3210,7 +3321,7 @@ shape = SubResource("CylinderShape3D_hwj20")
 [node name="Figuiers" type="Node3D" parent="Plantes"]
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="Plantes/Figuiers"]
-transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -102.63665, 6.331069, 319.06223)
+transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -86.33387, 6.4191794, -16.292368)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Figuiers/StaticBody3D2"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.009643555, 0)
@@ -3532,6 +3643,7 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.042480707, 0)
 shape = SubResource("CylinderShape3D_yayvv")
 
+[connection signal="area_exited" from="Recette/Interactable" to="Recette/Interactable" method="_on_area_exited"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]

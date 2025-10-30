@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemRecipe" load_steps=6 format=3 uid="uid://b2j1l1i8s8vjy"]
+
+[ext_resource type="Script" uid="uid://dvw3a3y34nwvb" path="res://src/classes/inventory/recipes/item_recipe.gd" id="1_ajfyc"]
+[ext_resource type="Resource" uid="uid://to3dvlcvl3my" path="res://assets/game_resources/items/ingredients/Asperges.tres" id="1_jkrhy"]
+[ext_resource type="Resource" uid="uid://copf3qsajvk11" path="res://assets/game_resources/items/ingredients/lavandes.tres" id="2_rbocd"]
+[ext_resource type="Resource" uid="uid://ckhjf2dpre2qa" path="res://assets/game_resources/items/ingredients/Olives.tres" id="3_4noak"]
+[ext_resource type="Resource" uid="uid://52wvwysi07fg" path="res://assets/game_resources/items/potions/potion_verte.tres" id="4_c7dl7"]
+
+[resource]
+script = ExtResource("1_ajfyc")
+ingredient1 = ExtResource("1_jkrhy")
+ingredient2 = ExtResource("2_rbocd")
+ingredient3 = ExtResource("3_4noak")
+result = ExtResource("4_c7dl7")
+metadata/_custom_type_script = "uid://dvw3a3y34nwvb"
