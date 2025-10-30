@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://dto20gbo24uis"]
+[gd_scene load_steps=5 format=3 uid="uid://dto20gbo24uis"]
+
+[ext_resource type="Script" uid="uid://bjl1e7bjp2jwh" path="res://src/scenes/ui/narration/narration.gd" id="1_elmls"]
+[ext_resource type="Texture2D" uid="uid://dkwwbjedok67l" path="res://assets/graphical/ui/narration.png" id="1_t2mdg"]
+[ext_resource type="Texture2D" uid="uid://cslxoogllv41u" path="res://assets/graphical/ui/narration_button.png" id="2_elmls"]
+[ext_resource type="AudioStream" uid="uid://de67adwmbmqwc" path="res://assets/sounds/narration.wav" id="4_bvk2f"]
 
 [node name="Narration" type="Control"]
 layout_mode = 3
@@ -7,3 +12,103 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_elmls")
+
+[node name="fond" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27800003
+anchor_top = 0.30200002
+anchor_right = 0.72200006
+anchor_bottom = 0.698
+offset_left = 235.74396
+offset_top = 108.303986
+offset_right = -235.74408
+offset_bottom = -108.304016
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("1_t2mdg")
+
+[node name="titre" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36200002
+anchor_top = 0.34300002
+anchor_right = 0.63500005
+anchor_bottom = 0.404
+offset_left = -0.024017334
+offset_top = -0.26402283
+offset_right = -0.52008057
+offset_bottom = 0.2079773
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.32156864)
+text = "Le réveil"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="contenu" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36200002
+anchor_top = 0.418
+anchor_right = 0.63500005
+anchor_bottom = 0.569
+offset_left = -0.024017334
+offset_top = 0.13598633
+offset_right = -0.52008057
+offset_bottom = 0.28799438
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.32156864)
+theme_override_font_sizes/normal_font_size = 12
+text = "Je me suis reveillé à l'universite. J'ai l'impression d'être au S-pace mais quelque chose est étrange..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tex_button" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.467
+anchor_top = 0.577
+anchor_right = 0.535
+anchor_bottom = 0.637
+offset_left = 0.015991211
+offset_top = 0.10397339
+offset_right = -0.32000732
+offset_bottom = 0.22399902
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_elmls")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.46800002
+anchor_top = 0.57900006
+anchor_right = 0.535
+anchor_bottom = 0.637
+offset_left = -0.13604736
+offset_top = -0.19204712
+offset_right = -0.32000732
+offset_bottom = 0.22399902
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 12
+text = "Continuer"
+flat = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_bvk2f")
+volume_db = 5.0
+bus = &"SFX"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

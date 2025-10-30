@@ -1,7 +1,5 @@
 extends Node3D
 
-
-
 var music_bus := AudioServer.get_bus_index("Music")
 var low_pass
 
@@ -9,7 +7,6 @@ var low_pass
 
 var was_paused := false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.text_alert = $Perso/TextAlert
 	Global.setup_text_alerts()
@@ -19,13 +16,13 @@ func _ready() -> void:
 	$Pause.visible = false
 	$Musique.play()
 	
-	print(Global.inv_current_slot)
-	
 	$Perso.reset_objectives()
 	$Perso.update_objectives_text()
 	
 	#$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
 	Global.is_craft_ui_open = false
+	
+	start_intro_narration(2.5)
 
 func apply_pause_audio(paused: bool) -> void:
 	var tween = create_tween()
@@ -39,14 +36,12 @@ func _process(_delta: float) -> void:
 		apply_pause_audio(Global.isPaused)
 		was_paused = Global.isPaused
 	
-	if Global.isPaused:
+	if Global.isPaused and !Global.is_narration_showing:
 		$Pause.visible = true
 		$Map.visible = false
-		#AudioServer.set_bus_mute(music_bus,true)
 	else:
 		$Pause.visible = false
 		$Map.visible = Global.minimap_activated
-		#AudioServer.set_bus_mute(music_bus,false)
 	#if Global.is_craft_ui_open:
 		#$CraftUI.visible = true
 	#else:
@@ -65,3 +60,7 @@ func _process(_delta: float) -> void:
 			$Pause.get_node("Book").visible = false
 			$Pause.get_node("Book").show_book()
 		Global.isPaused = !Global.isPaused
+
+func start_intro_narration(delay: float) -> void:
+	await get_tree().create_timer(delay).timeout
+	Global.narrate("Le réveil", "Je me suis reveillé à l'université. J'ai l'impression d'être au S-pace mais quelque chose est étrange...")

@@ -5,6 +5,7 @@ var is_inventory_open: bool
 var is_craft_ui_open: bool
 var is_chest_open: bool
 var is_interactable_ui_open: bool
+var is_narration_showing: bool
 var cam_speed = 0.3
 var is_dragging = false
 
@@ -59,11 +60,18 @@ var objectives_order = {
 	"fac_1": 3
 }
 
+var narration_ui
+
+func narrate(title: String, message:String):
+	narration_ui.set_narration(title,message)
+	narration_ui.fade_in()
+
 func _ready() -> void:
 	isPaused = false
+	
 
 func _process(_delta: float) -> void:
-	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open and !is_chest_open):
+	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open and !is_chest_open and !is_narration_showing):
 		isPaused = !isPaused
 
 	if Global.is_craft_ui_open and Input.is_action_just_pressed("pause"):

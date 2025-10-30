@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://hyxjxaek1eag"]
+[gd_scene load_steps=24 format=3 uid="uid://hyxjxaek1eag"]
 
 [ext_resource type="Script" uid="uid://deysa375pgxig" path="res://src/scenes/personnage/personnage.gd" id="1_34im4"]
 [ext_resource type="Texture2D" uid="uid://cy0ohhvb38hg8" path="res://assets/graphical/crosshair.png" id="2_v37cp"]
 [ext_resource type="PackedScene" uid="uid://dyuacubusgehf" path="res://src/scenes/ui/informations/informations.tscn" id="3_41j16"]
+[ext_resource type="PackedScene" uid="uid://dto20gbo24uis" path="res://src/scenes/ui/narration/Narration.tscn" id="3_rthui"]
 [ext_resource type="Shader" uid="uid://dxrl3ki6nkyua" path="res://assets/shaders/shadow.gdshader" id="4_edy0f"]
 [ext_resource type="AudioStream" uid="uid://034u1uw3p1td" path="res://assets/sounds/footstep1.mp3" id="5_xa0ke"]
 [ext_resource type="AudioStream" uid="uid://cp468p7jtv44h" path="res://assets/sounds/footstep2.mp3" id="6_hga14"]
@@ -149,9 +150,9 @@ bus = &"SFX"
 texture_filter = 1
 anchors_preset = -1
 anchor_left = 0.32500002
-anchor_top = 0.606
+anchor_top = 0.65538275
 anchor_right = 0.67800003
-anchor_bottom = 0.81000006
+anchor_bottom = 0.8100001
 offset_left = -0.4000244
 offset_top = 0.3119812
 offset_right = -0.056030273
@@ -164,6 +165,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("13_hga14")
 metadata/_custom_type_script = "uid://bphemefgd4hxh"
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -286,3 +288,5 @@ text = "0 FPS"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Narration" parent="." instance=ExtResource("3_rthui")]
