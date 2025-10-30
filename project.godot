@@ -157,3 +157,22 @@ renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 anti_aliasing/quality/msaa_3d=1
 occlusion_culling/use_occlusion_culling=true
+
+[shader_globals]
+
+global_wind={
+"type": "float",
+"value": 2.0
+}
+strength={
+"type": "float",
+"value": 0.4
+}
+speed={
+"type": "float",
+"value": 3.0
+}
+direction={
+"type": "vec3",
+"value": Vector3(1, 0, 0.3)
+}
