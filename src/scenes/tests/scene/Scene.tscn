@@ -1,4 +1,4 @@
-[gd_scene load_steps=147 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=144 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -26,7 +26,6 @@
 [ext_resource type="Texture2D" uid="uid://de75rn8e1y3s1" path="res://assets/graphical/plantes/arbousier.png" id="20_j0txf"]
 [ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
 [ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="26_7v1kh"]
-[ext_resource type="Script" uid="uid://no6igfjqnx1i" path="res://src/scenes/tests/scene/recipe_sheet.gd" id="26_feptu"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
 [ext_resource type="Texture2D" uid="uid://cjd4bpstwslrd" path="res://assets/graphical/ui/encre.png" id="29_jxsa7"]
@@ -114,6 +113,16 @@ fog_light_color = Color(0.5946998, 0.5250577, 0.58688116, 1)
 fog_density = 0.003
 fog_sky_affect = 0.2
 volumetric_fog_density = 0.3403
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qr7a2"]
+radius = 1.2749023
+height = 4.376465
+
+[sub_resource type="Gradient" id="Gradient_qr7a2"]
+colors = PackedColorArray(0.96337324, 0.79475254, 0.6471327, 1, 0.99999994, 0.89602774, 0.8102998, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_f74wi"]
+gradient = SubResource("Gradient_qr7a2")
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_qoxpl"]
 parameter_name = "Texture2DParameter"
@@ -238,12 +247,6 @@ radius = 1.4091797
 albedo_texture = ExtResource("31_ew3or")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qhmxa"]
-
-[sub_resource type="Gradient" id="Gradient_qr7a2"]
-colors = PackedColorArray(0.96337324, 0.79475254, 0.6471327, 1, 0.99999994, 0.89602774, 0.8102998, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_f74wi"]
-gradient = SubResource("Gradient_qr7a2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gveul"]
 size = Vector3(3.967041, 1.706543, 2.6485596)
@@ -598,7 +601,7 @@ radius = 1.4487305
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -135.35461, 5.0127754, -35.469406)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 52.753532, 5.0127783, 252.70625)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -668,6 +671,17 @@ script = ExtResource("12_xfcej")
 [node name="maxwell" parent="credits" instance=ExtResource("12_fi6eh")]
 transform = Transform3D(1.0000001, -3.7252903e-09, -2.9802322e-08, 3.7252903e-09, 1.0000001, -3.7252903e-09, 5.9604645e-08, -3.7252903e-09, 1.0000001, 0, 0, 0)
 
+[node name="Interactable" type="Area3D" parent="credits/maxwell"]
+transform = Transform3D(1, 1.1175871e-08, 2.9802322e-08, -1.4901161e-08, 0.9999999, 0, -2.9802322e-08, 3.7252903e-09, 1, -0.08921051, 0.908308, 0.013656616)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="credits/maxwell/Interactable"]
+transform = Transform3D(0.7780488, -0.10436988, 0.61947364, 0.62750226, 0.082514614, -0.7742304, 0.029690832, 0.99110985, 0.12969276, 0.08585358, 0.19077587, -0.34472656)
+shape = SubResource("CapsuleShape3D_qr7a2")
+
 [node name="song" type="AudioStreamPlayer3D" parent="credits"]
 stream = ExtResource("11_bho2e")
 max_distance = 50.0
@@ -679,6 +693,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1093483, 0)
 [node name="Timer" type="Timer" parent="credits"]
 wait_time = 0.5
 autostart = true
+
+[node name="Control" type="Control" parent="credits"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="credits/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 446.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_f74wi")
+
+[node name="TextEdit" type="RichTextLabel" parent="credits/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 134.0
+offset_right = 362.0
+offset_bottom = 39.0
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center] L'ultime recette
+"
+
+[node name="TextEdit2" type="RichTextLabel" parent="credits/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 137.0
+offset_top = 59.0
+offset_right = 365.0
+offset_bottom = 326.0
+theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "- Myrobloan
+- Lavande
+- Arbouse"
 
 [node name="SmokeZone" parent="." groups=["walls"] instance=ExtResource("18_qoxpl")]
 transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -136.71301, 4.5916076, 0.97156)
@@ -3733,8 +3801,9 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.042480707, 0)
 shape = SubResource("CylinderShape3D_yayvv")
 
+[connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
+[connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
-[connection signal="area_exited" from="Recette/Interactable" to="Recette/Interactable" method="_on_area_exited"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
