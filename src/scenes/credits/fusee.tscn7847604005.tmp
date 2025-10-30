@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://gqx0oxrubq34"]
+
+[ext_resource type="Script" uid="uid://bbut8cpfnuxw4" path="res://src/scenes/credits/fusee.gd" id="1_luhbq"]
+[ext_resource type="QuadMesh" uid="uid://bji0gg4g24xdo" path="res://assets/game_resources/fusee.tres" id="2_55hj7"]
+
+[node name="Fusee" type="RigidBody3D"]
+script = ExtResource("1_luhbq")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 20
+lifetime = 0.3
+mesh = ExtResource("2_55hj7")
+direction = Vector3(0, -1, 0)
+spread = 10.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0

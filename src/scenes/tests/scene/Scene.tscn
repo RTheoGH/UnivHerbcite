@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=147 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -12,10 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://b8181g3xk30pn" path="res://src/scenes/ui/minimap/Minimap.tscn" id="7_5kwoq"]
 [ext_resource type="Resource" uid="uid://xa7grds41a3s" path="res://assets/game_resources/plantes/Figuier.tres" id="7_j0txf"]
 [ext_resource type="PackedScene" uid="uid://cqq7lyosyug6m" path="res://src/scenes/map/map.tscn" id="9_dod7h"]
-[ext_resource type="PackedScene" uid="uid://cxn1wyr1oy2xf" path="res://assets/game_resources/models/maxwell/maxwell.fbx" id="10_q3pbt"]
 [ext_resource type="AudioStream" uid="uid://nf6v4eyudbci" path="res://assets/sounds/Maxwell the Cat Theme..mp3" id="11_bho2e"]
+[ext_resource type="PackedScene" uid="uid://bqgkvcl4u4cv1" path="res://src/scenes/credits/maxwell.tscn" id="12_fi6eh"]
+[ext_resource type="Script" uid="uid://ds10fcwfkmwuo" path="res://src/scenes/credits/credits.gd" id="12_xfcej"]
 [ext_resource type="AudioStream" uid="uid://b0q0ihic36xcy" path="res://assets/sounds/bottle_break.mp3" id="13_yayvv"]
 [ext_resource type="AudioStream" uid="uid://c72aet5q41e12" path="res://assets/sounds/search.mp3" id="14_gveul"]
+[ext_resource type="PackedScene" uid="uid://gqx0oxrubq34" path="res://src/scenes/credits/fusee.tscn" id="14_qr7a2"]
 [ext_resource type="Resource" uid="uid://bvlc8iqr38lqw" path="res://assets/game_resources/plantes/Jujubier.tres" id="16_qoxpl"]
 [ext_resource type="Resource" uid="uid://cn0ei1ar76h46" path="res://assets/game_resources/plantes/Arbousier.tres" id="18_mcf5s"]
 [ext_resource type="PackedScene" uid="uid://kxgietma6upl" path="res://src/scenes/tests/smoke_zones/smoke_zone.tscn" id="18_qoxpl"]
@@ -24,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://de75rn8e1y3s1" path="res://assets/graphical/plantes/arbousier.png" id="20_j0txf"]
 [ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
 [ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="26_7v1kh"]
+[ext_resource type="Script" uid="uid://no6igfjqnx1i" path="res://src/scenes/tests/scene/recipe_sheet.gd" id="26_feptu"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
 [ext_resource type="Texture2D" uid="uid://cjd4bpstwslrd" path="res://assets/graphical/ui/encre.png" id="29_jxsa7"]
@@ -658,13 +661,24 @@ environment = SubResource("Environment_y4obm")
 [node name="MeshInstance3D" parent="Map2" index="2"]
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
 
-[node name="maxwell" parent="." instance=ExtResource("10_q3pbt")]
-transform = Transform3D(0.75631094, 0.0089347325, 0.65415084, 0.03803871, 0.9976146, -0.057605203, -0.6531055, 0.06845051, 0.75416696, 47.497673, -2.138185, 234.05475)
+[node name="credits" type="Node3D" parent="."]
+transform = Transform3D(0.75631094, 0.0089347325, 0.65415084, 0.03803871, 0.9976146, -0.057605203, -0.6531055, 0.06845051, 0.75416696, 47.497673, -2.2633784, 234.7595)
+script = ExtResource("12_xfcej")
 
-[node name="song" type="AudioStreamPlayer3D" parent="maxwell"]
+[node name="maxwell" parent="credits" instance=ExtResource("12_fi6eh")]
+transform = Transform3D(1.0000001, -3.7252903e-09, -2.9802322e-08, 3.7252903e-09, 1.0000001, -3.7252903e-09, 5.9604645e-08, -3.7252903e-09, 1.0000001, 0, 0, 0)
+
+[node name="song" type="AudioStreamPlayer3D" parent="credits"]
 stream = ExtResource("11_bho2e")
 max_distance = 50.0
 bus = &"Music"
+
+[node name="Fusee" parent="credits" instance=ExtResource("14_qr7a2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1093483, 0)
+
+[node name="Timer" type="Timer" parent="credits"]
+wait_time = 0.5
+autostart = true
 
 [node name="SmokeZone" parent="." groups=["walls"] instance=ExtResource("18_qoxpl")]
 transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -136.71301, 4.5916076, 0.97156)
@@ -3719,13 +3733,14 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.042480707, 0)
 shape = SubResource("CylinderShape3D_yayvv")
 
+[connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
+[connection signal="area_exited" from="Recette/Interactable" to="Recette/Interactable" method="_on_area_exited"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
 
 [editable path="Map2"]
 [editable path="Map2/map"]
-[editable path="maxwell"]
 [editable path="SmokeZone"]
 [editable path="SmokeZone/Area3D"]
 [editable path="Vegetation/Arbres/Arbre7"]

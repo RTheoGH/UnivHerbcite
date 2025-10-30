@@ -25,7 +25,7 @@ func _ready() -> void:
 	$Perso.update_objectives_text()
 	
 	maxwell()
-	$maxwell/song.play()
+	$credits/song.play()
 	
 	#$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
 	Global.is_craft_ui_open = false
@@ -75,7 +75,7 @@ func maxwell():
 	
 	mxw = create_tween()
 	mxw.set_loops()
-	mxw.tween_property($maxwell, "rotation_degrees:z", -30, 0.2)
-	mxw.tween_property($maxwell, "rotation_degrees:z", 30, 0.2)
-	mxw.tween_property($maxwell, "rotation_degrees:z", 30, 0.2)
-	mxw.tween_property($maxwell, "rotation_degrees:z", -30, 0.2)
+	mxw.tween_property($credits/maxwell, "rotation_degrees:z", -30, 0.2)
+	mxw.tween_property($credits/maxwell, "rotation_degrees:z", 30, 0.2)
+	mxw.tween_property($credits/maxwell, "rotation_degrees:z", 30, 0.2)
+	mxw.tween_property($credits/maxwell, "rotation_degrees:z", -30, 0.2)
