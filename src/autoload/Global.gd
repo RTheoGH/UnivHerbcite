@@ -20,7 +20,10 @@ var herbier : Array = []
 var discoveries : Array = []
 var recipes : Array[ItemRecipe] = [
 	load("res://src/classes/inventory/recipes/potion_rouge.tres"), # Ajouter les autres
-	load("res://src/classes/inventory/recipes/potion_verte.tres")
+	load("res://src/classes/inventory/recipes/potion_verte.tres"),
+	load("res://src/classes/inventory/recipes/potion_violette.tres"),
+	load("res://src/classes/inventory/recipes/potion_jaune.tres"),
+	load("res://src/classes/inventory/recipes/potion_bleue.tres")
 ]
 var all_ingredient_items : Array[String] = [
 	"res://assets/game_resources/items/ingredients/Jujubes.tres",
