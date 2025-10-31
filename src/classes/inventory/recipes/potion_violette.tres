@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemRecipe" load_steps=6 format=3 uid="uid://rinphqmiiikb"]
 
-[ext_resource type="Resource" uid="uid://to3dvlcvl3my" path="res://assets/game_resources/items/ingredients/Asperges.tres" id="1_f45fc"]
+[ext_resource type="Resource" uid="uid://copf3qsajvk11" path="res://assets/game_resources/items/ingredients/lavandes.tres" id="1_f45fc"]
 [ext_resource type="Script" uid="uid://dvw3a3y34nwvb" path="res://src/classes/inventory/recipes/item_recipe.gd" id="1_fhk4q"]
 [ext_resource type="Resource" uid="uid://c4uxl8fi06dho" path="res://assets/game_resources/items/ingredients/Myrobolans.tres" id="2_xsiht"]
 [ext_resource type="Resource" uid="uid://ckhjf2dpre2qa" path="res://assets/game_resources/items/ingredients/Olives.tres" id="3_hsoxv"]

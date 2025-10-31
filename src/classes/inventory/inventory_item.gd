@@ -11,6 +11,7 @@ enum InventoryItemType{
 	FIGUES,
 	LAVANDE,
 	LIERRES,
+	ROMARIN,
 	ACANTHES,
 	
 	POTION_ROUGE,

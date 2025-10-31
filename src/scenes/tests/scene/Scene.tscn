@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=144 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -46,7 +46,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cjnsu0ads2hlp" path="res://assets/game_resources/models/big_banc.obj" id="42_otxdg"]
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="45_xfcej"]
-[ext_resource type="PackedScene" uid="uid://brt0xm8okhq2h" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
+[ext_resource type="PackedScene" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -576,15 +576,11 @@ data = PackedVector3Array(-6.3251, 0.39139998, -3.2563999, 6.3251, 0.39139998, -
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rnopa"]
 height = 2.901764
-radius = 1.4863281
+radius = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_wlu1f"]
 height = 4.1701355
-radius = 1.5712891
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5x5f6"]
-height = 1.3632813
-radius = 0.86572266
+radius = 1.5
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_hwj20"]
 height = 1.487793
@@ -596,7 +592,7 @@ radius = 1.1088867
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yayvv"]
 height = 4.6988525
-radius = 1.4487305
+radius = 1.109
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
@@ -2782,14 +2778,8 @@ shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="Asperges" type="Node3D" parent="Plantes"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -9.869579, -2.2712502, 225.8727)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2797,7 +2787,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -2807,18 +2797,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable2" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -14.435569, -1.6704817, 131.26184)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D2"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2826,7 +2810,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D2/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable2"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -2836,18 +2820,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D2/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable3" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -24.301384, -2.2712502, 193.50993)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D3"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2855,7 +2833,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D3/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable3"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -2865,47 +2843,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D3/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="Plantes/Asperges"]
-transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -82.54283, -0.4484527, 126.39841)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D4"]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_plqpu")
-is_collectible = true
-plante = ExtResource("5_mh6b1")
-metadata/_custom_type_script = "uid://up24dtse8gef"
-
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D4/Interactable"]
-billboard = 2
-shaded = true
-texture = ExtResource("41_lypve")
-script = ExtResource("19_mcf5s")
-sprites = Array[Texture]([ExtResource("41_lypve")])
-offsets = Array[Vector2]([Vector2(0, 0)])
-billboarding = true
-metadata/_custom_type_script = "uid://byq8iypi45525"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D4/Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
-shape = SubResource("CylinderShape3D_wlu1f")
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable4" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -31.397842, -2.2712502, 222.87547)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D5"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2913,7 +2856,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D5/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable4"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -2923,18 +2866,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D5/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D6" type="StaticBody3D" parent="Plantes/Asperges"]
-transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -82.54283, -0.4484527, 126.39841)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D6"]
+[node name="Interactable5" type="Area3D" parent="Plantes/Asperges"]
+transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -82.54283, -15.481486, 126.39841)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2942,7 +2879,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D6/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable5"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -2952,47 +2889,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D6/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D7" type="StaticBody3D" parent="Plantes/Asperges"]
-transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -82.54283, -0.4484527, 126.39841)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D7"]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_plqpu")
-is_collectible = true
-plante = ExtResource("5_mh6b1")
-metadata/_custom_type_script = "uid://up24dtse8gef"
-
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D7/Interactable"]
-billboard = 2
-shaded = true
-texture = ExtResource("41_lypve")
-script = ExtResource("19_mcf5s")
-sprites = Array[Texture]([ExtResource("41_lypve")])
-offsets = Array[Vector2]([Vector2(0, 0)])
-billboarding = true
-metadata/_custom_type_script = "uid://byq8iypi45525"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D7/Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
-shape = SubResource("CylinderShape3D_wlu1f")
-
-[node name="StaticBody3D8" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable6" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -46.764977, -1.2398465, 102.24575)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D8"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3000,7 +2902,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D8/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable6"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -3010,18 +2912,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D8/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D9" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable7" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -11.642853, -0.68700385, 96.988754)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D9"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3029,7 +2925,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D9/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable7"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -3039,47 +2935,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D9/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D10" type="StaticBody3D" parent="Plantes/Asperges"]
-transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -127.13822, 0.60840034, 88.07375)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D10"]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_plqpu")
-is_collectible = true
-plante = ExtResource("5_mh6b1")
-metadata/_custom_type_script = "uid://up24dtse8gef"
-
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D10/Interactable"]
-billboard = 2
-shaded = true
-texture = ExtResource("41_lypve")
-script = ExtResource("19_mcf5s")
-sprites = Array[Texture]([ExtResource("41_lypve")])
-offsets = Array[Vector2]([Vector2(0, 0)])
-billboarding = true
-metadata/_custom_type_script = "uid://byq8iypi45525"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D10/Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
-shape = SubResource("CylinderShape3D_wlu1f")
-
-[node name="StaticBody3D11" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable8" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -66.749825, -0.47083592, 84.01746)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D11"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3087,7 +2948,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D11/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable8"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -3097,18 +2958,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D11/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D12" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable9" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -1.6722889, -2.8059237, 19.318678)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D12"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3116,7 +2971,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D12/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable9"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -3126,18 +2981,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D12/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D13" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable10" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -203.27074, 3.5271423, -27.028275)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D13"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D13"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3145,7 +2994,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D13/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable10"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -3155,18 +3004,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D13/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D14" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable11" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -22.265085, -1.9484789, 27.438766)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D14"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D14"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3174,7 +3017,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D14/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable11"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -3184,18 +3027,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D14/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D15" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable12" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -85.59184, 0.97940254, 14.615953)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D15"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D15"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3203,7 +3040,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D15/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable12"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -3213,18 +3050,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D15/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
-[node name="StaticBody3D16" type="StaticBody3D" parent="Plantes/Asperges"]
+[node name="Interactable13" type="Area3D" parent="Plantes/Asperges"]
 transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -94.80194, 0.89346695, 33.080997)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
-shape = SubResource("CylinderShape3D_rnopa")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Asperges/StaticBody3D16"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3232,7 +3063,7 @@ is_collectible = true
 plante = ExtResource("5_mh6b1")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/StaticBody3D16/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Asperges/Interactable13"]
 billboard = 2
 shaded = true
 texture = ExtResource("41_lypve")
@@ -3242,50 +3073,14 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/StaticBody3D16/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Asperges/Interactable13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="Lavandes" type="Node3D" parent="Plantes"]
 
-[node name="StaticBody3D4" type="StaticBody3D" parent="Plantes/Lavandes"]
-transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -203.08392, 5.9965687, -23.771278)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
-shape = SubResource("CylinderShape3D_5x5f6")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Lavandes/StaticBody3D4"]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_plqpu")
-is_collectible = true
-plante = ExtResource("27_hwj20")
-metadata/_custom_type_script = "uid://up24dtse8gef"
-
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/StaticBody3D4/Interactable"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
-billboard = 2
-shaded = true
-texture = ExtResource("27_5x5f6")
-script = ExtResource("19_mcf5s")
-sprites = Array[Texture]([ExtResource("27_5x5f6")])
-offsets = Array[Vector2]([Vector2(0, 0)])
-billboarding = true
-metadata/_custom_type_script = "uid://byq8iypi45525"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D4/Interactable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
-shape = SubResource("CylinderShape3D_hwj20")
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="Plantes/Lavandes"]
+[node name="Interactable" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -245.52094, 5.5709634, 18.28793)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
-shape = SubResource("CylinderShape3D_5x5f6")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Lavandes/StaticBody3D5"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3293,7 +3088,7 @@ is_collectible = true
 plante = ExtResource("27_hwj20")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/StaticBody3D5/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
 billboard = 2
 shaded = true
@@ -3304,18 +3099,36 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D5/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
-[node name="StaticBody3D6" type="StaticBody3D" parent="Plantes/Lavandes"]
+[node name="Interactable2" type="Area3D" parent="Plantes/Lavandes"]
+transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -203.08392, 5.9965687, -23.771278)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("27_hwj20")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable2"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
+billboard = 2
+shaded = true
+texture = ExtResource("27_5x5f6")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("27_5x5f6")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
+shape = SubResource("CylinderShape3D_hwj20")
+
+[node name="Interactable3" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -246.80426, 5.9965687, 1.0467587)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
-shape = SubResource("CylinderShape3D_5x5f6")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Lavandes/StaticBody3D6"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3323,7 +3136,7 @@ is_collectible = true
 plante = ExtResource("27_hwj20")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/StaticBody3D6/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable3"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
 billboard = 2
 shaded = true
@@ -3334,18 +3147,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D6/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
-[node name="StaticBody3D7" type="StaticBody3D" parent="Plantes/Lavandes"]
+[node name="Interactable4" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -245.82568, 4.5067387, 69.759224)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
-shape = SubResource("CylinderShape3D_5x5f6")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Lavandes/StaticBody3D7"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3353,7 +3160,7 @@ is_collectible = true
 plante = ExtResource("27_hwj20")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/StaticBody3D7/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable4"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
 billboard = 2
 shaded = true
@@ -3364,18 +3171,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D7/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
-[node name="StaticBody3D8" type="StaticBody3D" parent="Plantes/Lavandes"]
+[node name="Interactable5" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -247.01268, 6.2692327, -11.311207)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D8"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
-shape = SubResource("CylinderShape3D_5x5f6")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Lavandes/StaticBody3D8"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3383,7 +3184,7 @@ is_collectible = true
 plante = ExtResource("27_hwj20")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/StaticBody3D8/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable5"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
 billboard = 2
 shaded = true
@@ -3394,18 +3195,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D8/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
-[node name="StaticBody3D9" type="StaticBody3D" parent="Plantes/Lavandes"]
+[node name="Interactable6" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -202.92856, 5.9965687, 3.1738758)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D9"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
-shape = SubResource("CylinderShape3D_5x5f6")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Lavandes/StaticBody3D9"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3413,7 +3208,7 @@ is_collectible = true
 plante = ExtResource("27_hwj20")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/StaticBody3D9/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable6"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
 billboard = 2
 shaded = true
@@ -3424,18 +3219,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D9/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
-[node name="StaticBody3D10" type="StaticBody3D" parent="Plantes/Lavandes"]
+[node name="Interactable7" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -202.92856, 5.9965687, -13.04163)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
-shape = SubResource("CylinderShape3D_5x5f6")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Lavandes/StaticBody3D10"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3443,7 +3232,7 @@ is_collectible = true
 plante = ExtResource("27_hwj20")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/StaticBody3D10/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable7"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
 billboard = 2
 shaded = true
@@ -3454,18 +3243,12 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D10/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
-[node name="StaticBody3D11" type="StaticBody3D" parent="Plantes/Lavandes"]
+[node name="Interactable8" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(2.3127072, 0, 0, 0, 2.3127072, 0, 0, 0, 2.3127072, -226.27985, 10.178368, -169.05066)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.702713, 0)
-shape = SubResource("CylinderShape3D_5x5f6")
-
-[node name="Interactable" type="Area3D" parent="Plantes/Lavandes/StaticBody3D11"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3473,7 +3256,7 @@ is_collectible = true
 plante = ExtResource("27_hwj20")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/StaticBody3D11/Interactable"]
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable8"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
 billboard = 2
 shaded = true
@@ -3484,7 +3267,7 @@ offsets = Array[Vector2]([Vector2(0, 0)])
 billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/StaticBody3D11/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
@@ -3610,7 +3393,7 @@ shape = SubResource("CylinderShape3D_yayvv")
 [node name="Myrobolans" type="Node3D" parent="Plantes"]
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="Plantes/Myrobolans"]
-transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -108.476105, 14.2986765, -94.3407)
+transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -173.11613, 11.288484, -129.38899)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Myrobolans/StaticBody3D3"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0.37576294, 0)
@@ -3639,7 +3422,7 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0
 shape = SubResource("CylinderShape3D_yayvv")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Plantes/Myrobolans"]
-transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -187.21031, 14.428987, -94.3407)
+transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -208.26134, 11.552451, -143.15579)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Myrobolans/StaticBody3D4"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0.37576294, 0)
@@ -3668,7 +3451,7 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0
 shape = SubResource("CylinderShape3D_yayvv")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="Plantes/Myrobolans"]
-transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -139.51958, 14.181386, -94.3407)
+transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -222.35713, 11.212432, -75.66229)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Myrobolans/StaticBody3D5"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0.37576294, 0)
@@ -3697,7 +3480,7 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0
 shape = SubResource("CylinderShape3D_yayvv")
 
 [node name="StaticBody3D6" type="StaticBody3D" parent="Plantes/Myrobolans"]
-transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -161.7911, 13.857316, -94.3407)
+transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -208.21106, 10.956344, -118.42947)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Myrobolans/StaticBody3D6"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, -0.37576294, 0)

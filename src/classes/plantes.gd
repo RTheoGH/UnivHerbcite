@@ -11,6 +11,7 @@ enum PlanteType{
 	FIGUIER,
 	LAVANDES,
 	LIERRES,
+	ROMARIN,
 	ACANTHES,
 	
 	DEBUG
