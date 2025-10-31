@@ -483,10 +483,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Sauter" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29869446
-anchor_top = 0.38090125
-anchor_right = 0.36931947
-anchor_bottom = 0.43007407
+anchor_left = 0.2978264
+anchor_top = 0.36701235
+anchor_right = 0.36845142
+anchor_bottom = 0.41618517
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -499,10 +499,10 @@ metadata/_edit_use_anchors_ = true
 [node name="Sauter_B" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.29829863
-anchor_top = 0.42581484
-anchor_right = 0.36911106
-anchor_bottom = 0.48481482
+anchor_left = 0.29743057
+anchor_top = 0.41192594
+anchor_right = 0.368243
+anchor_bottom = 0.47092593
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
@@ -512,6 +512,7 @@ clip_text = true
 metadata/_edit_use_anchors_ = true
 
 [node name="minimap" type="CheckButton" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -526,6 +527,7 @@ offset_bottom = 0.27764893
 metadata/_edit_use_anchors_ = true
 
 [node name="minimap_text" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.49343756
@@ -542,6 +544,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="form_minimap" type="CheckButton" parent="."]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -556,6 +559,7 @@ offset_bottom = 0.21365356
 metadata/_edit_use_anchors_ = true
 
 [node name="form_minimap_text" type="RichTextLabel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.6159445
@@ -575,9 +579,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.29175
-anchor_top = 0.5290494
+anchor_top = 0.5012716
 anchor_right = 0.37973613
-anchor_bottom = 0.5828516
+anchor_bottom = 0.5550738
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -591,9 +595,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.2974306
-anchor_top = 0.5832222
+anchor_top = 0.5554444
 anchor_right = 0.3708472
-anchor_bottom = 0.6422224
+anchor_bottom = 0.6144446
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
@@ -606,9 +610,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.30477083
-anchor_top = 0.658679
+anchor_top = 0.6247284
 anchor_right = 0.36324307
-anchor_bottom = 0.7063086
+anchor_bottom = 0.67235804
 offset_left = -0.0960083
 offset_top = 0.17599487
 offset_right = -0.45602417
@@ -622,9 +626,40 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.29743057
-anchor_top = 0.7035926
+anchor_top = 0.6711852
 anchor_right = 0.36997914
-anchor_bottom = 0.7625928
+anchor_bottom = 0.73018533
+offset_left = 0.35998535
+offset_top = 0.07199097
+offset_right = -0.2159729
+offset_bottom = -0.16000366
+text_overrun_behavior = 3
+clip_text = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventaire" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2900139
+anchor_top = 0.7281235
+anchor_right = 0.37800002
+anchor_bottom = 0.7757531
+offset_left = -0.0960083
+offset_top = 0.17599487
+offset_right = -0.45602417
+offset_bottom = 0.3119812
+text = "Inventaire"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Inventaire_B" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.29743057
+anchor_top = 0.77612346
+anchor_right = 0.36997914
+anchor_bottom = 0.8351237
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
@@ -741,9 +776,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.07260418
-anchor_top = 0.7838395
+anchor_top = 0.77612346
 anchor_right = 0.1442847
-anchor_bottom = 0.8428397
+anchor_bottom = 0.8351237
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
@@ -772,9 +807,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.14552085
-anchor_top = 0.7838395
+anchor_top = 0.77612346
 anchor_right = 0.21720137
-anchor_bottom = 0.8428397
+anchor_bottom = 0.8351237
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
@@ -803,9 +838,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.21843751
-anchor_top = 0.7838395
+anchor_top = 0.77612346
 anchor_right = 0.29011804
-anchor_bottom = 0.8428397
+anchor_bottom = 0.8351237
 offset_left = 0.35998535
 offset_top = 0.07199097
 offset_right = -0.2159729
@@ -922,6 +957,7 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="form_minimap" to="." method="_on_form_minimap_pressed"]
 [connection signal="pressed" from="Grab_B" to="." method="_on_grab_pressed"]
 [connection signal="pressed" from="Livre_B" to="." method="_on_livre_pressed"]
+[connection signal="pressed" from="Inventaire_B" to="." method="_on_inventaire_b_pressed"]
 [connection signal="pressed" from="SlotG_B" to="." method="_on_slotG_pressed"]
 [connection signal="pressed" from="SlotD_B" to="." method="_on_slotD_pressed"]
 [connection signal="pressed" from="Slot0_B" to="." method="_on_slot_0_pressed"]

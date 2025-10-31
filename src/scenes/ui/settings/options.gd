@@ -78,6 +78,8 @@ func get_movements_keys() -> void:
 	$Slot0_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_one")[0].as_text())
 	$Slot1_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_two")[0].as_text())
 	$Slot2_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_three")[0].as_text())
+	$Slot2_B.text = eng_to_fr(InputMap.action_get_events("inv_slot_three")[0].as_text())
+	$Inventaire_B.text = eng_to_fr(InputMap.action_get_events("inventory")[0].as_text())
 
 func eng_to_fr(s):
 	match s:
@@ -105,6 +107,8 @@ func eng_to_fr(s):
 			s = '2'
 		'3 (Physical)':
 			s = '3'
+		'E (Physical)':
+			s = 'E'
 		_:
 			s = '???'
 	return s
@@ -248,3 +252,10 @@ func _on_fps_b_pressed() -> void:
 
 func _on_guide_b_pressed() -> void:
 	Global.guidage = !Global.guidage
+
+
+func _on_inventaire_b_pressed() -> void:
+	$sfx.play()
+	modif = "inventory"
+	current_button = $Inventaire_B
+	$modifier.show()

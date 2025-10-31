@@ -12,6 +12,7 @@ var is_dragging = false
 var minimap_activated: bool = false
 var carre_minimap: bool = false
 
+var paused_timers: bool = false
 var fps: bool = false
 var guidage: bool = true
 
@@ -79,6 +80,17 @@ func _process(_delta: float) -> void:
 
 	if Global.is_chest_open and Input.is_action_just_pressed("pause"):
 		is_chest_open = !is_chest_open
+
+	if Global.isPaused:
+		if !paused_timers:
+			for timer in ItemEffects.active_timers:
+				ItemEffects.active_timers[timer].paused = true
+				paused_timers = true
+
+	if !Global.isPaused and paused_timers:
+		for timer in ItemEffects.active_timers:
+			ItemEffects.active_timers[timer].paused = false
+		paused_timers = false
 
 	if(Input.is_action_just_pressed("fullscreen")):
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:

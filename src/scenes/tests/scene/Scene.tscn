@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=145 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -46,6 +46,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cjnsu0ads2hlp" path="res://assets/game_resources/models/big_banc.obj" id="42_otxdg"]
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="45_xfcej"]
+[ext_resource type="PackedScene" uid="uid://brt0xm8okhq2h" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -601,7 +602,7 @@ radius = 1.4487305
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 52.753532, 5.0127783, 252.70625)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -169.6118, 5.0127783, -1.1243744)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -620,6 +621,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.2616, 3.4564147, 4.03016
 
 [node name="Coffre" parent="." instance=ExtResource("5_gveul")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.87686, 3.4564147, 4.0301676)
+
+[node name="NarrationArea" parent="." instance=ExtResource("47_xfcej")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -142.70065, 3.3080912, 1.0307124)
+title = "Le monde"
+message = "A l'extérieur, je découvre un brouillard épais et un ciel rouge, la végétation est omniprésente et me bloque."
 
 [node name="Musique" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_d35k2")
@@ -652,7 +658,7 @@ player = NodePath("../Perso")
 [node name="Map2" parent="." instance=ExtResource("9_dod7h")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.2523017, 0)
 
-[node name="ground " parent="Map2/map" index="3"]
+[node name="ground " parent="Map2/map" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.20738, 0.031304598, 2.4472466)
 
 [node name="CollisionShape3D" parent="Map2/map/ground /StaticBody3D" index="0"]
@@ -753,6 +759,7 @@ text = "- Myrobloan
 
 [node name="SmokeZone" parent="." groups=["walls"] instance=ExtResource("18_qoxpl")]
 transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -136.71301, 4.5916076, 0.97156)
+visible = false
 required_item = 9
 smoke_color = Color(0.8901961, 0.08627451, 0.08627451, 1)
 
@@ -913,6 +920,7 @@ text = "Le Space est le dernier endroit encore sécurisé dans le campus blablab
 
 [node name="Quest_1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, -171.49434, 4.644222, 6.071932)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Quest_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24157715, -0.35327196, 0.082092285)
@@ -920,6 +928,7 @@ shape = SubResource("BoxShape3D_gveul")
 
 [node name="Quest_2" type="Area3D" parent="."]
 transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -134.66872, 4.5916076, 0.97156)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Quest_2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000006, -0.35554504, -0.2001952, 0)
@@ -927,6 +936,7 @@ shape = SubResource("BoxShape3D_qhmxa")
 
 [node name="Quest_3" type="Area3D" parent="."]
 transform = Transform3D(7.049025, 0, 0, 0, 7.049025, 0, 0, 0, 14.286215, -114.620476, 5.4752064, 4.643777)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Quest_3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000006, -0.35554504, -0.2001952, 0)
@@ -988,7 +998,7 @@ transform = Transform3D(1.5953678, 0, 0, 0, 1.2545712, 0, 0, 0, 1.7380226, 0, -0
 [node name="Herbe" type="Node3D" parent="Vegetation"]
 
 [node name="Herbs5" parent="Vegetation/Herbe" instance=ExtResource("35_2gpb1")]
-transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, -42.064705, 1.0895455, 7.001489)
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, -40.483017, 1.0895455, 7.001489)
 
 [node name="Plane" parent="Vegetation/Herbe/Herbs5" index="0"]
 transform = Transform3D(3.442497, 0.13416098, 0.116698325, -0.13212714, 3.4440002, -0.061725833, -0.11899578, 0.05717064, 3.4445565, -12.528198, -3.5157628, -14.3383255)
@@ -999,7 +1009,7 @@ transform = Transform3D(0.9999998, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0.245
 multimesh = SubResource("MultiMesh_y4obm")
 
 [node name="Herbs6" parent="Vegetation/Herbe" instance=ExtResource("35_2gpb1")]
-transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, -42.07791, 1.192523, -0.732975)
+transform = Transform3D(0.20000002, 0, 0, 0, 0.20000002, 0, 0, 0, 0.20000002, -40.59356, 1.192523, -0.732975)
 
 [node name="Plane" parent="Vegetation/Herbe/Herbs6" index="0"]
 transform = Transform3D(3.4443579, 0.13275574, 0.034309965, -0.13194057, 3.4436522, -0.07910841, -0.03732198, 0.07773259, 3.446006, -12.528198, -3.133765, -20.829487)

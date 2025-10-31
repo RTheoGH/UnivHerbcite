@@ -24,6 +24,7 @@ var static_cam := false
 
 var one_time: bool = false
 var already_discovered: bool = false
+var first_plante : bool = true
 
 var crosshair_textures = {
 	"default": preload("res://assets/graphical/crosshair.png"),
@@ -44,6 +45,10 @@ func try_grab() -> Node3D:
 		obj.on_interaction()
 		if obj.plante:
 			get_parent().get_node("Search").play()
+			if first_plante:
+				first_plante = false
+				await get_tree().create_timer(2).timeout
+				Global.narrate("La plante", "J'ai ramassé une plante, peut etre me servira t elle. Je peux consulter mon inventaire en appuyant sur "+InputMap.action_get_events("inventory")[0].as_text()[0])
 		if !already_discovered:
 			if obj.plante != null:
 				$TextAlert.show_alert("Nouvelle plante découverte !")

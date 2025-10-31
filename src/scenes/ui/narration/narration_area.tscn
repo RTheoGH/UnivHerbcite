@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://brt0xm8okhq2h"]
+
+[ext_resource type="Script" uid="uid://mnonms8de1fo" path="res://src/scenes/ui/narration/narration_area.gd" id="1_7tr78"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8dn8c"]
+
+[node name="NarrationArea" type="Area3D"]
+script = ExtResource("1_7tr78")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+shape = SubResource("BoxShape3D_8dn8c")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

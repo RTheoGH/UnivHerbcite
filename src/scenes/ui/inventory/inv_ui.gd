@@ -88,7 +88,10 @@ func update_slot_textures():
 func update_infos():
 	if Global.inv_current_slot < Global.player_inventory.items.size() and Global.player_inventory.items[Global.inv_current_slot] != null:
 		var item = Global.player_inventory.items[Global.inv_current_slot]
-		$Infos/Texte.text = str(InventoryItem.InventoryItemType.find_key(item.type)) + "\n" + item.description
+		if item.revele:
+			$Infos/Texte.text = str(InventoryItem.InventoryItemType.find_key(item.type)) + "\n" + item.description
+		else:
+			$Infos/Texte.text = "Explorez et complétez l'entrée dans votre livre."
 		$Infos.show()
 		if item.effect != InventoryItem.InventoryItemEffect.NONE:
 			$Infos/Eat.show()
