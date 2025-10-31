@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://cqq7lyosyug6m"]
+[gd_scene load_steps=22 format=4 uid="uid://cqq7lyosyug6m"]
 
 [ext_resource type="PackedScene" uid="uid://ck1g3yvkhx7bh" path="res://assets/graphical/map/map.blend" id="1_sxf4j"]
 [ext_resource type="Texture2D" uid="uid://h0frm823suxg" path="res://assets/graphical/Textures/map/ground.png" id="2_cg0im"]
@@ -123,6 +123,9 @@ shader_parameter/source_panorama = ExtResource("2_tqkkf")
 [sub_resource type="BoxShape3D" id="BoxShape3D_bh7fh"]
 size = Vector3(4.661865, 15.702942, 18.592651)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bmmoi"]
+size = Vector3(20.410156, 15.702942, 18.592651)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ol7j"]
 size = Vector3(4.661865, 15.702942, 14.889862)
 
@@ -172,6 +175,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_bh7fh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bounds"]
 transform = Transform3D(0.9704644, 0, 0.24124444, 0, 1, 0, -0.24124444, 0, 0.9704644, -7.7118874, 2.0961237, -9.188638)
 shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.99360746, 0, 0.11289108, 0, 1, 0, -0.11289108, 0, 0.99360746, -8.669593, 2.0961237, -24.19925)
+shape = SubResource("BoxShape3D_bmmoi")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="bounds"]
 transform = Transform3D(0.99980795, 0, 0.019581199, 0, 1, 0, -0.019581199, 0, 0.99980795, -5.2443604, 4.1922474, 5.3481073)
