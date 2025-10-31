@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cl8q4jg5x7taj"]
+[gd_scene load_steps=15 format=3 uid="uid://cl8q4jg5x7taj"]
 
 [ext_resource type="Texture2D" uid="uid://dl68ghesnyrxq" path="res://assets/graphical/Textures/map/tree.png" id="1_5kuci"]
 [ext_resource type="Script" uid="uid://cs8ymm68mgmb4" path="res://src/scenes/tests/scene/arbres.gd" id="1_udrru"]
@@ -7,7 +7,6 @@
 [ext_resource type="Shader" uid="uid://cqf0b7wayhlxp" path="res://assets/shaders/arbre2.gdshader" id="4_2hl85"]
 [ext_resource type="Texture2D" uid="uid://bcdpok5nxhijb" path="res://assets/graphical/Textures/map/Tree Branch.png" id="4_udrru"]
 [ext_resource type="Texture2D" uid="uid://bjcw2kbj3wj72" path="res://assets/graphical/Textures/map/tree_billboard.png" id="7_aug64"]
-[ext_resource type="Script" uid="uid://byq8iypi45525" path="res://src/classes/AnimatedMultiSprite.gd" id="7_hv4uv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv4uv"]
 albedo_texture = ExtResource("1_5kuci")
@@ -80,11 +79,6 @@ shape = SubResource("ConcavePolygonShape3D_kx8j2")
 
 [node name="MultiSprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(4.35, 0, 0, 0, 4.35, 0, 0, 0, 4.35, -0.67284334, 8.458649, -0.8529168)
-visible = false
 billboard = 2
+shaded = true
 texture = ExtResource("7_aug64")
-script = ExtResource("7_hv4uv")
-sprites = Array[Texture]([ExtResource("7_aug64")])
-offsets = Array[Vector2]([Vector2(0, 0)])
-billboarding = true
-metadata/_custom_type_script = "uid://byq8iypi45525"
