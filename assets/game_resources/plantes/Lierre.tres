@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Plante" load_steps=4 format=3 uid="uid://uyj35ar65r8t"]
+
+[ext_resource type="Resource" uid="uid://bvcifu80nolld" path="res://assets/game_resources/items/ingredients/Lierre_item.tres" id="1_s7agp"]
+[ext_resource type="Script" uid="uid://j5dnokgf8rjf" path="res://src/classes/plantes.gd" id="1_vt8ln"]
+[ext_resource type="Texture2D" uid="uid://ck0iumt200olu" path="res://assets/graphical/plantes/lierre.png" id="3_ux8mc"]
+
+[resource]
+script = ExtResource("1_vt8ln")
+type = 7
+texture = ExtResource("3_ux8mc")
+item = ExtResource("1_s7agp")
+metadata/_custom_type_script = "uid://j5dnokgf8rjf"

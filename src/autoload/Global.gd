@@ -29,7 +29,9 @@ var all_ingredient_items : Array[String] = [
 	"res://assets/game_resources/items/ingredients/Myrobolans.tres",
 	"res://assets/game_resources/items/ingredients/Olives.tres",
 	"res://assets/game_resources/items/ingredients/Figues.tres",
-	"res://assets/game_resources/items/ingredients/lavandes.tres"
+	"res://assets/game_resources/items/ingredients/lavandes.tres",
+	"res://assets/game_resources/items/ingredients/Lierre_item.tres",
+	"res://assets/game_resources/items/ingredients/Romarin_item.tres"
 ]
 
 var all_plantes : Array[String] = [
@@ -39,7 +41,9 @@ var all_plantes : Array[String] = [
 	"res://assets/game_resources/plantes/Myrobolan.tres",
 	"res://assets/game_resources/plantes/Olivier.tres",
 	"res://assets/game_resources/plantes/Figuier.tres",
-	"res://assets/game_resources/plantes/Lavande.tres"
+	"res://assets/game_resources/plantes/Lavande.tres",
+	"res://assets/game_resources/plantes/Lierre.tres",
+	"res://assets/game_resources/plantes/Romarin.tres"
 ]
 
 @onready var player_inventory : Inventory = preload("res://assets/game_resources/player_inventory.tres")

@@ -1,13 +1,15 @@
-[gd_resource type="Resource" script_class="ItemRecipe" load_steps=5 format=3 uid="uid://dj1ftgnvyadmk"]
+[gd_resource type="Resource" script_class="ItemRecipe" load_steps=6 format=3 uid="uid://dj1ftgnvyadmk"]
 
 [ext_resource type="Script" uid="uid://dvw3a3y34nwvb" path="res://src/classes/inventory/recipes/item_recipe.gd" id="1_06coa"]
 [ext_resource type="Resource" uid="uid://hm7vmsje8k67" path="res://assets/game_resources/items/ingredients/Jujubes.tres" id="1_dfnry"]
+[ext_resource type="Resource" uid="uid://bvcifu80nolld" path="res://assets/game_resources/items/ingredients/Lierre_item.tres" id="2_lqdj4"]
 [ext_resource type="Resource" uid="uid://ckhjf2dpre2qa" path="res://assets/game_resources/items/ingredients/Olives.tres" id="2_xdxk7"]
 [ext_resource type="Resource" uid="uid://c3r758gmfuldx" path="res://assets/game_resources/items/potions/potion_jaune.tres" id="3_lqdj4"]
 
 [resource]
 script = ExtResource("1_06coa")
 ingredient1 = ExtResource("1_dfnry")
+ingredient2 = ExtResource("2_lqdj4")
 ingredient3 = ExtResource("2_xdxk7")
 result = ExtResource("3_lqdj4")
 metadata/_custom_type_script = "uid://dvw3a3y34nwvb"
