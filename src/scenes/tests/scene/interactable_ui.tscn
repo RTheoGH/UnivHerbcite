@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://no6igfjqnx1i" path="res://src/scenes/tests/scene/iteractable_ui.gd" id="2_4v00f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfcej"]
+shading_mode = 0
 albedo_texture = ExtResource("1_683j7")
 
 [sub_resource type="QuadMesh" id="QuadMesh_w0kh0"]

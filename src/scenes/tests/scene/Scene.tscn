@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=147 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -47,6 +47,8 @@
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="45_xfcej"]
 [ext_resource type="PackedScene" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
+[ext_resource type="Resource" uid="uid://1qnswolr50hj" path="res://assets/game_resources/plantes/Romarin.tres" id="48_feptu"]
+[ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -594,6 +596,10 @@ radius = 1.1088867
 height = 4.6988525
 radius = 1.109
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_v5phb"]
+height = 2.506836
+radius = 1.3828125
+
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
 
@@ -639,6 +645,7 @@ volume_db = -10.0
 bus = &"SFX"
 
 [node name="Map" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_5kwoq")]
+visible = false
 anchors_preset = -1
 anchor_left = -0.22000001
 anchor_top = 0.49500003
@@ -659,6 +666,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.20738, 0.031304598, 2.447
 
 [node name="CollisionShape3D" parent="Map2/map/ground /StaticBody3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0037384033, 0.054466248, 0.0014395714)
+
+[node name="window_cuts" parent="Map2/map" index="75"]
+visible = false
 
 [node name="WorldEnvironment" parent="Map2" index="1"]
 environment = SubResource("Environment_y4obm")
@@ -752,6 +762,20 @@ bbcode_enabled = true
 text = "- Myrobloan
 - Lavande
 - Arbouse"
+
+[node name="Button" type="Button" parent="credits/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 18.150002
+anchor_top = 11.775001
+anchor_right = 19.925001
+anchor_bottom = 12.700001
+offset_left = -6.1035156e-05
+offset_top = -3.0517578e-05
+offset_right = -6.1035156e-05
+offset_bottom = 0.9999695
+mouse_filter = 1
+text = "Fermer"
 
 [node name="SmokeZone" parent="." groups=["walls"] instance=ExtResource("18_qoxpl")]
 transform = Transform3D(2.655, 0, 0, 0, 2.655, 0, 0, 0, 3.7797098, -136.71301, 4.5916076, 0.97156)
@@ -875,6 +899,17 @@ offset_bottom = 254.0
 texture = ExtResource("29_jxsa7")
 expand_mode = 1
 
+[node name="Button" type="Button" parent="Recette/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 17.875
+anchor_top = 11.875001
+anchor_right = 19.650002
+anchor_bottom = 12.825001
+offset_top = -3.0517578e-05
+offset_right = -6.1035156e-05
+text = "Fermer"
+
 [node name="Lore" parent="." instance=ExtResource("20_fi6eh")]
 transform = Transform3D(2.3339903, -1.3448156, -5.8783755e-08, 0, -1.1774553e-07, 2.6937037, -1.3448156, -2.3339903, -1.0202196e-07, -174.3781, 4.188389, 13.14536)
 
@@ -913,6 +948,17 @@ theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
 text = "Le Space est le dernier endroit encore sécurisé dans le campus blablabla les plantes ont tout détruit blablabla "
+
+[node name="Button" type="Button" parent="Lore/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 17.875
+anchor_top = 11.875001
+anchor_right = 19.650002
+anchor_bottom = 12.825001
+offset_top = -3.0517578e-05
+offset_right = -6.1035156e-05
+text = "Fermer"
 
 [node name="Quest_1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, -171.49434, 4.644222, 6.071932)
@@ -1064,14 +1110,14 @@ skeleton = NodePath("../../Herbs7")
 multimesh = SubResource("MultiMesh_6c504")
 
 [node name="Herbs10" parent="Vegetation/Herbe" instance=ExtResource("35_2gpb1")]
-transform = Transform3D(-0.0013927551, 0, -0.29999673, 0, 0.3, 0, 0.29999673, 0, -0.0013927551, -42.32961, 1.7589859, -23.61177)
+transform = Transform3D(-0.0013927573, -8.803673e-12, -0.2999967, 0.0043404326, 0.2999686, -2.0150794e-05, 0.29996535, -0.0043404824, -0.0013926115, -42.33, 1.6447462, -23.612)
 
 [node name="Plane" parent="Vegetation/Herbe/Herbs10" index="0"]
 transform = Transform3D(17.699682, 0, -1.7881393e-07, 0, 3.4470844, 0, 5.2154064e-08, 0, 81.24276, 0, 0, 0)
 skeleton = NodePath("../../Herbs10")
 
 [node name="Grass" parent="Vegetation/Herbe/Herbs10" index="1"]
-transform = Transform3D(0.96582484, 0.25919458, 0.0015811012, -0.25915667, 0.9655349, 0.023983939, 0.0046898923, -0.023574019, 0.9997115, -7.7749634, -5.510078, 0.036102295)
+transform = Transform3D(0.9659362, 0.2587768, 0.0017448079, -0.258742, 0.96563506, 0.024432188, 0.0046376493, -0.024051301, 0.9997003, -7.7749634, -5.510077, 0.036102295)
 multimesh = SubResource("MultiMesh_xfcej")
 
 [node name="Bush" type="Node3D" parent="Vegetation"]
@@ -3597,9 +3643,188 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.042480707, 0)
 shape = SubResource("CylinderShape3D_yayvv")
 
+[node name="Romarins" type="Node3D" parent="Plantes"]
+
+[node name="Interactable" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -118.99139, 5.6564555, -66.910995)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable2" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -160.72952, 6.549771, -75.81107)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable2"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable3" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.377235, 5.2895374, -77.85048)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable3"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable4" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -102.5159, 6.0749817, -85.0315)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable4"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable5" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -195.08727, 5.3115506, -66.313576)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable5"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable6" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -108.38706, 1.558631, 58.04485)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable6"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable7" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -79.54688, 1.0234346, 59.39154)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable7"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable8" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -104.58045, 1.3168173, 39.8472)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable8"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
+[connection signal="button_up" from="credits/Control/Button" to="credits" method="_on_button_button_up"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
