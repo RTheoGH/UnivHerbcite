@@ -50,9 +50,10 @@ func remplir_page_plante(book: Array, i: int, tex: TextureRect, titre: RichTextL
 		var plante = book[i]
 		if plante.decouvert:
 			tex.texture = plante.texture
+			titre.text = str(Plante.PlanteType.find_key(plante.type))
 		else:
 			tex.texture = hmm
-		titre.text = str(Plante.PlanteType.find_key(plante.type))
+			titre.text = "???"
 		texte.text = plante.description
 	else:
 		tex.texture = null
@@ -66,12 +67,14 @@ func remplir_page_item(book: Array, i: int, tex: TextureRect, titre: RichTextLab
 		if item != null:
 			if plante.decouvert:
 				tex.texture = item.texture
-			else:
-				tex.texture = hmm
-			if plante.type != Plante.PlanteType.LAVANDES or plante.decouvert:
 				titre.text = str(InventoryItem.InventoryItemType.find_key(item.type))
 			else:
+				tex.texture = hmm
 				titre.text = "???"
+			#if plante.type != Plante.PlanteType.LAVANDES or plante.decouvert:
+				#titre.text = str(InventoryItem.InventoryItemType.find_key(item.type))
+			#else:
+				#titre.text = "???"
 			texte.text = item.description
 		else:
 			tex.texture = null

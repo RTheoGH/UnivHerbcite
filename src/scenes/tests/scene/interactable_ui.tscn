@@ -12,7 +12,7 @@ albedo_texture = ExtResource("1_683j7")
 size = Vector2(0.085, 0.165)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr7a2"]
-size = Vector3(0.087890625, 0.1665039, 0.001)
+size = Vector3(0.087890625, 0.1665039, 0.2171748)
 
 [node name="Recette" type="MeshInstance3D"]
 transform = Transform3D(2.6937034, 0, 0, 0, -1.1774552e-07, 2.6937034, 0, -2.6937034, -1.1774552e-07, 0, 0, 0)

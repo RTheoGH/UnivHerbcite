@@ -20,6 +20,8 @@ var slot_textures = {
 
 var discovered_jujubes: bool = false
 var discovered_lavandes: bool = false
+var discovered_lierres: bool = false
+var discovered_romarins: bool = false
 
 func _ready():
 	#var inv_item := InventoryItem.new()
@@ -53,6 +55,8 @@ func _process(_delta):
 	
 	discover_jujubes()
 	discover_lavandes()
+	discover_lierres()
+	discover_romarins()
 
 func update_slides():
 	#print(slots[0])
@@ -247,7 +251,7 @@ func discover_jujubes():
 	if !discovered_jujubes:
 		for item in Global.player_inventory.items:
 			if item.type == InventoryItem.InventoryItemType.JUJUBES \
-			and item.quantity == 5:
+			and item.quantity == 3:
 				print("discovered jujubes")
 				item.revele = true
 				discovered_jujubes = true
@@ -261,3 +265,22 @@ func discover_lavandes():
 				print("discovered lavandes")
 				item.revele = true
 				discovered_lavandes = true
+
+func discover_romarins():
+	if !discovered_romarins:
+		var slot = Global.inv_current_slot
+		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
+			var item = Global.player_inventory.items[slot]
+			if item.type == InventoryItem.InventoryItemType.ROMARIN:
+				print("discovered romarins")
+				item.revele = true
+				discovered_romarins = true
+
+func discover_lierres():
+	if !discovered_lierres:
+		for item in Global.player_inventory.items:
+			if item.type == InventoryItem.InventoryItemType.LIERRES \
+			and item.quantity == 5:
+				print("discovered lierres")
+				item.revele = true
+				discovered_lierres = true

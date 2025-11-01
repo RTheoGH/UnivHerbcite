@@ -47,7 +47,7 @@ func try_grab() -> Node3D:
 			get_parent().get_node("Search").play()
 			if first_plante:
 				first_plante = false
-				await get_tree().create_timer(2).timeout
+				#await get_tree().create_timer(2).timeout
 				Global.narrate("La plante", "J'ai ramassé une plante, peut etre me servira t elle. Je peux consulter mon inventaire en appuyant sur "+InputMap.action_get_events("inventory")[0].as_text()[0])
 		if !already_discovered:
 			if obj.plante != null:

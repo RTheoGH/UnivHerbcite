@@ -21,7 +21,9 @@ func _process(_delta: float) -> void:
 		else:
 			$TextureRect.visible = true
 			$progress.visible = true
+			Global.narrate("Le livre","J'ai ramassé un livre étrange avec des inscriptions de plantes. Certaines parties ont été éffacés")
 			livre_recupere = true
+				
 	pass
 
 

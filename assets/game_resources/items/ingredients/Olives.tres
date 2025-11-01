@@ -8,4 +8,5 @@ script = ExtResource("1_a1qdw")
 type = 4
 texture = ExtResource("2_k1kb6")
 description = "Fruits verts ou noirs, utilisés pour l’huile ou en cuisine."
+effect = 3
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"
