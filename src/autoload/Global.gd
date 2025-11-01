@@ -16,6 +16,8 @@ var paused_timers: bool = false
 var fps: bool = false
 var guidage: bool = true
 
+var get_book: bool = false
+
 var herbier : Array = []
 var discoveries : Array = []
 var recipes : Array[ItemRecipe] = [
