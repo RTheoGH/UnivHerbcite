@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_qbryy")
-type = 9
+type = 10
 texture = ExtResource("2_4hph2")
 description = "Une potion d'un rouge écarlate."
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

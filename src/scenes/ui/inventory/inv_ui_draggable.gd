@@ -43,16 +43,22 @@ func _process(_delta: float) -> void:
 			grabbed_object = -1
 			
 			var ings := get_current_ingredients()
+			var can_craft_item = false
 			for r in Global.recipes:
 				if r.can_craft(ings):
+					can_craft_item = true
 					result = r.result
-					$TextureRect2.texture = result.texture
-					$RichTextLabel.text = str(InventoryItem.InventoryItemType.find_key(result.type))
-					$TextureRect.texture = craft_ui_textures["complete"]
-				else:
-					$TextureRect2.texture = null
-					$RichTextLabel.text = ""
-					$TextureRect.texture = craft_ui_textures["base"]
+					
+			if can_craft_item:
+				$TextureRect2.texture = result.texture
+				print("texture ?", result.texture)
+				$RichTextLabel.text = str(InventoryItem.InventoryItemType.find_key(result.type))
+				$TextureRect.texture = craft_ui_textures["complete"]		
+			else:
+				print("huh")
+				$TextureRect2.texture = null
+				$RichTextLabel.text = ""
+				$TextureRect.texture = craft_ui_textures["base"]
 			
 		else:
 			print("Pas le droit de placer ici !")

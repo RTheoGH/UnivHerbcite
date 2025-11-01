@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_3u4ne")
-type = 12
+type = 13
 texture = ExtResource("2_jbojw")
 description = "Une potion sucrée pour faire le plein en énergie."
 effect = 2

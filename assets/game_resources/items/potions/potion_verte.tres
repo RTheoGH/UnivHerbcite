@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_vu8yj")
-type = 11
+type = 12
 texture = ExtResource("2_0y6wb")
 description = "Une potion verte qui sent bon l'herbe. On dit qu'elle améliore la détente verticale."
 effect = 4
