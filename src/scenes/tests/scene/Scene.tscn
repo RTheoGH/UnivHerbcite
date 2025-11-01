@@ -570,7 +570,7 @@ radius = 1.3828125
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -431.69147, 5.0127783, 5.881144)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -98.3713, -5.379284, 134.45895)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -855,6 +855,57 @@ texture = ExtResource("29_jxsa7")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="Recette/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 17.875
+anchor_top = 11.875001
+anchor_right = 19.650002
+anchor_bottom = 12.825001
+offset_top = -3.0517578e-05
+offset_right = -6.1035156e-05
+text = "Fermer"
+
+[node name="Lore_z3" parent="." instance=ExtResource("20_fi6eh")]
+transform = Transform3D(2.3339903, -1.3448156, -5.8783755e-08, 0, -1.1774553e-07, 2.6937037, -1.3448156, -2.3339903, -1.0202196e-07, -87.89929, -15.807231, 129.89314)
+
+[node name="Control" type="Control" parent="Lore_z3"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_v5phb")
+
+[node name="TextureRect" type="TextureRect" parent="Lore_z3/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 446.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_f74wi")
+
+[node name="TextEdit2" type="RichTextLabel" parent="Lore_z3/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 137.0
+offset_top = 1.0
+offset_right = 365.0
+offset_bottom = 326.0
+theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "Le Space est le dernier endroit encore sécurisé dans le campus blablabla les plantes ont tout détruit blablabla "
+
+[node name="Button" type="Button" parent="Lore_z3/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 17.875
@@ -2940,7 +2991,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="Interactable5" type="Area3D" parent="Plantes/Asperges"]
-transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -82.54283, -15.481486, 126.39841)
+transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -82.54283, -15.481486, 131.94226)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3882,6 +3933,7 @@ transform = Transform3D(0.040789995, 0, 0, 0, 0.023599211, -0.015180129, 0, 0.00
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
 [connection signal="button_up" from="credits/Control/Button" to="credits" method="_on_button_button_up"]
 [connection signal="visibility_changed" from="Recette/Control" to="Recette/Control" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Lore_z3/Control" to="Lore_z3/Control" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="Lore_z4/Control" to="Lore_z4/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
