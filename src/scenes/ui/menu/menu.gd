@@ -4,6 +4,8 @@ var transition_time := 1.9
 @onready var backgrounds := Array(DirAccess.get_files_at("res://assets/graphical/background")).filter(func(elem: String): return !elem.contains(".import"))
 var current_frame := 0
 
+var loading := false;
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#print(backgrounds)
@@ -30,6 +32,8 @@ func transition() -> void:
 	$fond2.texture = load("res://assets/graphical/background/"+backgrounds[(current_frame+1) % backgrounds.size()])
 	
 	var tween = get_tree().create_tween()
+	
+	TODO HERE DEBILUS
 	
 	tween.tween_method(
 		(func (val: float):
@@ -74,19 +78,15 @@ func _on_jouer_pressed() -> void:
 	$Chargement.show()
 	$chargement_block.show()
 	launch_hide()
-	$Timer.start()
+	loading = true
 	#get_tree().change_scene_to_file("res://scenes/Scene.tscn")
 
-
-func _on_timer_timeout() -> void:
-	if cpt < messages.size():
-		$chargement_block/texte.text += " "+messages[cpt]+"\n"
-		cpt += 1
-	else:
-		$Chargement.hide()
-		$chargement_block.hide()
-		$plante.show()
-		get_tree().change_scene_to_file("res://src/scenes/tests/scene/Scene.tscn")
+func finalize_launch() -> void:
+	loading = false
+	$Chargement.hide()
+	$chargement_block.hide()
+	$plante.show()
+	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get("res://src/scenes/tests/scene/Scene.tscn"))
 
 
 func _on_propos_pressed() -> void:
