@@ -4,6 +4,7 @@ var isPaused: bool
 var is_inventory_open: bool
 var is_craft_ui_open: bool
 var is_chest_open: bool
+
 var is_interactable_ui_open: bool
 var is_narration_showing: bool
 var cam_speed = 0.3
