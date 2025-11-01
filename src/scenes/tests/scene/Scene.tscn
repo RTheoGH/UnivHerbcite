@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=156 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -605,11 +605,14 @@ size = Vector3(0.05029297, 7.2343416, 9.502583)
 height = 20.761932
 radius = 5.067871
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6c504"]
+size = Vector3(6.701042, 4.2855835, 0.099609375)
+
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -113.36368, 10.845081, -38.333958)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -158.43683, 5.150918, 1.1179047)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -867,13 +870,13 @@ offset_bottom = 326.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "- [b]Broyer[/b] la pousse d'asperge jusqu'à ce que le turion soit légèrement blanchi
+text = "- [b][color=dark_red]Broyer[/color][/b] la pousse d'asperge jusqu'à ce que le turion soit légèrement blanchi
 
-- Laisser [b]infuser[/b] la lavande 
+- Laisser [b][color=dark_red]infuser[/color][/b] le romarin 
 
--[b] Sécher [/b]du lierre et le couper en morceaux fins
+-[b][color=dark_red] Sécher [/color][/b]du lierre et le couper en morceaux fins
 
-Incorporez le tout et vous obtiendrez une potion d'un vert modérément trouble."
+Incorporez le tout et vous obtiendrez une [color=dark_green]potion[/color] d'un vert modérément trouble."
 
 [node name="TextureRect2" type="TextureRect" parent="Recette/Control"]
 layout_mode = 0
@@ -3974,6 +3977,7 @@ plante = ExtResource("53_s7dv6")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable"]
+shaded = true
 texture = ExtResource("54_accns")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("54_accns")])
@@ -3994,6 +3998,7 @@ plante = ExtResource("53_s7dv6")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable4"]
+shaded = true
 texture = ExtResource("54_accns")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("54_accns")])
@@ -4014,6 +4019,7 @@ plante = ExtResource("53_s7dv6")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable2"]
+shaded = true
 texture = ExtResource("54_accns")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("54_accns")])
@@ -4034,6 +4040,7 @@ plante = ExtResource("53_s7dv6")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable3"]
+shaded = true
 texture = ExtResource("54_accns")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("54_accns")])
@@ -4093,6 +4100,18 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.628525, 0)
 shape = SubResource("CylinderShape3D_s7dv6")
+
+[node name="Interactable9" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.99994034, 0, 0.010925557, 0, 1, 0, -0.010925557, 0, -0.99994034, -327.40866, 7.6988773, -107.17246)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable9"]
+shape = SubResource("BoxShape3D_6c504")
 
 [node name="Book" parent="." instance=ExtResource("50_7v1kh")]
 transform = Transform3D(-0.39936724, -0.06782491, -0.39583528, -1.044469e-09, 0.5582389, -0.095652185, 0.401604, -0.06744715, -0.39363056, -163.06625, 3.1259654, 3.2706118)
