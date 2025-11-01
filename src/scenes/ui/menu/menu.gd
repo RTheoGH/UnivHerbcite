@@ -1,5 +1,7 @@
 extends Control
 
+const SCENEPATH = "res://src/scenes/tests/scene/Scene.tscn"
+
 var transition_time := 1.9
 @onready var backgrounds := Array(DirAccess.get_files_at("res://assets/graphical/background")).filter(func(elem: String): return !elem.contains(".import"))
 var current_frame := 0
@@ -45,14 +47,26 @@ func transition() -> void:
 		transition_time
 	)
 	await tween.finished
-	
 	current_frame += 1
 	$fond.texture = load("res://assets/graphical/background/"+backgrounds[current_frame % backgrounds.size()])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	$Chargement.play("default")
-	pass
+	var status := [0.0]
+	
+	if loading :
+		ResourceLoader.load_threaded_get_status(SCENEPATH, status)
+		if status[0] >= 0.9999:
+			finalize_launch()
+		elif status[0] >= 0.9:
+			$chargement_block/texte.text = messages[2]
+		elif status[0] >= 0.3:
+			$chargement_block/texte.text = messages[1] + str(
+				int(1238 * (status[0] - 0.3) / (0.9/0.3))
+				) + " / " + str(1238)
+		else:
+			$chargement_block/texte.text = messages[0]
+
 
 func _on_quitter_pressed() -> void:
 	$sfx.play()
@@ -79,6 +93,7 @@ func _on_jouer_pressed() -> void:
 	$chargement_block.show()
 	launch_hide()
 	loading = true
+	ResourceLoader.load_threaded_request(SCENEPATH)
 	#get_tree().change_scene_to_file("res://scenes/Scene.tscn")
 
 func finalize_launch() -> void:
@@ -86,7 +101,10 @@ func finalize_launch() -> void:
 	$Chargement.hide()
 	$chargement_block.hide()
 	$plante.show()
-	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get("res://src/scenes/tests/scene/Scene.tscn"))
+	Overlay.fade_to_black(0)
+	Overlay.fade_from_black(4.0)
+	
+	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(SCENEPATH))
 
 
 func _on_propos_pressed() -> void:

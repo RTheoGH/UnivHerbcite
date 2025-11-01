@@ -19,6 +19,7 @@ config/icon="res://assets/graphical/icon.svg"
 
 Global="*res://src/autoload/Global.gd"
 ItemEffects="*res://src/autoload/Item_effects.gd"
+Overlay="*res://src/autoload/overlay.tscn"
 
 [display]
 

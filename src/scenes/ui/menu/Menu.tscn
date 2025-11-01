@@ -348,7 +348,8 @@ layout_mode = 1
 visible = false
 position = Vector2(1061.25, 568.25)
 scale = Vector2(0.42882562, 0.42882562)
-frame_progress = 0.8605602
+autoplay = "default"
+frame_progress = 0.1943325
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -375,6 +376,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
+
+[node name="BackgroundTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [connection signal="pressed" from="propos" to="." method="_on_propos_pressed"]
 [connection signal="pressed" from="sous_menu/jouer" to="." method="_on_jouer_pressed"]
