@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=134 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://byq8iypi45525" path="res://src/classes/AnimatedMultiSprite.gd" id="19_mcf5s"]
 [ext_resource type="PackedScene" uid="uid://bn28wg351wuuv" path="res://src/scenes/tests/scene/interactable_ui.tscn" id="20_fi6eh"]
 [ext_resource type="Texture2D" uid="uid://de75rn8e1y3s1" path="res://assets/graphical/plantes/arbousier.png" id="20_j0txf"]
+[ext_resource type="Script" uid="uid://fgeieblcncdh" path="res://src/classes/inventory/recipes/recette_zone_1.gd" id="23_feptu"]
 [ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
 [ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="26_7v1kh"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
@@ -45,7 +46,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cjnsu0ads2hlp" path="res://assets/game_resources/models/big_banc.obj" id="42_otxdg"]
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="45_xfcej"]
-[ext_resource type="PackedScene" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
+[ext_resource type="PackedScene" uid="uid://brt0xm8okhq2h" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
 [ext_resource type="Resource" uid="uid://1qnswolr50hj" path="res://assets/game_resources/plantes/Romarin.tres" id="48_feptu"]
 [ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
 
@@ -705,6 +706,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("23_feptu")
 
 [node name="TextureRect" type="TextureRect" parent="Recette/Control"]
 layout_mode = 1
@@ -3701,6 +3703,7 @@ shape = SubResource("CylinderShape3D_v5phb")
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
 [connection signal="button_up" from="credits/Control/Button" to="credits" method="_on_button_button_up"]
+[connection signal="visibility_changed" from="Recette/Control" to="Recette/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
