@@ -2,6 +2,7 @@ extends Control
 
 func _ready():
 	$FadeRect.color.a = 0.0
+	$Nausea.modulate.a = 0.0
 
 var fadeTween: Tween
 func fade_to_black(time:float):
@@ -29,3 +30,29 @@ func fade_from_black(time:float):
 			0.0,
 			time
 		)
+
+var nausea_tween: Tween
+
+func start_nausea():
+	var shader = $Nausea.material
+	if shader == null:
+		return
+	if nausea_tween:
+		nausea_tween.kill()
+	nausea_tween = get_tree().create_tween()
+	nausea_tween.tween_property($Nausea, "modulate:a", 1.0, 0.5)
+	nausea_tween.tween_property($Nausea.material, "shader_parameter/strength", 1.0, 1.0)
+	print("J'ai la nausée")
+	$Nausea.show()
+
+func stop_nausea():
+	var shader = $Nausea.material
+	if shader == null:
+		return
+	if nausea_tween:
+		nausea_tween.kill()
+	nausea_tween = get_tree().create_tween()
+	nausea_tween.tween_property($Nausea.material, "shader_parameter/strength", 0.0, 1.0)
+	nausea_tween.parallel().tween_property($Nausea, "modulate:a", 0.0, 0.5)
+	print("J'ai plus la nausée")
+	nausea_tween.tween_callback(Callable($Nausea, "hide"))
