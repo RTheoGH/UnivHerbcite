@@ -106,7 +106,6 @@ func finalize_launch() -> void:
 	
 	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(SCENEPATH))
 
-
 func _on_propos_pressed() -> void:
 	$sfx.play()
 	$Propos.visible = true
