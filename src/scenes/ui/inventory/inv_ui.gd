@@ -46,6 +46,9 @@ func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		close()
 	
+	if Global.is_narration_showing:
+		close()
+	
 	change_current_slot()
 	
 	discover_jujubes()

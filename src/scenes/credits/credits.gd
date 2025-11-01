@@ -3,9 +3,6 @@ extends Node3D
 var mxw : Tween
 var is_activated : bool = false
 
-func _ready() -> void:
-	Global.player_inventory.items.append(load("res://assets/game_resources/items/potions/potion_bleue.tres"))
-
 func _process(_delta: float) -> void:
 	if (Input.is_action_just_pressed("pause") or Input.is_action_just_pressed("inventory")) and $Control.visible == true:
 		$Control.hide()
@@ -44,3 +41,8 @@ func _on_interactable_area_exited(area: Area3D) -> void:
 		$Control.hide()
 		Global.is_interactable_ui_open = false
 	
+
+
+func _on_button_button_up() -> void:
+	$Control.hide()
+	Global.is_interactable_ui_open = false

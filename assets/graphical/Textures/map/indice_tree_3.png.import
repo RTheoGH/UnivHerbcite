@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ps6osqaurddg"
-path.s3tc="res://.godot/imported/livre.png-6c9fc7ff19151a2d6d1e9700da4b4300.s3tc.ctex"
+uid="uid://dwt6m3557a8yk"
+path.s3tc="res://.godot/imported/indice_tree_3.png-e5aafd538fb9310e0283ca83f7444ff7.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/graphical/ui/livre.png"
-dest_files=["res://.godot/imported/livre.png-6c9fc7ff19151a2d6d1e9700da4b4300.s3tc.ctex"]
+source_file="res://assets/graphical/Textures/map/indice_tree_3.png"
+dest_files=["res://.godot/imported/indice_tree_3.png-e5aafd538fb9310e0283ca83f7444ff7.s3tc.ctex"]
 
 [params]
 

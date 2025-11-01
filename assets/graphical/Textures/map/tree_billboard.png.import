@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ps6osqaurddg"
-path.s3tc="res://.godot/imported/livre.png-6c9fc7ff19151a2d6d1e9700da4b4300.s3tc.ctex"
+uid="uid://bjcw2kbj3wj72"
+path.s3tc="res://.godot/imported/tree_billboard.png-81adb3c70149c91849579d702c16392d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/graphical/ui/livre.png"
-dest_files=["res://.godot/imported/livre.png-6c9fc7ff19151a2d6d1e9700da4b4300.s3tc.ctex"]
+source_file="res://assets/graphical/Textures/map/tree_billboard.png"
+dest_files=["res://.godot/imported/tree_billboard.png-81adb3c70149c91849579d702c16392d.s3tc.ctex"]
 
 [params]
 

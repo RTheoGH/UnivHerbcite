@@ -17,7 +17,7 @@ var current_slot := -1
 
 @onready var audio_marche : AudioStreamPlayer2D = $Marche
 var step_timer: float = 0.0
-var step_interval: float = 0.5
+var step_interval: float = 0.8
 
 #var cam_speed = 0.5
 var static_cam := false
@@ -238,6 +238,9 @@ func _update_item_frame():
 	if slot != current_slot or item_frame.texture != tex:
 		current_slot = slot
 		item_frame.texture = tex
+		
+		
+##########################################
 
 func update_objectives_text():
 	$Objectifs.bbcode_enabled = true

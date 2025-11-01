@@ -7,4 +7,5 @@
 script = ExtResource("1_mje0s")
 type = 8
 texture = ExtResource("2_kn08c")
+description = "Brin de romarin séché dégageant un arôme puissant."
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

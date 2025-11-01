@@ -22,7 +22,7 @@ func _ready() -> void:
 		billboard = BaseMaterial3D.BILLBOARD_DISABLED
 
 func _process(_delta: float) -> void:
-	if not Engine.is_editor_hint() or texture_index_override <= 0 or texture_index_override >= sprites.size():
+	if (not Engine.is_editor_hint() or texture_index_override <= 0 or texture_index_override >= sprites.size()) and get_viewport().get_camera_3d():
 		var cam_forward: Vector3 = get_viewport().get_camera_3d().global_position - global_position
 		
 		var forwardVector: Vector3 = -global_basis.z

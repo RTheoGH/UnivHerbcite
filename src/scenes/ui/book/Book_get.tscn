@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgw4dixoop64h"]
+
+[ext_resource type="Texture2D" uid="uid://ps6osqaurddg" path="res://assets/graphical/ui/livre.png" id="1_c6ynd"]
+[ext_resource type="Script" uid="uid://0ofk0ac6adtx" path="res://src/scenes/ui/book/book_get.gd" id="2_an2oi"]
+[ext_resource type="Script" uid="uid://up24dtse8gef" path="res://src/classes/interactable.gd" id="2_jtn1a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_an2oi"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_c6ynd")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gvei7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_83upp"]
+size = Vector3(1.4194336, 0.8234253, 1.4155273)
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.98563576, -0.16888505, 0, 0.16888505, 0.98563576, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_an2oi")
+mesh = SubResource("PlaneMesh_gvei7")
+script = ExtResource("2_an2oi")
+
+[node name="Interactable" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("2_jtn1a")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01977539, 0.24276733, 0.11743164)
+shape = SubResource("BoxShape3D_83upp")
+
+[connection signal="on_interaction_signal" from="Interactable" to="." method="_on_interactable_on_interaction_signal"]
