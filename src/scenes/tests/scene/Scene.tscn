@@ -339,9 +339,6 @@ transform = Transform3D(0.946252, 0.14721659, 0.28798333, -0.25512597, 0.8870195
 [node name="MeshInstance3D" parent="Map2" index="2"]
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
 
-[node name="Vegetation" parent="Map2" index="5"]
-visible = false
-
 [node name="credits" type="Node3D" parent="."]
 transform = Transform3D(0.75631094, 0.0089347325, 0.65415084, 0.03803871, 0.9976146, -0.057605203, -0.6531055, 0.06845051, 0.75416696, 47.497673, -2.2633784, 234.7595)
 script = ExtResource("12_xfcej")
@@ -2091,7 +2088,7 @@ shape = SubResource("SphereShape3D_feptu")
 debug_color = Color(0, 0, 0, 1)
 
 [node name="EventMarker_FoxEvent" type="Marker3D" parent="EventTriggerHole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.306, -0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8913498, -0.79999995, 10.847122)
 script = ExtResource("50_qxgoi")
 linked_event = ExtResource("49_v5phb")
 
