@@ -334,23 +334,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
-text = "Fleur odorante utilisée en infusion, cuisine ou en parfum."
+text = "Brin de romarin séché dégageant un arôme puissant."
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["taches"]]
-position = Vector2(1036, 319.00003)
-scale = Vector2(0.504883, 0.8983689)
+position = Vector2(738, 274.00003)
+scale = Vector2(0.6796875, 0.8983689)
 texture = ExtResource("20_lqpnt")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." groups=["taches"]]
-position = Vector2(1020.00006, 203.99998)
+position = Vector2(1214, 343.99997)
 scale = Vector2(0.47851518, 0.75548303)
 texture = ExtResource("20_lqpnt")
 
 [node name="Sprite2D3" type="Sprite2D" parent="." groups=["taches"]]
-position = Vector2(1027, 274)
+position = Vector2(1237, 189)
 scale = Vector2(0.87255853, 0.9035088)
 texture = ExtResource("20_lqpnt")
 

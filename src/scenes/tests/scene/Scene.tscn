@@ -1,4 +1,4 @@
-[gd_scene load_steps=148 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=150 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -57,6 +57,8 @@
 [ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
 [ext_resource type="PackedScene" uid="uid://cgw4dixoop64h" path="res://src/scenes/ui/book/Book_get.tscn" id="50_7v1kh"]
 [ext_resource type="PackedScene" uid="uid://dnjaeada2cck5" path="res://assets/game_resources/models/low_poly_skeleton.glb" id="51_v5phb"]
+[ext_resource type="Resource" uid="uid://uyj35ar65r8t" path="res://assets/game_resources/plantes/Lierre.tres" id="53_s7dv6"]
+[ext_resource type="Texture2D" uid="uid://ck0iumt200olu" path="res://assets/graphical/plantes/lierre.png" id="54_accns"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -586,6 +588,22 @@ radius = 1.109
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v5phb"]
 height = 2.506836
 radius = 1.3828125
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ufl0"]
+size = Vector3(3.8179932, 1.8984966, 0.32885742)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s7dv6"]
+size = Vector3(5.685913, 6.6140137, 0.12841797)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_accns"]
+size = Vector3(7.7190247, 3.6235657, 0.14892578)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q0wsw"]
+size = Vector3(0.05029297, 7.2343416, 9.502583)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s7dv6"]
+height = 20.761932
+radius = 5.067871
 
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
@@ -3500,7 +3518,7 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.
 shape = SubResource("CylinderShape3D_yayvv")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Plantes/Figuiers"]
-transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -55.18492, 3.4108973, 29.112549)
+transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -2.7816207, 3.4108973, 122.15378)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Figuiers/StaticBody3D4"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.009643555, 0)
@@ -3529,13 +3547,14 @@ transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.
 shape = SubResource("CylinderShape3D_yayvv")
 
 [node name="StaticBody3D5" type="StaticBody3D" parent="Plantes/Figuiers"]
-transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -334.97614, 8.4811945, -35.95758)
+transform = Transform3D(2.6937032, 0, 0, 0, 2.6937032, 0, 0, 0, 2.6937032, -21.89921, 2.7472882, 131.19235)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Figuiers/StaticBody3D5"]
 transform = Transform3D(1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0.009643555, 0)
 shape = SubResource("CylinderShape3D_yp1p4")
 
 [node name="Interactable" type="Area3D" parent="Plantes/Figuiers/StaticBody3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.12631364, 0)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3942,6 +3961,138 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
 shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Lierre" type="Node3D" parent="Plantes"]
+
+[node name="Interactable" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.00045796856, 0.09908217, 0.99507916, -0.010627231, 0.99502254, -0.09908144, -0.99994344, -0.010620311, 0.00059728324, -143.08995, 7.4082737, -4.07874)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable"]
+texture = ExtResource("54_accns")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("54_accns")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable"]
+transform = Transform3D(1, 9.313538e-08, 1.9150944e-08, -9.313538e-08, 1, -1.8335186e-07, -1.9150962e-08, 1.8335186e-07, 1, 0.07500076, 0.015491962, 0.11975098)
+shape = SubResource("BoxShape3D_0ufl0")
+
+[node name="Interactable4" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.99977803, -0.020952297, 0.0022149861, -0.021035282, 0.99859434, -0.048649564, -0.0011925516, -0.04868536, -0.9988134, -152.01305, 7.3527713, -29.40605)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable4"]
+texture = ExtResource("54_accns")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("54_accns")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable4"]
+transform = Transform3D(1, 9.313538e-08, 1.9150944e-08, -9.313538e-08, 1, -1.8335186e-07, -1.9150962e-08, 1.8335186e-07, 1, 0.07500076, 0.015491962, 0.11975098)
+shape = SubResource("BoxShape3D_0ufl0")
+
+[node name="Interactable2" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.00045796856, 0.09908217, 0.99507916, -0.010627231, 0.99502254, -0.09908144, -0.99994344, -0.010620311, 0.00059728324, -143.0167, 8.217849, 8.187765)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable2"]
+texture = ExtResource("54_accns")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("54_accns")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable2"]
+transform = Transform3D(1, 9.313538e-08, 1.9150944e-08, -9.313538e-08, 1, -1.8335186e-07, -1.9150962e-08, 1.8335186e-07, 1, 0.07500076, 0.015491962, 0.11975098)
+shape = SubResource("BoxShape3D_0ufl0")
+
+[node name="Interactable3" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.00045796856, 0.09908217, 0.99507916, -0.010627231, 0.99502254, -0.09908144, -0.99994344, -0.010620311, 0.00059728324, -143.1517, 6.8965716, 13.953476)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable3"]
+texture = ExtResource("54_accns")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("54_accns")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable3"]
+transform = Transform3D(1, 9.313538e-08, 1.9150944e-08, -9.313538e-08, 1, -1.8335186e-07, -1.9150962e-08, 1.8335186e-07, 1, 0.07500076, 0.015491962, 0.11975098)
+shape = SubResource("BoxShape3D_0ufl0")
+
+[node name="Interactable5" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -140.25685, 12.065349, -2.3640532)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable5"]
+shape = SubResource("BoxShape3D_s7dv6")
+
+[node name="Interactable6" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.019145077, 0, 0.9998167, 0, 1, 0, -0.9998167, 0, -0.019145077, -361.22717, 9.495583, -29.451384)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable6"]
+shape = SubResource("BoxShape3D_accns")
+
+[node name="Interactable7" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.99994034, 0, 0.010925557, 0, 1, 0, -0.010925557, 0, -0.99994034, -367.30927, 9.279398, -33.52802)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable7"]
+transform = Transform3D(-0.0730272, 0, -0.99732995, 0, 1, 0, 0.99732995, 0, -0.0730272, -0.5669861, -1.3786349, -0.041732788)
+shape = SubResource("BoxShape3D_q0wsw")
+
+[node name="Interactable8" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.99994034, 0, 0.010925557, 0, 1, 0, -0.010925557, 0, -0.99994034, -393.16043, 9.279398, -25.227362)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.628525, 0)
+shape = SubResource("CylinderShape3D_s7dv6")
 
 [node name="Book" parent="." instance=ExtResource("50_7v1kh")]
 transform = Transform3D(-0.39936724, -0.06782491, -0.39583528, -1.044469e-09, 0.5582389, -0.095652185, 0.401604, -0.06744715, -0.39363056, -163.06625, 3.1259654, 3.2706118)

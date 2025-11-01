@@ -8,7 +8,9 @@ var taches : Array[Array] = [
 	[Vector4(719.0, 277.0, 0.586, 0.809), Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0)],
 	[Vector4(700.0, 315.0, 0.479, 0.755), Vector4(797.0, 316.0, 0.619, 0.898), Vector4(-1.0, -1.0, -1.0, -1.0)],
 	[Vector4(689.0, 315.0, 0.479, 0.755), Vector4(762.0, 316.0, 0.505, 0.898), Vector4(-1.0, -1.0, -1.0, -1.0)],
-	[Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0)]
+	[Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0)],
+	[Vector4(660.0, 262.0, 0.505, 0.898), Vector4(662.0, 288.0, 0.479, 0.755), Vector4(-1.0, -1.0, -1.0, -1.0)],
+	[Vector4(738.0, 274.0, 0.68, 0.898), Vector4(-1.0, -1.0, -1.0, -1.0), Vector4(-1.0, -1.0, -1.0, -1.0)]
 	
 ]
 
@@ -33,7 +35,7 @@ func _process(_delta: float) -> void:
 	else:
 		$pred.disabled = false
 		
-	if current_page == 10:
+	if current_page == 8:
 		$suivant.disabled = true
 	else:
 		$suivant.disabled = false
@@ -93,7 +95,7 @@ func remplir_le_bouquin(
 ):
 	remplir_page_plante(book, page, g, gtitre, gt)
 	remplir_page_item(book, page, d, dtitre, dt)
-	for i in range(taches_ui.size()):
+	for i in range(taches_ui.size()-1):
 		if taches[page][i] != Vector4(-1.0, -1.0, -1.0, -1.0):
 			taches_ui[i].global_position = Vector2(taches[page][i].x, taches[page][i].y)
 			taches_ui[i].scale = Vector2(taches[page][i].z, taches[page][i].w)

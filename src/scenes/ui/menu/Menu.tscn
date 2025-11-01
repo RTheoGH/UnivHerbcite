@@ -129,10 +129,6 @@ position = Vector2(576.00006, 324.00003)
 scale = Vector2(2.2500002, 2.6666667)
 sprite_frames = SubResource("SpriteFrames_i7htd")
 
-[node name="BackgroundTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [node name="fond2" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -281,6 +277,7 @@ offset_left = 0.039978027
 offset_top = 0.23999023
 offset_right = 0.2319336
 offset_bottom = 0.3013916
+mouse_filter = 2
 texture = ExtResource("22_4ox5w")
 flip_h = true
 
@@ -297,6 +294,7 @@ offset_left = 0.05600357
 offset_top = 0.23999023
 offset_right = 0.24795532
 offset_bottom = 0.3013916
+mouse_filter = 2
 texture = ExtResource("22_4ox5w")
 
 [node name="titre" type="TextureRect" parent="."]
@@ -350,7 +348,8 @@ layout_mode = 1
 visible = false
 position = Vector2(1061.25, 568.25)
 scale = Vector2(0.42882562, 0.42882562)
-frame_progress = 0.8605602
+autoplay = "default"
+frame_progress = 0.1943325
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -377,6 +376,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 bbcode_enabled = true
+
+[node name="BackgroundTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 
 [connection signal="pressed" from="propos" to="." method="_on_propos_pressed"]
 [connection signal="pressed" from="sous_menu/jouer" to="." method="_on_jouer_pressed"]
