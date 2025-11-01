@@ -512,29 +512,23 @@ offset_bottom = 326.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "- [b][color=dark_red]Broyer[/color][/b] la pousse d'asperge jusqu'à ce que le turion soit légèrement blanchi
-
-- Laisser [b][color=dark_red]infuser[/color][/b] le romarin 
-
--[b][color=dark_red] Sécher [/color][/b]du lierre et le couper en morceaux fins
-
-Incorporez le tout et vous obtiendrez une [color=dark_green]potion[/color] d'un vert modérément trouble."
+text = "[fill]J'ai concocté une nouvelle solution pour m'aider à [color=dark_red]aller plus vite[/color] dans mes tâches mais il ne faut surtout pas que je laisse les autres l'apprendre ! Je veux quand même garder une trace de ma recette donc je la répertorie ici, dans le S-pace, de manière un peu codée si jamais quelqu'un tombe dessus. Après tout, c'est moi [color=dark_red]l'expert en plantes[/color] ici, donc ça devrait aller. "
 
 [node name="TextureRect2" type="TextureRect" parent="Recette/Control"]
 layout_mode = 0
-offset_left = 586.0
-offset_top = 210.0
-offset_right = 650.0
-offset_bottom = 243.0
+offset_left = 611.0
+offset_top = 419.0
+offset_right = 675.0
+offset_bottom = 452.0
 texture = ExtResource("26_7v1kh")
 expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="Recette/Control"]
 layout_mode = 0
-offset_left = 609.0
-offset_top = 185.0
-offset_right = 673.0
-offset_bottom = 254.0
+offset_left = 621.0
+offset_top = 402.0
+offset_right = 685.0
+offset_bottom = 471.0
 texture = ExtResource("29_jxsa7")
 expand_mode = 1
 
@@ -589,7 +583,7 @@ offset_bottom = 326.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "Cet endroit est maudit...[br]J'étais si proche d'aller à ce laboratoire derrière cet olivier.[br]Si seulement je n'avais pas atteri ici.[br]J'ai écris sur les arbres pour ne pas oublier.[br]J'enqueterais une fois que ma jambe ira mieux."
+text = "Cet endroit est maudit...[br]J'étais si proche d'aller à ce [color=darkorange]laboratoire[/color] derrière cet olivier.[br]Si seulement je n'avais pas atteri ici.[br]J'ai [color=dark_red]écris sur les arbres[/color] pour ne pas oublier.[br]J'enquèterai une fois que ma jambe ira mieux."
 
 [node name="Button" type="Button" parent="Lore_z3/Control"]
 layout_mode = 1
@@ -661,7 +655,6 @@ text = "Fermer"
 transform = Transform3D(2.3339903, -1.3448156, -5.8783755e-08, 0, -1.1774553e-07, 2.6937037, -1.3448156, -2.3339903, -1.0202196e-07, -174.3781, 4.188389, 13.14536)
 
 [node name="Control" type="Control" parent="Lore"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -690,7 +683,7 @@ anchor_bottom = 3.775
 offset_left = 137.0
 offset_top = 1.0
 offset_right = 365.0
-offset_bottom = 326.0
+offset_bottom = 319.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
@@ -699,7 +692,21 @@ Lyonnais 1.80 €
 
 Formules :
 Boursier 1 €
-Non-Boursier 3.30 €"
+Non-Boursier 3.30 €
+
+
+
+
+
+
+
+
+
+
+[fill]Recette pour la [color=dark_green]potion[/color] : 
+- [color=dark_red]Broyer[/color] \"A\", Une plante dont la partie commestible s'appelle le turion et qui pousse au printemps.
+- Faire [color=dark_red]infuser[/color] \"R\", la plante à l'origine du miel de Narbonne mais également utilisé en parfumerie.
+- Laisser [color=dark_red]sécher[/color] \"L\", une plante grimpante dont le fruit est toxique."
 
 [node name="Button" type="Button" parent="Lore/Control"]
 layout_mode = 1
