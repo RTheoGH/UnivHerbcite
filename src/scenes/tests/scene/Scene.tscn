@@ -52,7 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://brt0xm8okhq2h" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
 [ext_resource type="Resource" uid="uid://1qnswolr50hj" path="res://assets/game_resources/plantes/Romarin.tres" id="48_feptu"]
 [ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
-[ext_resource type="PackedScene" uid="uid://d1x56pe5p1bqa" path="res://src/scenes/ui/book/Book_get.tscn" id="50_7v1kh"]
+[ext_resource type="PackedScene" path="res://src/scenes/ui/book/Book_get.tscn" id="50_7v1kh"]
 [ext_resource type="PackedScene" uid="uid://dnjaeada2cck5" path="res://assets/game_resources/models/low_poly_skeleton.glb" id="51_v5phb"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
@@ -570,7 +570,7 @@ radius = 1.3828125
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -431.69147, 5.0127783, 5.881144)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -167.09045, 5.0127783, -0.54831743)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)

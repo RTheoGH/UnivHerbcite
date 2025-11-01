@@ -1,12 +1,14 @@
 extends MeshInstance3D
 
 func _ready() -> void:
-	pass
-	
-func _process(_delta: float) -> void:
-	pass
-	
+	if $"Interactable":
+		$Interactable.on_interaction_signal.connect(recup_herbier)
 
-func _on_interactable_on_interaction_signal(area: Area3D) -> void:
-	Global.get_book = true
+func recup_herbier():
+	Global.book_not_collected = false
+	Global.isPaused = true
+	$"../Pause".show()
+	$"../Pause/Book".show()
+	Global.text_alert.show_alert("Herbier récupéré !")
 	queue_free()
+	
