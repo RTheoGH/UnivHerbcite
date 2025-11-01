@@ -33,7 +33,7 @@ func transition() -> void:
 	
 	var tween = get_tree().create_tween()
 	
-	TODO HERE DEBILUS
+	# TODO HERE DEBILUS
 	
 	tween.tween_method(
 		(func (val: float):
