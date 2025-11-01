@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=137 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -50,6 +50,7 @@
 [ext_resource type="Resource" uid="uid://1qnswolr50hj" path="res://assets/game_resources/plantes/Romarin.tres" id="48_feptu"]
 [ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
 [ext_resource type="PackedScene" uid="uid://bhn5vwiop43ts" path="res://src/scenes/ui/book/Book_get.tscn" id="50_7v1kh"]
+[ext_resource type="PackedScene" uid="uid://dnjaeada2cck5" path="res://assets/game_resources/models/low_poly_skeleton.glb" id="51_v5phb"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -140,6 +141,52 @@ radius = 1.4091797
 albedo_texture = ExtResource("31_ew3or")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qhmxa"]
+
+[sub_resource type="GDScript" id="GDScript_v5phb"]
+resource_name = "lore_z4"
+script/source = "extends Control
+
+var one_time: bool = false
+
+var sun : MeshInstance3D
+var we : WorldEnvironment
+var music = AudioStreamPlayer2D
+
+func _ready() -> void:
+	var scene = get_parent().get_parent()
+	sun = scene.get_node(\"Map2\").get_node(\"MeshInstance3D\")
+	we = scene.get_node(\"Map2\").get_node(\"WorldEnvironment\")
+	music = scene.get_node(\"Musique\")
+
+func _on_visibility_changed() -> void:
+	if not visible and !one_time:
+		one_time = true
+		
+		var tween = create_tween()
+		tween.tween_property(sun, \"scale\", Vector3(1.0,1.0,1.0), 20.0)
+		
+		var tween_chaos = create_tween()
+		tween_chaos.tween_method(func(value):
+			var pitch_offset = randf_range(-0.02, 0.02) 
+			var vol_offset = randf_range(-0.5, 0.5)
+			
+			music.pitch_scale = clamp(0.8 + pitch_offset, 0.75, 0.85)
+			music.volume_db = clamp(-3.0 + vol_offset, -4.0, -2.0)
+		, 0.0, 1.0, 20.0)
+		
+		var ciel = we.environment.sky
+		if ciel and ciel.sky_material:
+			var csm = ciel.sky_material as ShaderMaterial
+			
+			var start_red = csm.get_shader_parameter(\"red_deg\")
+			var start_exp = csm.get_shader_parameter(\"exposure\")
+			
+			var tween_shader = create_tween()
+			tween_shader.tween_method(func(value):
+				csm.set_shader_parameter(\"red_deg\", lerp(start_red, -6.0, value))
+				csm.set_shader_parameter(\"exposure\", lerp(start_red, 3.0, value))
+			, 0.0, 1.0, 20.0)
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gveul"]
 size = Vector3(3.967041, 1.706543, 2.6485596)
@@ -494,7 +541,7 @@ radius = 1.3828125
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -169.6118, 5.0127783, -1.1243744)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -431.69147, 5.0127783, 5.881144)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -779,6 +826,57 @@ texture = ExtResource("29_jxsa7")
 expand_mode = 1
 
 [node name="Button" type="Button" parent="Recette/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 17.875
+anchor_top = 11.875001
+anchor_right = 19.650002
+anchor_bottom = 12.825001
+offset_top = -3.0517578e-05
+offset_right = -6.1035156e-05
+text = "Fermer"
+
+[node name="Lore_z4" parent="." instance=ExtResource("20_fi6eh")]
+transform = Transform3D(2.3339903, -1.3448156, -5.8783755e-08, 0, -1.1774553e-07, 2.6937037, -1.3448156, -2.3339903, -1.0202196e-07, -434.02084, 4.03827, 3.5549264)
+
+[node name="Control" type="Control" parent="Lore_z4"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_v5phb")
+
+[node name="TextureRect" type="TextureRect" parent="Lore_z4/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 446.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_f74wi")
+
+[node name="TextEdit2" type="RichTextLabel" parent="Lore_z4/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 137.0
+offset_top = 1.0
+offset_right = 365.0
+offset_bottom = 326.0
+theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "Le Space est le dernier endroit encore sécurisé dans le campus blablabla les plantes ont tout détruit blablabla "
+
+[node name="Button" type="Button" parent="Lore_z4/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 17.875
@@ -3703,11 +3801,42 @@ shape = SubResource("CylinderShape3D_v5phb")
 [node name="MeshInstance3D" parent="." instance=ExtResource("50_7v1kh")]
 transform = Transform3D(-0.39936724, -0.06782491, -0.39583528, -1.044469e-09, 0.5582389, -0.095652185, 0.401604, -0.06744715, -0.39363056, -163.06625, 3.1259654, 3.2706118)
 
+[node name="Squlette" parent="." instance=ExtResource("51_v5phb")]
+transform = Transform3D(0.32241836, 0, -0.13888864, 0, 0.35106075, 0, 0.13888864, 0, 0.32241836, -88.52864, -15.992093, 128.19707)
+
+[node name="Tibia_0" parent="Squlette/Sketchfab_model/Root/Tibia" index="0"]
+transform = Transform3D(0.9999998, -4.656613e-10, 0, 0, -0.09233581, 0.99572754, -2.7939677e-09, -0.9957279, -0.09233588, 4.2890625, -107.73242, 62.138596)
+
+[node name="Feet" parent="Squlette/Sketchfab_model/Root" index="2"]
+transform = Transform3D(-0.110849984, 0, 0, 0, 0.13946162, -0.010235432, 0, -0.012932562, -0.11037643, 5.866699, -7.33667, -0.35402107)
+
+[node name="Feet_0" parent="Squlette/Sketchfab_model/Root/Feet" index="0"]
+transform = Transform3D(1.0000001, 5.9604645e-08, -1.1175871e-08, 5.9604645e-08, 1.0000002, -1.8626451e-08, 0, 2.9802322e-08, 1.0000002, -2.83667, 3.9458008, -7.7390747)
+
+[node name="Radius_0" parent="Squlette/Sketchfab_model/Root/Radius" index="0"]
+transform = Transform3D(0.32007638, 0.941784, 0.102940165, -0.8439217, 0.23405385, 0.48271775, 0.4305224, -0.24138018, 0.8697057, 19.368042, -6.251465, -0.7059326)
+
+[node name="Ulna_0" parent="Squlette/Sketchfab_model/Root/Radius/Ulna" index="0"]
+transform = Transform3D(0.30607244, 0.9378596, 0.16352224, -0.8546611, 0.19502628, 0.48116475, 0.4193735, -0.28702667, 0.8612438, 13.437622, -10.564941, 6.5404053)
+
+[node name="Skull" parent="Squlette/Sketchfab_model/Root" index="5"]
+transform = Transform3D(0.37299, 0, 0, 0, -0.22758989, -0.29550922, 0, 0.29550922, -0.22758989, 6.4718018, -0.52368164, 5.9293594)
+
+[node name="Teeth Up" parent="Squlette/Sketchfab_model/Root" index="6"]
+transform = Transform3D(0.37224, -0.023659999, 0.0010699993, -0.01619795, -0.2665081, -0.26045415, 0.017288774, 0.25988328, -0.2669974, 6.485077, -0.097961426, 5.552948)
+
+[node name="Femur_0" parent="Squlette/Sketchfab_model/Root/Femur" index="0"]
+transform = Transform3D(-0.0033395216, 0.1358065, -0.9907299, 0.45349717, 0.88320494, 0.1195384, 0.8912513, -0.44889373, -0.06453716, -17.072754, 4.9975586, -15.013367)
+
+[node name="TeethBack" parent="Squlette/Sketchfab_model/Root" index="11"]
+transform = Transform3D(0.040789995, 0, 0, 0, 0.023599211, -0.015180129, 0, 0.009457181, 0.037859652, 6.529602, -0.1428833, 5.35524)
+
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
 [connection signal="button_up" from="credits/Control/Button" to="credits" method="_on_button_button_up"]
 [connection signal="visibility_changed" from="Recette/Control" to="Recette/Control" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Lore_z4/Control" to="Lore_z4/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
@@ -3844,3 +3973,4 @@ transform = Transform3D(-0.39936724, -0.06782491, -0.39583528, -1.044469e-09, 0.
 [editable path="Vegetation/zone6/Herbs4"]
 [editable path="Vegetation/zone6/Herbs5"]
 [editable path="Vegetation/zone6/Herbs6"]
+[editable path="Squlette"]

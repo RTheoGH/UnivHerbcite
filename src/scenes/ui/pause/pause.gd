@@ -1,5 +1,6 @@
 extends Control
 
+var livre_recupere: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +13,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if !Global.isPaused:
 		$Options.hide()
+	
+	if !livre_recupere:
+		if Global.book_not_collected:
+			$TextureRect.visible = false
+			$progress.visible = false
+		else:
+			$TextureRect.visible = true
+			$progress.visible = true
+			livre_recupere = true
 	pass
 
 

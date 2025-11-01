@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://bvcifu80nolld"]
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bvcifu80nolld"]
 
 [ext_resource type="Script" uid="uid://d0xcpq6rvivmy" path="res://src/classes/inventory/inventory_item.gd" id="1_37tda"]
+[ext_resource type="Texture2D" uid="uid://c3y2fyiueqclw" path="res://assets/graphical/items/f_lierre.png" id="2_xaepi"]
 
 [resource]
 script = ExtResource("1_37tda")
 type = 7
+texture = ExtResource("2_xaepi")
+description = "Feuille souple et luisante de lierre, employée dans les préparations détoxifiantes ou apaisantes."
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

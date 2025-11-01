@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var distance_haute_threshold: float = 100.0
+@export var distance_haute_threshold: float = 150.0
 var distance_basse_threshold: float # hysteresis
 
 # Called when the node enters the scene tree for the first time.

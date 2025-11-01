@@ -17,7 +17,6 @@ size = Vector3(0.087890625, 0.1665039, 0.001)
 transform = Transform3D(2.6937034, 0, 0, 0, -1.1774552e-07, 2.6937034, 0, -2.6937034, -1.1774552e-07, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_xfcej")
 mesh = SubResource("QuadMesh_w0kh0")
-skeleton = NodePath("../Plantes/Figuiers/StaticBody3D2")
 
 [node name="Interactable" type="Area3D" parent="."]
 collision_layer = 4

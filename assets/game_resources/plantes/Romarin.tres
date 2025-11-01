@@ -8,5 +8,6 @@
 script = ExtResource("1_5anvy")
 type = 8
 texture = ExtResource("3_2rcrk")
+description = "Herbe aromatique aux feuilles fines et parfumées."
 item = ExtResource("1_k7dej")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

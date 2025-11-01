@@ -8,5 +8,6 @@
 script = ExtResource("1_vt8ln")
 type = 7
 texture = ExtResource("3_ux8mc")
+description = "Plante grimpante aux feuilles persistantes."
 item = ExtResource("1_s7agp")
 metadata/_custom_type_script = "uid://j5dnokgf8rjf"

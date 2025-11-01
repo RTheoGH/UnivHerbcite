@@ -16,7 +16,7 @@ var paused_timers: bool = false
 var fps: bool = false
 var guidage: bool = true
 
-var get_book: bool = false
+var book_not_collected: bool = true
 
 var herbier : Array = []
 var discoveries : Array = []
@@ -73,6 +73,8 @@ var objectives_order = {
 var narration_ui
 
 func narrate(title: String, message:String):
+	while Global.isPaused:
+		await get_tree().process_frame
 	narration_ui.set_narration(title,message)
 	narration_ui.fade_in()
 
@@ -100,6 +102,8 @@ func _process(_delta: float) -> void:
 		for timer in ItemEffects.active_timers:
 			ItemEffects.active_timers[timer].paused = false
 		paused_timers = false
+
+	
 
 	if(Input.is_action_just_pressed("fullscreen")):
 		if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_WINDOWED:
