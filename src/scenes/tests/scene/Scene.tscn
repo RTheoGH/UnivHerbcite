@@ -1,4 +1,4 @@
-[gd_scene load_steps=156 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=84 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -39,10 +39,14 @@
 [ext_resource type="Resource" uid="uid://ve8dgj8wb3br" path="res://assets/game_resources/plantes/Myrobolan.tres" id="42_f74wi"]
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="45_xfcej"]
+[ext_resource type="Script" uid="uid://crvb1x2d3cilp" path="res://src/classes/event/event_trigger.gd" id="47_w0kh0"]
 [ext_resource type="PackedScene" uid="uid://brt0xm8okhq2h" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
+[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="48_7v1kh"]
 [ext_resource type="Resource" uid="uid://1qnswolr50hj" path="res://assets/game_resources/plantes/Romarin.tres" id="48_feptu"]
 [ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
+[ext_resource type="Resource" uid="uid://ddyac0gbwyi0w" path="res://src/classes/event/fox_event.tres" id="49_v5phb"]
 [ext_resource type="PackedScene" uid="uid://cgw4dixoop64h" path="res://src/scenes/ui/book/Book_get.tscn" id="50_7v1kh"]
+[ext_resource type="Script" uid="uid://bl36trcdt67hk" path="res://src/classes/event/event_marker.gd" id="50_qxgoi"]
 [ext_resource type="PackedScene" uid="uid://dnjaeada2cck5" path="res://assets/game_resources/models/low_poly_skeleton.glb" id="51_v5phb"]
 [ext_resource type="Resource" uid="uid://uyj35ar65r8t" path="res://assets/game_resources/plantes/Lierre.tres" id="53_s7dv6"]
 [ext_resource type="Texture2D" uid="uid://ck0iumt200olu" path="res://assets/graphical/plantes/lierre.png" id="54_accns"]
@@ -250,6 +254,15 @@ radius = 5.067871
 [sub_resource type="BoxShape3D" id="BoxShape3D_6c504"]
 size = Vector3(6.701042, 4.2855835, 0.099609375)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_feptu"]
+
+[sub_resource type="Curve3D" id="Curve3D_7v1kh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.358, 0, 0, 0, 0, 0, 0, 0, 0, -4.814, 0, 0.23, 0, 0, 0, 0, 0, 0, -9.445, 0, 5.356, 0.55807114, 1.6371384, 0.96354675, -0.55807114, -1.6371384, -0.96354675, -17.671, -3.034, 12.076, -8.377743, -1.362258, 8.221077, 8.377743, 1.362258, -8.221077, -18.481, -6.319, 19.478),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
 
@@ -325,6 +338,9 @@ transform = Transform3D(0.946252, 0.14721659, 0.28798333, -0.25512597, 0.8870195
 
 [node name="MeshInstance3D" parent="Map2" index="2"]
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
+
+[node name="Vegetation" parent="Map2" index="5"]
+visible = false
 
 [node name="credits" type="Node3D" parent="."]
 transform = Transform3D(0.75631094, 0.0089347325, 0.65415084, 0.03803871, 0.9976146, -0.057605203, -0.6531055, 0.06845051, 0.75416696, 47.497673, -2.2633784, 234.7595)
@@ -512,29 +528,23 @@ offset_bottom = 326.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "- [b][color=dark_red]Broyer[/color][/b] la pousse d'asperge jusqu'à ce que le turion soit légèrement blanchi
-
-- Laisser [b][color=dark_red]infuser[/color][/b] le romarin 
-
--[b][color=dark_red] Sécher [/color][/b]du lierre et le couper en morceaux fins
-
-Incorporez le tout et vous obtiendrez une [color=dark_green]potion[/color] d'un vert modérément trouble."
+text = "[fill]J'ai concocté une nouvelle solution pour m'aider à [color=dark_red]aller plus vite[/color] dans mes tâches mais il ne faut surtout pas que je laisse les autres l'apprendre ! Je veux quand même garder une trace de ma recette donc je la répertorie ici, dans le S-pace, de manière un peu codée si jamais quelqu'un tombe dessus. Après tout, c'est moi [color=dark_red]l'expert en plantes[/color] ici, donc ça devrait aller. "
 
 [node name="TextureRect2" type="TextureRect" parent="Recette/Control"]
 layout_mode = 0
-offset_left = 586.0
-offset_top = 210.0
-offset_right = 650.0
-offset_bottom = 243.0
+offset_left = 611.0
+offset_top = 419.0
+offset_right = 675.0
+offset_bottom = 452.0
 texture = ExtResource("26_7v1kh")
 expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="Recette/Control"]
 layout_mode = 0
-offset_left = 609.0
-offset_top = 185.0
-offset_right = 673.0
-offset_bottom = 254.0
+offset_left = 621.0
+offset_top = 402.0
+offset_right = 685.0
+offset_bottom = 471.0
 texture = ExtResource("29_jxsa7")
 expand_mode = 1
 
@@ -589,7 +599,7 @@ offset_bottom = 326.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "Cet endroit est maudit...[br]J'étais si proche d'aller à ce laboratoire derrière cet olivier.[br]Si seulement je n'avais pas atteri ici.[br]J'ai écris sur les arbres pour ne pas oublier.[br]J'enqueterais une fois que ma jambe ira mieux."
+text = "Cet endroit est maudit...[br]J'étais si proche d'aller à ce [color=darkorange]laboratoire[/color] derrière cet olivier.[br]Si seulement je n'avais pas atteri ici.[br]J'ai [color=dark_red]écris sur les arbres[/color] pour ne pas oublier.[br]J'enquèterai une fois que ma jambe ira mieux."
 
 [node name="Button" type="Button" parent="Lore_z3/Control"]
 layout_mode = 1
@@ -661,7 +671,6 @@ text = "Fermer"
 transform = Transform3D(2.3339903, -1.3448156, -5.8783755e-08, 0, -1.1774553e-07, 2.6937037, -1.3448156, -2.3339903, -1.0202196e-07, -174.3781, 4.188389, 13.14536)
 
 [node name="Control" type="Control" parent="Lore"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -690,7 +699,7 @@ anchor_bottom = 3.775
 offset_left = 137.0
 offset_top = 1.0
 offset_right = 365.0
-offset_bottom = 326.0
+offset_bottom = 319.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
@@ -699,7 +708,21 @@ Lyonnais 1.80 €
 
 Formules :
 Boursier 1 €
-Non-Boursier 3.30 €"
+Non-Boursier 3.30 €
+
+
+
+
+
+
+
+
+
+
+[fill]Recette pour la [color=dark_green]potion[/color] : 
+- [color=dark_red]Broyer[/color] \"A\", Une plante dont la partie commestible s'appelle le turion et qui pousse au printemps.
+- Faire [color=dark_red]infuser[/color] \"R\", la plante à l'origine du miel de Narbonne mais également utilisé en parfumerie.
+- Laisser [color=dark_red]sécher[/color] \"L\", une plante grimpante dont le fruit est toxique."
 
 [node name="Button" type="Button" parent="Lore/Control"]
 layout_mode = 1
@@ -2053,6 +2076,31 @@ transform = Transform3D(-0.016918126, 0.36963618, -0.92902285, 0.3417283, 0.8753
 [node name="TeethBack" parent="Squelette/Sketchfab_model/Root" index="11"]
 transform = Transform3D(0.040789995, 0, 0, 0, 0.023599211, -0.015180129, 0, 0.009457181, 0.037859652, 6.529602, -0.1428833, 5.35524)
 
+[node name="EventTriggerHole" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.38007, -1.0606635, 95.66829)
+script = ExtResource("47_w0kh0")
+events = Array[ExtResource("48_7v1kh")]([ExtResource("49_v5phb")])
+event_markers = {
+ExtResource("49_v5phb"): null
+}
+metadata/_custom_type_script = "uid://crvb1x2d3cilp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EventTriggerHole"]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+shape = SubResource("SphereShape3D_feptu")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="EventMarker_FoxEvent" type="Marker3D" parent="EventTriggerHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.306, -0.8, 0)
+script = ExtResource("50_qxgoi")
+linked_event = ExtResource("49_v5phb")
+
+[node name="Path3D" type="Path3D" parent="EventTriggerHole/EventMarker_FoxEvent"]
+curve = SubResource("Curve3D_7v1kh")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerHole/EventMarker_FoxEvent/Path3D"]
+transform = Transform3D(-0.05154668, 0, 0.9986643, 0, 0.9999982, 0, -0.99866194, 0, -0.051546805, -0.358, 0, 0)
+
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
@@ -2063,6 +2111,7 @@ transform = Transform3D(0.040789995, 0, 0, 0, 0.023599211, -0.015180129, 0, 0.00
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
+[connection signal="body_entered" from="EventTriggerHole" to="EventTriggerHole" method="_on_body_entered"]
 
 [editable path="Map2"]
 [editable path="Map2/map"]

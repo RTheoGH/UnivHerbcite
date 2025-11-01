@@ -8,15 +8,18 @@ class_name EventTrigger
 @export_storage var event_markers := {} #idk how to define a list with static typing and init it but it should be Array[EventMarker]
 @export_storage var event_instance : Node
 
+var cooldown
+var cooldown_time = 12
+
+var waiting : bool = false
+
 func _ready():
 	if Engine.is_editor_hint():
 		pass
 	else : 
+		cooldown = get_tree().create_timer(0)
 		_rebuild_marker_dict()
-		var i = select_random_event_id()
-		if(i < events.size()):
-			print("Selected event : " + events[i].name)
-			instantiate_event(events[i])
+		select_new_event()
 			
 
 func _rebuild_marker_dict():
@@ -31,6 +34,10 @@ func _rebuild_marker_dict():
 func _process(_delta):
 	if Engine.is_editor_hint():
 		_sync_markers()
+	else :
+		# TODO Add check if is in player vision
+		if cooldown.time_left == 0 and waiting: 
+			select_new_event()
 		
 func instantiate_event(event : Event):
 	
@@ -43,18 +50,25 @@ func instantiate_event(event : Event):
 		var duplicate_child = child.duplicate()
 		event_instance.add_child(duplicate_child)
 	
-	event_instance.event_finished.connect(select_new_event) 
+	event_instance.event_finished.connect(start_timer) 
 	
+	event.initial_position = event_markers[event].global_position
 	add_child(event_instance)
 	event_instance.global_position = event.initial_position
 
+func start_timer():
+	cooldown = get_tree().create_timer(cooldown_time)
+	waiting = true
+	print("Starting timer ")
+
 func select_new_event():
+	waiting = false
 	if event_instance : 
+		print("freeing")
 		event_instance.queue_free()
 	print("Event finished")
 	
-	# TODO : Add cooldown
-	
+	print("select new")
 	var i = select_random_event_id()
 	if(i < events.size()):
 		print("Selected event : " + events[i].name)
@@ -97,7 +111,7 @@ func _create_marker_for_event(event: Event) -> EventMarker:
 func _on_body_entered(body: Node3D) -> void:
 	print("Body entered " + str(body.name))
 	print("Event instance in body enter : " , event_instance)
-	if body.transform :
+	if body.transform and body.name == "Perso" and event_instance:
 		event_instance.event_triggered(body.position)
 
 func select_random_event_id():
