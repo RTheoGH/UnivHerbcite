@@ -1,3 +1,4 @@
+[gd_scene load_steps=135 format=3 uid="uid://cru6fthpu72uo"]
 [gd_scene load_steps=140 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
@@ -52,6 +53,7 @@
 [ext_resource type="PackedScene" uid="uid://brt0xm8okhq2h" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
 [ext_resource type="Resource" uid="uid://1qnswolr50hj" path="res://assets/game_resources/plantes/Romarin.tres" id="48_feptu"]
 [ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
+[ext_resource type="PackedScene" uid="uid://bhn5vwiop43ts" path="res://src/scenes/ui/book/Book_get.tscn" id="50_7v1kh"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -3744,6 +3746,9 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
 shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="MeshInstance3D" parent="." instance=ExtResource("50_7v1kh")]
+transform = Transform3D(-0.39936724, -0.06782491, -0.39583528, -1.044469e-09, 0.5582389, -0.095652185, 0.401604, -0.06744715, -0.39363056, -163.06625, 3.1259654, 3.2706118)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
