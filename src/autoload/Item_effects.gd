@@ -23,9 +23,15 @@ var effects := {
 	InventoryItem.InventoryItemEffect.SPEED_POTION: {
 		"stats": [
 			{"target": "player", "property": "SPEED", "boost": 20.0, "default": 7.5},
-			{"target": "camera", "property": "fov", "boost": 90.0, "default": 75.0, "transition": 0.2}
+			{"target": "camera", "property": "fov", "boost": 100.0, "default": 75.0, "transition": 0.2}
 		],
 		"duration": 30.0
+	},
+	InventoryItem.InventoryItemEffect.NAUSEA: {
+		"stats": [
+			{"target": "overlay"}
+		],
+		"duration": 10.0
 	}
 }
 
@@ -41,6 +47,10 @@ func _apply_effect(p, effect_type):
 	var effect = effects[effect_type]
 	
 	for stat in effect["stats"]:
+		if stat["target"] == "overlay":
+			Overlay.start_nausea()
+			continue
+		
 		var target
 		if stat["target"] == "player":
 			target = player
@@ -75,6 +85,10 @@ func _on_effect_timeout(p, effect_type):
 	var effect = effects[effect_type]
 	
 	for stat in effect["stats"]:
+		if stat["target"] == "overlay":
+			Overlay.stop_nausea()
+			continue
+		
 		var target
 		if stat["target"] == "player":
 			target = player
@@ -94,6 +108,9 @@ func _on_effect_timeout(p, effect_type):
 	elif effect_type == InventoryItem.InventoryItemEffect.JUMP:
 		player.get_node("Effects/Jump_icon").hide()
 		player.get_node("Effects/Jump").hide()
+	elif effect_type == InventoryItem.InventoryItemEffect.NAUSEA:
+		player.get_node("Effects/Nausea_icon").hide()
+		player.get_node("Effects/Nausea").hide()
 	
 	active_timers[effect_type].queue_free()
 	active_timers.erase(effect_type)
@@ -123,6 +140,12 @@ func _process(_delta: float) -> void:
 		elif effect_type == InventoryItem.InventoryItemEffect.JUMP or effect_type == InventoryItem.InventoryItemEffect.JUMP_POTION:
 			var icon: TextureRect = player.get_node("Effects/Jump_icon")
 			var label: RichTextLabel = player.get_node("Effects/Jump")
+			icon.show()
+			label.text = str(int(time_left)) + "s"
+			label.show()
+		elif effect_type == InventoryItem.InventoryItemEffect.NAUSEA:
+			var icon: TextureRect = player.get_node("Effects/Nausea_icon")
+			var label: RichTextLabel = player.get_node("Effects/Nausea")
 			icon.show()
 			label.text = str(int(time_left)) + "s"
 			label.show()
