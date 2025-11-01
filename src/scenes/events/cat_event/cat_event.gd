@@ -5,7 +5,7 @@ extends Node3D
 @onready var path : Path3D = $Path3D
 @onready var path_to_follow : PathFollow3D = $Path3D/PathFollow3D
 
-@onready var anim_player : AnimationPlayer = $"Root Scene/AnimationPlayer"
+@onready var anim_player : AnimationPlayer = $Sketchfab_Scene/AnimationPlayer
 
 var run_away = false
 var run_direction = Vector3(0,0,0)
@@ -23,11 +23,12 @@ func _process(delta: float) -> void:
 			position = path_to_follow.position 
 			rotation.y = path_to_follow.rotation.y + deg_to_rad(180)
 			
-			anim_player.play("AnimalArmature|Gallop")
+			anim_player.play("Scene")
 			
 		else:
 			run_away = false
 			queue_free()
 			event_finished.emit()
 	else : 
-		anim_player.play("AnimalArmature|Idle_2")
+		#TODO : Handle idle
+		pass
