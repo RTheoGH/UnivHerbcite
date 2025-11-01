@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dyf4byinua0l5"]
+[gd_scene load_steps=4 format=3 uid="uid://dyf4byinua0l5"]
 
 [ext_resource type="Script" uid="uid://c8rv6t5etlx3q" path="res://src/autoload/overlay.gd" id="1_w34tw"]
+
+[sub_resource type="Gradient" id="Gradient_rehui"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.45833334, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.4627451)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w34tw"]
+gradient = SubResource("Gradient_rehui")
+width = 1024
+height = 1024
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="Overlay" type="Control"]
 layout_mode = 3
@@ -21,3 +33,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.016026923, 0.095741995, 0.09664176, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 145
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_w34tw")
+expand_mode = 1

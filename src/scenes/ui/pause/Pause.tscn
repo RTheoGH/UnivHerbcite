@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ccneeglf3rtgq"]
+[gd_scene load_steps=21 format=3 uid="uid://ccneeglf3rtgq"]
 
 [ext_resource type="Script" uid="uid://bs1ch0ypr6sq7" path="res://src/scenes/ui/pause/pause.gd" id="1_qp6fb"]
 [ext_resource type="Texture2D" uid="uid://cgft3pmietdr2" path="res://assets/graphical/ui/continuer1.png" id="1_uc2tp"]
@@ -29,6 +29,8 @@ shader_parameter/time_effect = 0.0
 shader = ExtResource("2_wukie")
 shader_parameter/offset_ = Vector2(-0.005, -0.005)
 shader_parameter/time_effect = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tgucg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c021c"]
 shader = ExtResource("2_wukie")
@@ -119,6 +121,7 @@ offset_left = -0.0960083
 offset_top = 0.31199646
 offset_right = 0.2559204
 offset_bottom = -0.27999878
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tgucg")
 flat = true
 metadata/_edit_use_anchors_ = true
 

@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dto20gbo24uis"]
+[gd_scene load_steps=6 format=3 uid="uid://dto20gbo24uis"]
 
 [ext_resource type="Script" uid="uid://bjl1e7bjp2jwh" path="res://src/scenes/ui/narration/narration.gd" id="1_elmls"]
 [ext_resource type="Texture2D" uid="uid://dkwwbjedok67l" path="res://assets/graphical/ui/narration.png" id="1_t2mdg"]
 [ext_resource type="Texture2D" uid="uid://cslxoogllv41u" path="res://assets/graphical/ui/narration_button.png" id="2_elmls"]
 [ext_resource type="AudioStream" uid="uid://de67adwmbmqwc" path="res://assets/sounds/narration.wav" id="4_bvk2f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvk2f"]
 
 [node name="Narration" type="Control"]
 layout_mode = 3
@@ -103,6 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/font_size = 12
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvk2f")
 text = "Continuer"
 flat = true
 
