@@ -7,7 +7,7 @@ class_name Interactable
 var cooldown
 #@export var item : InventoryItem
 
-signal on_interaction_signal
+signal on_interaction_signal(area: Area3D)
 
 func _ready() -> void:
 	cooldown = get_tree().create_timer(0)
