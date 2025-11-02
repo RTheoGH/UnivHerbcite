@@ -174,11 +174,11 @@ func _on_visibility_changed() -> void:
 			Le myrobolan, ou prunier-cerise, est un arbre d'Europe du Sud-Est et d'Asie du Sud-Ouest ensuite introduit en France. Il donne une drupe (fruit charnue avec un noyau) semblable à une mirabelle et qui peut être de différentes couleurs. Ce fruit peut être très apprécié par certains animaux, notamment les oiseaux et les écureuils.[br]\
 			Arbre caractéristique de la méditérranée, l'olivier produit lui aussi une drupe, l'olive, qui est vastement utilisée dans bon nombre de plats, que ce soit sous forme d'huile, de tapenade, de sauce, etc. Les étourneaux (de l'ordre des passereaux) ont un régime omnivore et peuvent manger des olives quand les autres sources de nouritures se font plus rares."
 			,
-			"[color=orange]Recette n°3 : l'acide" : ""
+			"[color=orange]Recette n°3 : l'acide" : "Descriptions à venir"
 			,
-			"[color=orange]Recette n°4 : le désintoxifiant" : ""
+			"[color=orange]Recette n°4 : le désintoxifiant" : "Descriptions à venir"
 			,
-			"[color=orange]Recette n°5 : le remède" : ""
+			"[color=orange]Recette n°5 : le remède" : "Descriptions à venir"
 		}
 		var key = craft_narration.keys()[narrate_craft]
 		Global.narrate(key, craft_narration[key])
