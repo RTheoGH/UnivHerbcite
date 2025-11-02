@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=128 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -105,7 +105,7 @@ func _on_visibility_changed() -> void:
 		
 		while Global.isPaused:
 			await get_tree().process_frame
-		
+		await get_tree().create_timer(4.0).timeout
 		var tween_sun = create_tween()
 		tween_sun.tween_property(sun, \"scale\", Vector3(1.0,1.0,1.0), 20.0)
 		
@@ -681,25 +681,168 @@ var verrouillee = true
 	#Global.player_inventory.add_item(load(\"res://assets/game_resources/items/potions/potion_jaune.tres\"))
 
 func _on_interactable_on_interaction_signal() -> void:
-	if verrouillee:
-		Global.text_alert.show_alert(\"La porte est verrouillée par un cadenas.\")
-	else:
-		pass #Tom fais ta magie
-
-
-func _on_static_body_3d_on_interaction_signal() -> void:
 	print(Global.inv_current_slot)
 	if Global.player_inventory.items.size()-1 >= Global.inv_current_slot\\
 	 and Global.player_inventory.items[Global.inv_current_slot].type == InventoryItem.InventoryItemType.POTION_ROUGE:
 		Global.player_inventory.remove_item(Global.player_inventory.items[Global.inv_current_slot])
-		$\"MeshInstance3D\".queue_free()
-		verrouillee = false
+		$AnimationPlayer.play(\"open\")
+		$Interactable.queue_free()
 	else:
-		Global.text_alert.show_alert(\"Il faudrait quelque chose pour retirer le cadenas.\")
+		$AnimationPlayer.play(\"open\")
+		Global.text_alert.show_alert(\"Il faudrait quelque chose pour se débarasser de ce vieux cadenas.\")
 "
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s7dv6"]
 points = PackedVector3Array(0.065495685, 1, 0.6211298, 0.13943361, 0.25567734, 0.5713956, 0.065495685, 1, -0.6211298, -0.065490365, 1, 0.6211298, 0.065495685, -1, 0.6211298, 0.13943361, 0.24001563, 0.52640384, 0.13943361, 0.022709489, 0.5713956, -0.065490365, 1, -0.6211298, 0.065495685, -1, -0.6211298, -0.065490365, -1, 0.6211298, 0.13943361, 0.02427566, 0.52640384, -0.065490365, -1, -0.6211298)
+
+[sub_resource type="Animation" id="Animation_xxxgc"]
+resource_name = "fail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.43333334, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.63241965, 0), Vector3(0, -0.71557134, 0), Vector3(0, -0.54947543, 0), Vector3(0, -0.63241965, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../lock_parent/lock:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.56666666, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.21469116, -0.06255245, 0.51065826), Vector3(0.11274719, -0.06255269, 0.5387726), Vector3(0.23, -0.063, 0.511), Vector3(0.21469116, -0.06255245, 0.51065826)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../lock_parent/lock:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.17666668, 0.46666667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.8287324, 1.9859593, -0.092458256), Vector3(-0.53837085, 2.032718, -0.16569786), Vector3(-0.5235988, 1.9861847, -0.09250245), Vector3(-0.8287324, 1.9859593, -0.092458256)]
+}
+
+[sub_resource type="Animation" id="Animation_lm3in"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.63241965, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../lock_parent/lock:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.21469116, -0.06255245, 0.51065826)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../lock_parent/lock:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.342247, -2.9970763, -2.5322285)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../lock_parent/lock/Surbrillance:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_sstu0"]
+resource_name = "open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../lock_parent/lock:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.44, 0.8, 1.04),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.21469116, -0.06255245, 0.51065826), Vector3(0.21469116, -0.06255245, 0.51065826), Vector3(0.35398865, -0.8840766, 0.6521759), Vector3(0.3540039, -1.1173446, 0.6521988)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../lock_parent/lock:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.82873225, 1.9859594, -0.0924582), Vector3(-1.3421582, 3.286455, -2.5324728)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6333334, 1.7333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.63241965, 0), Vector3(0, -0.63241965, 0), Vector3(0, -2.0943952, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../lock_parent/lock/Surbrillance:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.78),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sstu0"]
+_data = {
+&"RESET": SubResource("Animation_lm3in"),
+&"fail": SubResource("Animation_xxxgc"),
+&"open": SubResource("Animation_sstu0")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75rwc"]
 transparency = 1
@@ -708,9 +851,6 @@ albedo_texture = ExtResource("52_jxsa7")
 
 [sub_resource type="QuadMesh" id="QuadMesh_v5phb"]
 material = SubResource("StandardMaterial3D_75rwc")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jxsa7"]
-size = Vector3(1.4925537, 1.2573242, 1.3231812)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lm3in"]
 
@@ -732,7 +872,7 @@ point_count = 8
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -203.10698, 4.978475, 1.6543217)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -416.83948, 12.337904, 12.956085)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -2929,41 +3069,49 @@ message = "J'ai reussi à atteindre le bout de cet endroit. Je vais enfin pouvoi
 [node name="CollisionShape3D" parent="NarrationArea3" index="0"]
 transform = Transform3D(3.664164, 0, -1.6043384, 0, 4, 0, 1.6043384, 0, 3.664164, -1.0908356, 0, -3.161026)
 
-[node name="door3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.8713111, 0, -1.3713478, 0, 2.51, 0, 1.3713478, 0, 1.8713111, -423.29907, 5.5758557, 12.3161545)
+[node name="door_hinge" type="Node3D" parent="."]
+transform = Transform3D(1.8713111, 0, -1.3713478, 0, 2.5099995, 0, 1.3713478, 0, 1.8713111, -422.5129, 3.3912673, 11.281232)
+
+[node name="door3" type="MeshInstance3D" parent="door_hinge"]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 0.99999994, 0, 2.9802322e-08, 0, 1.0000001, -0.009643555, 0.8703538, 0.56010437)
 mesh = SubResource("ArrayMesh_q0wsw")
 skeleton = NodePath("")
 script = SubResource("GDScript_75rwc")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="door3"]
+[node name="StaticBody3D" type="StaticBody3D" parent="door_hinge/door3"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door3/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_hinge/door3/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_s7dv6")
 
-[node name="Interactable" type="Area3D" parent="door3"]
+[node name="Interactable" type="Area3D" parent="door_hinge/door3"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door3/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_hinge/door3/Interactable"]
+transform = Transform3D(1.0000001, 0, -2.9802322e-08, 0, 0.99999994, 0, 2.9802322e-08, 0, 1.0000001, 0.08155823, 0, 0.006713867)
 shape = SubResource("ConvexPolygonShape3D_s7dv6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="door3"]
-transform = Transform3D(0.008796655, 0, 0.14974186, 0, 0.14999999, 0, -0.14974186, 0, 0.008796655, 0.06784223, -0.062552504, 0.555514)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="door_hinge/door3"]
+libraries = {
+&"": SubResource("AnimationLibrary_sstu0")
+}
+
+[node name="lock_parent" type="Node3D" parent="."]
+transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
+
+[node name="lock" type="MeshInstance3D" parent="lock_parent"]
+transform = Transform3D(0.46795648, -0.43609744, -0.020882227, -0.08299109, -0.11890299, 0.6233576, -0.428637, -0.4530798, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
+skeleton = NodePath("../../door_hinge/door3")
 
-[node name="StaticBody3D" type="Area3D" parent="door3/MeshInstance3D"]
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_plqpu")
-metadata/_custom_type_script = "uid://up24dtse8gef"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door3/MeshInstance3D/StaticBody3D"]
-transform = Transform3D(1, 0, -5.9604645e-08, 0, 0.9999998, 0, 5.9604645e-08, 0, 1, 0.24645996, 0.12866306, 0.1616211)
-shape = SubResource("BoxShape3D_jxsa7")
-
-[node name="Surbrillance" parent="door3/MeshInstance3D" instance=ExtResource("53_q0wsw")]
+[node name="Surbrillance" parent="lock_parent/lock" instance=ExtResource("53_q0wsw")]
+transform = Transform3D(0.99999994, 0, 3.1664968e-08, 2.9802322e-08, 0.99999994, 3.632158e-08, -2.9802322e-08, 5.122274e-09, 0.99999994, -0.00333786, -0.05783081, 0.082336426)
+initial_velocity_min = 4.0
+initial_velocity_max = 6.0
+scale_amount_min = 10.0
+scale_amount_max = 15.0
 
 [node name="Recette2" parent="." instance=ExtResource("20_fi6eh")]
 transform = Transform3D(-2.3081813, -1.3534675, 0.31058735, -0.14056757, 0.82711387, 2.5597196, -1.3815132, 2.177165, -0.77936655, -266.1739, 4.6744113, -32.6575)
@@ -3050,7 +3198,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638093, 0.5894758, 0, 0.99992555, 0.011260373, -0.5895138, 0.009095573, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638092, 0.5894758, 0, 0.99992543, 0.011260373, -0.5895138, 0.009095572, -0.807705, 0, 0, 0)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
@@ -3070,8 +3218,7 @@ transform = Transform3D(-0.80775696, -0.006638093, 0.5894758, 0, 0.99992555, 0.0
 [connection signal="on_interaction_signal" from="StaticBody3D2/Interactable" to="StaticBody3D2" method="_on_interactable_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="spaceDoors/Interactable" to="spaceDoors" method="_on_interactable_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="spaceDoors/Interactable2" to="spaceDoors" method="_on_interactable_2_on_interaction_signal"]
-[connection signal="on_interaction_signal" from="door3/Interactable" to="door3" method="_on_interactable_on_interaction_signal"]
-[connection signal="on_interaction_signal" from="door3/MeshInstance3D/StaticBody3D" to="door3" method="_on_static_body_3d_on_interaction_signal"]
+[connection signal="on_interaction_signal" from="door_hinge/door3/Interactable" to="door_hinge/door3" method="_on_interactable_on_interaction_signal"]
 [connection signal="visibility_changed" from="Recette2/Control" to="Recette2/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="EventTriggerBehindSpace" to="EventTriggerBehindSpace" method="_on_body_entered"]
 
