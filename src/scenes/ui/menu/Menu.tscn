@@ -77,7 +77,7 @@ shader_parameter/gradient_order = ExtResource("12_ei2hi")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r54wa"]
 shader = ExtResource("13_iprx0")
-shader_parameter/offset_ = Vector2(-0.005, -0.055)
+shader_parameter/offset_ = Vector2(-0.01, -0.025)
 shader_parameter/time_effect = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yvxia"]
@@ -174,10 +174,10 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_r54wa")
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.74614155
-anchor_top = 0.5509383
-anchor_right = 0.96914154
-anchor_bottom = 0.6499383
+anchor_left = 0.74961376
+anchor_top = 0.8858149
+anchor_right = 0.97261375
+anchor_bottom = 0.9848149
 offset_left = 0.4449463
 offset_top = -0.008026123
 offset_right = -0.4510498

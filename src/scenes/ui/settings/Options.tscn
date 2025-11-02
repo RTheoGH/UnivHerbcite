@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6tftscbtspu3"]
+[gd_scene load_steps=11 format=3 uid="uid://c6tftscbtspu3"]
 
 [ext_resource type="Script" uid="uid://qmp7vkc3d7au" path="res://src/scenes/ui/settings/options.gd" id="1_nmn1p"]
 [ext_resource type="Texture2D" uid="uid://dacg73wq786q5" path="res://assets/graphical/ui/retour1.png" id="2_pxqj8"]
@@ -17,6 +17,8 @@ shader_parameter/time_effect = 0.0
 shader = ExtResource("2_s26ps")
 shader_parameter/offset_ = Vector2(-0.01, -0.04)
 shader_parameter/time_effect = 0.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qoo4w"]
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -358,9 +360,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Avancer" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.14297223
+anchor_left = 0.13602778
 anchor_top = 0.3159136
-anchor_right = 0.21091668
+anchor_right = 0.20397224
 anchor_bottom = 0.36554322
 offset_left = 0.29599
 offset_top = 0.28799438
@@ -375,9 +377,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Avancer_B" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.14370833
+anchor_left = 0.1385
 anchor_top = 0.3653704
-anchor_right = 0.21091668
+anchor_right = 0.20570834
 anchor_bottom = 0.42437038
 offset_left = -0.55200195
 offset_top = 0.23999023
@@ -390,9 +392,9 @@ metadata/_edit_use_anchors_ = true
 [node name="Reculer" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.14318055
+anchor_left = 0.1483889
 anchor_top = 0.48285186
-anchor_right = 0.21044445
+anchor_right = 0.2156528
 anchor_bottom = 0.5294198
 offset_left = 0.055984497
 offset_top = 0.11199951
@@ -866,11 +868,16 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="AA_option" type="OptionButton" parent="."]
-layout_mode = 0
-offset_left = 697.0
-offset_top = 433.0
-offset_right = 809.0
-offset_bottom = 471.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.605
+anchor_top = 0.66800004
+anchor_right = 0.702
+anchor_bottom = 0.72700006
+offset_left = 0.039978027
+offset_top = 0.13598633
+offset_right = 0.29595947
+offset_bottom = -0.09603882
 item_count = 4
 popup/item_0/text = "Désactivé"
 popup/item_0/id = 0
@@ -903,12 +910,13 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.7453125
 anchor_top = 0.6787197
-anchor_right = 0.78431255
+anchor_right = 0.77042365
 anchor_bottom = 0.7157197
 offset_left = 1.3999634
 offset_top = 0.18963623
 offset_right = 0.47192383
 offset_bottom = 0.21365356
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qoo4w")
 metadata/_edit_use_anchors_ = true
 
 [node name="Guide" type="RichTextLabel" parent="."]

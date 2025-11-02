@@ -1,6 +1,123 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://hgacqogh11xv"]
+[gd_resource type="Theme" load_steps=35 format=3 uid="uid://hgacqogh11xv"]
 
 [ext_resource type="FontFile" uid="uid://5tkf1gvc8ltm" path="res://assets/graphical/fonts/PlaywriteUSModern-VariableFont_wght.ttf" id="1_xejcj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ql1pw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spwue"]
+bg_color = Color(0, 0.7137255, 0, 1)
+skew = Vector2(-0.15, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ql1pw"]
+bg_color = Color(0, 0.56847006, 0, 1)
+skew = Vector2(-0.15, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.36078432, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_baqol"]
+bg_color = Color(0, 0.63529414, 0, 1)
+skew = Vector2(-0.25, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Gradient" id="Gradient_pcaj6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.66019416, 1)
+colors = PackedColorArray(0, 0.64705884, 0, 0.7490196, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_glm24"]
+gradient = SubResource("Gradient_pcaj6")
+width = 16
+height = 16
+fill = 2
+fill_from = Vector2(0.508547, 0.525641)
+
+[sub_resource type="DPITexture" id="DPITexture_spwue"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".37\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\" fill-opacity=\".5\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_baqol"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".37\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\" fill-opacity=\".5\"/></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_pcaj6"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#1a1a1a\"/></svg>
+"
+
+[sub_resource type="Gradient" id="Gradient_x1vpi"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.63106793, 1)
+colors = PackedColorArray(1, 1, 1, 0.36862746, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q11g5"]
+gradient = SubResource("Gradient_x1vpi")
+width = 16
+height = 16
+fill = 2
+fill_from = Vector2(0.491453, 0.4871795)
+
+[sub_resource type="DPITexture" id="DPITexture_glm24"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><g fill-opacity=\".25\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" rx=\"7\"/><circle cx=\"8\" cy=\"8\" r=\"5\" fill=\"#fff\"/></g></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_x1vpi"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><g fill-opacity=\".25\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#fff\"/></g></svg>
+"
+
+[sub_resource type="DPITexture" id="DPITexture_q11g5"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"32\" height=\"16\"><g fill-opacity=\".5\"><rect width=\"30\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" rx=\"7\"/><circle cx=\"24\" cy=\"8\" r=\"5\" fill=\"#fff\"/></g></svg>
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x5gyi"]
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugxlr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [sub_resource type="Gradient" id="Gradient_ql1pw"]
 interpolation_mode = 2
@@ -45,10 +162,173 @@ bg_color = Color(0, 0.7153621, 0.42379645, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glm24"]
 bg_color = Color(2.887845e-06, 0.9170988, 0.7046474, 1)
 
+[sub_resource type="DPITexture" id="DPITexture_x458h"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"12\" height=\"12\"><path fill=\"none\" stroke=\"#b2b2b2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-opacity=\".85\" stroke-width=\"2\" d=\"m2 4 4 4 4-4\"/></svg>
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2t6ia"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_syhct"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsq8h"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.22352941, 0.73333335, 0.22352941, 0.6)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yx4iu"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.225, 0.225, 0.225, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_62ua2"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14631143, 0.47227627, 0.010227592, 0.6)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.34901962, 0, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_evudx"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dy52"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.8627451, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1etgt"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [resource]
 default_font = ExtResource("1_xejcj")
+Button/styles/focus = SubResource("StyleBoxEmpty_ql1pw")
+Button/styles/hover = SubResource("StyleBoxFlat_spwue")
+Button/styles/normal = SubResource("StyleBoxFlat_ql1pw")
+Button/styles/pressed = SubResource("StyleBoxFlat_baqol")
+CheckButton/colors/button_checked_color = Color(1, 1, 1, 1)
+CheckButton/colors/button_unchecked_color = Color(1, 1, 1, 1)
+CheckButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+CheckButton/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+CheckButton/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+CheckButton/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+CheckButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+CheckButton/colors/font_outline_color = Color(0, 0, 0, 1)
+CheckButton/colors/font_pressed_color = Color(1, 1, 1, 1)
+CheckButton/constants/check_v_offset = 0
+CheckButton/constants/h_separation = 4
+CheckButton/constants/outline_size = 0
+CheckButton/font_sizes/font_size = 16
+CheckButton/icons/checked = SubResource("GradientTexture2D_glm24")
+CheckButton/icons/checked_disabled = SubResource("DPITexture_spwue")
+CheckButton/icons/checked_disabled_mirrored = SubResource("DPITexture_baqol")
+CheckButton/icons/checked_mirrored = SubResource("DPITexture_pcaj6")
+CheckButton/icons/unchecked = SubResource("GradientTexture2D_q11g5")
+CheckButton/icons/unchecked_disabled = SubResource("DPITexture_glm24")
+CheckButton/icons/unchecked_disabled_mirrored = SubResource("DPITexture_x1vpi")
+CheckButton/icons/unchecked_mirrored = SubResource("DPITexture_q11g5")
+CheckButton/styles/disabled = SubResource("StyleBoxEmpty_x5gyi")
+CheckButton/styles/focus = SubResource("StyleBoxFlat_ugxlr")
+CheckButton/styles/hover = SubResource("StyleBoxEmpty_x5gyi")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_x5gyi")
+CheckButton/styles/normal = SubResource("StyleBoxEmpty_x5gyi")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_x5gyi")
 HSlider/icons/grabber = SubResource("GradientTexture2D_spwue")
 HSlider/icons/grabber_disabled = SubResource("GradientTexture2D_baqol")
 HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_pcaj6")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_pcaj6")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_glm24")
+OptionButton/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+OptionButton/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+OptionButton/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+OptionButton/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+OptionButton/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+OptionButton/colors/font_outline_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_pressed_color = Color(1, 1, 1, 1)
+OptionButton/constants/arrow_margin = 4
+OptionButton/constants/h_separation = 4
+OptionButton/constants/modulate_arrow = 0
+OptionButton/constants/outline_size = 0
+OptionButton/font_sizes/font_size = 16
+OptionButton/icons/arrow = SubResource("DPITexture_x458h")
+OptionButton/styles/disabled = SubResource("StyleBoxFlat_2t6ia")
+OptionButton/styles/disabled_mirrored = SubResource("StyleBoxFlat_syhct")
+OptionButton/styles/focus = SubResource("StyleBoxFlat_ugxlr")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_jsq8h")
+OptionButton/styles/hover_mirrored = SubResource("StyleBoxFlat_yx4iu")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_62ua2")
+OptionButton/styles/normal_mirrored = SubResource("StyleBoxFlat_evudx")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_2dy52")
+OptionButton/styles/pressed_mirrored = SubResource("StyleBoxFlat_1etgt")
