@@ -170,4 +170,4 @@ func _process(_delta: float) -> void:
 			icon.show()
 
 func is_effect_active(effect: InventoryItem.InventoryItemEffect) -> bool:
-	return active_timers.keys.has(effect)
+	return active_timers.keys().has(effect)

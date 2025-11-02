@@ -28,7 +28,8 @@ enum InventoryItemEffect{
 	JUMP,
 	JUMP_POTION,
 	NAUSEA,
-	HEALED
+	HEALED,
+	POISON_IMMUNE
 }
 
 @export var type : InventoryItemType

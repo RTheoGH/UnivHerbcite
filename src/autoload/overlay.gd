@@ -17,8 +17,10 @@ func fade_to_black(time:float):
 			1.0,
 			time
 		)
+		await fadeTween.finished
+	return
 
-func fade_from_black(time:float):
+func fade_from_black(time:float) -> void:
 	if time <= 0:
 		$FadeRect.color.a = 0.0
 		fadeTween = null
@@ -30,10 +32,13 @@ func fade_from_black(time:float):
 			0.0,
 			time
 		)
+		await fadeTween.finished
+		
+	return 
 
 var nausea_tween: Tween
 
-func start_nausea():
+func start_nausea() -> void:
 	var shader = $Nausea.material
 	if shader == null:
 		return
