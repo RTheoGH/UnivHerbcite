@@ -65,7 +65,6 @@ current = true
 target_position = Vector3(0, 0, -2)
 collision_mask = 4
 collide_with_areas = true
-collide_with_bodies = false
 debug_shape_custom_color = Color(0.9930391, 0.36213517, 0.47180992, 1)
 
 [node name="Area3D" type="Area3D" parent="Camera3D/RayCast3D"]
