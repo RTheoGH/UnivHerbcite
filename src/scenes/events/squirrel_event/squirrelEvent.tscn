@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6ok7wq7t225o"]
+
+[ext_resource type="PackedScene" uid="uid://xsx2vnxxnho2" path="res://assets/game_resources/models/Animaux/Lowpoly Squirrel.glb" id="1_tc0jl"]
+
+[node name="SquirrelEvent" type="Node3D"]
+
+[node name="Lowpoly Squirrel" parent="." instance=ExtResource("1_tc0jl")]

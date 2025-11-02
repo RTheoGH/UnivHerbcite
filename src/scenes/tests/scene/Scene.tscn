@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=129 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -58,6 +58,9 @@
 [ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="55_6c504"]
 [ext_resource type="Resource" uid="uid://b814ym0oym2ib" path="res://src/classes/event/cat_event.tres" id="56_1bfsn"]
 [ext_resource type="Resource" uid="uid://ctjssxc0hjjao" path="res://src/classes/event/hedgehog_event.tres" id="57_xxxgc"]
+[ext_resource type="PackedScene" uid="uid://b6ok7wq7t225o" path="res://src/scenes/events/squirrel_event/squirrelEvent.tscn" id="59_6c504"]
+[ext_resource type="PackedScene" uid="uid://b87q8v7t7f4pu" path="res://assets/game_resources/models/Animaux/Character_Finch.fbx" id="60_xxxgc"]
+[ext_resource type="AudioStream" uid="uid://bv4lkc28ww83j" path="res://assets/sounds/birds-chirping.mp3" id="61_lm3in"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qr7a2"]
 radius = 1.2749023
@@ -860,7 +863,7 @@ material = SubResource("StandardMaterial3D_75rwc")
 
 [sub_resource type="Curve3D" id="Curve3D_sstu0"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 3.2427979, 0, 0.4913311, -3.2427979, 0, -0.4913311, -7.379, 0, -5.675, 0.8160095, 0.00015735626, -0.28258324, -0.8160095, -0.00015735626, 0.28258324, -12.98, 0, -5.086, -0.3864441, 0.0007123947, -0.85588646, 0.3864441, -0.0007123947, 0.85588646, -17.402, 0, -3.12, 0, 0, 0, 0, 0, 0, -18.09, 0, -1.745, -0.38742065, 0.00018882751, -0.17092705, 0.38742065, -0.00018882751, 0.17092705, -20.547, 0, -1.646, 0.0032958984, -2.861023e-06, 0.029525757, -0.0032958984, 2.861023e-06, -0.029525757, -22.807, 0, -3.808, 0, 0, 0, 0, 0, 0, -24.477, 0, -7.247),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 3.2427979, 0, 0.4913311, -3.2427979, 0, -0.4913311, -3.4559784, 0, -15.611414, 1.4134216, -0.12976837, 0.054332733, -1.4134216, 0.12976837, -0.054332733, -12.866119, 0.05763483, -14.747513, -0.60827637, -0.2968316, -1.6469383, 0.60827637, 0.2968316, 1.6469383, -13.251648, 0.36092854, -25.69517, 1.1364136, -0.21445417, 0.7037506, -1.1364136, 0.21445417, -0.7037506, -15.825806, 0.41391087, -34.38272, -0.6873169, 0.21879244, -0.044574738, 0.6873169, -0.21879244, 0.044574738, -24.415619, 0.3921728, -30.005476, 0.5192871, -0.16507769, 0.21850586, -0.5192871, 0.16507769, -0.21850586, -25.020508, 0.3914032, -22.331347, 0, 0, 0, 0, 0, 0, -24.618134, 0, -19.281105),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 8
@@ -876,7 +879,7 @@ point_count = 8
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -164.48347, 4.3440304, -3.9259315)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -245.02644, 4.856743, -67.4666)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -2942,24 +2945,30 @@ transform = Transform3D(-0.016918126, 0.36963618, -0.92902285, 0.3417283, 0.8753
 [node name="TeethBack" parent="Squelette/Sketchfab_model/Root" index="11"]
 transform = Transform3D(0.040789995, 0, 0, 0, 0.023599211, -0.015180129, 0, 0.009457181, 0.037859652, 6.529602, -0.1428833, 5.35524)
 
-[node name="EventTriggerHole" type="Area3D" parent="."]
+[node name="EventTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.38007, -1.0606635, 95.66829)
+script = ExtResource("54_0ufl0")
+events = Array[ExtResource("55_6c504")]([ExtResource("49_v5phb")])
+event_markers = {
+ExtResource("49_v5phb"): null
+}
 metadata/_custom_type_script = "uid://crvb1x2d3cilp"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EventTriggerHole"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EventTrigger"]
 transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
 shape = SubResource("SphereShape3D_feptu")
 debug_color = Color(0, 0, 0, 1)
 
-[node name="EventMarker_FoxEvent" type="Marker3D" parent="EventTriggerHole"]
+[node name="EventMarker_FoxEvent" type="Marker3D" parent="EventTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8913498, -0.79999995, 10.847122)
 script = ExtResource("50_qxgoi")
 linked_event = ExtResource("49_v5phb")
 
-[node name="Path3D" type="Path3D" parent="EventTriggerHole/EventMarker_FoxEvent"]
+[node name="Path3D" type="Path3D" parent="EventTrigger/EventMarker_FoxEvent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8913498, -0.79999995, 10.847122)
 curve = SubResource("Curve3D_7v1kh")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerHole/EventMarker_FoxEvent/Path3D"]
+[node name="PathFollow3D" type="PathFollow3D" parent="EventTrigger/EventMarker_FoxEvent/Path3D"]
 transform = Transform3D(-0.05154668, 0, 0.9986643, 0, 0.9999982, 0, -0.99866194, 0, -0.051546805, -0.358, 0, 0)
 
 [node name="Ronces" type="Node3D" parent="."]
@@ -3112,7 +3121,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
-transform = Transform3D(0.46795657, -0.43609756, -0.020882227, -0.08299111, -0.11890302, 0.6233576, -0.4286371, -0.4530799, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
+transform = Transform3D(0.46795657, -0.43609768, -0.020882227, -0.08299111, -0.118903056, 0.6233576, -0.4286371, -0.45308006, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
 
@@ -3189,7 +3198,7 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -10.037369, -0.24975014, 6
 shape = SubResource("SphereShape3D_lm3in")
 
 [node name="EventMarker_cat_event" type="Marker3D" parent="EventTriggerBehindSpace"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.593567, -1.7903996, 2.3117008)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.65599, -1.7903996, 14.581495)
 script = ExtResource("50_qxgoi")
 linked_event = ExtResource("56_1bfsn")
 
@@ -3197,7 +3206,7 @@ linked_event = ExtResource("56_1bfsn")
 curve = SubResource("Curve3D_sstu0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_cat_event/Path3D"]
-transform = Transform3D(0.78165656, 0, 0.62370706, 0, 0.99999994, 0, -0.6237069, 0, 0.7816568, 0, 0, 0)
+transform = Transform3D(0.9998986, 0, 0.014097742, 0, 0.99999994, 0, -0.014097736, 0, 0.99989897, 0, 0, 0)
 
 [node name="EventMarker_hedgehog_event" type="Marker3D" parent="EventTriggerBehindSpace"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.177887, -2, 9.49877)
@@ -3208,7 +3217,38 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638089, 0.5894758, 0, 0.999925, 0.011260373, -0.5895138, 0.009095568, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380827, 0.5894758, 0, 0.999924, 0.011260373, -0.5895138, 0.009095559, -0.807705, 0, 0, 0)
+
+[node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
+
+[node name="SquirrelEvent" parent="." instance=ExtResource("59_6c504")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -222.23828, 5.291643, -75.80169)
+
+[node name="Character_Finch" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(6.904623, 0, -13.316386, 0, 14.999999, 0, 13.316386, 0, 6.904623, -247.28061, 4.9316926, -70.655556)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Character_Finch"]
+stream = ExtResource("61_lm3in")
+volume_db = -15.0
+autoplay = true
+max_distance = 40.0
+bus = &"SFX"
+
+[node name="Character_Finch2" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0, -14.925988, -249.74295, 4.931692, -69.28045)
+
+[node name="Character_Finch3" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0, -14.925988, -248.38457, 4.931692, -70.760574)
+
+[node name="Character_Finch5" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0, -14.925988, -247.70335, 4.931692, -69.96334)
+
+[node name="Character_Finch6" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0, -14.925988, -250.67415, 4.931692, -69.57559)
+
+[node name="Character_Finch4" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-0.18299186, 0, 14.998884, 0, 15.000001, 0, -14.998884, 0, -0.18299186, -249.02621, 7.4541583, -70.64751)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
@@ -3224,7 +3264,7 @@ transform = Transform3D(-0.80775696, -0.006638089, 0.5894758, 0, 0.999925, 0.011
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
-[connection signal="body_entered" from="EventTriggerHole" to="EventTriggerHole" method="_on_body_entered"]
+[connection signal="body_entered" from="EventTrigger" to="EventTrigger" method="_on_body_entered"]
 [connection signal="on_interaction_signal" from="Ronces/Interactable" to="Ronces" method="_on_interactable_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="spaceDoors/Interactable" to="spaceDoors" method="_on_interactable_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="spaceDoors/Interactable2" to="spaceDoors" method="_on_interactable_2_on_interaction_signal"]
