@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgw4dixoop64h"]
+[gd_scene load_steps=8 format=3 uid="uid://cgw4dixoop64h"]
 
 [ext_resource type="Texture2D" uid="uid://ps6osqaurddg" path="res://assets/graphical/ui/livre.png" id="1_c6ynd"]
 [ext_resource type="Script" uid="uid://0ofk0ac6adtx" path="res://src/scenes/ui/book/book_get.gd" id="2_an2oi"]
 [ext_resource type="Script" uid="uid://up24dtse8gef" path="res://src/classes/interactable.gd" id="2_jtn1a"]
+[ext_resource type="PackedScene" uid="uid://dj6s0gnkahvlb" path="res://src/scenes/surbrillance/surbrillance.tscn" id="4_an2oi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_an2oi"]
 transparency = 1
@@ -29,5 +30,9 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01977539, 0.24276733, 0.11743164)
 shape = SubResource("BoxShape3D_83upp")
+
+[node name="Surbrillance" parent="." instance=ExtResource("4_an2oi")]
+transform = Transform3D(4.0740933, 0, 0, 0, 1.3948443, 5.364418e-07, 0, 1.4901161e-08, 4.229134, 0.13003424, 0.21671459, -0.18897344)
+amount = 30
 
 [connection signal="on_interaction_signal" from="Interactable" to="." method="_on_interactable_on_interaction_signal"]
