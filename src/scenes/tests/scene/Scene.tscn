@@ -888,7 +888,7 @@ point_count = 5
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -117.555695, 4.856743, -2.6850815)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -167.07976, 5.4322853, 0.8175707)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -3089,12 +3089,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.415794, 2.1901364, 215.3
 title = "Le chat ?"
 message = "Un chat étrangement grand se trouve devant moi. Il semble amical."
 
-[node name="NarrationArea3" parent="." instance=ExtResource("47_xfcej")]
+[node name="fin" parent="." instance=ExtResource("47_xfcej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.48829, 0, 246.43579)
 title = "La fin"
-message = "J'ai reussi à atteindre le bout de cet endroit. Je vais enfin pouvoir partir d'ici..."
+message = "J'ai atteint la fin. Enfin, la sortie.Pourtant... quelque chose ne va pas. L'air ici est trop calme, les plantes semblent m’observer, comme si elles attendaient.Tout ce chemin, toutes ces découvertes... et maintenant que je peux partir, je me demande si j’en ai vraiment envie.Peut-être que ce lieu n’était pas une prison. Peut-être que c'était un test."
 
-[node name="CollisionShape3D" parent="NarrationArea3" index="0"]
+[node name="CollisionShape3D" parent="fin" index="0"]
 transform = Transform3D(3.664164, 0, -1.6043384, 0, 4, 0, 1.6043384, 0, 3.664164, -1.0908356, 0, -3.161026)
 
 [node name="door_hinge" type="Node3D" parent="."]
@@ -3325,4 +3325,4 @@ transform = Transform3D(0.6083912, 0, -0.79363585, 0, 0.99999976, 0, 0.79363567,
 [editable path="Lore_z3"]
 [editable path="Squelette"]
 [editable path="NarrationArea2"]
-[editable path="NarrationArea3"]
+[editable path="fin"]
