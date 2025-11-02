@@ -876,7 +876,7 @@ point_count = 8
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -164.48347, 4.3440304, -3.9259315)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -168.95952, 4.856743, 0.67638457)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -3112,7 +3112,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
-transform = Transform3D(0.46795657, -0.43609756, -0.020882227, -0.08299111, -0.11890302, 0.6233576, -0.4286371, -0.4530799, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
+transform = Transform3D(0.46795657, -0.43609765, -0.020882227, -0.08299111, -0.11890304, 0.6233576, -0.4286371, -0.45308, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
 
@@ -3208,7 +3208,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638089, 0.5894758, 0, 0.999925, 0.011260373, -0.5895138, 0.009095568, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380855, 0.5894758, 0, 0.9999244, 0.011260373, -0.5895138, 0.009095563, -0.807705, 0, 0, 0)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]

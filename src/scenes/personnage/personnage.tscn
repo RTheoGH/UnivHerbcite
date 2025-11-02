@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://hyxjxaek1eag"]
+[gd_scene load_steps=28 format=3 uid="uid://hyxjxaek1eag"]
 
 [ext_resource type="Script" uid="uid://deysa375pgxig" path="res://src/scenes/personnage/personnage.gd" id="1_34im4"]
 [ext_resource type="Texture2D" uid="uid://cy0ohhvb38hg8" path="res://assets/graphical/crosshair.png" id="2_v37cp"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://myeta4fsy8gm" path="res://assets/graphical/ui/jump2.png" id="15_rthui"]
 [ext_resource type="Texture2D" uid="uid://dnrvi8moibi6a" path="res://assets/graphical/ui/nausea_icon.png" id="16_epq6u"]
 [ext_resource type="Texture2D" uid="uid://jqhcirclg6kn" path="res://assets/graphical/ui/maxwell_e.png" id="17_wsu1q"]
+[ext_resource type="Texture2D" uid="uid://dlbte83kvyosk" path="res://assets/graphical/ui/poison_clear_icon2.png" id="18_40pqb"]
 [ext_resource type="AudioStream" uid="uid://da8wgv66guhm2" path="res://assets/sounds/cough.mp3" id="19_8ux3l"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_hga14"]
@@ -320,6 +321,37 @@ offset_right = -0.04600525
 offset_bottom = -0.01499939
 texture = ExtResource("17_wsu1q")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Poison_icon" type="TextureRect" parent="Effects"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.032505497
+anchor_top = 1.2294445
+anchor_right = 0.24750553
+anchor_bottom = 1.5334444
+offset_left = -1.9160004
+offset_top = 0.024997711
+offset_right = -0.04600525
+offset_bottom = -0.01499939
+texture = ExtResource("18_40pqb")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Poison" type="RichTextLabel" parent="Effects"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24750553
+anchor_top = 1.2744445
+anchor_right = 0.64250547
+anchor_bottom = 1.4964445
+offset_left = -0.04600525
+offset_top = -0.049999237
+offset_right = 0.06400299
+offset_bottom = -0.020004272
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="FPS" type="RichTextLabel" parent="."]

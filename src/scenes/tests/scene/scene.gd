@@ -20,7 +20,6 @@ func _ready() -> void:
 	
 	$Perso.reset_objectives()
 	$Perso.update_objectives_text()
-	
 	#$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
 	Global.is_craft_ui_open = false
 	Global.player_inventory.items.clear()
