@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=129 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -59,6 +59,8 @@
 [ext_resource type="Resource" uid="uid://b814ym0oym2ib" path="res://src/classes/event/cat_event.tres" id="56_1bfsn"]
 [ext_resource type="Resource" uid="uid://ctjssxc0hjjao" path="res://src/classes/event/hedgehog_event.tres" id="57_xxxgc"]
 [ext_resource type="PackedScene" uid="uid://b6ok7wq7t225o" path="res://src/scenes/events/squirrel_event/squirrelEvent.tscn" id="59_6c504"]
+[ext_resource type="PackedScene" uid="uid://b87q8v7t7f4pu" path="res://assets/game_resources/models/Animaux/Character_Finch.fbx" id="60_xxxgc"]
+[ext_resource type="AudioStream" uid="uid://bv4lkc28ww83j" path="res://assets/sounds/birds-chirping.mp3" id="61_lm3in"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qr7a2"]
 radius = 1.2749023
@@ -877,7 +879,7 @@ point_count = 8
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -168.95952, 4.856743, 0.67638457)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -245.02644, 4.856743, -67.4666)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -3215,13 +3217,38 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638083, 0.5894758, 0, 0.99992406, 0.011260373, -0.5895138, 0.00909556, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380827, 0.5894758, 0, 0.999924, 0.011260373, -0.5895138, 0.009095559, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
 
 [node name="SquirrelEvent" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -222.23828, 5.291643, -75.80169)
+
+[node name="Character_Finch" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(6.904623, 0, -13.316386, 0, 14.999999, 0, 13.316386, 0, 6.904623, -247.28061, 4.9316926, -70.655556)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Character_Finch"]
+stream = ExtResource("61_lm3in")
+volume_db = -15.0
+autoplay = true
+max_distance = 40.0
+bus = &"SFX"
+
+[node name="Character_Finch2" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0, -14.925988, -249.74295, 4.931692, -69.28045)
+
+[node name="Character_Finch3" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0, -14.925988, -248.38457, 4.931692, -70.760574)
+
+[node name="Character_Finch5" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0, -14.925988, -247.70335, 4.931692, -69.96334)
+
+[node name="Character_Finch6" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0, -14.925988, -250.67415, 4.931692, -69.57559)
+
+[node name="Character_Finch4" parent="." instance=ExtResource("60_xxxgc")]
+transform = Transform3D(-0.18299186, 0, 14.998884, 0, 15.000001, 0, -14.998884, 0, -0.18299186, -249.02621, 7.4541583, -70.64751)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
