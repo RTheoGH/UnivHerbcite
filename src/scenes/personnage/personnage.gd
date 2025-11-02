@@ -226,7 +226,7 @@ func _physics_process(delta: float) -> void:
 	
 	if is_in_toxic_fog && not ItemEffects.is_effect_active(InventoryItem.InventoryItemEffect.POISON_IMMUNE):
 		is_in_toxic_fog = false
-		$cough.play()
+		$cough.play(3.0)
 		faint(2.0)
 	
 	static_cam = false
@@ -340,6 +340,6 @@ func _on_quest_3_body_entered(body: Node3D) -> void:
 		complete_objective("space_3","fac_1")
 
 func faint(time: float):
-	Overlay.fade_to_black(time)
+	await Overlay.fade_to_black(time)
 	global_position = respawn_position
 	Overlay.fade_from_black(0.5)
