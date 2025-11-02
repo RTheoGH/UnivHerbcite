@@ -46,6 +46,29 @@ offset_bottom = -0.2880249
 mouse_filter = 2
 color = Color(0, 0, 0, 0.27058825)
 
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.108
+anchor_top = 0.080000006
+anchor_right = 0.527
+anchor_bottom = 0.80600005
+offset_left = -0.41600037
+offset_top = 503.16
+offset_right = -0.104003906
+offset_bottom = 87.711975
+mouse_filter = 2
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="ColorRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+
 [node name="ColorRect3" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -154,14 +177,17 @@ position = Vector2(949, 461)
 [node name="Place4" parent="." instance=ExtResource("4_nqwv1")]
 position = Vector2(224, 142)
 scale = Vector2(4.46, 4.46)
+input_pickable = true
 
 [node name="Place5" parent="." instance=ExtResource("4_nqwv1")]
 position = Vector2(368, 142)
 scale = Vector2(4.46, 4.46)
+input_pickable = true
 
 [node name="Place6" parent="." instance=ExtResource("4_nqwv1")]
 position = Vector2(507, 142)
 scale = Vector2(4.46, 4.46)
+input_pickable = true
 
 [node name="Object1" parent="." instance=ExtResource("5_j36tp")]
 position = Vector2(760, 461)
@@ -205,6 +231,7 @@ offset_left = -0.51208496
 offset_top = -0.23200989
 offset_right = 0.39996338
 offset_bottom = 0.11199951
+mouse_filter = 1
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -222,6 +249,12 @@ bus = &"SFX"
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="button_up" from="Confirm" to="." method="_on_confirm_button_up"]
 [connection signal="button_up" from="Confirm2" to="." method="_on_confirm_2_button_up"]
+[connection signal="mouse_entered" from="Place4" to="." method="_on_place_mouse_entered" binds= [0]]
+[connection signal="mouse_exited" from="Place4" to="." method="_on_place_mouse_exited"]
+[connection signal="mouse_entered" from="Place5" to="." method="_on_place_mouse_entered" binds= [1]]
+[connection signal="mouse_exited" from="Place5" to="." method="_on_place_mouse_exited"]
+[connection signal="mouse_entered" from="Place6" to="." method="_on_place_mouse_entered" binds= [2]]
+[connection signal="mouse_exited" from="Place6" to="." method="_on_place_mouse_exited"]
 [connection signal="body_entered" from="Object1/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="mouse_entered" from="Object1/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [0]]
 [connection signal="mouse_exited" from="Object1/Area2D" to="." method="_on_area_2d_mouse_exited"]
