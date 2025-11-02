@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=95 format=3 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -39,9 +39,8 @@
 [ext_resource type="Resource" uid="uid://ve8dgj8wb3br" path="res://assets/game_resources/plantes/Myrobolan.tres" id="42_f74wi"]
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="45_xfcej"]
-[ext_resource type="Script" uid="uid://crvb1x2d3cilp" path="res://src/classes/event/event_trigger.gd" id="47_w0kh0"]
+[ext_resource type="Texture2D" uid="uid://i1r7nfcetwr2" path="res://assets/graphical/Textures/map/bois.jpg" id="47_w0kh0"]
 [ext_resource type="PackedScene" uid="uid://brt0xm8okhq2h" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
-[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="48_7v1kh"]
 [ext_resource type="Resource" uid="uid://1qnswolr50hj" path="res://assets/game_resources/plantes/Romarin.tres" id="48_feptu"]
 [ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
 [ext_resource type="Resource" uid="uid://ddyac0gbwyi0w" path="res://src/classes/event/fox_event.tres" id="49_v5phb"]
@@ -50,6 +49,9 @@
 [ext_resource type="PackedScene" uid="uid://dnjaeada2cck5" path="res://assets/game_resources/models/low_poly_skeleton.glb" id="51_v5phb"]
 [ext_resource type="Resource" uid="uid://uyj35ar65r8t" path="res://assets/game_resources/plantes/Lierre.tres" id="53_s7dv6"]
 [ext_resource type="Texture2D" uid="uid://ck0iumt200olu" path="res://assets/graphical/plantes/lierre.png" id="54_accns"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_feptu"]
+size = Vector3(0.168396, 1.9804535, 1.1209564)
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -263,6 +265,60 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feptu"]
+albedo_texture = ExtResource("47_w0kh0")
+
+[sub_resource type="BoxMesh" id="BoxMesh_7v1kh"]
+
+[sub_resource type="GDScript" id="GDScript_xfcej"]
+resource_name = "blocus_zone_3"
+script/source = "extends MeshInstance3D
+
+func _on_interactable_on_interaction_signal() -> void:
+	if Global.player_inventory.items.size()-1 <= Global.inv_current_slot\\
+	 and Global.player_inventory.items[Global.inv_current_slot].type == InventoryItem.InventoryItemType.POTION_VIOLETTE:
+		Global.player_inventory.remove_item(Global.player_inventory.ittems[Global.inv_current_slot])
+		queue_free()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v5phb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxgoi"]
+
+[sub_resource type="GDScript" id="GDScript_w0kh0"]
+resource_name = "porte_space"
+script/source = "extends MeshInstance3D
+
+func _on_interactable_on_interaction_signal() -> void:
+	Global.text_alert.show_alert(\"La porte du S-pace s'est ouverte\")
+	queue_free()
+
+
+func _on_interactable_2_on_interaction_signal() -> void:
+	Global.text_alert.show_alert(\"La porte ne s'ouvre pas de ce coté...\")
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7v1kh"]
+albedo_texture = ExtResource("54_accns")
+
+[sub_resource type="QuadMesh" id="QuadMesh_feptu"]
+
+[sub_resource type="GDScript" id="GDScript_7v1kh"]
+resource_name = "blocus_labo_door"
+script/source = "extends MeshInstance3D
+
+
+func _on_interactable_on_interaction_signal() -> void:
+	if Global.player_inventory.items.size()-1 <= Global.inv_current_slot\\
+	 and Global.player_inventory.items[Global.inv_current_slot].type == InventoryItem.InventoryItemType.POTION_JAUNE:
+		Global.player_inventory.remove_item(Global.player_inventory.ittems[Global.inv_current_slot])
+		queue_free()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jxsa7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_75rwc"]
+
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
 
@@ -324,7 +380,24 @@ player = NodePath("../Perso")
 [node name="Map2" parent="." instance=ExtResource("9_dod7h")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.2523017, 0)
 
-[node name="ground " parent="Map2/map" index="3"]
+[node name="door" parent="Map2/map" index="0"]
+transform = Transform3D(-0.5783783, 0, -0.6547291, 0, 0.8736084, 0, 0.6547291, 0, -0.5783783, -141.22505, 0.39207274, 3.5990665)
+
+[node name="Interactable" type="Area3D" parent="Map2/map/door" index="0"]
+script = ExtResource("4_plqpu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map2/map/door/Interactable"]
+transform = Transform3D(0.99999976, 0, 3.5762787e-07, 0, 1, 0, -3.5762787e-07, 0, 0.99999976, 0.011230469, 0.054589033, 0.02884674)
+shape = SubResource("BoxShape3D_feptu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Map2/map/door" index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map2/map/door/StaticBody3D"]
+transform = Transform3D(0.99999976, 0, 3.5762787e-07, 0, 1, 0, -3.5762787e-07, 0, 0.99999976, 0.011230469, 0.054589033, 0.02884674)
+shape = SubResource("BoxShape3D_feptu")
+
+[node name="ground " parent="Map2/map" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.20738, 0.031304598, 2.4472466)
 
 [node name="CollisionShape3D" parent="Map2/map/ground /StaticBody3D" index="0"]
@@ -338,6 +411,9 @@ transform = Transform3D(0.946252, 0.14721659, 0.28798333, -0.25512597, 0.8870195
 
 [node name="MeshInstance3D" parent="Map2" index="2"]
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
+
+[node name="MeshInstance3D" parent="Map2/Vegetation/zone3/Arbre25" index="5"]
+transform = Transform3D(0.7700611, 0.26767474, -0.5790991, -0.10801911, 0.94932157, 0.2951619, 0.62875855, -0.1647391, 0.75994927, -1.584959, -0.05244541, -0.22914124)
 
 [node name="credits" type="Node3D" parent="."]
 transform = Transform3D(0.75631094, 0.0089347325, 0.65415084, 0.03803871, 0.9976146, -0.057605203, -0.6531055, 0.06845051, 0.75416696, 47.497673, -2.2633784, 234.7595)
@@ -480,7 +556,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("23_feptu")
 
 [node name="TextureRect" type="TextureRect" parent="Recette/Control"]
 layout_mode = 1
@@ -668,10 +743,12 @@ text = "Fermer"
 transform = Transform3D(2.3339903, -1.3448156, -5.8783755e-08, 0, -1.1774553e-07, 2.6937037, -1.3448156, -2.3339903, -1.0202196e-07, -174.3781, 4.188389, 13.14536)
 
 [node name="Control" type="Control" parent="Lore"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("23_feptu")
 
 [node name="TextureRect" type="TextureRect" parent="Lore/Control"]
 layout_mode = 1
@@ -1338,30 +1415,6 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
-[node name="Interactable7" type="Area3D" parent="Plantes/Lavandes"]
-transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -202.92856, 5.9965687, -13.04163)
-collision_layer = 4
-collision_mask = 4
-script = ExtResource("4_plqpu")
-is_collectible = true
-plante = ExtResource("27_hwj20")
-metadata/_custom_type_script = "uid://up24dtse8gef"
-
-[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Lavandes/Interactable7"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -1.7304211, 0)
-billboard = 2
-shaded = true
-texture = ExtResource("27_5x5f6")
-script = ExtResource("19_mcf5s")
-sprites = Array[Texture]([ExtResource("27_5x5f6")])
-offsets = Array[Vector2]([Vector2(0, 0)])
-billboarding = true
-metadata/_custom_type_script = "uid://byq8iypi45525"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
-shape = SubResource("CylinderShape3D_hwj20")
-
 [node name="Interactable8" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(2.3127072, 0, 0, 0, 2.3127072, 0, 0, 0, 2.3127072, -226.27985, 10.178368, -169.05066)
 collision_layer = 4
@@ -1727,6 +1780,7 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable"]
 billboard = 2
+shaded = true
 texture = ExtResource("49_7v1kh")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("49_7v1kh")])
@@ -1749,6 +1803,7 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable2"]
 billboard = 2
+shaded = true
 texture = ExtResource("49_7v1kh")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("49_7v1kh")])
@@ -1771,6 +1826,7 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable3"]
 billboard = 2
+shaded = true
 texture = ExtResource("49_7v1kh")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("49_7v1kh")])
@@ -1793,6 +1849,7 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable4"]
 billboard = 2
+shaded = true
 texture = ExtResource("49_7v1kh")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("49_7v1kh")])
@@ -1837,6 +1894,7 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable6"]
 billboard = 2
+shaded = true
 texture = ExtResource("49_7v1kh")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("49_7v1kh")])
@@ -1859,6 +1917,7 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable7"]
 billboard = 2
+shaded = true
 texture = ExtResource("49_7v1kh")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("49_7v1kh")])
@@ -1881,6 +1940,7 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable8"]
 billboard = 2
+shaded = true
 texture = ExtResource("49_7v1kh")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("49_7v1kh")])
@@ -2075,11 +2135,6 @@ transform = Transform3D(0.040789995, 0, 0, 0, 0.023599211, -0.015180129, 0, 0.00
 
 [node name="EventTriggerHole" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.38007, -1.0606635, 95.66829)
-script = ExtResource("47_w0kh0")
-events = Array[ExtResource("48_7v1kh")]([ExtResource("49_v5phb")])
-event_markers = {
-ExtResource("49_v5phb"): null
-}
 metadata/_custom_type_script = "uid://crvb1x2d3cilp"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EventTriggerHole"]
@@ -2098,17 +2153,97 @@ curve = SubResource("Curve3D_7v1kh")
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerHole/EventMarker_FoxEvent/Path3D"]
 transform = Transform3D(-0.05154668, 0, 0.9986643, 0, 0.9999982, 0, -0.99866194, 0, -0.051546805, -0.358, 0, 0)
 
+[node name="StaticBody3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(29.612133, 0.23632543, 0.001173249, -1.3167262, 5.3148723, 0, -0.12869126, -0.0010270459, 0.26996705, -42.62821, 0.73670334, 79.76847)
+material_override = SubResource("StandardMaterial3D_feptu")
+mesh = SubResource("BoxMesh_7v1kh")
+script = SubResource("GDScript_xfcej")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_v5phb")
+
+[node name="Interactable" type="Area3D" parent="StaticBody3D2"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/Interactable"]
+shape = SubResource("BoxShape3D_qxgoi")
+debug_fill = false
+
+[node name="StaticBody3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.16107188, 0.1648773, -0.12972045, -0.006516991, 3.708029, 0.0057692244, 3.33811, -0.000716545, 0.0062705893, -193.34036, 4.755394, 1.0629247)
+material_override = SubResource("StandardMaterial3D_feptu")
+mesh = SubResource("BoxMesh_7v1kh")
+script = SubResource("GDScript_w0kh0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4/StaticBody3D"]
+shape = SubResource("BoxShape3D_v5phb")
+
+[node name="Interactable" type="Area3D" parent="StaticBody3D4"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.226681e-10, 2.319774)
+shape = SubResource("BoxShape3D_qxgoi")
+debug_fill = false
+
+[node name="Interactable2" type="Area3D" parent="StaticBody3D4"]
+transform = Transform3D(0.99999994, 1.4551915e-11, -1.1641532e-10, 8.731149e-11, 0.99999994, 5.320544e-11, 0, -3.0675437e-08, 1, 0, 0, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4/Interactable2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.226681e-10, 2.319774)
+shape = SubResource("BoxShape3D_qxgoi")
+debug_fill = false
+
+[node name="Blocus_labo_door" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.9639164, 0.076007344, 0.105127305, 0.012211636, 2.8283157, -0.0046597295, -2.7040427, 0.06797615, 0.07633175, -422.67023, 4.179324, 12.551633)
+material_override = SubResource("StandardMaterial3D_7v1kh")
+mesh = SubResource("QuadMesh_feptu")
+skeleton = NodePath("../StaticBody3D4/Interactable2")
+script = SubResource("GDScript_7v1kh")
+
+[node name="Interactable" type="Area3D" parent="Blocus_labo_door"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocus_labo_door/Interactable"]
+shape = SubResource("BoxShape3D_jxsa7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocus_labo_door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocus_labo_door/StaticBody3D"]
+shape = SubResource("BoxShape3D_75rwc")
+
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
 [connection signal="button_up" from="credits/Control/Button" to="credits" method="_on_button_button_up"]
-[connection signal="visibility_changed" from="Recette/Control" to="Recette/Control" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="Lore_z3/Control" to="Lore_z3/Control" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="Lore_z4/Control" to="Lore_z4/Control" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Lore/Control" to="Lore/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
 [connection signal="body_entered" from="EventTriggerHole" to="EventTriggerHole" method="_on_body_entered"]
+[connection signal="on_interaction_signal" from="StaticBody3D2/Interactable" to="StaticBody3D2" method="_on_interactable_on_interaction_signal"]
+[connection signal="on_interaction_signal" from="StaticBody3D4/Interactable" to="StaticBody3D4" method="_on_interactable_on_interaction_signal"]
+[connection signal="on_interaction_signal" from="StaticBody3D4/Interactable2" to="StaticBody3D4" method="_on_interactable_2_on_interaction_signal"]
+[connection signal="on_interaction_signal" from="Blocus_labo_door/Interactable" to="Blocus_labo_door" method="_on_interactable_on_interaction_signal"]
 
 [editable path="Map2"]
 [editable path="Map2/map"]

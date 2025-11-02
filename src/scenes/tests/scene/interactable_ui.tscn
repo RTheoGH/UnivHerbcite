@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bn28wg351wuuv"]
+[gd_scene load_steps=8 format=3 uid="uid://bn28wg351wuuv"]
 
 [ext_resource type="Texture2D" uid="uid://b7kvcwqfgsmwk" path="res://assets/graphical/recipes/recipe_sheet.png" id="1_683j7"]
 [ext_resource type="Script" uid="uid://no6igfjqnx1i" path="res://src/scenes/tests/scene/iteractable_ui.gd" id="2_4v00f"]
 [ext_resource type="PackedScene" uid="uid://dj6s0gnkahvlb" path="res://src/scenes/surbrillance/surbrillance.tscn" id="3_jgx6e"]
+[ext_resource type="AudioStream" uid="uid://4cyxc8gli1wp" path="res://assets/sounds/le_papier.mp3" id="4_683j7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfcej"]
 shading_mode = 0
@@ -31,5 +32,9 @@ shape = SubResource("BoxShape3D_qr7a2")
 
 [node name="Surbrillance" parent="." instance=ExtResource("3_jgx6e")]
 transform = Transform3D(0.9983773, -0.03459671, -0.045247436, 0.05500737, 0.37949124, 0.92355955, -0.014781175, -0.9245482, 0.38077807, 0, 0, 0.02157116)
+
+[node name="son" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_683j7")
+bus = &"SFX"
 
 [connection signal="area_exited" from="Interactable" to="Interactable" method="_on_area_exited"]
