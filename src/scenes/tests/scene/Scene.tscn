@@ -49,6 +49,8 @@
 [ext_resource type="PackedScene" uid="uid://cc4aicqtt3mnl" path="res://assets/graphical/map/door.glb" id="50_v5phb"]
 [ext_resource type="Texture2D" uid="uid://cfrbsc6fv7qjp" path="res://assets/graphical/map/door_space_processe.png" id="51_qxgoi"]
 [ext_resource type="PackedScene" uid="uid://dnjaeada2cck5" path="res://assets/game_resources/models/low_poly_skeleton.glb" id="51_v5phb"]
+[ext_resource type="Texture2D" uid="uid://cq8ft5te6nyy3" path="res://assets/graphical/Textures/map/securise_avec_le_cadenas.png" id="52_jxsa7"]
+[ext_resource type="PackedScene" uid="uid://dj6s0gnkahvlb" path="res://src/scenes/surbrillance/surbrillance.tscn" id="53_q0wsw"]
 [ext_resource type="Resource" uid="uid://uyj35ar65r8t" path="res://assets/game_resources/plantes/Lierre.tres" id="53_s7dv6"]
 [ext_resource type="Texture2D" uid="uid://ck0iumt200olu" path="res://assets/graphical/plantes/lierre.png" id="54_accns"]
 
@@ -474,7 +476,13 @@ func _on_static_body_3d_on_interaction_signal() -> void:
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s7dv6"]
 points = PackedVector3Array(0.065495685, 1, 0.6211298, 0.13943361, 0.25567734, 0.5713956, 0.065495685, 1, -0.6211298, -0.065490365, 1, 0.6211298, 0.065495685, -1, 0.6211298, 0.13943361, 0.24001563, 0.52640384, 0.13943361, 0.022709489, 0.5713956, -0.065490365, 1, -0.6211298, 0.065495685, -1, -0.6211298, -0.065490365, -1, 0.6211298, 0.13943361, 0.02427566, 0.52640384, -0.065490365, -1, -0.6211298)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75rwc"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("52_jxsa7")
+
 [sub_resource type="QuadMesh" id="QuadMesh_v5phb"]
+material = SubResource("StandardMaterial3D_75rwc")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jxsa7"]
 size = Vector3(1.4925537, 1.2573242, 1.3231812)
@@ -2674,7 +2682,7 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 shape = SubResource("ConvexPolygonShape3D_s7dv6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="door3"]
-transform = Transform3D(0.008796648, 0, 0.14974184, 0, 0.15, 0, -0.14974184, 0, 0.008796648, 0.10595721, 0, 0.557121)
+transform = Transform3D(0.008796655, 0, 0.14974186, 0, 0.14999999, 0, -0.14974186, 0, 0.008796655, 0.06784223, -0.062552504, 0.555514)
 mesh = SubResource("QuadMesh_v5phb")
 
 [node name="StaticBody3D" type="Area3D" parent="door3/MeshInstance3D"]
@@ -2686,6 +2694,57 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="door3/MeshInstance3D/StaticBody3D"]
 transform = Transform3D(1, 0, -5.9604645e-08, 0, 0.9999998, 0, 5.9604645e-08, 0, 1, 0.24645996, 0.12866306, 0.1616211)
 shape = SubResource("BoxShape3D_jxsa7")
+
+[node name="Surbrillance" parent="door3/MeshInstance3D" instance=ExtResource("53_q0wsw")]
+
+[node name="Recette2" parent="." instance=ExtResource("20_fi6eh")]
+transform = Transform3D(-2.3081813, -1.3534675, 0.31058735, -0.14056757, 0.82711387, 2.5597196, -1.3815132, 2.177165, -0.77936655, -266.1739, 4.6744113, -32.6575)
+
+[node name="Control" type="Control" parent="Recette2"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Recette2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 446.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_f74wi")
+
+[node name="TextEdit2" type="RichTextLabel" parent="Recette2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 137.0
+offset_top = 1.0
+offset_right = 365.0
+offset_bottom = 326.0
+theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "[fill]C'est vraiment le point de vue parfait pour les observer ! Rester dans l'ombre du bâtiment 5 pour les prendre en photo sous la lumière du soleil. En plus de ça, j'ai ma petite routine pour les photos : d'abord je regarde les [color=dark_red]abeilles[/color] butiner les plantes, puis je regarde s'il y a un [color=darkred]écureuil[/color] près des arbres et enfin j'observe l'arbre esseulé au cas où un de ces [color=dark_red]étourneaux[/color] se pose dessus. D'ailleurs je crois bien que certains gars du labo chargés de l'entretien de la [color=dark_red]forêt devant le S-pace[/color] m'ont piqué ma routine, ils font carrément fuir les animaux !"
+
+[node name="Button" type="Button" parent="Recette2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 17.875
+anchor_top = 11.875001
+anchor_right = 19.650002
+anchor_bottom = 12.825001
+offset_top = -3.0517578e-05
+offset_right = -6.1035156e-05
+text = "Fermer"
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
@@ -2707,6 +2766,7 @@ shape = SubResource("BoxShape3D_jxsa7")
 [connection signal="on_interaction_signal" from="door2/Interactable2" to="door2" method="_on_interactable_2_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="door3/Interactable" to="door3" method="_on_interactable_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="door3/MeshInstance3D/StaticBody3D" to="door3" method="_on_static_body_3d_on_interaction_signal"]
+[connection signal="visibility_changed" from="Recette2/Control" to="Recette2/Control" method="_on_visibility_changed"]
 
 [editable path="NarrationArea"]
 [editable path="Map2"]
