@@ -26,6 +26,8 @@ var one_time: bool = false
 var already_discovered: bool = false
 var first_plante : bool = true
 
+var is_in_toxic_fog: bool = false
+
 var crosshair_textures = {
 	"default": preload("res://assets/graphical/crosshair.png"),
 	"pickup": preload("res://assets/graphical/crosshair_pickup.res"),
@@ -38,6 +40,8 @@ var hmm = preload("res://assets/graphical/ui/hmmmm.png")
 var current_objectives = [
 	["space_1",false]
 ]
+
+@onready var respawn_position: Vector3 = global_position
 
 func try_grab() -> Node3D:
 	var obj := ray.get_collider()
@@ -219,7 +223,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		step_timer = 0.0
 		audio_marche.stop()
-		
+	
+	if is_in_toxic_fog && not ItemEffects.is_effect_active(InventoryItem.InventoryItemEffect.POISON_IMMUNE):
+		is_in_toxic_fog = false
+		$cough.play(3.0)
+		faint(2.0)
+	
 	static_cam = false
 	move_and_slide()
 
@@ -329,3 +338,8 @@ func _on_quest_3_body_entered(body: Node3D) -> void:
 		#new_objective("Quest_3", "fac_1", _on_quest_3_body_entered)
 	if body == self and not current_objectives_contains("fac_1"):
 		complete_objective("space_3","fac_1")
+
+func faint(time: float):
+	await Overlay.fade_to_black(time)
+	global_position = respawn_position
+	Overlay.fade_from_black(0.5)
