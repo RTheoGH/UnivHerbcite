@@ -236,8 +236,9 @@ size = Vector3(0.111206055, 1.78125, 2.2076797)
 script/source = "extends Node3D
 
 func _on_interactable_on_interaction_signal() -> void:
-	Global.text_alert.show_alert(\"La porte ne s'ouvre pas de ce coté...\")
-	$AnimationPlayer.play(\"fail_open\")
+	Global.text_alert.show_alert(\"La porte du S-pace s'est ouverte\")
+	if $Interactable2:
+		$Interactable2.queue_free()
 
 func _on_interactable_2_on_interaction_signal() -> void:
 	Global.text_alert.show_alert(\"La porte du S-pace s'est ouverte\")
