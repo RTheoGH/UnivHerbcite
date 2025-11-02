@@ -21,7 +21,7 @@ func _ready() -> void:
 	$musique/musique_val.text = str(AudioServer.get_bus_volume_linear(music))
 	$menu/menu_val.text = str(AudioServer.get_bus_volume_linear(sfx))
 	$AA_option.selected = 1
-	$Ombres_option.selected = 2
+	$Ombres_option.selected = 3
 	$Guide_b.button_pressed = true
 	$LOD_b.button_pressed = true
 
