@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://hyxjxaek1eag"]
+[gd_scene load_steps=26 format=3 uid="uid://hyxjxaek1eag"]
 
 [ext_resource type="Script" uid="uid://deysa375pgxig" path="res://src/scenes/personnage/personnage.gd" id="1_34im4"]
 [ext_resource type="Texture2D" uid="uid://cy0ohhvb38hg8" path="res://assets/graphical/crosshair.png" id="2_v37cp"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://r2ypojox8vhk" path="res://assets/graphical/ui/run2.png" id="14_2ncbn"]
 [ext_resource type="Texture2D" uid="uid://myeta4fsy8gm" path="res://assets/graphical/ui/jump2.png" id="15_rthui"]
 [ext_resource type="Texture2D" uid="uid://dnrvi8moibi6a" path="res://assets/graphical/ui/nausea_icon.png" id="16_epq6u"]
+[ext_resource type="Texture2D" uid="uid://jqhcirclg6kn" path="res://assets/graphical/ui/maxwell_e.png" id="17_wsu1q"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_hga14"]
 length = 2.0
@@ -51,7 +52,7 @@ stream_5 = ExtResource("10_epq6u")
 stream_6 = ExtResource("11_wsu1q")
 stream_7 = ExtResource("12_8ux3l")
 
-[node name="Perso" type="CharacterBody3D"]
+[node name="Perso" type="CharacterBody3D" groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_34im4")
 frame_amount = 0.02
@@ -78,10 +79,10 @@ shape = SubResource("SeparationRayShape3D_hga14")
 [node name="Crosshair" type="TextureRect" parent="Camera3D"]
 texture_filter = 1
 anchors_preset = -1
-anchor_left = 0.483
-anchor_top = 0.469
-anchor_right = 0.517
-anchor_bottom = 0.531
+anchor_left = 0.4656389
+anchor_top = 0.43813583
+anchor_right = 0.5343611
+anchor_bottom = 0.5618642
 offset_left = -0.41601563
 offset_top = 0.08798218
 offset_right = 0.4159546
@@ -89,6 +90,7 @@ offset_bottom = -0.088012695
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_v37cp")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite3D" type="Sprite3D" parent="Camera3D"]
 transform = Transform3D(0.74621886, 0.11165715, -0.2639182, -0.032047596, 0.7640752, 0.23264763, 0.28476855, -0.20660256, 0.7177639, 1.303489, -0.66686034, -1.3990556)
@@ -302,6 +304,21 @@ offset_bottom = -0.020004272
 theme_override_colors/default_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Healed_icon" type="TextureRect" parent="Effects"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.043494508
+anchor_top = 0.9701852
+anchor_right = 0.25849453
+anchor_bottom = 1.2741852
+offset_left = -1.9160004
+offset_top = 0.024997711
+offset_right = -0.04600525
+offset_bottom = -0.01499939
+texture = ExtResource("17_wsu1q")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="FPS" type="RichTextLabel" parent="."]

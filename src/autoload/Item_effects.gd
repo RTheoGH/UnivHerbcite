@@ -32,6 +32,12 @@ var effects := {
 			{"target": "overlay"}
 		],
 		"duration": 10.0
+	},
+	InventoryItem.InventoryItemEffect.HEALED: {
+		"stats": [
+			{"target": "player"}
+		],
+		"duration": 1000000000000.0
 	}
 }
 
@@ -56,25 +62,31 @@ func _apply_effect(p, effect_type):
 			target = player
 		else:
 			target = player.get_node("Camera3D")
-			
-		if "transition" in stat:
-			var tween = get_tree().create_tween()
-			tween.tween_property(target, stat["property"], stat["boost"], stat["transition"])
-		else:
-			target.set(stat["property"], stat["boost"])
-		print("Boost " + stat["property"] + " appliqué")
+		
+		if "property" in stat:
+			if "transition" in stat:
+				var tween = get_tree().create_tween()
+				tween.tween_property(target, stat["property"], stat["boost"], stat["transition"])
+			else:
+				target.set(stat["property"], stat["boost"])
+			print("Boost " + stat["property"] + " appliqué")
 
 	if active_timers.has(effect_type):
-		active_timers[effect_type].stop()
+		if active_timers[effect_type] != null:
+			active_timers[effect_type].stop()
 	else:
-		var t := Timer.new()
-		t.wait_time = effect["duration"]
-		t.one_shot = true
-		add_child(t)
-		t.connect("timeout", Callable(self, "_on_effect_timeout").bind(player, effect_type))
-		active_timers[effect_type] = t
+		if effect_type == InventoryItem.InventoryItemEffect.HEALED:
+			active_timers[effect_type] = null
+		else:
+			var t := Timer.new()
+			t.wait_time = effect["duration"]
+			t.one_shot = true
+			add_child(t)
+			t.connect("timeout", Callable(self, "_on_effect_timeout").bind(player, effect_type))
+			active_timers[effect_type] = t
 	
-	active_timers[effect_type].start()
+	if active_timers[effect_type] != null:
+		active_timers[effect_type].start()
 	
 func _on_effect_timeout(p, effect_type):
 	if player == null:
@@ -95,12 +107,13 @@ func _on_effect_timeout(p, effect_type):
 		else:
 			target = player.get_node("Camera3D")
 		
-		if "transition" in stat:
-			var tween = get_tree().create_tween()
-			tween.tween_property(target, stat["property"], stat["default"], stat["transition"])
-		else:
-			target.set(stat["property"], stat["default"])
-		print("Fin du boost " + stat["property"])
+		if "property" in stat:
+			if "transition" in stat:
+				var tween = get_tree().create_tween()
+				tween.tween_property(target, stat["property"], stat["default"], stat["transition"])
+			else:
+				target.set(stat["property"], stat["default"])
+			print("Fin du boost " + stat["property"])
 	
 	if effect_type == InventoryItem.InventoryItemEffect.SPEED:
 		player.get_node("Effects/Speed_icon").hide()
@@ -128,8 +141,11 @@ func _process(_delta: float) -> void:
 	
 	effects_ui.show()
 	for effect_type in active_timers.keys():
-		var timer: Timer = active_timers[effect_type]
-		var time_left: float = round(timer.time_left)
+		
+		var time_left := 0.0
+		if active_timers[effect_type] != null:
+			var timer: Timer = active_timers[effect_type]
+			time_left = round(timer.time_left)
 		
 		if effect_type == InventoryItem.InventoryItemEffect.SPEED or effect_type == InventoryItem.InventoryItemEffect.SPEED_POTION:
 			var icon: TextureRect = player.get_node("Effects/Speed_icon")
@@ -149,3 +165,9 @@ func _process(_delta: float) -> void:
 			icon.show()
 			label.text = str(int(time_left)) + "s"
 			label.show()
+		elif effect_type == InventoryItem.InventoryItemEffect.HEALED:
+			var icon: TextureRect = player.get_node("Effects/Healed_icon")
+			icon.show()
+
+func is_effect_active(effect: InventoryItem.InventoryItemEffect) -> bool:
+	return active_timers.keys.has(effect)

@@ -57,9 +57,10 @@ func _process(_delta: float) -> void:
 				count+=1
 					
 			if can_craft_item:
-				$TextureRect2.texture = result.texture
-				$RichTextLabel.text = str(InventoryItem.InventoryItemType.find_key(result.type))
-				$TextureRect.texture = craft_ui_textures["complete"]		
+				#$TextureRect2.texture = result.texture
+				print("texture ?", result.texture)
+				#$RichTextLabel.text = str(InventoryItem.InventoryItemType.find_key(result.type))
+				#$TextureRect.texture = craft_ui_textures["complete"]
 			else:
 				$TextureRect2.texture = null
 				$RichTextLabel.text = ""
@@ -148,6 +149,10 @@ func _on_confirm_button_up() -> void:
 				ci.revele = true
 		if $TextureRect.texture == craft_ui_textures["complete"]:
 			$TextureRect.texture = craft_ui_textures["base"]
+		refresh()
+	else:
+		Global.player_inventory.consume_items(current_ings)
+		$Fail.play()
 		refresh()
 
 func _on_confirm_2_button_up() -> void:

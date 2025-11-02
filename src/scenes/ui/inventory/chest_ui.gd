@@ -21,7 +21,9 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("inventory") or Input.is_action_just_pressed("pause"):
 		chest_closed.emit(chest_inventory)
+		if Global.is_chest_open : $"../chest2/AnimationPlayer".play_backwards("open")
 		Global.is_chest_open = false
+		
 		hide()
 
 	if hoverred_slot != -1:
@@ -77,6 +79,7 @@ func refresh():
 
 func _on_interactable_chest_opened(inv: Inventory) -> void:
 	show()
+	$"../chest2/AnimationPlayer".queue("open")
 	is_open = true
 	chest_inventory = inv
 	Global.is_chest_open = true
@@ -87,7 +90,9 @@ func _on_area_exited(area: Area3D) -> void:
 		chest_closed.emit(chest_inventory)
 		hide()
 		is_open = false
+		if Global.is_chest_open : $"../chest2/AnimationPlayer".play_backwards("open")
 		Global.is_chest_open = false
+		
 
 
 func _on_inventory_ui_slot_mouse_entered(index : int) -> void:

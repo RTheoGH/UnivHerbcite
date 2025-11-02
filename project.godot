@@ -42,6 +42,7 @@ folder_colors={
 droppable=""
 walls="Les murs qui bloquent"
 draggable=""
+player=""
 
 [gui]
 
