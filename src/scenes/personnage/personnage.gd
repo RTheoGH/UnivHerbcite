@@ -126,7 +126,6 @@ func _physics_process(delta: float) -> void:
 	var obj := ray.get_collider()
 	if(is_instance_of(obj, Interactable)):
 		if obj.is_collectible:
-			#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_pickup.res")
 			$Camera3D/Crosshair.texture = crosshair_textures["pickup"]
 			if !one_time:
 				one_time = true
@@ -146,10 +145,9 @@ func _physics_process(delta: float) -> void:
 					$Informations.texte = "Vous n'avez pas encore découvert cette plante."
 				$Informations.activate()
 		else:
-			#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair_interact.res")
 			$Camera3D/Crosshair.texture = crosshair_textures["interact"]
+			
 	else:
-		#$Camera3D/Crosshair.texture = load("res://assets/graphical/crosshair.png")
 		$Camera3D/Crosshair.texture = crosshair_textures["default"]
 		$Informations.fade_out()
 		one_time = false

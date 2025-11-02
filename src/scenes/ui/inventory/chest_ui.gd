@@ -17,7 +17,7 @@ func _ready() -> void:
 	refresh()
 
 func _process(_delta: float) -> void:
-	discover_olives()
+	#discover_olives()
 	
 	if Input.is_action_just_pressed("inventory") or Input.is_action_just_pressed("pause"):
 		chest_closed.emit(chest_inventory)
@@ -96,6 +96,8 @@ func _on_inventory_ui_slot_mouse_entered(index : int) -> void:
 
 func _on_inventory_ui_slot_mouse_exited() -> void:
 	hoverred_slot = -1
+
+############################
 
 func discover_olives():
 	if !discovered_olives:

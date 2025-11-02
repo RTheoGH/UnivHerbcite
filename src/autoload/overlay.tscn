@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyf4byinua0l5"]
+[gd_scene load_steps=8 format=3 uid="uid://dyf4byinua0l5"]
 
 [ext_resource type="Script" uid="uid://c8rv6t5etlx3q" path="res://src/autoload/overlay.gd" id="1_w34tw"]
 [ext_resource type="Shader" uid="uid://cybqeomnlen3b" path="res://assets/shaders/nausea.gdshader" id="2_prbch"]
-[ext_resource type="Texture2D" uid="uid://bqhg2wdccfpgv" path="res://assets/graphical/ui/pixel_blanc.png" id="3_knpbl"]
 
 [sub_resource type="Gradient" id="Gradient_rehui"]
 interpolation_mode = 2
@@ -20,6 +19,13 @@ fill_from = Vector2(0.5, 0.5)
 shader = ExtResource("2_prbch")
 shader_parameter/strength = 0.0
 shader_parameter/time_speed = 3.0
+
+[sub_resource type="Gradient" id="Gradient_prbch"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0.7490196, 0, 0.33333334)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_knpbl"]
+gradient = SubResource("Gradient_prbch")
 
 [node name="Overlay" type="Control"]
 layout_mode = 3
@@ -63,4 +69,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_knpbl")
+texture = SubResource("GradientTexture1D_knpbl")
