@@ -1446,7 +1446,7 @@ transform = Transform3D(0.23841375, 0, -0.4588486, 0, 0.4085306, 0, 0.4588486, 0
 multimesh = SubResource("MultiMesh_fco0d")
 
 [node name="MeshInstance3D" type="Sprite3D" parent="Vegetation/zone3/Arbre25"]
-transform = Transform3D(0.7700611, 0.26767477, -0.5790991, -0.10801911, 0.94932157, 0.2951619, 0.62875855, -0.1647391, 0.7599493, -1.5849553, -0.05244462, -0.22913866)
+transform = Transform3D(0.76924366, 0.2749526, -0.57677037, -0.10462254, 0.9446962, 0.3108106, 0.6303309, -0.1787462, 0.7554677, -1.663496, 0.14421272, -0.3080063)
 material_override = SubResource("StandardMaterial3D_w75wa")
 shaded = true
 texture = ExtResource("14_g708r")
