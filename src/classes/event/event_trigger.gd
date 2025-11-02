@@ -52,9 +52,8 @@ func instantiate_event(event : Event):
 	
 	event_instance.event_finished.connect(start_timer) 
 	
-	event.initial_position = event_markers[event].global_position
 	add_child(event_instance)
-	event_instance.global_position = event.initial_position
+	event_instance.global_position = event_markers[event].global_position
 
 func start_timer():
 	cooldown = get_tree().create_timer(cooldown_time)
@@ -96,12 +95,10 @@ func _sync_markers():
 			event_markers.erase(event)
 
 func _create_marker_for_event(event: Event) -> EventMarker:
-	event.initial_position = Vector3(0,0,0) #reset pos when you make a new marker
 	var marker = EventMarker.new()
 	marker.name = "EventMarker_%s" % event.name
 	print("Event Marker 1 : " , marker)
 	marker.linked_event = event
-	marker.transform.origin = event.initial_position
 	add_child(marker)
 	
 	marker.owner = get_owner() #makes it editable its kinda sick

@@ -22,9 +22,9 @@ var book_not_collected: bool = true
 var herbier : Array = []
 var discoveries : Array = []
 var recipes : Array[ItemRecipe] = [
-	load("res://src/classes/inventory/recipes/potion_rouge.tres"), # Ajouter les autres
 	load("res://src/classes/inventory/recipes/potion_verte.tres"),
 	load("res://src/classes/inventory/recipes/potion_violette.tres"),
+	load("res://src/classes/inventory/recipes/potion_rouge.tres"),
 	load("res://src/classes/inventory/recipes/potion_jaune.tres"),
 	load("res://src/classes/inventory/recipes/potion_bleue.tres")
 ]
@@ -78,6 +78,10 @@ func narrate(title: String, message:String):
 		await get_tree().process_frame
 	narration_ui.set_narration(title,message)
 	narration_ui.fade_in()
+	
+#func set_narration_font_size(size: int):
+	#narration_ui.theme_override_font_sizes
+	
 
 func _ready() -> void:
 	isPaused = false

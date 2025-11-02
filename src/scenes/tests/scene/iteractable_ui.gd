@@ -14,6 +14,7 @@ func _process(_delta: float) -> void:
 
 func on_interaction():
 	$"../Control".show()
+	get_parent().get_node("son").play()
 	Global.is_interactable_ui_open = true
 
 func _on_area_exited(area: Area3D) -> void:

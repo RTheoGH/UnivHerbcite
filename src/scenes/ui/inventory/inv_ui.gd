@@ -234,9 +234,11 @@ func _on_eat_pressed() -> void:
 	print(item)
 	var arbouse = InventoryItem.InventoryItemType.ARBOUSES
 	var asperge = InventoryItem.InventoryItemType.ASPERGES
+	var olive = InventoryItem.InventoryItemType.OLIVES
 	if item.type == arbouse or item.type == asperge:
 		if item.type == arbouse: print("discovered arbouses")
 		if item.type == asperge: print("discovered asperges")
+		if item.type == olive: print("discovered olives")
 		item.revele = true
 	
 	Global.player_inventory.remove_item(item)
