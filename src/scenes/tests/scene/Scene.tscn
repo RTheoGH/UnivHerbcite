@@ -1737,7 +1737,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="StaticBody3D4" type="StaticBody3D" parent="Plantes/Arbousiers"]
-transform = Transform3D(1.6298702, 0, 0, 0, 1.6298702, 0, 0, 0, 1.6298702, -15.103756, 0.87888074, 155.36868)
+transform = Transform3D(1.6298702, 0, 0, 0, 1.6298702, 0, 0, 0, 1.6298702, -8.888544, 0.87888074, 144.83829)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Arbousiers/StaticBody3D4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.63500977, 0)
@@ -3121,7 +3121,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
-transform = Transform3D(0.46795657, -0.43609768, -0.020882227, -0.08299111, -0.118903056, 0.6233576, -0.4286371, -0.45308006, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
+transform = Transform3D(0.46795657, -0.43609774, -0.020882227, -0.08299111, -0.11890306, 0.6233576, -0.4286371, -0.4530801, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
 
@@ -3217,7 +3217,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380827, 0.5894758, 0, 0.999924, 0.011260373, -0.5895138, 0.009095559, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380817, 0.5894758, 0, 0.9999239, 0.011260373, -0.5895138, 0.009095558, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
