@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=3 format=3 uid="uid://ctjssxc0hjjao"]
+
+[ext_resource type="PackedScene" uid="uid://cavyh87ef11yp" path="res://src/scenes/events/hedgehog_event/hedgehogEvent.tscn" id="1_keeqg"]
+[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="2_mpxgh"]
+
+[resource]
+script = ExtResource("2_mpxgh")
+name = "hedgehog_event"
+scene = ExtResource("1_keeqg")
+metadata/_custom_type_script = "uid://v8f3vw767scl"

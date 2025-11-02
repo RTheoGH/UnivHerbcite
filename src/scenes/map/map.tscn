@@ -675,6 +675,7 @@ transform = Transform3D(8.74, 0, 0, 0, 8.74, 0, 0, 0, 8.74, -103.92499, -2.71226
 
 [node name="Vegetation" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.417, 0)
+visible = false
 
 [node name="Arbres" type="Node3D" parent="Vegetation"]
 
@@ -871,13 +872,13 @@ multimesh = SubResource("MultiMesh_6bpba")
 transform = Transform3D(-0.7524149, 0, -1.035355, 0, 1, 0, 0.6586896, 0, -1.1826761, -9.459755, -0.35709858, 47.55635)
 
 [node name="Bush7" parent="Vegetation/zone1" instance=ExtResource("4_x57e0")]
-transform = Transform3D(-1.5314363, 0, -0.3112298, 0, 1.5527129, 0, 0.25616452, 0, -1.8606327, -12.220492, -0.10061622, 44.943832)
+transform = Transform3D(-1.5314363, 0, -0.3112298, 0, 1.5527129, 0, 0.25616452, 0, -1.8606327, -9.609613, -0.10061622, 47.48841)
 
 [node name="Bush8" parent="Vegetation/zone1" instance=ExtResource("4_x57e0")]
 transform = Transform3D(-0.7934673, 0, -0.13272397, 0, 0.8044914, 0, 0.13272397, 0, -0.7934673, -11.40602, -0.019804081, 48.70955)
 
 [node name="Bush9" parent="Vegetation/zone1" instance=ExtResource("4_x57e0")]
-transform = Transform3D(-0.98629713, 0, -0.16497883, 0, 1, 0, 0.16497883, 0, -0.98629713, -11.1478195, -0.39018315, 45.3813)
+transform = Transform3D(-0.98629713, 0, -0.16497883, 0, 1, 0, 0.16497883, 0, -0.98629713, -13.824879, -0.3901832, 49.286194)
 
 [node name="Bush10" parent="Vegetation/zone1" instance=ExtResource("4_x57e0")]
 transform = Transform3D(-0.98629713, 0, -0.16497883, 0, 1, 0, 0.16497883, 0, -0.98629713, -14.799103, -0.24441788, 41.921097)
@@ -1666,7 +1667,7 @@ transform = Transform3D(1.6242356, 0, 0, 0, 1, 0, 0, 0, 1.5019326, 0, -0.7348258
 multimesh = SubResource("MultiMesh_6bpba")
 
 [node name="Arbre56" parent="Vegetation/zone4" instance=ExtResource("6_k640l")]
-transform = Transform3D(-0.23215425, 0.038371034, -0.6933532, 0.026249535, 0.33935818, 0.07839702, 0.6748077, 2.6755904e-09, -0.24158423, -5.590914, -0.5254016, 57.14775)
+transform = Transform3D(-0.23215425, 0.038371034, -0.6933532, 0.026249535, 0.33935818, 0.07839702, 0.6748077, 2.6755904e-09, -0.24158423, 3.6680417, -0.5254011, 50.99493)
 
 [node name="MultiMeshInstance3D" parent="Vegetation/zone4/Arbre56/TreeHaut" index="0"]
 multimesh = SubResource("MultiMesh_ghio4")
@@ -2408,6 +2409,9 @@ mesh = ExtResource("17_qiem8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocs/StaticBody3D2"]
 transform = Transform3D(0.21536373, 0.015631696, -0.33671072, -0.015323445, 0.39961058, 0.0087507665, 0.33672485, 0.008187427, 0.21575288, -0.2689972, -1.1088475, -0.9319687)
 shape = SubResource("ConcavePolygonShape3D_phn73")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(-1.5314363, 0, -0.3112298, 0, 1.5527129, 0, 0.25616452, 0, -1.8606327, -10.58301, -1.5176163, 60.286324)
 
 [editable path="Vegetation/Arbres/Arbre7"]
 [editable path="Vegetation/Arbres/Arbre32"]

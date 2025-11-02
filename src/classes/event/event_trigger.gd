@@ -53,7 +53,7 @@ func instantiate_event(event : Event):
 	event_instance.event_finished.connect(start_timer) 
 	
 	add_child(event_instance)
-	event_instance.global_position = event_markers[event].global_position
+	event_instance.global_transform = event_markers[event].global_transform
 
 func start_timer():
 	cooldown = get_tree().create_timer(cooldown_time)
