@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=127 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -58,6 +58,7 @@
 [ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="55_6c504"]
 [ext_resource type="Resource" uid="uid://b814ym0oym2ib" path="res://src/classes/event/cat_event.tres" id="56_1bfsn"]
 [ext_resource type="Resource" uid="uid://ctjssxc0hjjao" path="res://src/classes/event/hedgehog_event.tres" id="57_xxxgc"]
+[ext_resource type="PackedScene" uid="uid://b6ok7wq7t225o" path="res://src/scenes/events/squirrel_event/squirrelEvent.tscn" id="59_6c504"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qr7a2"]
 radius = 1.2749023
@@ -3118,7 +3119,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
-transform = Transform3D(0.46795657, -0.43609765, -0.020882227, -0.08299111, -0.11890304, 0.6233576, -0.4286371, -0.45308, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
+transform = Transform3D(0.46795657, -0.43609768, -0.020882227, -0.08299111, -0.118903056, 0.6233576, -0.4286371, -0.45308006, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
 
@@ -3214,7 +3215,13 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380836, 0.5894758, 0, 0.9999242, 0.011260373, -0.5895138, 0.009095561, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638083, 0.5894758, 0, 0.99992406, 0.011260373, -0.5895138, 0.00909556, -0.807705, 0, 0, 0)
+
+[node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
+
+[node name="SquirrelEvent" parent="." instance=ExtResource("59_6c504")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -222.23828, 5.291643, -75.80169)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
