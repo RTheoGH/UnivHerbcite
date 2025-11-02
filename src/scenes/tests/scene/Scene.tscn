@@ -689,51 +689,12 @@ func _on_interactable_on_interaction_signal() -> void:
 		$AnimationPlayer.play(\"open\")
 		$Interactable.queue_free()
 	else:
-		$AnimationPlayer.play(\"open\")
+		$AnimationPlayer.play(\"fail\")
 		Global.text_alert.show_alert(\"Il faudrait quelque chose pour se débarasser de ce vieux cadenas.\")
 "
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_s7dv6"]
 points = PackedVector3Array(0.065495685, 1, 0.6211298, 0.13943361, 0.25567734, 0.5713956, 0.065495685, 1, -0.6211298, -0.065490365, 1, 0.6211298, 0.065495685, -1, 0.6211298, 0.13943361, 0.24001563, 0.52640384, 0.13943361, 0.022709489, 0.5713956, -0.065490365, 1, -0.6211298, 0.065495685, -1, -0.6211298, -0.065490365, -1, 0.6211298, 0.13943361, 0.02427566, 0.52640384, -0.065490365, -1, -0.6211298)
-
-[sub_resource type="Animation" id="Animation_xxxgc"]
-resource_name = "fail"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.43333334, 0.6333333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.63241965, 0), Vector3(0, -0.71557134, 0), Vector3(0, -0.54947543, 0), Vector3(0, -0.63241965, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../lock_parent/lock:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.56666666, 0.76666665),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.21469116, -0.06255245, 0.51065826), Vector3(0.11274719, -0.06255269, 0.5387726), Vector3(0.23, -0.063, 0.511), Vector3(0.21469116, -0.06255245, 0.51065826)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../lock_parent/lock:rotation")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.17666668, 0.46666667, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.8287324, 1.9859593, -0.092458256), Vector3(-0.53837085, 2.032718, -0.16569786), Vector3(-0.5235988, 1.9861847, -0.09250245), Vector3(-0.8287324, 1.9859593, -0.092458256)]
-}
 
 [sub_resource type="Animation" id="Animation_lm3in"]
 length = 0.001
@@ -784,6 +745,45 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xxxgc"]
+resource_name = "fail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.43333334, 0.6333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.63241965, 0), Vector3(0, -0.71557134, 0), Vector3(0, -0.54947543, 0), Vector3(0, -0.63241965, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../lock_parent/lock:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.56666666, 0.76666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.21469116, -0.06255245, 0.51065826), Vector3(0.11274719, -0.06255269, 0.5387726), Vector3(0.23, -0.063, 0.511), Vector3(0.21469116, -0.06255245, 0.51065826)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../lock_parent/lock:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.17666668, 0.46666667, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.8287324, 1.9859593, -0.092458256), Vector3(-0.53837085, 2.032718, -0.16569786), Vector3(-0.5235988, 1.9861847, -0.09250245), Vector3(-0.8287324, 1.9859593, -0.092458256)]
 }
 
 [sub_resource type="Animation" id="Animation_sstu0"]
@@ -873,7 +873,7 @@ point_count = 8
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -416.83948, 12.337904, 12.956085)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -164.48347, 4.3440304, -3.9259315)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -3103,7 +3103,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
-transform = Transform3D(0.46795648, -0.43609744, -0.020882227, -0.08299109, -0.11890299, 0.6233576, -0.428637, -0.4530798, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
+transform = Transform3D(0.46795654, -0.43609747, -0.020882227, -0.0829911, -0.118903, 0.6233576, -0.42863706, -0.45307985, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
 
@@ -3199,7 +3199,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638092, 0.5894758, 0, 0.99992543, 0.011260373, -0.5895138, 0.009095572, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638091, 0.5894758, 0, 0.9999253, 0.011260373, -0.5895138, 0.009095571, -0.807705, 0, 0, 0)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
