@@ -5,7 +5,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bmjye0ji7s2ag" path="res://assets/game_resources/models/tree_bas.obj" id="2_6juvg"]
 [ext_resource type="ArrayMesh" uid="uid://sr145jph0ttf" path="res://assets/game_resources/models/tree_haut.obj" id="3_2hl85"]
 [ext_resource type="Shader" uid="uid://cqf0b7wayhlxp" path="res://assets/shaders/arbre2.gdshader" id="4_2hl85"]
-[ext_resource type="Texture2D" uid="uid://bcdpok5nxhijb" path="res://assets/graphical/Textures/map/Tree Branch.png" id="4_udrru"]
+[ext_resource type="Texture2D" uid="uid://dd4oiig7fn2gn" path="res://assets/graphical/Textures/map/Tree Branch_Stylized.png" id="6_hv4uv"]
 [ext_resource type="Texture2D" uid="uid://bjcw2kbj3wj72" path="res://assets/graphical/Textures/map/tree_billboard.png" id="7_aug64"]
 
 [sub_resource type="Shader" id="Shader_hv4uv"]
@@ -82,7 +82,7 @@ albedo_texture = ExtResource("1_5kuci")
 render_priority = 0
 shader = ExtResource("4_2hl85")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("4_udrru")
+shader_parameter/texture_albedo = ExtResource("6_hv4uv")
 shader_parameter/albedo_texture_size = Vector2i(2284, 3284)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0

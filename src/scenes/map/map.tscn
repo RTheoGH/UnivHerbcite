@@ -708,7 +708,6 @@ transform = Transform3D(8.74, 0, 0, 0, 8.74, 0, 0, 0, 8.74, -103.92499, -2.71226
 
 [node name="Vegetation" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.417, 0)
-visible = false
 
 [node name="Arbres" type="Node3D" parent="Vegetation"]
 
