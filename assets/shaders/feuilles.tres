@@ -1,13 +1,13 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dkowwtvqs7gi8"]
 
-[ext_resource type="Texture2D" uid="uid://bcdpok5nxhijb" path="res://assets/graphical/Textures/map/Tree Branch.png" id="1_nl1sm"]
 [ext_resource type="Shader" uid="uid://cqf0b7wayhlxp" path="res://assets/shaders/arbre2.gdshader" id="1_vama1"]
+[ext_resource type="Texture2D" uid="uid://dd4oiig7fn2gn" path="res://assets/graphical/Textures/map/Tree Branch_Stylized.png" id="2_vama1"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_vama1")
 shader_parameter/albedo = Color(1, 1, 1, 1)
-shader_parameter/texture_albedo = ExtResource("1_nl1sm")
+shader_parameter/texture_albedo = ExtResource("2_vama1")
 shader_parameter/albedo_texture_size = Vector2i(2284, 3284)
 shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
@@ -21,9 +21,5 @@ shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/coeff = 0.0
 shader_parameter/plus_haut = 1.0
 shader_parameter/g = 1.0
-shader_parameter/strength = 0.5
-shader_parameter/speed = 1.0
-shader_parameter/direction = Vector3(1, 0, 0.3)
 shader_parameter/wiggle_strength = 1.0
 shader_parameter/wiggle_speed = 5.0
-shader_parameter/global_wind = 0.0
