@@ -11,15 +11,20 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var active_cam = get_viewport().get_camera_3d()
-	if $"Sprite3D" and active_cam:
-		if (active_cam.global_position - global_position).length_squared() < distance_basse_threshold**2:
-			$TreeBas.show()
-			$TreeHaut.show()
-			$"Sprite3D".hide()
-		elif (active_cam.global_position - global_position).length_squared() > distance_haute_threshold**2:
-			$TreeBas.hide()
-			$TreeHaut.hide()
-			$"Sprite3D".show()
+	if Global.lod_distance:
+		if $"Sprite3D" and active_cam:
+			if (active_cam.global_position - global_position).length_squared() < distance_basse_threshold**2:
+				$TreeBas.show()
+				$TreeHaut.show()
+				$"Sprite3D".hide()
+			elif (active_cam.global_position - global_position).length_squared() > distance_haute_threshold**2:
+				$TreeBas.hide()
+				$TreeHaut.hide()
+				$"Sprite3D".show()
+	else:
+		$TreeBas.show()
+		$TreeHaut.show()
+		$"Sprite3D".hide()
 		#else:
 			#var taux_alpha =  (distance_haute_threshold - (active_cam.global_position - global_position).length()) / distance_basse_threshold
 			#

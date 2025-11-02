@@ -21,7 +21,9 @@ func _ready() -> void:
 	$musique/musique_val.text = str(AudioServer.get_bus_volume_linear(music))
 	$menu/menu_val.text = str(AudioServer.get_bus_volume_linear(sfx))
 	$AA_option.selected = 1
+	$Ombres_option.selected = 2
 	$Guide_b.button_pressed = true
+	$LOD_b.button_pressed = true
 
 func _process(_delta: float) -> void:
 	set_camera_speed()
@@ -259,3 +261,16 @@ func _on_inventaire_b_pressed() -> void:
 	modif = "inventory"
 	current_button = $Inventaire_B
 	$modifier.show()
+
+func _on_lod_b_pressed() -> void:
+	Global.lod_distance = !Global.lod_distance
+
+func _on_ombres_option_item_selected(index: int) -> void:
+	var PS := ProjectSettings
+	match index:
+		0: PS.set_setting("rendering/quality/shadows/filter_mode", 0)
+		1: PS.set_setting("rendering/quality/shadows/filter_mode", 1)
+		2: PS.set_setting("rendering/quality/shadows/filter_mode", 2)
+		3: PS.set_setting("rendering/quality/shadows/filter_mode", 3)
+		4: PS.set_setting("rendering/quality/shadows/filter_mode", 4)
+		5: PS.set_setting("rendering/quality/shadows/filter_mode", 5)

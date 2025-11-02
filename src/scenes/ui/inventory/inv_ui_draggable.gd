@@ -194,3 +194,16 @@ func _on_interactable_area_exited(area: Area3D) -> void:
 	if is_instance_of(area.get_parent(), RayCast3D):
 		hide()
 		Global.is_craft_ui_open = false
+
+
+func _on_place_mouse_entered(place: int) -> void:
+	if place == 0:
+		$ColorRect4/RichTextLabel2.text = "[center]Broyer"
+	if place == 1:
+		$ColorRect4/RichTextLabel2.text = "[center]Infuser"
+	if place == 2:
+		$ColorRect4/RichTextLabel2.text = "[center]Sécher"
+
+
+func _on_place_mouse_exited() -> void:
+	$ColorRect4/RichTextLabel2.text = ""

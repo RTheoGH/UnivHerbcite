@@ -22,6 +22,8 @@ var book_not_collected: bool = true
 var maxwell_quest_completed : bool = false
 var blue_potion_used : bool = false
 
+var lod_distance: bool = true
+
 var herbier : Array = []
 var discoveries : Array = []
 var recipes : Array[ItemRecipe] = [

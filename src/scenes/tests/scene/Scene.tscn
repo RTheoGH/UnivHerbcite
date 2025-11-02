@@ -677,8 +677,8 @@ script/source = "extends MeshInstance3D
 
 var verrouillee = true
 
-func _ready() -> void:
-	Global.player_inventory.add_item(load(\"res://assets/game_resources/items/potions/potion_jaune.tres\"))
+#func _ready() -> void:
+	#Global.player_inventory.add_item(load(\"res://assets/game_resources/items/potions/potion_jaune.tres\"))
 
 func _on_interactable_on_interaction_signal() -> void:
 	if verrouillee:
@@ -690,7 +690,7 @@ func _on_interactable_on_interaction_signal() -> void:
 func _on_static_body_3d_on_interaction_signal() -> void:
 	print(Global.inv_current_slot)
 	if Global.player_inventory.items.size()-1 >= Global.inv_current_slot\\
-	 and Global.player_inventory.items[Global.inv_current_slot].type == InventoryItem.InventoryItemType.POTION_JAUNE:
+	 and Global.player_inventory.items[Global.inv_current_slot].type == InventoryItem.InventoryItemType.POTION_ROUGE:
 		Global.player_inventory.remove_item(Global.player_inventory.items[Global.inv_current_slot])
 		$\"MeshInstance3D\".queue_free()
 		verrouillee = false
@@ -1376,7 +1376,7 @@ text = "Ces résultats dépassent totalement nos prévisions.
 Ce noyau est très instable et ne cessent de grossir.
 Par chance, mes collegues ont trouvé un moyen de le contenir grâce à la plante proche du labo.
 Je ferais mieux de trouver un moyen de le contenir ou les conséquences seraient désastreux
-Pour cela, j'ai besoins de cette plante, d'une plante envahissante et de secher une -"
+Pour cela, j'ai besoin d'un spécimen de Ziziphus zizyphus, un de Hedera Helis L. et un d'Olea europaea."
 
 [node name="Button" type="Button" parent="Lore_z4/Control"]
 layout_mode = 1
@@ -2969,6 +2969,7 @@ shape = SubResource("BoxShape3D_jxsa7")
 transform = Transform3D(-2.3081813, -1.3534675, 0.31058735, -0.14056757, 0.82711387, 2.5597196, -1.3815132, 2.177165, -0.77936655, -266.1739, 4.6744113, -32.6575)
 
 [node name="Control" type="Control" parent="Recette2"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
