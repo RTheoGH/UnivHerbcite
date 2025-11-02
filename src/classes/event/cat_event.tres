@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=3 format=3 uid="uid://b814ym0oym2ib"]
+
+[ext_resource type="PackedScene" uid="uid://3xjbs420clxr" path="res://src/scenes/events/cat_event/catEvent.tscn" id="1_o6hkf"]
+[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="2_2kmf0"]
+
+[resource]
+script = ExtResource("2_2kmf0")
+name = "cat_event"
+scene = ExtResource("1_o6hkf")
+metadata/_custom_type_script = "uid://v8f3vw767scl"

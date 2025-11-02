@@ -7,6 +7,7 @@
 script = ExtResource("1_q8gc2")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_kp56u")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Sketchfab_Scene/Sketchfab_model/30b80700926c4e138672f7e99f1e2039_fbx/Object_2/RootNode/armature/Object_6" index="0"]
 bones/2/position = Vector3(0, 0.24691397, 0)
