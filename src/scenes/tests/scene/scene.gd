@@ -7,6 +7,8 @@ var low_pass
 
 var was_paused := false
 
+var book_bloque: bool = true
+
 func _ready() -> void:
 	Global.text_alert = $Perso/TextAlert
 	Global.setup_text_alerts()
@@ -47,6 +49,11 @@ func _process(_delta: float) -> void:
 		#$CraftUI.visible = true
 	#else:
 		#$CraftUI.visible = false
+		
+	if book_bloque:
+		if !Global.book_not_collected:
+			$book_bloque.queue_free()
+			book_bloque = false
 	
 	if Input.is_action_just_pressed("ouvrir_livre") and !Global.is_ui_open() \
 	and !Global.book_not_collected:
