@@ -12,6 +12,7 @@ var book_bloque: bool = true
 func _ready() -> void:
 	Global.text_alert = $Perso/TextAlert
 	Global.setup_text_alerts()
+	Global.fin = false
 	
 	low_pass = AudioServer.get_bus_effect(music_bus, 0)
 	$Map.visible = Global.minimap_activated

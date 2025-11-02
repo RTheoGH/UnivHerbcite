@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var speed = 0.5
+@export var speed = 0.4
 
 @onready var path : Path3D = $Path3D
 @onready var path_to_follow : PathFollow3D = $Path3D/PathFollow3D

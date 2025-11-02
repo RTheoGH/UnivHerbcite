@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=131 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -875,11 +875,20 @@ _data = {
 }
 point_count = 8
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_xxxgc"]
+
+[sub_resource type="Curve3D" id="Curve3D_xxxgc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, -0.13974762, 0, 0.39758682, 0.13974762, 0, -0.39758682, 2.1759567, 0, -1.958519, -0.29135132, -0.30194187, 0.69244385, 0.29135132, 0.30194187, -0.69244385, 4.608551, 0.20909166, -4.804535, -0.46633148, -0.43714905, 0.9299278, 0.46633148, 0.43714905, -0.9299278, 4.5955124, 0.7145729, -8.385319, 0, 0, 0, 0.28573608, 0, -0.27553177, 10.08432, 1.7375097, -17.823196),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -245.02644, 4.856743, -67.4666)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -167.07976, 5.4322853, 0.8175707)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -3080,12 +3089,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.415794, 2.1901364, 215.3
 title = "Le chat ?"
 message = "Un chat étrangement grand se trouve devant moi. Il semble amical."
 
-[node name="NarrationArea3" parent="." instance=ExtResource("47_xfcej")]
+[node name="fin" parent="." instance=ExtResource("47_xfcej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.48829, 0, 246.43579)
 title = "La fin"
-message = "J'ai reussi à atteindre le bout de cet endroit. Je vais enfin pouvoir partir d'ici..."
+message = "J'ai atteint la fin. Enfin, la sortie.Pourtant... quelque chose ne va pas. L'air ici est trop calme, les plantes semblent m’observer, comme si elles attendaient.Tout ce chemin, toutes ces découvertes... et maintenant que je peux partir, je me demande si j’en ai vraiment envie.Peut-être que ce lieu n’était pas une prison. Peut-être que c'était un test."
 
-[node name="CollisionShape3D" parent="NarrationArea3" index="0"]
+[node name="CollisionShape3D" parent="fin" index="0"]
 transform = Transform3D(3.664164, 0, -1.6043384, 0, 4, 0, 1.6043384, 0, 3.664164, -1.0908356, 0, -3.161026)
 
 [node name="door_hinge" type="Node3D" parent="."]
@@ -3121,6 +3130,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
+transform = Transform3D(0.46795657, -0.43609774, -0.020882227, -0.08299111, -0.11890306, 0.6233576, -0.4286371, -0.4530801, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 transform = Transform3D(0.46795657, -0.43609774, -0.020882227, -0.08299111, -0.11890306, 0.6233576, -0.4286371, -0.4530801, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
@@ -3217,7 +3227,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380817, 0.5894758, 0, 0.9999239, 0.011260373, -0.5895138, 0.009095558, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638082, 0.5894758, 0, 0.99992394, 0.011260373, -0.5895138, 0.009095559, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
@@ -3250,6 +3260,45 @@ transform = Transform3D(-14.925988, 0, -1.4882321, 0, 15.000001, 0, 1.4882321, 0
 [node name="Character_Finch4" parent="." instance=ExtResource("60_xxxgc")]
 transform = Transform3D(-0.18299186, 0, 14.998884, 0, 15.000001, 0, -14.998884, 0, -0.18299186, -249.02621, 7.4541583, -70.64751)
 
+[node name="EventTrigger2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.4347, 4.482544, -52.513874)
+script = ExtResource("54_0ufl0")
+events = Array[ExtResource("55_6c504")]([ExtResource("57_xxxgc"), ExtResource("56_1bfsn")])
+event_probabilities = Array[float]([0.8, 0.2])
+event_markers = {
+ExtResource("57_xxxgc"): Object(Marker3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0797577, -2.330728, -3.8782196),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"gizmo_extents":0.25,"script":ExtResource("50_qxgoi"),"event_trigger":null,"linked_event":ExtResource("57_xxxgc"))
+,
+ExtResource("56_1bfsn"): Object(Marker3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12415314, -2.2051501, -2.3664284),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"gizmo_extents":0.25,"script":ExtResource("50_qxgoi"),"event_trigger":null,"linked_event":ExtResource("56_1bfsn"))
+
+}
+metadata/_custom_type_script = "uid://crvb1x2d3cilp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EventTrigger2"]
+transform = Transform3D(45.42, 0, 0, 0, 45.42, 0, 0, 0, 45.42, 0, 0, 0)
+shape = SubResource("SphereShape3D_xxxgc")
+
+[node name="EventMarker_hedgehog_event" type="Marker3D" parent="EventTrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0797577, -2.330728, -3.8782196)
+script = ExtResource("50_qxgoi")
+linked_event = ExtResource("57_xxxgc")
+
+[node name="Path3D" type="Path3D" parent="EventTrigger2/EventMarker_hedgehog_event"]
+curve = SubResource("Curve3D_xxxgc")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="EventTrigger2/EventMarker_hedgehog_event/Path3D"]
+transform = Transform3D(0.6083912, 0, -0.79363585, 0, 0.99999976, 0, 0.79363567, 0, 0.60839134, 0, 0, 0)
+
+[node name="EventMarker_cat_event" type="Marker3D" parent="EventTrigger2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12415314, -2.2051501, -2.3664284)
+script = ExtResource("50_qxgoi")
+linked_event = ExtResource("56_1bfsn")
+
+[node name="Path3D" type="Path3D" parent="EventTrigger2/EventMarker_cat_event"]
+curve = SubResource("Curve3D_xxxgc")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="EventTrigger2/EventMarker_cat_event/Path3D"]
+transform = Transform3D(0.6083912, 0, -0.79363585, 0, 0.99999976, 0, 0.79363567, 0, 0.60839134, 0, 0, 0)
+
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
@@ -3271,9 +3320,10 @@ transform = Transform3D(-0.18299186, 0, 14.998884, 0, 15.000001, 0, -14.998884, 
 [connection signal="on_interaction_signal" from="door_hinge/door3/Interactable" to="door_hinge/door3" method="_on_interactable_on_interaction_signal"]
 [connection signal="visibility_changed" from="Recette2/Control" to="Recette2/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="EventTriggerBehindSpace" to="EventTriggerBehindSpace" method="_on_body_entered"]
+[connection signal="body_entered" from="EventTrigger2" to="EventTrigger2" method="_on_body_entered"]
 
 [editable path="NarrationArea"]
 [editable path="Lore_z3"]
 [editable path="Squelette"]
 [editable path="NarrationArea2"]
-[editable path="NarrationArea3"]
+[editable path="fin"]
