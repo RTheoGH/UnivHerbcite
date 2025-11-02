@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=126 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -40,11 +40,11 @@
 [ext_resource type="Resource" uid="uid://ve8dgj8wb3br" path="res://assets/game_resources/plantes/Myrobolan.tres" id="42_f74wi"]
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
 [ext_resource type="Texture2D" uid="uid://c27tajffdocl0" path="res://assets/graphical/plantes/jujubier.png" id="45_xfcej"]
-[ext_resource type="Texture2D" uid="uid://i1r7nfcetwr2" path="res://assets/graphical/Textures/map/bois.jpg" id="47_w0kh0"]
 [ext_resource type="PackedScene" uid="uid://brt0xm8okhq2h" path="res://src/scenes/ui/narration/narration_area.tscn" id="47_xfcej"]
 [ext_resource type="Resource" uid="uid://1qnswolr50hj" path="res://assets/game_resources/plantes/Romarin.tres" id="48_feptu"]
 [ext_resource type="Texture2D" uid="uid://cs61r00okxc6y" path="res://assets/graphical/plantes/romarin.png" id="49_7v1kh"]
 [ext_resource type="Resource" uid="uid://ddyac0gbwyi0w" path="res://src/classes/event/fox_event.tres" id="49_v5phb"]
+[ext_resource type="PackedScene" uid="uid://bovylj31a4pqh" path="res://assets/graphical/map/ronces_blocantes.glb" id="50_0ufl0"]
 [ext_resource type="PackedScene" uid="uid://cgw4dixoop64h" path="res://src/scenes/ui/book/Book_get.tscn" id="50_7v1kh"]
 [ext_resource type="Script" uid="uid://bl36trcdt67hk" path="res://src/classes/event/event_marker.gd" id="50_qxgoi"]
 [ext_resource type="Texture2D" uid="uid://cfrbsc6fv7qjp" path="res://assets/graphical/map/door_space_processe.png" id="51_qxgoi"]
@@ -211,26 +211,29 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_feptu"]
-albedo_texture = ExtResource("47_w0kh0")
-
-[sub_resource type="BoxMesh" id="BoxMesh_7v1kh"]
-
 [sub_resource type="GDScript" id="GDScript_xfcej"]
 resource_name = "blocus_zone_3"
-script/source = "extends MeshInstance3D
+script/source = "extends Node3D
+
 
 func _on_interactable_on_interaction_signal() -> void:
-	if Global.player_inventory.items.size()-1 <= Global.inv_current_slot\\
-	 and Global.player_inventory.items[Global.inv_current_slot].type == InventoryItem.InventoryItemType.POTION_VIOLETTE:
-		Global.player_inventory.remove_item(Global.player_inventory.ittems[Global.inv_current_slot])
+	if Global.player_inventory.items.size()-1 >= Global.inv_current_slot\\
+	and Global.player_inventory.items[Global.inv_current_slot].type == InventoryItem.InventoryItemType.POTION_VIOLETTE:
+		Global.player_inventory.remove_item(Global.player_inventory.items[Global.inv_current_slot])
+		var tween = create_tween()
+		tween.tween_property(self, \"global_position\", Vector3(-42.759, -2.211, 79.769), 1).set_ease(Tween.EASE_OUT)
+		tween.set_parallel(true)
+		await tween.tween_property(self, \"scale\", Vector3(0.595, 0.107, 0.107), 2).set_ease(Tween.EASE_OUT).finished
 		queue_free()
+	else:
+		Global.text_alert.show_alert(\"Un désherbant assez puissant pourrait venir à bout de ces racines\")
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5phb"]
+size = Vector3(0.8730469, 2.0014648, 40.66089)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qxgoi"]
-size = Vector3(0.111206055, 1.78125, 2.2076797)
+size = Vector3(0.8730469, 2.0014648, 47.475464)
 
 [sub_resource type="GDScript" id="GDScript_0ufl0"]
 script/source = "extends Node3D
@@ -2959,26 +2962,32 @@ curve = SubResource("Curve3D_7v1kh")
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerHole/EventMarker_FoxEvent/Path3D"]
 transform = Transform3D(-0.05154668, 0, 0.9986643, 0, 0.9999982, 0, -0.99866194, 0, -0.051546805, -0.358, 0, 0)
 
-[node name="StaticBody3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(29.612133, 0.23632543, 0.001173249, -1.3167262, 5.3148723, 0, -0.12869126, -0.0010270459, 0.26996705, -42.62821, 0.73670334, 79.76847)
-material_override = SubResource("StandardMaterial3D_feptu")
-mesh = SubResource("BoxMesh_7v1kh")
+[node name="Ronces" type="Node3D" parent="."]
+transform = Transform3D(29.612133, 0.23632544, 0.001173249, -1.3167262, 5.3148727, -3.1353084e-12, -0.12869127, -0.0010270459, 0.26996708, -42.62821, 0.73670334, 79.76847)
 script = SubResource("GDScript_xfcej")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="StaticBody3D2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Ronces"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ronces/StaticBody3D"]
+transform = Transform3D(1, -4.368843e-10, 3.637979e-12, -1.6036201e-06, 1, -4.110916e-10, 0, -1.9487925e-07, 0.99999964, 0.06347656, 0.50073236, -6.8311157)
 shape = SubResource("BoxShape3D_v5phb")
 
-[node name="Interactable" type="Area3D" parent="StaticBody3D2"]
+[node name="Interactable" type="Area3D" parent="Ronces"]
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ronces/Interactable"]
+transform = Transform3D(1, -4.4317972e-10, 1.4551915e-11, -1.6036201e-06, 1, -7.185008e-11, 0, -3.562309e-08, 0.99999964, 0, 0, -3.407257)
 shape = SubResource("BoxShape3D_qxgoi")
 debug_fill = false
+
+[node name="Node3D" type="Node3D" parent="Ronces"]
+transform = Transform3D(3.065, 0, 0, 0, 3.065, 0, 0, 0, 3.065, 0.35561582, -0.14542711, 1.061133e-08)
+
+[node name="ronces_blocantes2" parent="Ronces/Node3D" instance=ExtResource("50_0ufl0")]
+transform = Transform3D(0.033702668, -0.0014986151, -0.0001464683, 0.008349623, 0.18778001, -3.62866e-05, 0.01609757, -2.0300508e-11, 3.7040854, 0.39296684, 0.42753893, -95.74541)
 
 [node name="spaceDoors" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -193.99316, 4.6681724, 0)
@@ -3103,7 +3112,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
-transform = Transform3D(0.46795654, -0.43609747, -0.020882227, -0.0829911, -0.118903, 0.6233576, -0.42863706, -0.45307985, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
+transform = Transform3D(0.46795657, -0.43609756, -0.020882227, -0.08299111, -0.11890302, 0.6233576, -0.4286371, -0.4530799, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
 
@@ -3199,7 +3208,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638091, 0.5894758, 0, 0.9999253, 0.011260373, -0.5895138, 0.009095571, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638089, 0.5894758, 0, 0.999925, 0.011260373, -0.5895138, 0.009095568, -0.807705, 0, 0, 0)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
@@ -3216,7 +3225,7 @@ transform = Transform3D(-0.80775696, -0.006638091, 0.5894758, 0, 0.9999253, 0.01
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
 [connection signal="body_entered" from="EventTriggerHole" to="EventTriggerHole" method="_on_body_entered"]
-[connection signal="on_interaction_signal" from="StaticBody3D2/Interactable" to="StaticBody3D2" method="_on_interactable_on_interaction_signal"]
+[connection signal="on_interaction_signal" from="Ronces/Interactable" to="Ronces" method="_on_interactable_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="spaceDoors/Interactable" to="spaceDoors" method="_on_interactable_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="spaceDoors/Interactable2" to="spaceDoors" method="_on_interactable_2_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="door_hinge/door3/Interactable" to="door_hinge/door3" method="_on_interactable_on_interaction_signal"]
