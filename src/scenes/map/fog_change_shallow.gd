@@ -5,6 +5,7 @@ const time := 1.0
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group(&"player"):
 		body.is_in_toxic_fog = false
+		get_parent().just_entered_toxic_fog = false
 		body.respawn_position = $CollisionShape3D.global_position
 		print("fog shallowens")
 		

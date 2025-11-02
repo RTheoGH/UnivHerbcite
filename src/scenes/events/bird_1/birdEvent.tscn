@@ -1,12 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp5181ejrpr87"]
+[gd_scene load_steps=2 format=3 uid="uid://dp5181ejrpr87"]
 
-[ext_resource type="ArrayMesh" uid="uid://bivdlbqgl8ka0" path="res://assets/game_resources/models/Flying seagull/Flying gull Texture 2.obj" id="1_1jvxj"]
-[ext_resource type="Script" uid="uid://ggbo3pfp0yug" path="res://src/scenes/events/bird_1/bird_event.gd" id="1_m2ad4"]
+[ext_resource type="PackedScene" uid="uid://br6jwi8ckb8g5" path="res://assets/game_resources/models/Animaux/Character_Bird.fbx" id="1_1jvxj"]
 
 [node name="BirdEvent" type="Node3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-script = ExtResource("1_m2ad4")
-run_duration = 5.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_1jvxj")
+[node name="Character_Bird" parent="." instance=ExtResource("1_1jvxj")]

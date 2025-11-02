@@ -35,6 +35,7 @@
 [ext_resource type="Resource" uid="uid://cnhhrmbd4cdyi" path="res://assets/game_resources/plantes/Olivier.tres" id="29_y4obm"]
 [ext_resource type="Texture2D" uid="uid://02fplxnd1p8f" path="res://assets/graphical/plantes/olivier.png" id="30_etu4x"]
 [ext_resource type="Texture2D" uid="uid://d2cqixwjotg87" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
+[ext_resource type="PackedScene" uid="uid://cuyp5hw5x2oy5" path="res://src/scenes/bees/bees.tscn" id="35_0ufl0"]
 [ext_resource type="Texture2D" uid="uid://cai7pn1s5e0r3" path="res://assets/graphical/plantes/asperges.png" id="41_lypve"]
 [ext_resource type="Resource" uid="uid://ve8dgj8wb3br" path="res://assets/game_resources/plantes/Myrobolan.tres" id="42_f74wi"]
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
@@ -52,7 +53,11 @@
 [ext_resource type="Texture2D" uid="uid://cq8ft5te6nyy3" path="res://assets/graphical/Textures/map/securise_avec_le_cadenas.png" id="52_jxsa7"]
 [ext_resource type="PackedScene" uid="uid://dj6s0gnkahvlb" path="res://src/scenes/surbrillance/surbrillance.tscn" id="53_q0wsw"]
 [ext_resource type="Resource" uid="uid://uyj35ar65r8t" path="res://assets/game_resources/plantes/Lierre.tres" id="53_s7dv6"]
+[ext_resource type="Script" uid="uid://crvb1x2d3cilp" path="res://src/classes/event/event_trigger.gd" id="54_0ufl0"]
 [ext_resource type="Texture2D" uid="uid://ck0iumt200olu" path="res://assets/graphical/plantes/lierre.png" id="54_accns"]
+[ext_resource type="Script" uid="uid://v8f3vw767scl" path="res://src/classes/event/event.gd" id="55_6c504"]
+[ext_resource type="Resource" uid="uid://b814ym0oym2ib" path="res://src/classes/event/cat_event.tres" id="56_1bfsn"]
+[ext_resource type="Resource" uid="uid://ctjssxc0hjjao" path="res://src/classes/event/hedgehog_event.tres" id="57_xxxgc"]
 
 [sub_resource type="Shader" id="Shader_tqkkf"]
 code = "
@@ -487,6 +492,22 @@ material = SubResource("StandardMaterial3D_75rwc")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jxsa7"]
 size = Vector3(1.4925537, 1.2573242, 1.3231812)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_lm3in"]
+
+[sub_resource type="Curve3D" id="Curve3D_sstu0"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 3.2427979, 0, 0.4913311, -3.2427979, 0, -0.4913311, -7.379, 0, -5.675, 0.8160095, 0.00015735626, -0.28258324, -0.8160095, -0.00015735626, 0.28258324, -12.98, 0, -5.086, -0.3864441, 0.0007123947, -0.85588646, 0.3864441, -0.0007123947, 0.85588646, -17.402, 0, -3.12, 0, 0, 0, 0, 0, 0, -18.09, 0, -1.745, -0.38742065, 0.00018882751, -0.17092705, 0.38742065, -0.00018882751, 0.17092705, -20.547, 0, -1.646, 0.0032958984, -2.861023e-06, 0.029525757, -0.0032958984, 2.861023e-06, -0.029525757, -22.807, 0, -3.808, 0, 0, 0, 0, 0, 0, -24.477, 0, -7.247),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[sub_resource type="Curve3D" id="Curve3D_8hh0t"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.023956299, -0.02722168, -0.34239244, -0.023956299, 0.02722168, 0.34239244, -1.449, 0, 2.295, -0.06739807, -0.10595703, -1.5829268, 0.06739807, 0.10595703, 1.5829268, -2.021, 0, 5.456, -1.1102295, 0.12324238, -0.0062117577, 1.1102295, -0.12324238, 0.0062117577, 0.053, 0, 7.325, 0, 0, 0, 0, 0, 0, 2.269, 0, 9.683, 0.23023987, -0.10357666, -1.0871544, -0.23023987, 0.10357666, 1.0871544, 3.231, 0, 11.752, 0.12590027, -0.1260786, -1.5632648, -0.12590027, 0.1260786, 1.5632648, 4.199, 0, 17.017, 0, 0, 0, 0, 0, 0, 2.547, 0, 20.093),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [node name="Scene" type="Node3D"]
 script = ExtResource("1_w7ipn")
 
@@ -562,6 +583,9 @@ transform = Transform3D(0.946252, 0.14721659, 0.28798333, -0.25512597, 0.8870195
 
 [node name="MeshInstance3D" parent="Map2" index="2"]
 transform = Transform3D(0.405, 0, 0, 0, 0.405, 0, 0, 0, 0.405, 10.654846, 1354.1617, 2.255633)
+
+[node name="Vegetation" parent="Map2" index="5"]
+visible = true
 
 [node name="MeshInstance3D" parent="Map2/Vegetation/zone3/Arbre25" index="5"]
 transform = Transform3D(0.7700611, 0.26767474, -0.5790991, -0.10801911, 0.94932157, 0.2951619, 0.62875855, -0.1647391, 0.75994927, -1.584959, -0.05244541, -0.22914124)
@@ -1770,6 +1794,8 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
+[node name="GPUParticles3D" parent="Plantes/Lavandes/Interactable3" instance=ExtResource("35_0ufl0")]
+
 [node name="Interactable4" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -245.82568, 4.5067387, 69.759224)
 collision_layer = 4
@@ -1818,6 +1844,8 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
+[node name="GPUParticles3D" parent="Plantes/Lavandes/Interactable5" instance=ExtResource("35_0ufl0")]
+
 [node name="Interactable6" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -202.92856, 5.9965687, 3.1738758)
 collision_layer = 4
@@ -1842,8 +1870,10 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
+[node name="GPUParticles3D" parent="Plantes/Lavandes/Interactable6" instance=ExtResource("35_0ufl0")]
+
 [node name="Interactable8" type="Area3D" parent="Plantes/Lavandes"]
-transform = Transform3D(2.3127072, 0, 0, 0, 2.3127072, 0, 0, 0, 2.3127072, -226.27985, 10.178368, -169.05066)
+transform = Transform3D(2.3127072, 0, 0, 0, 2.3127072, 0, 0, 0, 2.3127072, -240.08517, 10.178367, -148.33679)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -1865,6 +1895,8 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
+
+[node name="GPUParticles3D" parent="Plantes/Lavandes/Interactable8" instance=ExtResource("35_0ufl0")]
 
 [node name="Figuiers" type="Node3D" parent="Plantes"]
 
@@ -2747,6 +2779,43 @@ offset_top = -3.0517578e-05
 offset_right = -6.1035156e-05
 text = "Fermer"
 
+[node name="EventTriggerBehindSpace" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -225.1667, 5.0788245, -17.828644)
+script = ExtResource("54_0ufl0")
+events = Array[ExtResource("55_6c504")]([ExtResource("56_1bfsn"), ExtResource("57_xxxgc")])
+event_probabilities = Array[float]([0.7, 0.3])
+event_markers = {
+ExtResource("56_1bfsn"): null,
+ExtResource("57_xxxgc"): null
+}
+metadata/_custom_type_script = "uid://crvb1x2d3cilp"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EventTriggerBehindSpace"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -10.037369, -0.24975014, 6.2069054)
+shape = SubResource("SphereShape3D_lm3in")
+
+[node name="EventMarker_cat_event" type="Marker3D" parent="EventTriggerBehindSpace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.593567, -1.7903996, 2.3117008)
+script = ExtResource("50_qxgoi")
+linked_event = ExtResource("56_1bfsn")
+
+[node name="Path3D" type="Path3D" parent="EventTriggerBehindSpace/EventMarker_cat_event"]
+curve = SubResource("Curve3D_sstu0")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_cat_event/Path3D"]
+transform = Transform3D(0.78165656, 0, 0.62370706, 0, 0.99999994, 0, -0.6237069, 0, 0.7816568, 0, 0, 0)
+
+[node name="EventMarker_hedgehog_event" type="Marker3D" parent="EventTriggerBehindSpace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.177887, -2, 9.49877)
+script = ExtResource("50_qxgoi")
+linked_event = ExtResource("57_xxxgc")
+
+[node name="Path3D" type="Path3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event"]
+curve = SubResource("Curve3D_8hh0t")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
+transform = Transform3D(-0.80775696, -0.006638095, 0.5894758, 0, 0.99992585, 0.011260373, -0.5895138, 0.009095576, -0.807705, 0, 0, 0)
+
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]
@@ -2768,6 +2837,7 @@ text = "Fermer"
 [connection signal="on_interaction_signal" from="door3/Interactable" to="door3" method="_on_interactable_on_interaction_signal"]
 [connection signal="on_interaction_signal" from="door3/MeshInstance3D/StaticBody3D" to="door3" method="_on_static_body_3d_on_interaction_signal"]
 [connection signal="visibility_changed" from="Recette2/Control" to="Recette2/Control" method="_on_visibility_changed"]
+[connection signal="body_entered" from="EventTriggerBehindSpace" to="EventTriggerBehindSpace" method="_on_body_entered"]
 
 [editable path="NarrationArea"]
 [editable path="Map2"]
