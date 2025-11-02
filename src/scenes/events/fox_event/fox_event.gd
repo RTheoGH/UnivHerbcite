@@ -6,6 +6,7 @@ extends Node3D
 @onready var path_to_follow : PathFollow3D = $Path3D/PathFollow3D
 
 @onready var anim_player : AnimationPlayer = $"Root Scene/AnimationPlayer"
+@onready var sound_emitter : AudioStreamPlayer3D = $Run
 
 @onready var root_scene : Node3D = $"Root Scene"
 
@@ -27,11 +28,13 @@ func _process(delta: float) -> void:
 			
 			root_scene.rotation.y = path_to_follow.rotation.y + deg_to_rad(180)
 			anim_player.play("AnimalArmature|Gallop")
+			sound_emitter.play()
 		else:
 			print("Done")
 			run_away = false
 			queue_free()
 			event_finished.emit()
+			sound_emitter.stop()
 	else : 
 		#print("Updated pos : " , global_position)
 		#print("Updated pos : " , position)

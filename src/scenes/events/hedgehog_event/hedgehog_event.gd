@@ -6,6 +6,7 @@ extends Node3D
 @onready var path_to_follow : PathFollow3D = $Path3D/PathFollow3D
 
 @onready var anim_player : AnimationPlayer = $Sketchfab_Scene/AnimationPlayer
+@onready var sound_emitter : AudioStreamPlayer3D = $Run
 
 @onready var root_scene : Node3D = $Sketchfab_Scene
 
@@ -28,10 +29,13 @@ func _process(delta: float) -> void:
 			
 			root_scene.rotation.y = path_to_follow.rotation.y + deg_to_rad(180)
 			anim_player.play("Take 01")
+			sound_emitter.play()
+			print(sound_emitter.playing)
 			
 		else:
 			run_away = false
 			queue_free()
+			sound_emitter.stop()
 			event_finished.emit()
 	else : 
 		# TODO handle idle
