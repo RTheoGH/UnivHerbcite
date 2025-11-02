@@ -168,3 +168,6 @@ func _process(_delta: float) -> void:
 		elif effect_type == InventoryItem.InventoryItemEffect.HEALED:
 			var icon: TextureRect = player.get_node("Effects/Healed_icon")
 			icon.show()
+
+func is_effect_active(effect: InventoryItem.InventoryItemEffect) -> bool:
+	return active_timers.keys.has(effect)

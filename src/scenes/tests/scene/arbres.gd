@@ -29,3 +29,7 @@ func _process(_delta: float) -> void:
 			#$TreeBas.material_override.set_shader_parameter("opacity", taux_alpha)
 			##$TreeHaut.multimesh.mesh.material.set_shader_parameter("albedo:a", 1.0-taux_alpha)
 			#$"Sprite3D".modulate.a = 1.0-taux_alpha
+
+
+func _on_fog_change_body_entered(body: Node3D) -> void:
+	pass # Replace with function body.
