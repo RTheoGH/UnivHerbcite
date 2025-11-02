@@ -529,7 +529,7 @@ directional_shadow_split_2 = 0.5
 directional_shadow_blend_splits = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -190.0918, 3228.834, -39.000763)
+transform = Transform3D(0.395, 0, 0, 0, 0.395, 0, 0, 0, 0.395, -190.0918, 1246.1709, -39.000763)
 mesh = SubResource("SphereMesh_ph54e")
 surface_material_override/0 = SubResource("ShaderMaterial_bh7fh")
 
