@@ -50,6 +50,7 @@ strength = 5.0
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_l3lge")
-volume_db = -20.0
+volume_db = -30.0
 autoplay = true
+max_distance = 20.0
 bus = &"SFX"
