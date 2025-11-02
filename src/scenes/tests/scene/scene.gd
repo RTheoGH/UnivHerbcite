@@ -21,6 +21,7 @@ func _ready() -> void:
 	
 	#$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
 	Global.is_craft_ui_open = false
+	Global.player_inventory.items.clear()
 	
 	start_intro_narration(2.5)
 
