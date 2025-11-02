@@ -79,6 +79,7 @@ func _ready() -> void:
 	
 	item_frame.texture = null 
 	frame_pos = item_frame.position
+	
 
 func _physics_process(delta: float) -> void:
 	if Global.isPaused :
@@ -225,6 +226,7 @@ func _physics_process(delta: float) -> void:
 		audio_marche.stop()
 	
 	if is_in_toxic_fog && not ItemEffects.is_effect_active(InventoryItem.InventoryItemEffect.POISON_IMMUNE):
+		print("je suis dans le fog!!! et j'ai pas bu")
 		is_in_toxic_fog = false
 		$cough.play(3.0)
 		faint(2.0)

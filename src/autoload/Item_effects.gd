@@ -38,7 +38,13 @@ var effects := {
 			{"target": "player"}
 		],
 		"duration": 1000000000000.0
-	}
+	},
+	InventoryItem.InventoryItemEffect.POISON_IMMUNE: {
+		"stats": [
+			{"target": "player"}
+		],
+		"duration": 10000000000.0
+	},
 }
 
 var active_timers := {} # pour savoir si effet en cours : active_timers.keys.has(effet_actuel)
@@ -75,7 +81,7 @@ func _apply_effect(p, effect_type):
 		if active_timers[effect_type] != null:
 			active_timers[effect_type].stop()
 	else:
-		if effect_type == InventoryItem.InventoryItemEffect.HEALED:
+		if effect_type == InventoryItem.InventoryItemEffect.HEALED or effect_type == InventoryItem.InventoryItemEffect.POISON_IMMUNE:
 			active_timers[effect_type] = null
 		else:
 			var t := Timer.new()
@@ -167,6 +173,9 @@ func _process(_delta: float) -> void:
 			label.show()
 		elif effect_type == InventoryItem.InventoryItemEffect.HEALED:
 			var icon: TextureRect = player.get_node("Effects/Healed_icon")
+			icon.show()
+		elif effect_type == InventoryItem.InventoryItemEffect.POISON_IMMUNE:
+			var icon: TextureRect = player.get_node("Effects/Poison_icon")
 			icon.show()
 
 func is_effect_active(effect: InventoryItem.InventoryItemEffect) -> bool:
