@@ -24,6 +24,8 @@ var blue_potion_used : bool = false
 
 var lod_distance: bool = true
 
+var fin: bool = false
+
 var herbier : Array = []
 var discoveries : Array = []
 var recipes : Array[ItemRecipe] = [
@@ -93,7 +95,7 @@ func _ready() -> void:
 	
 
 func _process(_delta: float) -> void:
-	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open and !is_chest_open and !is_narration_showing):
+	if(Input.is_action_just_pressed("pause") and !is_craft_ui_open and !is_chest_open and !is_narration_showing and !fin):
 		isPaused = !isPaused
 
 	if Global.is_craft_ui_open and Input.is_action_just_pressed("pause"):

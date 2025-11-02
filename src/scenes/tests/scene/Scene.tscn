@@ -876,7 +876,7 @@ point_count = 8
 script = ExtResource("1_w7ipn")
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -168.95952, 4.856743, 0.67638457)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -167.07976, 5.4322853, 0.8175707)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
@@ -3071,12 +3071,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -107.415794, 2.1901364, 215.3
 title = "Le chat ?"
 message = "Un chat étrangement grand se trouve devant moi. Il semble amical."
 
-[node name="NarrationArea3" parent="." instance=ExtResource("47_xfcej")]
+[node name="fin" parent="." instance=ExtResource("47_xfcej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.48829, 0, 246.43579)
 title = "La fin"
-message = "J'ai reussi à atteindre le bout de cet endroit. Je vais enfin pouvoir partir d'ici..."
+message = "J'ai atteint la fin. Enfin, la sortie.Pourtant... quelque chose ne va pas. L'air ici est trop calme, les plantes semblent m’observer, comme si elles attendaient.Tout ce chemin, toutes ces découvertes... et maintenant que je peux partir, je me demande si j’en ai vraiment envie.Peut-être que ce lieu n’était pas une prison. Peut-être que c'était un test."
 
-[node name="CollisionShape3D" parent="NarrationArea3" index="0"]
+[node name="CollisionShape3D" parent="fin" index="0"]
 transform = Transform3D(3.664164, 0, -1.6043384, 0, 4, 0, 1.6043384, 0, 3.664164, -1.0908356, 0, -3.161026)
 
 [node name="door_hinge" type="Node3D" parent="."]
@@ -3112,7 +3112,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
-transform = Transform3D(0.46795657, -0.43609765, -0.020882227, -0.08299111, -0.11890304, 0.6233576, -0.4286371, -0.45308, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
+transform = Transform3D(0.46795657, -0.43609774, -0.020882227, -0.08299111, -0.11890306, 0.6233576, -0.4286371, -0.4530801, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
 
@@ -3208,7 +3208,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380855, 0.5894758, 0, 0.9999244, 0.011260373, -0.5895138, 0.009095563, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380803, 0.5894758, 0, 0.99992365, 0.011260373, -0.5895138, 0.009095556, -0.807705, 0, 0, 0)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
@@ -3236,4 +3236,4 @@ transform = Transform3D(-0.80775696, -0.0066380855, 0.5894758, 0, 0.9999244, 0.0
 [editable path="Lore_z3"]
 [editable path="Squelette"]
 [editable path="NarrationArea2"]
-[editable path="NarrationArea3"]
+[editable path="fin"]
