@@ -4,6 +4,7 @@ const time := 1.0
 @onready var fog_tween: Tween = get_parent().fog_tween
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group(&"player"):
+		body.is_in_toxic_fog = true
 		print("fog deepens")
 		fog_tween = get_tree().create_tween()
 		fog_tween.set_parallel()
