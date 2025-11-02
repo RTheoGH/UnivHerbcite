@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7e61ij3wfkph"]
+[gd_scene load_steps=11 format=3 uid="uid://b7e61ij3wfkph"]
 
 [ext_resource type="Texture2D" uid="uid://cj7os2qpphhr3" path="res://assets/graphical/ui/craft.png" id="1_c4iyr"]
 [ext_resource type="Script" uid="uid://b1qaf582bdv8x" path="res://src/scenes/ui/inventory/inv_ui_draggable.gd" id="1_qo0wa"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://vdhsofjvfa2j" path="res://src/scenes/ui/crafting/Draggable.tscn" id="5_j36tp"]
 [ext_resource type="AudioStream" uid="uid://dc48glgcyq0rr" path="res://assets/sounds/bubbles.mp3" id="6_n80fn"]
 [ext_resource type="Texture2D" uid="uid://dbciw26jgbx1p" path="res://assets/graphical/ui/broyer-1.png.png" id="7_38vo3"]
+[ext_resource type="AudioStream" uid="uid://bgiptklr7mgr1" path="res://assets/sounds/bubble_fail.mp3" id="10_gj8eh"]
 
 [node name="Control" type="Control"]
 visible = false
@@ -210,6 +211,11 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Complete" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_n80fn")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="Fail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_gj8eh")
 volume_db = 5.0
 bus = &"SFX"
 

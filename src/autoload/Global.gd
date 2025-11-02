@@ -19,6 +19,9 @@ var guidage: bool = true
 
 var book_not_collected: bool = true
 
+var maxwell_quest_completed : bool = false
+var blue_potion_used : bool = false
+
 var herbier : Array = []
 var discoveries : Array = []
 var recipes : Array[ItemRecipe] = [
@@ -100,12 +103,16 @@ func _process(_delta: float) -> void:
 	if Global.isPaused:
 		if !paused_timers:
 			for timer in ItemEffects.active_timers:
-				ItemEffects.active_timers[timer].paused = true
-				paused_timers = true
+				var t = ItemEffects.active_timers[timer]
+				if t != null:
+					t.paused = true
+			paused_timers = true
 
 	if !Global.isPaused and paused_timers:
 		for timer in ItemEffects.active_timers:
-			ItemEffects.active_timers[timer].paused = false
+			var t = ItemEffects.active_timers[timer]
+			if t != null:
+				t.paused = false
 		paused_timers = false
 
 	
