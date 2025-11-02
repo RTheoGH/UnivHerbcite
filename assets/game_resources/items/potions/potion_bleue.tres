@@ -8,4 +8,5 @@ script = ExtResource("1_xih0d")
 type = 11
 texture = ExtResource("2_2lxqm")
 description = "Une potion d'un bleu azur."
+effect = 6
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

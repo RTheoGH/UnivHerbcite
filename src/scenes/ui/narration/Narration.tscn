@@ -8,6 +8,7 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvk2f"]
 
 [node name="Narration" type="Control"]
+z_index = 1000
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,9 +47,9 @@ offset_bottom = 0.2079773
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.32156864)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.32156864)
 text = "Le réveil"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -67,10 +68,11 @@ offset_bottom = 0.28799438
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.32156864)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 0.32156864)
 theme_override_font_sizes/normal_font_size = 12
 text = "Je me suis reveillé à l'universite. J'ai l'impression d'être au S-pace mais quelque chose est étrange..."
-horizontal_alignment = 1
+horizontal_alignment = 3
 vertical_alignment = 1
 
 [node name="tex_button" type="TextureRect" parent="."]
@@ -104,6 +106,7 @@ offset_bottom = 0.22399902
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bvk2f")
 text = "Continuer"

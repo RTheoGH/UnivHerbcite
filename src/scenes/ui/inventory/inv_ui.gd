@@ -240,6 +240,15 @@ func _on_eat_pressed() -> void:
 		if item.type == asperge: print("discovered asperges")
 		if item.type == olive: print("discovered olives")
 		item.revele = true
+		
+	var pot_bleu = InventoryItem.InventoryItemType.POTION_BLEUE
+	if item.type == pot_bleu:
+		if !Global.blue_potion_used:
+			if !Global.maxwell_quest_completed:
+				Global.narrate("La potion", "J'ai bu une potion étrange d'un bleu profond. Je me demande quels effets elle aura.")
+			else:
+				Global.narrate("Le remède", "J'ai bu la potion de Maxwell. Je ne vois pas trop de différence mais je lui fais confiance. J'adore les chats.")
+		Global.blue_potion_used = true
 	
 	Global.player_inventory.remove_item(item)
 	update_slides()

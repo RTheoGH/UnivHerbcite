@@ -1,6 +1,54 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://hgacqogh11xv"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://hgacqogh11xv"]
 
 [ext_resource type="FontFile" uid="uid://5tkf1gvc8ltm" path="res://assets/graphical/fonts/PlaywriteUSModern-VariableFont_wght.ttf" id="1_xejcj"]
 
+[sub_resource type="Gradient" id="Gradient_ql1pw"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.5405405, 0.7263514)
+colors = PackedColorArray(0, 1, 0, 1, 3.5616756e-06, 0.5824653, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_spwue"]
+gradient = SubResource("Gradient_ql1pw")
+width = 12
+height = 12
+fill = 2
+fill_from = Vector2(0.508547, 0.52136755)
+
+[sub_resource type="Gradient" id="Gradient_spwue"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.47402596, 0.66883117)
+colors = PackedColorArray(3.5616756e-06, 0.5824653, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_baqol"]
+gradient = SubResource("Gradient_spwue")
+width = 12
+height = 12
+fill = 2
+fill_from = Vector2(0.517094, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_baqol"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.5779221, 1)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0.59607846, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pcaj6"]
+gradient = SubResource("Gradient_baqol")
+width = 12
+height = 12
+fill = 2
+fill_from = Vector2(0.50427353, 0.51282054)
+fill_to = Vector2(0.7136752, 0.2905983)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcaj6"]
+bg_color = Color(0, 0.7153621, 0.42379645, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glm24"]
+bg_color = Color(2.887845e-06, 0.9170988, 0.7046474, 1)
+
 [resource]
 default_font = ExtResource("1_xejcj")
+HSlider/icons/grabber = SubResource("GradientTexture2D_spwue")
+HSlider/icons/grabber_disabled = SubResource("GradientTexture2D_baqol")
+HSlider/icons/grabber_highlight = SubResource("GradientTexture2D_pcaj6")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_pcaj6")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_glm24")

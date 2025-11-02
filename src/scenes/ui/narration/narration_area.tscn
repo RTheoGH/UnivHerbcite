@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://mnonms8de1fo" path="res://src/scenes/ui/narration/narration_area.gd" id="1_7tr78"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8dn8c"]
+size = Vector3(2.9299316, 2.3930054, 10.111622)
 
 [node name="NarrationArea" type="Area3D"]
 script = ExtResource("1_7tr78")
