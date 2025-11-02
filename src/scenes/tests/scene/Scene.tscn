@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=116 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -305,7 +305,8 @@ script/source = "extends Node3D
 
 func _on_interactable_on_interaction_signal() -> void:
 	Global.text_alert.show_alert(\"La porte du S-pace s'est ouverte\")
-	$Interactable2.queue_free()
+	if $Interactable2:
+		$Interactable2.queue_free()
 
 func _on_interactable_2_on_interaction_signal() -> void:
 	Global.text_alert.show_alert(\"La porte ne s'ouvre pas de ce coté...\")
@@ -2814,7 +2815,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638095, 0.5894758, 0, 0.99992585, 0.011260373, -0.5895138, 0.009095576, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638094, 0.5894758, 0, 0.99992573, 0.011260373, -0.5895138, 0.009095575, -0.807705, 0, 0, 0)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
