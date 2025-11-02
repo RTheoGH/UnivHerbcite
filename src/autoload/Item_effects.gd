@@ -149,3 +149,6 @@ func _process(_delta: float) -> void:
 			icon.show()
 			label.text = str(int(time_left)) + "s"
 			label.show()
+
+func is_effect_active(effect: InventoryItem.InventoryItemEffect) -> bool:
+	return active_timers.keys.has(effect)
