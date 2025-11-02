@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=116 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -35,6 +35,7 @@
 [ext_resource type="Resource" uid="uid://cnhhrmbd4cdyi" path="res://assets/game_resources/plantes/Olivier.tres" id="29_y4obm"]
 [ext_resource type="Texture2D" uid="uid://02fplxnd1p8f" path="res://assets/graphical/plantes/olivier.png" id="30_etu4x"]
 [ext_resource type="Texture2D" uid="uid://d2cqixwjotg87" path="res://assets/graphical/recipes/pot_rouge.png" id="31_ew3or"]
+[ext_resource type="PackedScene" uid="uid://cuyp5hw5x2oy5" path="res://src/scenes/bees/bees.tscn" id="35_0ufl0"]
 [ext_resource type="Texture2D" uid="uid://cai7pn1s5e0r3" path="res://assets/graphical/plantes/asperges.png" id="41_lypve"]
 [ext_resource type="Resource" uid="uid://ve8dgj8wb3br" path="res://assets/game_resources/plantes/Myrobolan.tres" id="42_f74wi"]
 [ext_resource type="Texture2D" uid="uid://bvwvi71ajo5wh" path="res://assets/graphical/plantes/prunier.png" id="43_qr7a2"]
@@ -1790,6 +1791,8 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
+[node name="GPUParticles3D" parent="Plantes/Lavandes/Interactable3" instance=ExtResource("35_0ufl0")]
+
 [node name="Interactable4" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -245.82568, 4.5067387, 69.759224)
 collision_layer = 4
@@ -1838,6 +1841,8 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
+[node name="GPUParticles3D" parent="Plantes/Lavandes/Interactable5" instance=ExtResource("35_0ufl0")]
+
 [node name="Interactable6" type="Area3D" parent="Plantes/Lavandes"]
 transform = Transform3D(1.5063994, 0, 0, 0, 1.5063994, 0, 0, 0, 1.5063994, -202.92856, 5.9965687, 3.1738758)
 collision_layer = 4
@@ -1862,8 +1867,10 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
 
+[node name="GPUParticles3D" parent="Plantes/Lavandes/Interactable6" instance=ExtResource("35_0ufl0")]
+
 [node name="Interactable8" type="Area3D" parent="Plantes/Lavandes"]
-transform = Transform3D(2.3127072, 0, 0, 0, 2.3127072, 0, 0, 0, 2.3127072, -226.27985, 10.178368, -169.05066)
+transform = Transform3D(2.3127072, 0, 0, 0, 2.3127072, 0, 0, 0, 2.3127072, -240.08517, 10.178367, -148.33679)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -1885,6 +1892,8 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lavandes/Interactable8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5960083, 0)
 shape = SubResource("CylinderShape3D_hwj20")
+
+[node name="GPUParticles3D" parent="Plantes/Lavandes/Interactable8" instance=ExtResource("35_0ufl0")]
 
 [node name="Figuiers" type="Node3D" parent="Plantes"]
 
@@ -2790,7 +2799,7 @@ linked_event = ExtResource("56_1bfsn")
 curve = SubResource("Curve3D_sstu0")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_cat_event/Path3D"]
-transform = Transform3D(0.78165656, 0, 0.6237071, 0, 0.99999994, 0, -0.6237069, 0, 0.78165686, 0, 0, 0)
+transform = Transform3D(0.78165656, 0, 0.62370706, 0, 0.99999994, 0, -0.6237069, 0, 0.7816568, 0, 0, 0)
 
 [node name="EventMarker_hedgehog_event" type="Marker3D" parent="EventTriggerBehindSpace"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.177887, -2, 9.49877)
@@ -2801,7 +2810,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380952, 0.5894758, 0, 0.9999259, 0.011260373, -0.5895138, 0.009095577, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638095, 0.5894758, 0, 0.99992585, 0.011260373, -0.5895138, 0.009095576, -0.807705, 0, 0, 0)
 
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
