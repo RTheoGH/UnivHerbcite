@@ -854,14 +854,14 @@ metadata/_edit_use_anchors_ = true
 [node name="Antialiasing" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.49343756
-anchor_top = 0.67098767
-anchor_right = 0.60455555
-anchor_bottom = 0.71798766
-offset_left = 0.5599365
-offset_top = 0.19998169
-offset_right = -0.44799805
-offset_bottom = 0.27764893
+anchor_left = 0.49802086
+anchor_top = 0.5974321
+anchor_right = 0.6080209
+anchor_bottom = 0.64443207
+offset_left = 0.27996826
+offset_top = -0.13601685
+offset_right = 0.5599365
+offset_bottom = -0.05834961
 text = "Anticrénelage"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -870,14 +870,14 @@ metadata/_edit_use_anchors_ = true
 [node name="AA_option" type="OptionButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.605
-anchor_top = 0.66800004
-anchor_right = 0.702
-anchor_bottom = 0.72700006
-offset_left = 0.039978027
-offset_top = 0.13598633
-offset_right = 0.29595947
-offset_bottom = -0.09603882
+anchor_left = 0.6090209
+anchor_top = 0.5944322
+anchor_right = 0.7070209
+anchor_bottom = 0.6524321
+offset_left = 0.40795898
+offset_top = -0.19204712
+offset_right = -0.4880371
+offset_bottom = 0.22399902
 item_count = 4
 popup/item_0/text = "Désactivé"
 popup/item_0/id = 0
@@ -887,14 +887,15 @@ popup/item_2/text = "4x"
 popup/item_2/id = 2
 popup/item_3/text = "8x"
 popup/item_3/id = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="FPS" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7113195
-anchor_top = 0.6740741
-anchor_right = 0.75038886
-anchor_bottom = 0.7210741
+anchor_left = 0.8068056
+anchor_top = 0.658642
+anchor_right = 0.845875
+anchor_bottom = 0.705642
 offset_left = 0.5599365
 offset_top = 0.19998169
 offset_right = -0.44799805
@@ -908,10 +909,10 @@ metadata/_edit_use_anchors_ = true
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.7453125
-anchor_top = 0.6787197
-anchor_right = 0.77042365
-anchor_bottom = 0.7157197
+anchor_left = 0.8538195
+anchor_top = 0.6632876
+anchor_right = 0.8789307
+anchor_bottom = 0.7002876
 offset_left = 1.3999634
 offset_top = 0.18963623
 offset_right = 0.47192383
@@ -951,6 +952,79 @@ offset_right = 0.47192383
 offset_bottom = 0.21365356
 metadata/_edit_use_anchors_ = true
 
+[node name="Ombres" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5186112
+anchor_top = 0.67561734
+anchor_right = 0.58719444
+anchor_bottom = 0.7226173
+offset_left = 0.5599365
+offset_top = 0.19998169
+offset_right = -0.44799805
+offset_bottom = 0.27764893
+text = "Ombres"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Ombres_option" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6090209
+anchor_top = 0.6731359
+anchor_right = 0.7070209
+anchor_bottom = 0.7311358
+offset_left = 0.40795898
+offset_top = -0.19204712
+offset_right = -0.4880371
+offset_bottom = 0.22402954
+item_count = 6
+popup/item_0/text = "Rapide"
+popup/item_0/id = 0
+popup/item_1/text = "Très bas"
+popup/item_1/id = 1
+popup/item_2/text = "Bas"
+popup/item_2/id = 2
+popup/item_3/text = "Moyen"
+popup/item_3/id = 3
+popup/item_4/text = "Haut"
+popup/item_4/id = 4
+popup/item_5/text = "Ultra"
+popup/item_5/id = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LOD" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7929167
+anchor_top = 0.59691364
+anchor_right = 0.8615
+anchor_bottom = 0.6439136
+offset_left = 0.5599365
+offset_top = 0.19998169
+offset_right = -0.44799805
+offset_bottom = 0.27764893
+text = "LOD"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LOD_b" type="CheckButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8546876
+anchor_top = 0.60155916
+anchor_right = 0.8797987
+anchor_bottom = 0.6385592
+offset_left = 1.3999634
+offset_top = 0.18963623
+offset_right = 0.47192383
+offset_bottom = 0.21365356
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qoo4w")
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="retour" to="." method="_on_retour_pressed"]
 [connection signal="drag_started" from="sensi/sensi_slider" to="." method="_on_sensi_slider_drag_started"]
 [connection signal="drag_started" from="global/global_slider" to="." method="_on_global_slider_drag_started"]
@@ -974,3 +1048,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="item_selected" from="AA_option" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="FPS_b" to="." method="_on_fps_b_pressed"]
 [connection signal="pressed" from="Guide_b" to="." method="_on_guide_b_pressed"]
+[connection signal="item_selected" from="Ombres_option" to="." method="_on_ombres_option_item_selected"]
+[connection signal="pressed" from="LOD_b" to="." method="_on_lod_b_pressed"]
