@@ -51,7 +51,7 @@ stream_5 = ExtResource("10_epq6u")
 stream_6 = ExtResource("11_wsu1q")
 stream_7 = ExtResource("12_8ux3l")
 
-[node name="Perso" type="CharacterBody3D"]
+[node name="Perso" type="CharacterBody3D" groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_34im4")
 frame_amount = 0.02
