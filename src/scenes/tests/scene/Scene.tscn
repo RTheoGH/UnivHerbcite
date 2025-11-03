@@ -1622,7 +1622,7 @@ Je ferais mieux de trouver un moyen de le contenir ou les conséquences seraient
 
 [color=blue]Une autre note est griffonée au crayon en dessous.
 [/color]Les plantes en surcroissance ont commencé à dégager des vapeurs toxiques. Si je veux pouvoir sortir de la fac avant l'explosion du noyau, je dois concocter un contre-poison !
-Pour cela, j'ai besoin d'un spécimen de ces baies rouges qui poussent pas loin, quelques feuilles d'une liane toxique. et d'aller récolte quelques olives sur l'abre au milieu de la place."
+Pour cela, j'ai besoin d'un spécimen de ces baies rouges qui ne poussent pas loin, quelques feuilles d'une liane toxique, et d'aller récolter quelques olives sur l'abre au milieu de la place."
 
 [node name="Button" type="Button" parent="Lore_z4/Control"]
 layout_mode = 1
@@ -1636,6 +1636,7 @@ offset_right = -6.1035156e-05
 text = "Fermer"
 
 [node name="Encre" type="Sprite2D" parent="Lore_z4/Control"]
+visible = false
 position = Vector2(515, 417)
 scale = Vector2(1, 0.671875)
 texture = ExtResource("29_jxsa7")
@@ -3431,7 +3432,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638065, 0.5894758, 0, 0.9999214, 0.011260373, -0.5895138, 0.009095536, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380645, 0.5894758, 0, 0.99992126, 0.011260373, -0.5895138, 0.009095534, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
@@ -3509,7 +3510,7 @@ material_override = SubResource("ShaderMaterial_lm3in")
 mesh = SubResource("QuadMesh_8hh0t")
 
 [node name="Recette3" parent="." instance=ExtResource("20_fi6eh")]
-transform = Transform3D(-0.45960605, 2.6542044, 1.1601898e-07, -2.9308678e-15, -1.17745536e-07, 2.6937034, 2.6542044, 0.45960605, 2.0090042e-08, -39.942547, -1.9262516, 70.29213)
+transform = Transform3D(-0.45960605, 2.6542044, 1.1601898e-07, -2.9308678e-15, -1.17745536e-07, 2.6937034, 2.6542044, 0.45960605, 2.0090042e-08, -39.942547, -2.2454987, 70.29213)
 skeleton = NodePath("../lights/OmniLight3D2")
 
 [node name="Control" type="Control" parent="Recette3"]
@@ -3518,7 +3519,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = SubResource("GDScript_v5phb")
 
 [node name="TextureRect" type="TextureRect" parent="Recette3/Control"]
 layout_mode = 1
@@ -3588,7 +3588,6 @@ text = "Fermer"
 [connection signal="visibility_changed" from="Recette2/Control" to="Recette2/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="EventTriggerBehindSpace" to="EventTriggerBehindSpace" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTrigger2" to="EventTrigger2" method="_on_body_entered"]
-[connection signal="visibility_changed" from="Recette3/Control" to="Recette3/Control" method="_on_visibility_changed"]
 
 [editable path="NarrationArea"]
 [editable path="Lore_z3"]
