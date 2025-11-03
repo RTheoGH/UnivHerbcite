@@ -1522,7 +1522,7 @@ offset_right = -6.1035156e-05
 text = "Fermer"
 
 [node name="EncreLong" type="Sprite2D" parent="Recette/Control"]
-position = Vector2(623, 205)
+position = Vector2(634, 221)
 texture = ExtResource("26_7v1kh")
 
 [node name="Lore_z3" parent="." instance=ExtResource("20_fi6eh")]
@@ -1649,7 +1649,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("23_feptu")
 
 [node name="TextureRect" type="TextureRect" parent="Lore/Control"]
 layout_mode = 1
@@ -2770,7 +2769,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
 shape = SubResource("CylinderShape3D_v5phb")
 
 [node name="Interactable3" type="Area3D" parent="Plantes/Romarins"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.7224, 6.602552, -69.85451)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.7224, 4.953516, -69.85451)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3432,7 +3431,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638071, 0.5894758, 0, 0.9999223, 0.011260373, -0.5895138, 0.009095543, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638065, 0.5894758, 0, 0.9999214, 0.011260373, -0.5895138, 0.009095536, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)

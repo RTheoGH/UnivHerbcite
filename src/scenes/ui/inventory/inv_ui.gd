@@ -12,6 +12,7 @@ var grabbed_object := -1
 var hoverred_object := -1
 var precedent_place := -1 # pour droppables
 var objects_slots : Array[int] = [-1, -1, -1] # map qui associe un draggable à l'indice d'un droppable (0, 1, 2, 3)
+var hoverred_slot := -1
 
 var slot_textures = {
 	"base": preload("res://assets/graphical/ui/base_case.png"),
@@ -82,7 +83,8 @@ func change_current_slot():
 
 var current_selected_slot = -1
 func _on_inventory_ui_slot_mouse_entered(slot_index: int) -> void:
-	Global.inv_current_slot = slot_index
+	hoverred_slot = slot_index	
+	#Global.inv_current_slot = slot_index
 	update_infos()
 
 func update_slot_textures():
@@ -139,7 +141,8 @@ func process_drag_drop():
 			Global.player_inventory.remove_item(Global.player_inventory.items[grabbed_object])
 			refresh()
 		grabbed_object = -1
-		
+		if hoverred_slot != -1:
+			Global.inv_current_slot = hoverred_slot
 		
 func can_place() -> bool :
 	
@@ -245,3 +248,7 @@ func _on_eat_pressed() -> void:
 			slots[i].get_node("item_display").texture = null
 			slots[i].get_node("item_quantity").text = ""
 	ItemEffects._apply_effect(player, item.effect)
+
+
+func _on_inventory_ui_slot_mouse_exited() -> void:
+	hoverred_slot = -1

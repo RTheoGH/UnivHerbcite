@@ -24,7 +24,10 @@ func _ready() -> void:
 	#$Stegosaurus/AnimationPlayer.play("Armature|Stegosaurus_Attack")
 	Global.is_craft_ui_open = false
 	Global.player_inventory.items.clear()
-	
+	Global.discoveries.clear()
+	for p in Global.herbier:
+		p.decouvert = false
+		p.item.revele = false
 	start_intro_narration(2.5)
 
 func apply_pause_audio(paused: bool) -> void:

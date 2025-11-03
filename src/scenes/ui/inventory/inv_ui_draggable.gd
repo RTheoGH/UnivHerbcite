@@ -140,8 +140,8 @@ func _on_confirm_button_up() -> void:
 		Global.player_inventory.add_item(result)
 		$Complete.play()
 		for ci in current_ings:
-			var figue = InventoryItem.InventoryItemType.FIGUES
-			var myrobolan = InventoryItem.InventoryItemType.MYROBOLANS
+			#var figue = InventoryItem.InventoryItemType.FIGUES
+			#var myrobolan = InventoryItem.InventoryItemType.MYROBOLANS
 
 			ci.revele = true
 			var plant = Global.get_plant_from_item(ci)
@@ -154,6 +154,7 @@ func _on_confirm_button_up() -> void:
 	else:
 		Global.player_inventory.consume_items(current_ings)
 		$Fail.play()
+		$ColorRect4/RichTextLabel2.text = "[center]La fabrication n'a rien donné."
 		refresh()
 
 func _on_confirm_2_button_up() -> void:
@@ -163,6 +164,7 @@ func _on_confirm_2_button_up() -> void:
 
 func _on_visibility_changed() -> void:
 	if visible:
+		$ColorRect4/RichTextLabel2.text = ""
 		refresh()
 	elif narrate_craft >= 0:
 		var craft_narration = {

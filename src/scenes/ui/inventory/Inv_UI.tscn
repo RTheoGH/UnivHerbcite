@@ -251,8 +251,11 @@ metadata/_edit_use_anchors_ = true
 [connection signal="mouse_entered" from="Node2D3/Area2D" to="." method="_on_area_2d_mouse_entered" binds= [2]]
 [connection signal="mouse_exited" from="Node2D3/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [0]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot" to="." method="_on_inventory_ui_slot_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [1]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot2" to="." method="_on_inventory_ui_slot_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_entered" binds= [2]]
+[connection signal="mouse_exited" from="PanelContainer/MarginContainer/HBoxContainer/InventoryUiSlot3" to="." method="_on_inventory_ui_slot_mouse_exited"]
 [connection signal="pressed" from="Infos/Eat" to="." method="_on_eat_pressed"]
 
 [editable path="Node2D"]
