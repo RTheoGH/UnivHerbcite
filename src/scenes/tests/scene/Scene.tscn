@@ -991,7 +991,7 @@ mouse_filter = 1
 flat = true
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(0.13394123, 0, -1.494008, 0, 1.5, 0, 1.494008, 0, 0.13394123, 21.71717, 4.623504, 235.82141)
+transform = Transform3D(0.13394123, 0, -1.494008, 0, 1.5, 0, 1.494008, 0, 0.13394123, -163.31276, 4.623504, -3.1456456)
 
 [node name="Pause" parent="." instance=ExtResource("3_20oit")]
 visible = false
