@@ -140,3 +140,4 @@ func setup_text_alerts():
 		
 func is_ui_open() -> bool:
 	return is_chest_open or is_craft_ui_open or is_inventory_open or is_interactable_ui_open
+	

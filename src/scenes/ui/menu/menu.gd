@@ -28,6 +28,7 @@ func _ready() -> void:
 			transition()
 	)
 	$Backgrounds.frame += 1
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	pass # Replace with function body.
 
 func transition() -> void:
