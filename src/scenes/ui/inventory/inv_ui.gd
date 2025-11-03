@@ -53,10 +53,6 @@ func _process(_delta):
 	
 	change_current_slot()
 	
-	discover_jujubes()
-	discover_lavandes()
-	discover_lierres()
-	discover_romarins()
 
 func update_slides():
 	#print(slots[0])
@@ -84,6 +80,7 @@ func change_current_slot():
 	update_infos()
 	update_slot_textures()
 
+var current_selected_slot = -1
 func _on_inventory_ui_slot_mouse_entered(slot_index: int) -> void:
 	Global.inv_current_slot = slot_index
 	update_infos()
@@ -231,15 +228,6 @@ func _on_eat_pressed() -> void:
 		return
 	
 	var item = Global.player_inventory.items[slot]
-	print(item)
-	var arbouse = InventoryItem.InventoryItemType.ARBOUSES
-	var asperge = InventoryItem.InventoryItemType.ASPERGES
-	var olive = InventoryItem.InventoryItemType.OLIVES
-	if item.type == arbouse or item.type == asperge:
-		if item.type == arbouse: print("discovered arbouses")
-		if item.type == asperge: print("discovered asperges")
-		if item.type == olive: print("discovered olives")
-		item.revele = true
 		
 	var pot_bleu = InventoryItem.InventoryItemType.POTION_BLEUE
 	if item.type == pot_bleu:
@@ -257,41 +245,3 @@ func _on_eat_pressed() -> void:
 			slots[i].get_node("item_display").texture = null
 			slots[i].get_node("item_quantity").text = ""
 	ItemEffects._apply_effect(player, item.effect)
-
-func discover_jujubes():
-	if !discovered_jujubes:
-		for item in Global.player_inventory.items:
-			if item.type == InventoryItem.InventoryItemType.JUJUBES \
-			and item.quantity == 3:
-				print("discovered jujubes")
-				item.revele = true
-				discovered_jujubes = true
-
-func discover_lavandes():
-	if !discovered_lavandes:
-		var slot = Global.inv_current_slot
-		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
-			var item = Global.player_inventory.items[slot]
-			if item.type == InventoryItem.InventoryItemType.LAVANDE:
-				print("discovered lavandes")
-				item.revele = true
-				discovered_lavandes = true
-
-func discover_romarins():
-	if !discovered_romarins:
-		var slot = Global.inv_current_slot
-		if Global.inv_current_slot >= 0 and Global.inv_current_slot < Global.player_inventory.items.size():
-			var item = Global.player_inventory.items[slot]
-			if item.type == InventoryItem.InventoryItemType.ROMARIN:
-				print("discovered romarins")
-				item.revele = true
-				discovered_romarins = true
-
-func discover_lierres():
-	if !discovered_lierres:
-		for item in Global.player_inventory.items:
-			if item.type == InventoryItem.InventoryItemType.LIERRES \
-			and item.quantity == 5:
-				print("discovered lierres")
-				item.revele = true
-				discovered_lierres = true

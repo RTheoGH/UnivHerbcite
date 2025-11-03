@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var distance_haute_threshold: float = 80.0
+@export var distance_haute_threshold: float = 120.0
 var distance_basse_threshold: float # hysteresis
 
 # Called when the node enters the scene tree for the first time.
@@ -25,15 +25,6 @@ func _process(_delta: float) -> void:
 		$TreeBas.show()
 		$TreeHaut.show()
 		$"Sprite3D".hide()
-		#else:
-			#var taux_alpha =  (distance_haute_threshold - (active_cam.global_position - global_position).length()) / distance_basse_threshold
-			#
-			#if distance_haute_threshold < 100.0:
-				#print(taux_alpha)
-				#print($TreeBas.material_override.get_shader_parameter("opacity"))
-			#$TreeBas.material_override.set_shader_parameter("opacity", taux_alpha)
-			##$TreeHaut.multimesh.mesh.material.set_shader_parameter("albedo:a", 1.0-taux_alpha)
-			#$"Sprite3D".modulate.a = 1.0-taux_alpha
 
 
 func _on_fog_change_body_entered(body: Node3D) -> void:

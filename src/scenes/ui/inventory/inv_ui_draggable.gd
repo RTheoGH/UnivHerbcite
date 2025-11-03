@@ -142,11 +142,12 @@ func _on_confirm_button_up() -> void:
 		for ci in current_ings:
 			var figue = InventoryItem.InventoryItemType.FIGUES
 			var myrobolan = InventoryItem.InventoryItemType.MYROBOLANS
-			if ci.type == figue \
-			or ci.type == myrobolan:
-				if ci.type == figue: print("discovered figue")
-				if ci.type == myrobolan: print("discovered myrobolan")
-				ci.revele = true
+
+			ci.revele = true
+			var plant = Global.get_plant_from_item(ci)
+			if plant:
+				plant.decouvert = true
+				Global.discoveries.append(plant)
 		if $TextureRect.texture == craft_ui_textures["complete"]:
 			$TextureRect.texture = craft_ui_textures["base"]
 		refresh()

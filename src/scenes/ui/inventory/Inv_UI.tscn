@@ -229,15 +229,16 @@ polygon = PackedVector2Array(63, -32, 39, 1, 87, 1)
 [node name="Eat" type="Button" parent="Infos"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 1.031
-anchor_top = 0.22800002
-anchor_right = 1.2800001
-anchor_bottom = 0.76100004
+anchor_left = 0.2993616
+anchor_top = 1.3693043
+anchor_right = 0.70655376
+anchor_bottom = 1.9023043
 offset_left = 0.026000977
 offset_top = 0.02399826
 offset_right = -0.120025635
 offset_bottom = -0.012001038
 text = "Manger"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="body_entered" from="Node2D/Area2D" to="." method="_on_area_2d_body_entered"]

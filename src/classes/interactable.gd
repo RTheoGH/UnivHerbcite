@@ -5,7 +5,6 @@ class_name Interactable
 
 @export var plante: Plante
 var cooldown
-#@export var item : InventoryItem
 
 signal on_interaction_signal
 
@@ -25,15 +24,9 @@ func pick_up():
 		return
 		
 	print("Tu m'as récupéré !")
-	#print(plante)
+
 	Global.player_inventory.add_item(plante.item)
-	if(!Global.discoveries.has(plante)):
-		Global.discoveries.push_back(plante)
+	#if(!Global.discoveries.has(plante)):
+		#Global.discoveries.push_back(plante)
 	
 	cooldown = get_tree().create_timer(15)
-	#print(plante.type)
-	#print(plante.texture)
-	#print(plante.description)
-	#print(plante.item.type)
-	#print(plante.item.texture)
-	#print(plante.item.description)

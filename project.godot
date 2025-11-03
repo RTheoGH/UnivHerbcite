@@ -23,7 +23,7 @@ Overlay="*res://src/autoload/overlay.tscn"
 
 [display]
 
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [file_customization]
 
@@ -156,8 +156,10 @@ right_click={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+lights_and_shadows/directional_shadow/size=2048
 anti_aliasing/quality/msaa_3d=1
 occlusion_culling/use_occlusion_culling=true
+lights_and_shadows/positional_shadow/atlas_size=2048
 
 [shader_globals]
 

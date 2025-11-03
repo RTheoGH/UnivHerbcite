@@ -92,6 +92,14 @@ func narrate(title: String, message:String):
 
 func _ready() -> void:
 	isPaused = false
+
+func get_plant_from_item(item: InventoryItem) -> Plante:
+	
+	for p in herbier:
+		if p.item == item:
+			return p;
+	
+	return null
 	
 
 func _process(_delta: float) -> void:

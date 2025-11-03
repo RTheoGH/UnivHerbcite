@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=136 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://d2xe0exd7f5if" path="res://assets/graphical/plantes/figuier.png" id="25_sbyx2"]
 [ext_resource type="Texture2D" uid="uid://b7kje5p48sxrs" path="res://assets/graphical/ui/encre_long.png" id="26_7v1kh"]
 [ext_resource type="Texture2D" uid="uid://lh4dv6elkpti" path="res://assets/graphical/Textures/bois_horrible.jpg" id="26_accns"]
+[ext_resource type="Texture2D" uid="uid://cv6nyep82djdx" path="res://assets/graphical/ui/encre2.png" id="26_lm3in"]
 [ext_resource type="ArrayMesh" uid="uid://bj0eku6m2tp15" path="res://assets/game_resources/models/panneau.obj" id="27_0ufl0"]
 [ext_resource type="Texture2D" uid="uid://baw1cwonmlbm2" path="res://assets/graphical/plantes/lavandes.png" id="27_5x5f6"]
 [ext_resource type="Resource" uid="uid://byesbrpgol73j" path="res://assets/game_resources/plantes/Lavande.tres" id="27_hwj20"]
@@ -872,6 +873,7 @@ _data = {
 point_count = 8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xxxgc"]
+radius = 0.22589488
 
 [sub_resource type="Curve3D" id="Curve3D_xxxgc"]
 _data = {
@@ -880,9 +882,104 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Shader" id="Shader_xxxgc"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.5.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_schlick_ggx;
+
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform ivec2 albedo_texture_size;
+uniform float point_size : hint_range(0.1, 128.0, 0.1);
+
+uniform float roughness : hint_range(0.0, 1.0);
+uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
+uniform vec4 metallic_texture_channel;
+uniform sampler2D texture_roughness : hint_roughness_r, filter_linear_mipmap, repeat_enable;
+
+uniform float specular : hint_range(0.0, 1.0, 0.01);
+uniform float metallic : hint_range(0.0, 1.0, 0.01);
+
+uniform sampler2D texture_normal : hint_roughness_normal, filter_linear_mipmap, repeat_enable;
+uniform float normal_scale : hint_range(-16.0, 16.0);
+
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+void vertex() {
+	UV = UV * uv1_scale.xy + uv1_offset.xy ;
+}
+
+void fragment() {
+	vec2 base_uv = UV + TIME * vec2(0.005, 0.0);
+
+	vec4 albedo_tex = texture(texture_albedo, base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+
+	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
+	METALLIC = metallic_tex * metallic;
+	SPECULAR = specular;
+
+	vec4 roughness_texture_channel = vec4(1.0, 0.0, 0.0, 0.0);
+	float roughness_tex = dot(texture(texture_roughness, base_uv), roughness_texture_channel);
+	ROUGHNESS = roughness_tex * roughness;
+
+	// Normal Map: Enabled
+	NORMAL_MAP = texture(texture_normal, base_uv).rgb;
+	NORMAL_MAP_DEPTH = normal_scale;
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xxxgc"]
+frequency = 0.0035
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lm3in"]
+width = 125
+height = 125
+noise = SubResource("FastNoiseLite_xxxgc")
+seamless = true
+as_normal_map = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lm3in"]
+render_priority = 0
+shader = SubResource("Shader_xxxgc")
+shader_parameter/albedo = Color(0.34145305, 0.7375883, 0.8315671, 1)
+shader_parameter/albedo_texture_size = Vector2i(0, 0)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.01
+shader_parameter/metallic_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/specular = 1.0
+shader_parameter/metallic = 0.96
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_lm3in")
+shader_parameter/normal_scale = 0.5
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_8hh0t"]
+size = Vector2(50, 50)
+
 [node name="Scene" type="Node3D"]
 process_mode = 3
 script = ExtResource("1_w7ipn")
+
+[node name="lights" type="Node3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 4.2523017, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lights"]
+transform = Transform3D(0.33333334, 0, 0, 0, 0.33333334, 0, 0, 0, 0.33333334, -40.589645, 2.2460997, -14.878829)
+light_energy = 10.0
+omni_range = 15.871218
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="lights"]
+transform = Transform3D(0.33333334, 0, 0, 0, 0.33333334, 0, 0, 0, 0.33333334, -56.373566, 3.2818034, -15.581978)
+light_energy = 15.0
+omni_range = 24.454971
 
 [node name="WEBNTM" type="Button" parent="."]
 anchors_preset = 15
@@ -894,14 +991,7 @@ mouse_filter = 1
 flat = true
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -167.07976, 5.4322853, 0.8175707)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.4614501, 0.7959809, 0.39176297, -0.19466797, -0.33997992, 0.92006415, 0.86554503, -0.5008274, -0.0019317907, 0.040063858, -2.5703084, -0.10313749)
-visible = false
-shadow_enabled = true
-shadow_opacity = 0.89
-shadow_blur = 1.094
+transform = Transform3D(0.13394123, 0, -1.494008, 0, 1.5, 0, 1.494008, 0, 0.13394123, 21.71717, 4.623504, 235.82141)
 
 [node name="Pause" parent="." instance=ExtResource("3_20oit")]
 visible = false
@@ -909,10 +999,10 @@ visible = false
 [node name="InvUi" parent="." instance=ExtResource("2_w7ipn")]
 
 [node name="CraftingTable" parent="." instance=ExtResource("4_j0txf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -164.2616, 3.4564147, 4.0301676)
+transform = Transform3D(1.6248785, 0, 1.3303269, 0, 2.1, 0, -1.3303269, 0, 1.6248785, -146.5488, 2.9673183, 4.945464)
 
 [node name="Coffre" parent="." instance=ExtResource("5_gveul")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -161.87686, 3.4564147, 4.0301676)
+transform = Transform3D(0.83392435, 0, -0.55187875, 0, 1, 0, 0.55187875, 0, 0.83392435, -151.2284, 3.456415, 5.7319436)
 
 [node name="NarrationArea" parent="." instance=ExtResource("47_xfcej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.01048, 3.3080912, 1.0307124)
@@ -1003,6 +1093,7 @@ texture = SubResource("GradientTexture1D_f74wi")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextEdit" type="RichTextLabel" parent="credits/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 11.525001
@@ -1382,22 +1473,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_f74wi")
 
-[node name="TextEdit" type="RichTextLabel" parent="Recette/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 8.1
-anchor_top = 3.775
-anchor_right = 8.1
-anchor_bottom = 3.775
-offset_left = 134.0
-offset_right = 362.0
-offset_bottom = 39.0
-theme_override_colors/default_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 12
-bbcode_enabled = true
-text = "[center]  Recette pour une potion verte
-"
-
 [node name="TextEdit2" type="RichTextLabel" parent="Recette/Control"]
 layout_mode = 1
 anchors_preset = -1
@@ -1406,13 +1481,16 @@ anchor_top = 3.775
 anchor_right = 8.1
 anchor_bottom = 3.775
 offset_left = 137.0
-offset_top = 59.0
+offset_top = -16.0
 offset_right = 365.0
 offset_bottom = 326.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "[fill]J'ai concocté une nouvelle solution pour m'aider à [color=dark_red]aller plus vite[/color] dans mes tâches mais il ne faut surtout pas que je laisse les autres l'apprendre ! Je veux quand même garder une trace de ma recette donc je la répertorie ici, dans le S-pace, de manière un peu codée si jamais quelqu'un tombe dessus. Après tout, c'est moi [color=dark_red]l'expert en plantes[/color] ici, donc ça devrait aller. "
+text = "Camarades, 
+J'ai concocté une nouvelle [color=dark_red]solution énergisante[/color], mais j'ai fait tomber la recette dans le coin. Si vous la trouvez, contactez moi au 04 45 45 45 45
+
+Merci beaucoup !"
 
 [node name="TextureRect2" type="TextureRect" parent="Recette/Control"]
 layout_mode = 0
@@ -1442,6 +1520,10 @@ anchor_bottom = 12.825001
 offset_top = -3.0517578e-05
 offset_right = -6.1035156e-05
 text = "Fermer"
+
+[node name="EncreLong" type="Sprite2D" parent="Recette/Control"]
+position = Vector2(623, 205)
+texture = ExtResource("26_7v1kh")
 
 [node name="Lore_z3" parent="." instance=ExtResource("20_fi6eh")]
 transform = Transform3D(2.3339903, -1.3448156, -5.8783755e-08, 0, -1.1774553e-07, 2.6937037, -1.3448156, -2.3339903, -1.0202196e-07, -87.89929, -15.807231, 129.89314)
@@ -1527,10 +1609,10 @@ anchor_left = 8.1
 anchor_top = 3.775
 anchor_right = 8.1
 anchor_bottom = 3.775
-offset_left = 137.0
-offset_top = 1.0
-offset_right = 365.0
-offset_bottom = 326.0
+offset_left = 131.0
+offset_top = -16.0
+offset_right = 375.0
+offset_bottom = 349.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
@@ -1538,6 +1620,9 @@ text = "Ces résultats dépassent totalement nos prévisions.
 Ce noyau est très instable et ne cessent de grossir.
 Par chance, mes collegues ont trouvé un moyen de le contenir grâce à la plante proche du labo.
 Je ferais mieux de trouver un moyen de le contenir ou les conséquences seraient désastreux
+
+[color=blue]Une autre note est griffonée au crayon en dessous.
+[/color]Les plantes en surcroissance ont commencé à dégager des vapeurs toxiques. Si je veux pouvoir sortir de la fac avant l'explosion du noyau, je dois concocter un contre-poison !
 Pour cela, j'ai besoin d'un spécimen de Ziziphus zizyphus, un de Hedera Helis L. et un d'Olea europaea."
 
 [node name="Button" type="Button" parent="Lore_z4/Control"]
@@ -1621,13 +1706,13 @@ script = ExtResource("23_feptu")
 
 [node name="TextureRect" type="TextureRect" parent="Lore2/Control"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 446.0
-offset_top = 124.0
-offset_right = 667.0
-offset_bottom = 473.0
+anchors_preset = -1
+anchor_left = 11.150001
+anchor_top = 3.1000001
+anchor_right = 17.675001
+anchor_bottom = 12.825001
+offset_left = -3.0517578e-05
+offset_right = -6.1035156e-05
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_f74wi")
@@ -1635,21 +1720,21 @@ texture = SubResource("GradientTexture1D_f74wi")
 [node name="TextEdit2" type="RichTextLabel" parent="Lore2/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 8.1
-anchor_top = 3.775
-anchor_right = 8.1
-anchor_bottom = 3.775
-offset_left = 137.0
-offset_top = 1.0
-offset_right = 365.0
-offset_bottom = 319.0
+anchor_left = 11.525001
+anchor_top = 3.8000002
+anchor_right = 17.225
+anchor_bottom = 11.750001
+offset_left = -3.0517578e-05
+offset_bottom = -3.0517578e-05
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "[fill]Recette pour la [color=dark_green]potion[/color] : 
-- [color=dark_red]Broyer[/color] \"A\", Une plante dont la partie commestible s'appelle le turion et qui pousse au printemps.
-- Faire [color=dark_red]infuser[/color] \"R\", la plante à l'origine du miel de Narbonne mais également utilisé en parfumerie.
-- Laisser [color=dark_red]sécher[/color] \"L\", une plante grimpante dont le fruit est toxique."
+text = "Recette pour la [color=dark_green]boisson énergisante[/color] : 
+- [color=dark_red]Broyer[/color] quelques turions d'asperges
+- Faire [color=dark_red]infuser[/color] du romarin
+- Laisser [color=dark_red]sécher[/color] Une petite quantité de lierre
+
+Ce breuvage vous permettra de courir vite et sauter plus loin !"
 
 [node name="Button" type="Button" parent="Lore2/Control"]
 layout_mode = 1
@@ -1661,6 +1746,10 @@ anchor_bottom = 12.825001
 offset_top = -3.0517578e-05
 offset_right = -6.1035156e-05
 text = "Fermer"
+
+[node name="Encre2" type="Sprite2D" parent="Lore2/Control"]
+position = Vector2(616, 358)
+texture = ExtResource("26_lm3in")
 
 [node name="Quest_1" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.39, 0, 0, 0, 1, -171.49434, 4.644222, 6.071932)
@@ -2100,7 +2189,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="Interactable13" type="Area3D" parent="Plantes/Asperges"]
-transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -105.482, 0.89346695, 25.073948)
+transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -110.69175, 2.346139, -5.1173716)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2722,7 +2811,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
 shape = SubResource("CylinderShape3D_v5phb")
 
 [node name="Interactable5" type="Area3D" parent="Plantes/Romarins"]
-transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -195.08727, 5.3115506, -66.313576)
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -180.48813, 4.6056156, -59.504753)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2740,6 +2829,50 @@ billboarding = true
 metadata/_custom_type_script = "uid://byq8iypi45525"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable9" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -56.94848, 1.5878649, -52.143105)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable9"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
+shape = SubResource("CylinderShape3D_v5phb")
+
+[node name="Interactable10" type="Area3D" parent="Plantes/Romarins"]
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -120.942894, 3.4276352, -44.99058)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("48_feptu")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable10"]
+billboard = 2
+texture = ExtResource("49_7v1kh")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("49_7v1kh")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+billboarding = true
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Romarins/Interactable10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
 shape = SubResource("CylinderShape3D_v5phb")
 
@@ -2836,7 +2969,7 @@ transform = Transform3D(1, 9.313538e-08, 1.9150944e-08, -9.313538e-08, 1, -1.833
 shape = SubResource("BoxShape3D_0ufl0")
 
 [node name="Interactable4" type="Area3D" parent="Plantes/Lierre"]
-transform = Transform3D(-0.99977803, -0.020952297, 0.0022149861, -0.021035282, 0.99859434, -0.048649564, -0.0011925516, -0.04868536, -0.9988134, -152.01305, 7.3527713, -29.40605)
+transform = Transform3D(-0.99977803, -0.020952297, 0.0022149861, -0.021035282, 0.99859434, -0.048649564, -0.0011925516, -0.04868536, -0.9988134, -152.01305, 5.608785, -29.40605)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2856,8 +2989,29 @@ metadata/_custom_type_script = "uid://byq8iypi45525"
 transform = Transform3D(1, 9.313538e-08, 1.9150944e-08, -9.313538e-08, 1, -1.8335186e-07, -1.9150962e-08, 1.8335186e-07, 1, 0.07500076, 0.015491962, 0.11975098)
 shape = SubResource("BoxShape3D_0ufl0")
 
+[node name="Interactable10" type="Area3D" parent="Plantes/Lierre"]
+transform = Transform3D(-0.7516018, -0.27242473, 0.6007323, 0.053326733, 0.88265234, 0.46699128, -0.6574579, 0.38302672, -0.6488757, -169.61156, 3.6773014, -34.671318)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("4_plqpu")
+is_collectible = true
+plante = ExtResource("53_s7dv6")
+metadata/_custom_type_script = "uid://up24dtse8gef"
+
+[node name="MeshInstance3D" type="Sprite3D" parent="Plantes/Lierre/Interactable10"]
+shaded = true
+texture = ExtResource("54_accns")
+script = ExtResource("19_mcf5s")
+sprites = Array[Texture]([ExtResource("54_accns")])
+offsets = Array[Vector2]([Vector2(0, 0)])
+metadata/_custom_type_script = "uid://byq8iypi45525"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plantes/Lierre/Interactable10"]
+transform = Transform3D(1, 9.313538e-08, 1.9150944e-08, -9.313538e-08, 1, -1.8335186e-07, -1.9150962e-08, 1.8335186e-07, 1, 0.07500076, 0.015491962, 0.11975098)
+shape = SubResource("BoxShape3D_0ufl0")
+
 [node name="Interactable2" type="Area3D" parent="Plantes/Lierre"]
-transform = Transform3D(-0.00045796856, 0.09908217, 0.99507916, -0.010627231, 0.99502254, -0.09908144, -0.99994344, -0.010620311, 0.00059728324, -143.0167, 8.217849, 8.187765)
+transform = Transform3D(-0.00045796856, 0.09908217, 0.99507916, -0.010627231, 0.99502254, -0.09908144, -0.99994344, -0.010620311, 0.00059728324, -143.17337, 4.948723, 4.8396997)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3274,7 +3428,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638079, 0.5894758, 0, 0.99992347, 0.011260373, -0.5895138, 0.009095554, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380724, 0.5894758, 0, 0.99992245, 0.011260373, -0.5895138, 0.009095545, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
@@ -3346,6 +3500,67 @@ curve = SubResource("Curve3D_xxxgc")
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTrigger2/EventMarker_cat_event/Path3D"]
 transform = Transform3D(0.6083912, 0, -0.79363585, 0, 0.99999976, 0, 0.79363567, 0, 0.60839134, 0, 0, 0)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -27.800777, -2.9220524, -65.19385)
+material_override = SubResource("ShaderMaterial_lm3in")
+mesh = SubResource("QuadMesh_8hh0t")
+
+[node name="Recette3" parent="." instance=ExtResource("20_fi6eh")]
+transform = Transform3D(-0.45960605, 2.6542044, 1.1601898e-07, -2.9308678e-15, -1.17745536e-07, 2.6937034, 2.6542044, 0.45960605, 2.0090042e-08, -39.942547, -1.9262516, 70.29213)
+skeleton = NodePath("../lights/OmniLight3D2")
+
+[node name="Control" type="Control" parent="Recette3"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_v5phb")
+
+[node name="TextureRect" type="TextureRect" parent="Recette3/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 446.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_f74wi")
+
+[node name="TextEdit2" type="RichTextLabel" parent="Recette3/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 137.0
+offset_top = 1.0
+offset_right = 365.0
+offset_bottom = 326.0
+theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "Steph,
+J'ai tenté de passer ces ronces mais elles sont trop denses. Je vais tenter de créer un désherbant. Au cas où l'on ne se croise pas : je suis parti te chercher de l'autre côté du S-pace.
+
+Oliv
+"
+
+[node name="Button" type="Button" parent="Recette3/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 17.875
+anchor_top = 11.875001
+anchor_right = 19.650002
+anchor_bottom = 12.825001
+offset_top = -3.0517578e-05
+offset_right = -6.1035156e-05
+text = "Fermer"
+
 [connection signal="button_down" from="WEBNTM" to="." method="_on_webntm_button_down"]
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
@@ -3370,6 +3585,7 @@ transform = Transform3D(0.6083912, 0, -0.79363585, 0, 0.99999976, 0, 0.79363567,
 [connection signal="visibility_changed" from="Recette2/Control" to="Recette2/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="EventTriggerBehindSpace" to="EventTriggerBehindSpace" method="_on_body_entered"]
 [connection signal="body_entered" from="EventTrigger2" to="EventTrigger2" method="_on_body_entered"]
+[connection signal="visibility_changed" from="Recette3/Control" to="Recette3/Control" method="_on_visibility_changed"]
 
 [editable path="NarrationArea"]
 [editable path="Lore_z3"]

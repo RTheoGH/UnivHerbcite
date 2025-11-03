@@ -53,19 +53,6 @@ func try_grab() -> Node3D:
 				first_plante = false
 				#await get_tree().create_timer(2).timeout
 				Global.narrate("La plante", "J'ai ramassé une plante, peut etre me servira t elle. Je peux consulter mon inventaire en appuyant sur "+InputMap.action_get_events("inventory")[0].as_text()[0])
-		if !already_discovered:
-			if obj.plante != null:
-				$TextAlert.show_alert("Nouvelle plante découverte !")
-				if !obj.plante.decouvert:
-					obj.plante.decouvert = true
-				already_discovered = true
-				$Informations.nom = str(Plante.PlanteType.find_key(obj.plante.type))
-				$Informations.image = obj.plante.texture
-				$Informations.texte = obj.plante.description
-				$Informations.activate()
-		#else:
-			#if Global.player_inventory.items.size() <= 3:
-				#$TextAlert.show_alert("Ingrédient collecté !")
 	return obj
 
 func _ready() -> void:
@@ -188,7 +175,7 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	var direction := (cam_fps.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction := (cam_fps.global_transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	direction = -(direction.cross(Vector3.UP)).cross(Vector3.UP).normalized()
 	
 	if direction:

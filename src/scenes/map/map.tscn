@@ -527,9 +527,11 @@ light_color = Color(0.9923281, 0.8366091, 0.70316625, 1)
 light_energy = 0.3
 light_bake_mode = 1
 shadow_enabled = true
+directional_shadow_mode = 0
 directional_shadow_split_1 = 0.494
 directional_shadow_split_2 = 0.5
 directional_shadow_blend_splits = true
+directional_shadow_max_distance = 150.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.395, 0, 0, 0, 0.395, 0, 0, 0, 0.395, -190.0918, 1246.1709, -39.000763)
