@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=4 uid="uid://cru6fthpu72uo"]
+[gd_scene load_steps=130 format=4 uid="uid://cru6fthpu72uo"]
 
 [ext_resource type="Script" uid="uid://nvepefibi6jg" path="res://src/scenes/tests/scene/scene.gd" id="1_w7ipn"]
 [ext_resource type="PackedScene" uid="uid://hyxjxaek1eag" path="res://src/scenes/personnage/personnage.tscn" id="2_20oit"]
@@ -242,9 +242,8 @@ size = Vector3(0.8730469, 2.0014648, 47.475464)
 script/source = "extends Node3D
 
 func _on_interactable_on_interaction_signal() -> void:
-	Global.text_alert.show_alert(\"La porte du S-pace s'est ouverte\")
-	if $Interactable2:
-		$Interactable2.queue_free()
+	Global.text_alert.show_alert(\"La porte ne s'ouvre pas de ce coté...\")
+	$AnimationPlayer.play(\"fail_open\")
 
 func _on_interactable_2_on_interaction_signal() -> void:
 	Global.text_alert.show_alert(\"La porte du S-pace s'est ouverte\")
@@ -321,8 +320,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_16djk")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0pgm0"]
-points = PackedVector3Array(0.065495685, 1, 0.6211298, 0.13943361, 0.25567734, 0.5713956, 0.065495685, 1, -0.6211298, -0.065490365, 1, 0.6211298, 0.065495685, -1, 0.6211298, 0.13943361, 0.24001563, 0.52640384, 0.13943361, 0.022709489, 0.5713956, -0.065490365, 1, -0.6211298, 0.065495685, -1, -0.6211298, -0.065490365, -1, 0.6211298, 0.13943361, 0.02427566, 0.52640384, -0.065490365, -1, -0.6211298)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xxxgc"]
+size = Vector3(0.46, 1.845, 1.18)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6c504"]
 resource_name = "Material.002"
@@ -391,9 +390,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lm3in")
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8hh0t"]
-points = PackedVector3Array(0.065495685, 1, 0.6211298, 0.13943361, 0.25567734, 0.5713956, 0.065495685, 1, -0.6211298, -0.065490365, 1, 0.6211298, 0.065495685, -1, 0.6211298, 0.13943361, 0.24001563, 0.52640384, 0.13943361, 0.022709489, 0.5713956, -0.065490365, 1, -0.6211298, 0.065495685, -1, -0.6211298, -0.065490365, -1, 0.6211298, 0.13943361, 0.02427566, 0.52640384, -0.065490365, -1, -0.6211298)
 
 [sub_resource type="Animation" id="Animation_0ufl0"]
 length = 0.001
@@ -557,7 +553,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1bfsn"]
-size = Vector3(1.2421265, 1.78125, 2.2076797)
+size = Vector3(1.1947479, 3.1645508, 3.1281319)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ufl0"]
 albedo_color = Color(0.31061712, 0.31061712, 0.3106171, 1)
@@ -885,7 +881,17 @@ _data = {
 point_count = 5
 
 [node name="Scene" type="Node3D"]
+process_mode = 3
 script = ExtResource("1_w7ipn")
+
+[node name="WEBNTM" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -167.07976, 5.4322853, 0.8175707)
@@ -3022,7 +3028,8 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="spaceDoors/doorhinge/door"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spaceDoors/doorhinge/door/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_0pgm0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.087100714, 0, -5.820766e-11)
+shape = SubResource("BoxShape3D_xxxgc")
 
 [node name="doorhinge2" type="Node3D" parent="spaceDoors"]
 transform = Transform3D(-2.105, 0, -2.3721441e-07, 0, 2.105, 0, 3.1784617e-07, 0, -1.571, 0, -0.43935633, 2.5051594)
@@ -3035,7 +3042,8 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="StaticBody3D" parent="spaceDoors/doorhinge2/door2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spaceDoors/doorhinge2/door2/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_8hh0t")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.087100714, 0, -5.820766e-11)
+shape = SubResource("BoxShape3D_xxxgc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="spaceDoors"]
 libraries = {
@@ -3062,7 +3070,7 @@ script = ExtResource("4_plqpu")
 metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="spaceDoors/Interactable2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5654602, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.58914185, -0.6916504, 0.46022606)
 shape = SubResource("BoxShape3D_1bfsn")
 debug_fill = false
 
@@ -3130,8 +3138,7 @@ libraries = {
 transform = Transform3D(1.871311, 0, -1.3713477, 0, 2.5099995, 0, 1.3713477, 0, 1.871311, -423.28033, 5.5758553, 12.32985)
 
 [node name="lock" type="MeshInstance3D" parent="lock_parent"]
-transform = Transform3D(0.46795657, -0.43609774, -0.020882227, -0.08299111, -0.11890306, 0.6233576, -0.4286371, -0.4530801, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
-transform = Transform3D(0.46795657, -0.43609774, -0.020882227, -0.08299111, -0.11890306, 0.6233576, -0.4286371, -0.4530801, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
+transform = Transform3D(0.46795657, -0.4360978, -0.020882227, -0.08299111, -0.118903086, 0.6233576, -0.4286371, -0.45308018, -0.14348996, 0.21469116, -0.06255245, 0.51065826)
 mesh = SubResource("QuadMesh_v5phb")
 skeleton = NodePath("../../door_hinge/door3")
 
@@ -3227,7 +3234,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.006638082, 0.5894758, 0, 0.99992394, 0.011260373, -0.5895138, 0.009095559, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380803, 0.5894758, 0, 0.9999237, 0.011260373, -0.5895138, 0.009095556, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
@@ -3299,6 +3306,7 @@ curve = SubResource("Curve3D_xxxgc")
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTrigger2/EventMarker_cat_event/Path3D"]
 transform = Transform3D(0.6083912, 0, -0.79363585, 0, 0.99999976, 0, 0.79363567, 0, 0.60839134, 0, 0, 0)
 
+[connection signal="button_down" from="WEBNTM" to="." method="_on_webntm_button_down"]
 [connection signal="area_exited" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_area_exited"]
 [connection signal="on_interaction_signal" from="credits/maxwell/Interactable" to="credits" method="_on_interactable_on_interaction_signal"]
 [connection signal="timeout" from="credits/Timer" to="credits" method="_on_timer_timeout"]

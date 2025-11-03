@@ -80,10 +80,22 @@ func _ready() -> void:
 	item_frame.texture = null 
 	frame_pos = item_frame.position
 	
+func _unhandled_input(event: InputEvent) -> void:
+	if !Global.isPaused and !Global.is_ui_open():
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
+			if(rad_to_deg(cam_fps.global_rotation.x - event.relative.y * 0.01 * Global.cam_speed) < -80):
+				cam_fps.global_rotation.x = deg_to_rad(-79.9)
+			elif(rad_to_deg(cam_fps.global_rotation.x - event.relative.y * 0.01 * Global.cam_speed) > 80):
+				cam_fps.global_rotation.x = deg_to_rad(80)
+			else:
+				cam_fps.global_rotation.x -= event.relative.y * 0.01 * Global.cam_speed
+				
+			cam_fps.global_rotation.y -= event.relative.x * 0.01 * Global.cam_speed
+	
+	
 
 func _physics_process(delta: float) -> void:
 	if Global.isPaused :
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		static_cam = true
 		return
 	
@@ -105,7 +117,7 @@ func _physics_process(delta: float) -> void:
 	if Global.is_ui_open():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else: 
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	_update_item_frame()
 	
@@ -187,19 +199,19 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 	if !(Global.is_ui_open()):
-		if(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) < -80):
-			cam_fps.global_rotation.x = deg_to_rad(-79.9)
-		elif(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) > 80):
-			cam_fps.global_rotation.x = deg_to_rad(80)
-		else:
-			cam_fps.global_rotation.x -= cam_diff.y * delta * Global.cam_speed
-
-		
-		cam_fps.global_rotation.y -= cam_diff.x * delta * Global.cam_speed
+		#if(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) < -80):
+			#cam_fps.global_rotation.x = deg_to_rad(-79.9)
+		#elif(rad_to_deg(cam_fps.global_rotation.x - cam_diff.y * delta * Global.cam_speed) > 80):
+			#cam_fps.global_rotation.x = deg_to_rad(80)
+		#else:
+			#cam_fps.global_rotation.x -= cam_diff.y * delta * Global.cam_speed
+#
+		#
+		#cam_fps.global_rotation.y -= cam_diff.x * delta * Global.cam_speed
 	
-		if get_viewport().get_window().has_focus():
-			Input.warp_mouse(DisplayServer.window_get_size()/2)
-		else:
+		if !get_viewport().get_window().has_focus():
+			#Input.warp_mouse(DisplayServer.window_get_size()/2)
+		#else:
 			static_cam = true
 			return
 	

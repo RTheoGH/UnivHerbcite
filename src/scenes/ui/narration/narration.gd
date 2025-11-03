@@ -33,12 +33,15 @@ func _contenu_typewriter(text: String, speed := 0.01):
 		).set_delay(speed)
 
 func fade_in(duration := 0.2):
+	
 	if tween:
 		tween.kill()
 	modulate.a = 0.0
 	show()
 	tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, duration)
+	await tween.finished
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func fade_out(duration := 0.2):
 	if tween:
@@ -55,3 +58,4 @@ func _on_button_pressed() -> void:
 	if Global.isPaused:
 		Global.isPaused = false
 	Global.is_narration_showing = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

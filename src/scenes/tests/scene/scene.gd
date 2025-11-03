@@ -42,8 +42,11 @@ func _process(_delta: float) -> void:
 	if Global.isPaused and !Global.is_narration_showing:
 		$Pause.visible = true
 		$Map.visible = false
+		$WEBNTM.disabled = true
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	else:
 		$Pause.visible = false
+		$WEBNTM.disabled = false
 		$Map.visible = Global.minimap_activated
 	#if Global.is_craft_ui_open:
 		#$CraftUI.visible = true
@@ -70,3 +73,8 @@ func _process(_delta: float) -> void:
 func start_intro_narration(delay: float) -> void:
 	await get_tree().create_timer(delay).timeout
 	Global.narrate("Le réveil", "Je me suis reveillé à l'université. J'ai l'impression d'être au S-pace mais quelque chose est étrange...")
+
+
+func _on_webntm_button_down() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#$WEBNTM.hide()

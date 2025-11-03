@@ -140,3 +140,10 @@ func setup_text_alerts():
 		
 func is_ui_open() -> bool:
 	return is_chest_open or is_craft_ui_open or is_inventory_open or is_interactable_ui_open
+	
+
+func _input(event: InputEvent) -> void:
+	
+	if event is InputEventMouseButton:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
