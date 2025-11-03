@@ -1125,8 +1125,8 @@ bbcode_enabled = true
 text = "Un survivant ! Mais d'où venez vous noble humain. Cet endroit est dangeureux et toxique. Et je ne vous parle même pas de l'extérieur ! Vous devez impérativement reunir ses ingrédients et me rapporter son produit !!
 
 - Un fruit rond dont le sucre fait chanter mes moustaches
-- Une plante qui sent aussi bon que mon herbe
-- Un fruit rouge que j'ai ramassé pas très loin"
+- Un fruit rouge que j'ai ramassé pas très loin
+- Une plante qui sent aussi bon que mon herbe"
 
 [node name="Button" type="Button" parent="credits/Control"]
 layout_mode = 1
@@ -3432,7 +3432,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380645, 0.5894758, 0, 0.99992126, 0.011260373, -0.5895138, 0.009095534, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.0066380636, 0.5894758, 0, 0.99992114, 0.011260373, -0.5895138, 0.009095533, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
