@@ -7,6 +7,6 @@
 script = ExtResource("1_37tda")
 type = 7
 texture = ExtResource("2_xaepi")
-description = "Feuille souple et luisante de lierre, employée dans les préparations détoxifiantes ou apaisantes."
+description = "Feuille souple et luisante de lierre. Les petites baies qu'elles contient sont toxiques"
 effect = 5
 metadata/_custom_type_script = "uid://d0xcpq6rvivmy"

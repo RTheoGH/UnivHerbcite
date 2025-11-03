@@ -1617,13 +1617,12 @@ theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
 text = "Ces résultats dépassent totalement nos prévisions.
-Ce noyau est très instable et ne cessent de grossir.
-Par chance, mes collegues ont trouvé un moyen de le contenir grâce à la plante proche du labo.
+Ce noyau est très instable et n'a de cesse de grossir.
 Je ferais mieux de trouver un moyen de le contenir ou les conséquences seraient désastreux
 
 [color=blue]Une autre note est griffonée au crayon en dessous.
 [/color]Les plantes en surcroissance ont commencé à dégager des vapeurs toxiques. Si je veux pouvoir sortir de la fac avant l'explosion du noyau, je dois concocter un contre-poison !
-Pour cela, j'ai besoin d'un spécimen de Ziziphus zizyphus, un de Hedera Helis L. et un d'Olea europaea."
+Pour cela, j'ai besoin d'un spécimen de ces baies rouges qui poussent pas loin, quelques feuilles d'une liane toxique. et d'aller récolte quelques olives sur l'abre au milieu de la place."
 
 [node name="Button" type="Button" parent="Lore_z4/Control"]
 layout_mode = 1
@@ -1635,6 +1634,11 @@ anchor_bottom = 12.825001
 offset_top = -3.0517578e-05
 offset_right = -6.1035156e-05
 text = "Fermer"
+
+[node name="Encre" type="Sprite2D" parent="Lore_z4/Control"]
+position = Vector2(515, 417)
+scale = Vector2(1, 0.671875)
+texture = ExtResource("29_jxsa7")
 
 [node name="Lore" parent="." instance=ExtResource("20_fi6eh")]
 transform = Transform3D(2.3339903, -1.3448156, -5.8783755e-08, 0, -1.1774553e-07, 2.6937037, -1.3448156, -2.3339903, -1.0202196e-07, -174.3781, 4.188389, 13.14536)
@@ -3380,7 +3384,7 @@ offset_bottom = 326.0
 theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
 theme_override_font_sizes/normal_font_size = 11
 bbcode_enabled = true
-text = "[fill]C'est vraiment le point de vue parfait pour les observer ! Rester dans l'ombre du bâtiment 5 pour les prendre en photo sous la lumière du soleil. En plus de ça, j'ai ma petite routine pour les photos : d'abord je regarde les [color=dark_red]abeilles[/color] butiner les plantes, puis je regarde s'il y a un [color=darkred]écureuil[/color] près des arbres et enfin j'observe l'arbre esseulé au cas où un de ces [color=dark_red]étourneaux[/color] se pose dessus. D'ailleurs je crois bien que certains gars du labo chargés de l'entretien de la [color=dark_red]forêt devant le S-pace[/color] m'ont piqué ma routine, ils font carrément fuir les animaux !"
+text = "C'est vraiment le point de vue parfait pour les observer ! Rester dans l'ombre du bâtiment 5 pour les prendre en photo sous la lumière du soleil. En plus de ça, j'ai ma petite routine pour les photos : d'abord je regarde les [color=dark_red]abeilles[/color] butiner les plantes, puis je regarde s'il y a un [color=darkred]écureuil[/color] près des arbres et enfin j'observe l'arbre esseulé au cas où un de ces [color=dark_red]étourneaux[/color] se pose dessus. D'ailleurs je crois bien que certains gars du labo chargés de l'entretien de la [color=dark_red]forêt devant le S-pace[/color] m'ont piqué ma routine, ils font carrément fuir les animaux !"
 
 [node name="Button" type="Button" parent="Recette2/Control"]
 layout_mode = 1
@@ -3428,7 +3432,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380724, 0.5894758, 0, 0.99992245, 0.011260373, -0.5895138, 0.009095545, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638071, 0.5894758, 0, 0.9999223, 0.011260373, -0.5895138, 0.009095543, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
