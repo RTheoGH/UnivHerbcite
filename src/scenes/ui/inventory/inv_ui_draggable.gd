@@ -170,18 +170,25 @@ func _on_visibility_changed() -> void:
 		var craft_narration = {
 			"[color=orange]Recette n°1 : L'aspergétique[/color]" : "Vous avez réussi votre première concoction ! [br]Les asperges poussent dans la terre et le bourgeon qui en sort s'appelle le turion. Il s'agit de la partie comestible de l'asperge et il est généralement récolté quand il mesure une vingtaine de centimètres.\
 			[br]Le romarin est une plante dite mellifère : elle produit une bonne quantité de nectar et de pollen. Le miel de romarin (aussi appelé miel de Narbonne) est produit depuis le Moyen-Âge au XIIème siècle dans le sud de la France. [br]\
-			Le lierre est une plante grimpante qui, malgré les idées recues, ne se nourrit pas de la sève des arbres mais le l'eau et des sel minéraux par ses racines. Cherchant la photosynthèse, elles s'accrochent aux arbres pour accéder à la lumière du soleil mais ne sont pas assez lourdes pour enserrer l'arbre."
+			Le lierre est une plante grimpante qui, malgré les idées recues, ne se nourrit pas de la sève des arbres mais de l'eau et des sels minéraux par ses racines. Cherchant la photosynthèse, elles s'accrochent aux arbres pour accéder à la lumière du soleil mais ne sont pas assez lourdes pour enserrer l'arbre."
 			,
 			"[color=orange]Recette n°2 : le désherbant[/color]" : "Vous avez concocté un désherbant ![br]\
-			À l'instar du romarin, la lavande est une plante mellifère qui est donc très prisée des abeilles. La Bulgarie et la France sont les plus gros producteurs d'huiles essentielles du monde, avec respectivement 187 tonnes et 120 tonnes produites en 2017, soit plus de trois quarts de la production mondiale.[br]\
+			À l'instar du romarin, la lavande est une plante mellifère qui est donc très prisée des abeilles.[br]\
 			Le myrobolan, ou prunier-cerise, est un arbre d'Europe du Sud-Est et d'Asie du Sud-Ouest ensuite introduit en France. Il donne une drupe (fruit charnue avec un noyau) semblable à une mirabelle et qui peut être de différentes couleurs. Ce fruit peut être très apprécié par certains animaux, notamment les oiseaux et les écureuils.[br]\
-			Arbre caractéristique de la méditérranée, l'olivier produit lui aussi une drupe, l'olive, qui est vastement utilisée dans bon nombre de plats, que ce soit sous forme d'huile, de tapenade, de sauce, etc. Les étourneaux (de l'ordre des passereaux) ont un régime omnivore et peuvent manger des olives quand les autres sources de nouritures se font plus rares."
+			Arbre caractéristique de la méditérranée, l'olivier produit lui aussi une drupe, l'olive, qui est vastement utilisée dans bon nombre de plats, que ce soit sous forme d'huile, de tapenade, de sauce, etc."
 			,
-			"[color=orange]Recette n°3 : l'acide" : "Descriptions à venir"
+			"[color=orange]Recette n°3 : l'acide[/color]" : "Vous avez obtenu un acide puissant ![br]\
+			Vous avez reussi à comprendre les indices laissés sur les arbres.[br]\
+			La sève de la figue a des composés irritants pouvant provoquer des brûlures.[br]\
+			L'arbouse signifie le 'fruit que l'on de mange qu'une fois'.[br]\
+			Cet acide peut ronger n'importe quels métaux."
 			,
-			"[color=orange]Recette n°4 : le désintoxifiant" : "Descriptions à venir"
+			"[color=orange]Recette n°4 : le désintoxifiant[/color]" : "Vous avez obtenu un désintoxifiant ![br]\
+			Vous avez compris les instructions du scientifique dans le laboratoire.\
+			La jujube et l'olive possèdent des propriétés antioxydants."
 			,
-			"[color=orange]Recette n°5 : le remède" : "Descriptions à venir"
+			"[color=orange]Recette n°5 : le breuvage[/color]" : "Vous avez obtenu un étrange breuvage bleu ![br]\
+			Mais à quoi sert donc cette potion ?"
 		}
 		var key = craft_narration.keys()[narrate_craft]
 		Global.narrate(key, craft_narration[key])
