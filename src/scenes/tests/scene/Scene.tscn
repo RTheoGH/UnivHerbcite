@@ -1595,22 +1595,63 @@ Lyonnais 1.80 €
 Formules :
 Boursier 1 €
 Non-Boursier 3.30 €
+"
 
+[node name="Button" type="Button" parent="Lore/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 17.875
+anchor_top = 11.875001
+anchor_right = 19.650002
+anchor_bottom = 12.825001
+offset_top = -3.0517578e-05
+offset_right = -6.1035156e-05
+text = "Fermer"
 
+[node name="Lore2" parent="." instance=ExtResource("20_fi6eh")]
+transform = Transform3D(1.1000675, -0.13627526, 2.4550602, 0.28725475, 2.6782691, 0.019951325, -2.4420025, 0.25365818, 1.1082965, -168.43425, 4.3027725, -46.605537)
 
+[node name="Control" type="Control" parent="Lore2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("23_feptu")
 
+[node name="TextureRect" type="TextureRect" parent="Lore2/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 446.0
+offset_top = 124.0
+offset_right = 667.0
+offset_bottom = 473.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_f74wi")
 
-
-
-
-
-
-[fill]Recette pour la [color=dark_green]potion[/color] : 
+[node name="TextEdit2" type="RichTextLabel" parent="Lore2/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 8.1
+anchor_top = 3.775
+anchor_right = 8.1
+anchor_bottom = 3.775
+offset_left = 137.0
+offset_top = 1.0
+offset_right = 365.0
+offset_bottom = 319.0
+theme_override_colors/default_color = Color(0.18717614, 0.18717614, 0.18717614, 1)
+theme_override_font_sizes/normal_font_size = 11
+bbcode_enabled = true
+text = "[fill]Recette pour la [color=dark_green]potion[/color] : 
 - [color=dark_red]Broyer[/color] \"A\", Une plante dont la partie commestible s'appelle le turion et qui pousse au printemps.
 - Faire [color=dark_red]infuser[/color] \"R\", la plante à l'origine du miel de Narbonne mais également utilisé en parfumerie.
 - Laisser [color=dark_red]sécher[/color] \"L\", une plante grimpante dont le fruit est toxique."
 
-[node name="Button" type="Button" parent="Lore/Control"]
+[node name="Button" type="Button" parent="Lore2/Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 17.875
@@ -2036,7 +2077,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="Interactable12" type="Area3D" parent="Plantes/Asperges"]
-transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -85.59184, 0.97940254, 14.615953)
+transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -85.14609, 0.97940254, 11.807667)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2059,7 +2100,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.10412598, 0)
 shape = SubResource("CylinderShape3D_wlu1f")
 
 [node name="Interactable13" type="Area3D" parent="Plantes/Asperges"]
-transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -94.80194, 0.89346695, 33.080997)
+transform = Transform3D(0.6091266, 0, 0, 0, 0.6091266, 0, 0, 0, 0.6091266, -105.482, 0.89346695, 25.073948)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2636,7 +2677,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
 shape = SubResource("CylinderShape3D_v5phb")
 
 [node name="Interactable3" type="Area3D" parent="Plantes/Romarins"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.377235, 5.2895374, -77.85048)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.7224, 6.602552, -69.85451)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -2646,7 +2687,6 @@ metadata/_custom_type_script = "uid://up24dtse8gef"
 
 [node name="MultiSprite3D" type="Sprite3D" parent="Plantes/Romarins/Interactable3"]
 billboard = 2
-shaded = true
 texture = ExtResource("49_7v1kh")
 script = ExtResource("19_mcf5s")
 sprites = Array[Texture]([ExtResource("49_7v1kh")])
@@ -2750,7 +2790,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25341797, 0)
 shape = SubResource("CylinderShape3D_v5phb")
 
 [node name="Interactable8" type="Area3D" parent="Plantes/Romarins"]
-transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -104.58045, 1.3168173, 39.8472)
+transform = Transform3D(1, 0, 0, 0, 0.96201336, -0.2730023, 0, 0.2730023, 0.96201336, -104.58045, 1.6967628, 39.95502)
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("4_plqpu")
@@ -3234,7 +3274,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380803, 0.5894758, 0, 0.9999237, 0.011260373, -0.5895138, 0.009095556, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638079, 0.5894758, 0, 0.99992347, 0.011260373, -0.5895138, 0.009095554, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
@@ -3318,6 +3358,7 @@ transform = Transform3D(0.6083912, 0, -0.79363585, 0, 0.99999976, 0, 0.79363567,
 [connection signal="visibility_changed" from="Lore_z3/Control" to="Lore_z3/Control" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="Lore_z4/Control" to="Lore_z4/Control" method="_on_visibility_changed"]
 [connection signal="visibility_changed" from="Lore/Control" to="Lore/Control" method="_on_visibility_changed"]
+[connection signal="visibility_changed" from="Lore2/Control" to="Lore2/Control" method="_on_visibility_changed"]
 [connection signal="body_entered" from="Quest_1" to="Perso" method="_on_quest_1_body_entered"]
 [connection signal="body_entered" from="Quest_2" to="Perso" method="_on_quest_2_body_entered"]
 [connection signal="body_entered" from="Quest_3" to="Perso" method="_on_quest_3_body_entered"]
