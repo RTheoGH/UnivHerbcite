@@ -137,7 +137,7 @@ shader = ExtResource("3_a2pkv")
 shader_parameter/source_panorama = ExtResource("2_tqkkf")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bh7fh"]
-size = Vector3(4.719036, 15.702942, 18.592651)
+size = Vector3(4.04072, 15.702942, 7.7401085)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bmmoi"]
 size = Vector3(20.410156, 15.702942, 18.592651)
@@ -149,10 +149,10 @@ size = Vector3(4.661865, 15.702942, 14.889862)
 size = Vector3(4.661865, 15.702942, 31.940762)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w2e2b"]
-size = Vector3(4.661865, 15.702942, 13.12846)
+size = Vector3(4.7318115, 15.702942, 12.14292)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g708r"]
-size = Vector3(5.197398, 15.702942, 10.39209)
+size = Vector3(8.00615, 9.061958, 11.734703)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x57e0"]
 size = Vector3(4.661865, 15.702942, 24.832458)
@@ -561,7 +561,7 @@ transform = Transform3D(0.8398092, 0, 0.542881, 0, 1, 0, -0.542881, 0, 0.8398092
 shape = SubResource("BoxShape3D_bh7fh")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="bounds"]
-transform = Transform3D(0.94677824, 0, 0.32188535, 0, 1, 0, -0.32188535, 0, 0.94677824, 9.106368, 4.257878, 48.453648)
+transform = Transform3D(0.999145, 0, 0.041334823, 0, 1, 0, -0.041334823, 0, 0.999145, 5.0927973, 4.257878, 47.394356)
 shape = SubResource("BoxShape3D_bh7fh")
 
 [node name="CollisionShape3D19" type="CollisionShape3D" parent="bounds"]
@@ -569,7 +569,7 @@ transform = Transform3D(-0.36828652, 0, 0.92971194, 0, 1, 0, -0.92971194, 0, -0.
 shape = SubResource("BoxShape3D_bh7fh")
 
 [node name="CollisionShape3D20" type="CollisionShape3D" parent="bounds"]
-transform = Transform3D(-0.8885129, 0, -0.45885083, 0, 1, 0, 0.45885083, 0, -0.8885129, -27.80592, 2.2871876, 65.3168)
+transform = Transform3D(-0.8155419, 0, -0.5786974, 0, 1, 0, 0.5786974, 0, -0.8155419, -34.887825, 2.2871876, 56.923843)
 shape = SubResource("BoxShape3D_bh7fh")
 
 [node name="CollisionShape3D18" type="CollisionShape3D" parent="bounds"]
@@ -589,7 +589,7 @@ transform = Transform3D(0.2665488, 0, 0.963821, 0, 1, 0, -0.963821, 0, 0.2665488
 shape = SubResource("BoxShape3D_w2e2b")
 
 [node name="CollisionShape3D26" type="CollisionShape3D" parent="bounds"]
-transform = Transform3D(0.9152831, 0, 0.40281028, 0, 1, 0, -0.40281028, 0, 0.9152831, 6.6705766, 2.2871895, 68.28323)
+transform = Transform3D(0.46213567, 0, 0.886809, 0, 1, 0, -0.886809, 0, 0.46213567, 4.7049603, 2.2871895, 70.4253)
 shape = SubResource("BoxShape3D_w2e2b")
 
 [node name="CollisionShape3D9" type="CollisionShape3D" parent="bounds"]
@@ -605,11 +605,11 @@ transform = Transform3D(-0.2837976, 0, 0.958884, 0, 1, 0, -0.958884, 0, -0.28379
 shape = SubResource("BoxShape3D_bh7fh")
 
 [node name="CollisionShape3D27" type="CollisionShape3D" parent="bounds"]
-transform = Transform3D(0.016004136, 0, 0.9998718, 0, 1, 0, -0.9998718, 0, 0.016004136, -113.23387, 2.2871876, -38.37743)
+transform = Transform3D(0.016004136, 0, 0.9998718, 0, 1, 0, -0.9998718, 0, 0.016004136, -112.48147, 2.2871876, -37.740284)
 shape = SubResource("BoxShape3D_g708r")
 
 [node name="CollisionShape3D12" type="CollisionShape3D" parent="bounds"]
-transform = Transform3D(-0.2837976, 0, 0.958884, 0, 1, 0, -0.958884, 0, -0.2837976, -103.69426, 2.2871876, 18.328222)
+transform = Transform3D(-0.2837976, 0, 0.958884, 0, 1, 0, -0.958884, 0, -0.2837976, -103.75685, 2.2871876, 18.116728)
 shape = SubResource("BoxShape3D_bh7fh")
 
 [node name="CollisionShape3D13" type="CollisionShape3D" parent="bounds"]
@@ -647,6 +647,62 @@ shape = SubResource("BoxShape3D_bh7fh")
 [node name="CollisionShape3D8" type="CollisionShape3D" parent="bounds"]
 transform = Transform3D(0.59237874, 0, 0.8056592, 0, 1, 0, -0.8056592, 0, 0.59237874, -44.76178, 2.2871876, 11.173938)
 shape = SubResource("BoxShape3D_cg0im")
+
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.89600605, 0, -0.44404104, 0, 1, 0, 0.44404104, 0, 0.89600605, 0.45331147, 2.2871895, 60.616306)
+shape = SubResource("BoxShape3D_w2e2b")
+
+[node name="CollisionShape3D31" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.11327235, 0, -0.9935637, 0, 1, 0, 0.9935637, 0, 0.11327235, 4.9873195, 4.257878, 55.521935)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D32" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.8558971, 0, 0.51714563, 0, 1, 0, -0.51714563, 0, 0.8558971, 3.1898036, 4.257878, 39.38497)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D33" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.999145, 0, 0.041334823, 0, 1, 0, -0.041334823, 0, 0.999145, 6.035272, 4.257878, 52.636482)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D34" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.46213567, 0, 0.886809, 0, 1, 0, -0.886809, 0, 0.46213567, 0.29176092, 2.2871895, 68.6783)
+shape = SubResource("BoxShape3D_w2e2b")
+
+[node name="CollisionShape3D35" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(-0.8155419, 0, -0.5786974, 0, 1, 0, 0.5786974, 0, -0.8155419, -39.13042, 2.287187, 52.0333)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D36" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(-0.9992478, 0, 0.0387716, 0, 1, 0, -0.0387716, 0, -0.9992478, -48.37749, 2.2871876, 56.923843)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D37" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(-0.99211234, 0, -0.12535036, 0, 1, 0, 0.12535036, 0, -0.99211234, -48.099045, 2.2871876, 63.642105)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D38" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(-0.5590914, 0, 0.8291058, 0, 1, 0, -0.8291058, 0, -0.5590914, -45.590797, 2.2871885, 51.90013)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D39" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.888529, 0, 0.45882, 0, 1, 0, -0.45882, 0, 0.888529, -32.637787, 2.2871885, 64.05494)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D40" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.5741195, 0, 0.81877124, 0, 1, 0, -0.81877124, 0, 0.5741195, -28.898935, 2.2871885, 69.06891)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D41" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.77460223, 0, -0.6324483, 0, 1, 0, 0.6324483, 0, 0.77460223, -28.04193, 2.2871885, 63.689598)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D42" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.6494214, 0, -0.7604284, 0, 1, 0, 0.7604284, 0, 0.6494214, -22.736883, 2.2871885, 57.996254)
+shape = SubResource("BoxShape3D_bh7fh")
+
+[node name="CollisionShape3D43" type="CollisionShape3D" parent="bounds"]
+transform = Transform3D(0.6494214, 0, -0.7604284, 0, 1, 0, 0.7604284, 0, 0.6494214, -17.607006, 2.331462, 53.725178)
+shape = SubResource("BoxShape3D_bh7fh")
 
 [node name="buissons" type="Node3D" parent="."]
 
@@ -718,6 +774,12 @@ transform = Transform3D(8.74, 0, 0, 0, 8.74, 0, 0, 0, 8.74, 28.499512, -1.699418
 
 [node name="Bush23" parent="buissons" instance=ExtResource("4_x57e0")]
 transform = Transform3D(8.74, 0, 0, 0, 8.74, 0, 0, 0, 8.74, -103.92499, -2.7122674, 22.152)
+
+[node name="Bush24" parent="buissons" instance=ExtResource("4_x57e0")]
+transform = Transform3D(8.74, 0, 0, 0, 8.74, 0, 0, 0, 8.74, -31.026556, 0.6407125, 90.00166)
+
+[node name="Bush25" parent="buissons" instance=ExtResource("4_x57e0")]
+transform = Transform3D(8.74, 0, 0, 0, 8.74, 0, 0, 0, 8.74, -38.420788, -1.0021355, 83.79551)
 
 [node name="Vegetation" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.417, 0)
@@ -825,7 +887,7 @@ skeleton = NodePath("../../Herbs7")
 multimesh = SubResource("MultiMesh_76y1h")
 
 [node name="Herbs8" parent="Vegetation/Herbe" instance=ExtResource("8_5r26e")]
-transform = Transform3D(-0.6469637, 0.015763786, 0.8334181, -0.0071961484, 1.003016, -0.04505862, -0.5410799, -0.03218832, -0.9959109, -3.3647268, -0.46324247, 84.57173)
+transform = Transform3D(-0.78567576, -0.00048615085, 0.4725807, -0.015527585, 1.0024313, -0.059542947, -0.30635577, -0.049561307, -1.2089567, -2.6028752, -0.7662852, 81.52184)
 
 [node name="Plane" parent="Vegetation/Herbe/Herbs8" index="0"]
 transform = Transform3D(8.608073, 0, -2.3841858e-07, 0, 3.447087, 0, -4.7683716e-07, 0, 4.6794863, 1.5760536, 0, -0.1783638)
@@ -854,6 +916,16 @@ skeleton = NodePath("../../Herbs10")
 [node name="Grass" parent="Vegetation/Herbe/Herbs10" index="1"]
 transform = Transform3D(0.9659362, 0.2587768, 0.0017448079, -0.258742, 0.96563506, 0.024432188, 0.0046376493, -0.024051301, 0.9997003, -7.7749634, -5.510077, 0.036102295)
 multimesh = SubResource("MultiMesh_0v11q")
+
+[node name="Herbs11" parent="Vegetation/Herbe" instance=ExtResource("8_5r26e")]
+transform = Transform3D(-0.77672625, 0.042669363, -0.503458, 0.043135546, 1.0022705, -0.015569724, 0.3259097, -0.030962655, -1.1978074, -12.304883, -0.8852794, 80.369095)
+
+[node name="Plane" parent="Vegetation/Herbe/Herbs11" index="0"]
+transform = Transform3D(8.608073, 0, -2.3841858e-07, 0, 3.447087, 0, -4.7683716e-07, 0, 4.6794863, 1.5760536, 0, -0.1783638)
+skeleton = NodePath("../../Herbs7")
+
+[node name="Grass" parent="Vegetation/Herbe/Herbs11" index="1"]
+multimesh = SubResource("MultiMesh_8uipu")
 
 [node name="Bush" type="Node3D" parent="Vegetation"]
 
@@ -1596,7 +1668,7 @@ transform = Transform3D(1.6242356, 0, 0, 0, 1, 0, 0, 0, 1.5019326, 0, -0.7348258
 multimesh = SubResource("MultiMesh_6bpba")
 
 [node name="Arbre36" parent="Vegetation/zone4" instance=ExtResource("6_k640l")]
-transform = Transform3D(-0.35046923, 0, 0.611837, 0, 0.6461879, 0, -0.5614562, 0, -0.38191757, 3.6158779, -0.2810968, 66.82858)
+transform = Transform3D(-0.35046923, 0, 0.611837, 0, 0.6461879, 0, -0.5614562, 0, -0.38191757, 3.6158779, -0.43536532, 66.82858)
 
 [node name="TreeBas" parent="Vegetation/zone4/Arbre36" index="0"]
 skeleton = NodePath("../../Arbre33")
@@ -1712,7 +1784,7 @@ transform = Transform3D(1.6242356, 0, 0, 0, 1, 0, 0, 0, 1.5019326, 0, -0.7348258
 multimesh = SubResource("MultiMesh_6bpba")
 
 [node name="Arbre56" parent="Vegetation/zone4" instance=ExtResource("6_k640l")]
-transform = Transform3D(-0.23215425, 0.038371034, -0.6933532, 0.026249535, 0.33935818, 0.07839702, 0.6748077, 2.6755904e-09, -0.24158423, 3.6680417, -0.5254011, 50.99493)
+transform = Transform3D(-0.23215425, 0.038371034, -0.6933532, 0.026249535, 0.33935818, 0.07839702, 0.6748077, 2.6755904e-09, -0.24158423, 3.6680417, -0.75097036, 50.99493)
 
 [node name="MultiMeshInstance3D" parent="Vegetation/zone4/Arbre56/TreeHaut" index="0"]
 multimesh = SubResource("MultiMesh_ghio4")
@@ -2210,7 +2282,7 @@ transform = Transform3D(0.333, 0, 0, 0, 0.333, 0, 0, 0, 0.333, 0, -1.417, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4425392, 0, 174.56956)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Blocs/Murs"]
-transform = Transform3D(0.85456467, 0, -18.318586, 0, 2.3510075, 0, 0.43030602, 0, 36.379734, -6.928246, -2.0695019, 5.9312286)
+transform = Transform3D(0.85456467, 0, -18.318586, 0, 2.0179312, 0, 0.43030602, 0, 36.379734, -6.928246, -2.0695019, 5.9312286)
 mesh = SubResource("BoxMesh_elohj")
 skeleton = NodePath("../..")
 
@@ -2219,7 +2291,7 @@ transform = Transform3D(0.85456467, 0, -18.318586, 0, 2.3510075, 0, 0.43030602, 
 shape = SubResource("ConcavePolygonShape3D_w2e2b")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Blocs/Murs"]
-transform = Transform3D(0.11853669, 0.06461856, -23.175175, -0.0032592684, 2.3501196, 0.63722134, 1.0024897, 0, 2.7423563, 13.372828, -2.3810215, -13.365128)
+transform = Transform3D(0.118381545, 0.05905702, -23.422136, -0.0032550024, 2.147851, 0.64401174, 1.0011777, 0, 2.7715793, 13.372828, -2.381022, -13.365128)
 mesh = SubResource("BoxMesh_elohj")
 skeleton = NodePath("../..")
 
@@ -2498,6 +2570,7 @@ shape = SubResource("BoxShape3D_l8n2p")
 [editable path="Vegetation/Herbe/Herbs8"]
 [editable path="Vegetation/Herbe/Herbs9"]
 [editable path="Vegetation/Herbe/Herbs10"]
+[editable path="Vegetation/Herbe/Herbs11"]
 [editable path="Vegetation/zone1/Arbre26"]
 [editable path="Vegetation/zone1/Arbre28"]
 [editable path="Vegetation/zone1/Arbre31"]

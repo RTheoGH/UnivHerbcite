@@ -991,7 +991,7 @@ mouse_filter = 1
 flat = true
 
 [node name="Perso" parent="." instance=ExtResource("2_20oit")]
-transform = Transform3D(0.13394123, 0, -1.494008, 0, 1.5, 0, 1.494008, 0, 0.13394123, -163.31276, 4.623504, -3.1456456)
+transform = Transform3D(0.13394123, 0, -1.494008, 0, 1.5, 0, 1.494008, 0, 0.13394123, -166.49478, 5.1815877, -1.3158693)
 
 [node name="Pause" parent="." instance=ExtResource("3_20oit")]
 visible = false
@@ -3432,7 +3432,7 @@ linked_event = ExtResource("57_xxxgc")
 curve = SubResource("Curve3D_8hh0t")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="EventTriggerBehindSpace/EventMarker_hedgehog_event/Path3D"]
-transform = Transform3D(-0.80775696, -0.0066380636, 0.5894758, 0, 0.99992114, 0.011260373, -0.5895138, 0.009095533, -0.807705, 0, 0, 0)
+transform = Transform3D(-0.80775696, -0.006638053, 0.5894758, 0, 0.99991953, 0.011260373, -0.5895138, 0.009095519, -0.807705, 0, 0, 0)
 
 [node name="SquirrelEvent2" parent="." instance=ExtResource("59_6c504")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -207.75075, 5.671068, -118.17071)
